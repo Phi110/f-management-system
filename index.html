@@ -1,34 +1,42 @@
+<!-- Phi HP -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canvas Drawing</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Phi HP</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" 
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <style>
-        #line {
-            border: 1px solid black;
+        body {
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #4b0082;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 400;
+        }
+        
+        p {
+            color: #6600a8;
+            font-family: sans-serif;
+            font-size: 60px;
         }
     </style>
 </head>
+    
 <body>
-    <canvas id="line" width="400" height="400"></canvas>
-
-    <script>
-        window.onload = function() {
-            var canvas = document.getElementById('line');
-            var context = canvas.getContext('2d');
-            
-            context.beginPath();
-            context.moveTo(100, 100);
-            context.lineTo(310, 210);
-            context.lineTo(80, 230);
-            context.lineTo(250, 80);
-            context.lineTo(220, 300)
-            context.closePath();
-            context.strokeStyle = "#ff86cd";
-            context.stroke();
-        }
-    </script>
+    <h1>予定表</h1>
+    <p class="lead">c-lang</p>
+    <a class="btn btn-primary" href="#">OK</a>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
+    
 </html>
-
