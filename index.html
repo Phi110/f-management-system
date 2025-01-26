@@ -13,28 +13,83 @@
         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <style>
         body {
-            padding: 30px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            background-color: lightgray;
+            font-family: 'Open Sans', 'Noto Sans JP', sans-serif;
         }
         
         h1 {
-            color: #4b0082;
-            font-family: 'Noto Sans JP', sans-serif;
-            font-weight: 400;
+            padding: 10px;
+            font-size: 50px;
+        }
+        
+        img {
+            padding-top: 30px;
+            padding-bottom: 15px;
         }
         
         p {
-            color: #6600a8;
             font-family: sans-serif;
-            font-size: 60px;
+            font-size: 18px;
+        }
+        
+        .starter-template {
+            padding: 40px 55px;
+            background-color: white;
+        }
+        
+        .itd {
+            padding-left: 20px;
+        }
+        
+        .lms {
+            padding-left: 20px;
+            font-size: 25px;
         }
     </style>
 </head>
     
 <body>
-    <h1>予定表</h1>
-    <p class="lead">c-lang</p>
-    <a class="btn btn-primary" href="#">OK</a>
-    
+    <div class="container">
+        <div class="starter-template">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>課題</h1>
+                    <a class="lms" href="https://lms-tokyo.iput.ac.jp/" target="_blank">LMS</a>
+                </div>
+
+                <div class="col-sm-6">
+                        <img class="img-responsive center-block" 
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCE3K4o0Kmex6GL1spRk5k6ZqbCqfHkLlsTg&s">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="itd">
+                    <div class="col-sm-3">
+                        <h2>日時</h2>
+                        <p>1/20</p>
+                        <p>1/28</p>
+                        <p>1/30</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <h2>科目</h2>
+                        <p>C++</p>
+                        <p>情報数学</p>
+                        <p>線形代数</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h2>内容</h2>
+                        <p>課題11</p>
+                        <p>小テスト</p>
+                        <p>テスト</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
