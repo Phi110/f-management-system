@@ -51,7 +51,11 @@
         }
         
         .picture {
-            text-align: right;
+            width: 100%;
+            max-width: 135px;
+            display: block;
+            margin-left: auto;
+            margin-right: 0;
         }
         
         .lms {
@@ -70,20 +74,31 @@
             h2 {
                 font-size: 15px;
             }
+            img {
+                padding-top: 30px;
+                padding-bottom: 15px;
+            }
             table {
+                font-size: 10px;
+            }
+            label {
                 font-size: 10px;
             }
             .starter-template {
                 padding: 10px 7px;   
+            }
+            .picture {
+                width: 100%;
+                max-width: 80px;
+                display: block;
+                margin-left: auto;
+                margin-right: 0;
             }
             .lms {
                 font-size: 15px;
             }
             .ver {
                 font-size: 11px;
-            }
-            label {
-                font-size: 10px;
             }
         }
     </style>
@@ -327,10 +342,8 @@
                 </div>
             </div> 
             
-            <div class="picture">
-                <img src="https://pbs.twimg.com/media/GiROrC_aEAAFxMx?format=jpg&name=360x360"
-                     height="120">
-            </div>
+            <img src="https://pbs.twimg.com/media/GiROrC_aEAAFxMx?format=jpg&name=360x360"
+                class="picture">
         </div>
     </div>
         
