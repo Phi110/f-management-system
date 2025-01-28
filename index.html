@@ -29,7 +29,7 @@
         }
         
         h1 {
-            font-size: 50px;
+            font-size: 42.5px;
         }
         
         h2 {
@@ -62,7 +62,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.7);
+            background-color: rgba(255, 255, 255, 0.8);
             z-index: 1;
         }
         
@@ -97,6 +97,36 @@
         
         .ver {
             font-size: 14px
+        }
+        
+        .enter-form {
+            padding-bottom: 30px;
+        }
+        
+        /* タブレット */
+        @media (min-width: 601px) and (max-width: 1024px) {
+            h1 {
+                font-size: 32.5px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            img {
+                padding-top: 30px;
+                padding-bottom: 15px;
+            }
+            table {
+                font-size: 12.5px;
+            }
+            label {
+                font-size: 12.5px;
+            }
+            .lms {
+                font-size: 20px;
+            }
+            .enter-form {
+                padding-bottom: 15px;
+            }
         }
         
         /* スマホ */
@@ -138,28 +168,8 @@
             .ver {
                 font-size: 11px;
             }
-        }
-        
-        /* タブレット */
-        @media (min-width: 601px) and (max-width: 1024px) {
-            h1 {
-                font-size: 37.5px;
-            }
-            h2 {
-                font-size: 20px;
-            }
-            img {
-                padding-top: 30px;
-                padding-bottom: 15px;
-            }
-            table {
-                font-size: 12.5px;
-            }
-            label {
-                font-size: 12.5px;
-            }
-            .lms {
-                font-size: 20px;
+            .enter-form {
+                padding-bottom: 0px;
             }
         }
     </style>
@@ -402,7 +412,7 @@
             
             <h2>テスト対策</h2>
             
-            <h2 id="form">意見・要望（作成中）</h2>
+            <h2 class="enter-form" id="form">意見・要望（作成中）</h2>
             <div class="form-horizontal" action="#" method="post">
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="title">学籍番号</label>
@@ -413,7 +423,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="message">コメント</label>
                     <div class="col-sm-8">
-                        <textarea class="form-control" rows="4"></textarea>
+                        <textarea class="form-control" rows="10"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
