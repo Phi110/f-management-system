@@ -22,7 +22,6 @@
     <style>
         
         body {
-            padding-top: 58px;
             padding-bottom: 50px;
             background-color: #feffce;
             font-family: 'Open Sans', 'Noto Sans JP', sans-serif;
@@ -39,6 +38,11 @@
         }
         table {
             font-size: 15px;
+        }
+        .bar {
+          display: flex;
+          position: relative;
+          padding-left: 15%;
         }
         .custom-container {
             padding-left: 10%;
@@ -121,6 +125,9 @@
             textarea::placeholder {
                 font-size: 0.8rem;
             }
+            .bar {
+                padding-left: 7.5%;
+            }
             .custom-container {
                 padding-left: 7.5%;
                 padding-right: 7.5%;
@@ -173,6 +180,9 @@
             }
             textarea::placeholder {
                 font-size: 0.8rem;
+            }
+            .bar {
+                padding-left: 5%;
             }
             .custom-container {
                 padding-left: 5%;
@@ -227,6 +237,9 @@
             textarea::placeholder {
                 font-size: 0.7rem;
             }
+            .bar {
+                padding-left: 0;
+            }
             .text-container {
                 position: relative;
                 display: inline-block;
@@ -273,7 +286,7 @@
     
 <body>
     <!-- navigation bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top bar">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">FMS</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
