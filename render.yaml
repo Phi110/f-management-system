@@ -1,0 +1,11 @@
+services:
+  - name: my-php-app
+    type: web
+    runtime: docker
+    repo: https://github.com/あなたのリポジトリ.git
+    region: oregon
+    plan: free
+    envVars:
+      - key: PORT
+        value: 10000
+    autoDeploy: true
