@@ -7,8 +7,8 @@ RUN a2enmod rewrite
 # index.php を Apache のドキュメントルートにコピー
 COPY . /var/www/html/
 
-# Apache のドキュメントルートを設定
-RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
+# Apache のドキュメントルートを `/var/www/html` に正しく設定
+RUN sed -i 's|DocumentRoot /var/www/html/public|DocumentRoot /var/www/html|g' /etc/apache2/sites-available/000-default.conf
 
 # コンテナのポート設定（Render のデフォルトは 10000）
 EXPOSE 10000
