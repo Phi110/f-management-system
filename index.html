@@ -344,6 +344,7 @@
                 </div>
             </div>
             
+            <!-- 出席システム -->
             <h2 id="attendance" class="bottom-space">出席</h2>
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 <div class="col">
@@ -358,6 +359,7 @@
                 </div>
             </div>
             
+            <!-- 課題掲示板 -->
             <h2 id="assignment">課題</h2>
             <table class="table table-striped">
                 <thead>
@@ -454,6 +456,7 @@
                 </tbody>
             </table>
             
+            <!-- 補講掲示板 -->
             <h2 id="makeup">補講</h2>
             <table class="table table-striped">
                 <thead>
@@ -551,11 +554,13 @@
                 </tbody>
             </table>
             
+            <!-- テスト対策用（未実装） -->
             <h2>テスト対策</h2>
             <p>欲しいものがあれば言ってください</p>
             
+            <!-- 意見・要望フォーム -->
             <h2 id="form" class="enter-form">意見・要望</h2>
-            <form action="#" method="post">
+            <form action="submit.php" method="post">
                 <div class="row g-3">
                     <div class="col-sm-5">
                         <div class="form-group">
@@ -564,7 +569,7 @@
                             </div>
                             <div class="input-group flex-nowrap">
                                 <span class="input-group-text small-text" id="addon-wrapping">TK</span>
-                                <input type="text" class="form-control" placeholder="24XXXX" aria-describedby="addon-wrapping">
+                                <input type="text" class="form-control" id="number" placeholder="24XXXX" aria-describedby="addon-wrapping">
                             </div>
                         </div>
                     </div>
@@ -573,16 +578,16 @@
                             <div class="bottom-space">
                                 <label for="name">氏名</label>
                             </div>
-                            <input type="text" class="form-control" placeholder="Username" name="comment" id="name">
+                            <input type="text" class="form-control" id="name" placeholder="Username" name="comment">
                         </div>
                     </div>
                 </div>
                 <div class="top-space">
                     <div class="form-group">
                         <div class="bottom-space">
-                            <label for="message">コメント</label>
+                            <label for="comment">コメント</label>
                         </div>
-                        <textarea class="form-control" placeholder="現在作成中です..." name="message" id="message" rows="8"></textarea>
+                        <textarea class="form-control" placeholder="現在作成中です..." name="message" id="comment" rows="8"></textarea>
                     </div>
                 </div>
                 <div class="top-space">
