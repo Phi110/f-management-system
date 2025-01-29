@@ -58,7 +58,7 @@
             position: relative;
             background-image: url('https://pbs.twimg.com/media/GiTqUufaIAAgMex?format=jpg&name=small');
             background-size: cover;
-            background-position center;
+            background-position: center;
         }
         .backgroung-box {
             position: absolute;
@@ -596,36 +596,46 @@
     </div>
     
     <script>
-        const urlContainer0 = document.getElementById('url-container0');
-        const urlContainer1 = document.getElementById('url-container1');
-        const urlContainer2 = document.getElementById('url-container2');
-        const urlContainer3 = document.getElementById('url-container3');
-        const currentTime = new Date();
-        const day = currentTime.getDay();
-        const hour = currentTime.getHours();
-        const minute = currentTime.getMinutes();
-        
-        /* 水曜日 */
-        if (day == 3) {
-            /* 3限 13:10 - 14:50 */
-            if ((hour == 14 || (hour == 13 && minute >= 10)) && (hour == 13) || (hour == 14 && minute <= 50)) {
-                urlContainer0.src = "https://pbs.twimg.com/media/GiZ60bvbkAA7k_T?format=jpg&name=small"
-                urlContainer1.innerHTML = '<h5 class="card-title"><a href="https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72622" target="_blank">コミュニケーションツールD（2024_火曜2限_IT1D）</a></h5>';
-                urlContainer2.innerHTML = '<p class="card-text">後期(24_学部共)</p>'
-                urlContainer3.innerHTML = '<p class="card-text"><small class="text-body-secondary">13:20 - 14:50</small></p>'
+            const urlContainer0 = document.getElementById('url-container0');
+            const urlContainer1 = document.getElementById('url-container1');
+            const urlContainer2 = document.getElementById('url-container2');
+            const urlContainer3 = document.getElementById('url-container3');
+            const currentTime = new Date();
+            const day = currentTime.getDay();
+            const hour = currentTime.getHours();
+            const minute = currentTime.getMinutes();
+            
+            console.log(`Current Time: ${hour}:${minute}`);
+
+            /* <img id="url-container0" src="https://t3.ftcdn.net/jpg/05/46/58/04/360_F_546580471_iaj1eDatvGudb9hkL1wYeAaRutNEBXOS.jpg" class="card-img-top">
+                <div class="card-body">
+                    <h5 id="url-container1" class="card-title">Study yourself</h5>
+                    <p id="url-container2" class="card-text">現在開講されている授業はありません</p>
+                    <p id="url-container3" class="card-text"><small class="text-body-secondary">...</small></p>
+                </div>
+            */
+            
+            /* 水曜日 */
+            if (day == 3) {
+                /* 3限 13:10 - 14:50 */
+                if (hour == 17 && 1 <= minute && minute <= 59) {
+                    urlContainer0.src = "https://pbs.twimg.com/media/GiZ60bvbkAA7k_T?format=jpg&name=small";
+                    urlContainer1.innerHTML = '<h5 class="card-title"><a href="https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72622" target="_blank">コミュニケーションツールD（2024_火曜2限_IT1D）</a></h5>';
+                    urlContainer2.innerHTML = '<p class="card-text">後期(24_学部共)</p>';
+                    urlContainer3.innerHTML = '<p class="card-text"><small class="text-body-secondary">13:20 - 14:50</small></p>';
+                }
             }
-        }
-        
-        /* 金曜日 */
-        if (day == 5) {
-            /* 1限 9:05 - 4限 16:30 */
-            if ((hour == 9 && minute >= 5)) || (10 <= hour <= 15) || (hour == 16 && minute <= 30)) {
-                urlContainer0.src = "https://pbs.twimg.com/media/GiZ60bvbkAA7k_T?format=jpg&name=small"
-                urlContainer1.innerHTML = '<h5 class="card-title"><a href="https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=73031" target="_blank">組込みC, C++言語B（2024_月曜1・2限_IT1B/IT1D）</a></h5>';
-                urlContainer2.innerHTML = '<p class="card-text">後期(24_共_IT)</p>'
-                urlContainer3.innerHTML = '<p class="card-text"><small class="text-body-secondary">9:15 - 16:30</small></p>'
+
+            /* 金曜日 */
+            if (day == 5) {
+                /* 1限 9:05 - 4限 16:30 */
+                if ((hour == 9 && minute >= 5) || (10 <= hour && hour <= 15) || (hour == 16 && minute <= 30)) {
+                    urlContainer0.src = "https://pbs.twimg.com/media/GiZ60bvbkAA7k_T?format=jpg&name=small";
+                    urlContainer1.innerHTML = '<h5 class="card-title"><a href="https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=73031" target="_blank">組込みC, C++言語B（2024_月曜1・2限_IT1B/IT1D）</a></h5>';
+                    urlContainer2.innerHTML = '<p class="card-text">後期(24_共_IT)</p>';
+                    urlContainer3.innerHTML = '<p class="card-text"><small class="text-body-secondary">9:15 - 16:30</small></p>';
+                }
             }
-        }
     </script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
