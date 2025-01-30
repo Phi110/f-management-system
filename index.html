@@ -706,8 +706,9 @@
                         <div class="left-space bottom-space">
                             <button class="btn btn-outline-secondary btn-sm btn-xs" onclick="checkAnswers()">結果</button>
                         </div>
-                        
-                        <div id="result" class="alert mt-3 d-none"></div>
+                        <div class="left-space">
+                            <div id="result"></div>
+                        </div>
                         <br><br>
                         
                     </div>
@@ -810,7 +811,7 @@
                 answer1_7: "目的・目標",
                 answer1_8: "不確実性",
                 answer1_9: "手法",
-                answer2_1: "スコープ、スケジュール、コスト",
+                answer2_1: "スコープ・スケジュール・コスト",
                 answer2_2: "スコープ",
                 answer2_3: "スケジュールとコスト"
             };
@@ -838,7 +839,7 @@
                 }
             }
             
-            resultDiv.innerText = `(${correctCount}/${totalQuestions} 問正解)`;
+            result.innerHTML = `<p>${correctCount}問/${totalQuestions}問 正解です</p>`;
 
         }
     </script>
