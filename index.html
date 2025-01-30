@@ -89,6 +89,10 @@
             margin-left: auto;
             margin-right: 0;
         }
+        .right-side {
+            margin-left: auto;
+            margin-right: 0;
+        }
         .lms {
             padding-left: 30px;
             font-size: 25px;
@@ -566,7 +570,7 @@
                     <div class="col-sm-5">
                         <div class="form-group">
                             <div class="bottom-space">
-                                <label for="number">学籍番号</label>
+                                <label for="number">学籍番号*</label>
                             </div>
                             <div class="input-group flex-nowrap">
                                 <span class="input-group-text small-text" id="addon-wrapping">TK</span>
@@ -577,7 +581,7 @@
                     <div class="col-sm-7">
                         <div class="form-group">
                             <div class="bottom-space">
-                                <label for="name">氏名</label>
+                                <label for="name">氏名*</label>
                             </div>
                             <input type="text" class="form-control" id="name" placeholder="Username" name="comment">
                         </div>
@@ -595,6 +599,8 @@
                     <button type="submit" class="btn btn-outline-secondary btn-sm btn-xs">送信</button>
                 </div>
             </form>
+
+            <p class="right-side">*任意</p>
             
             <img src="https://pbs.twimg.com/media/GiROrC_aEAAFxMx?format=jpg&name=360x360"
                 class="picture">
@@ -625,7 +631,7 @@
             /* 金曜日 */
             if (day == 4) {
                 /* 1限 9:05 - 4限 16:30 */
-                if ((hour == 0 && minute >= 0) || (10 <= hour && hour <= 15) || (hour == 16 && minute <= 30)) {
+                if ((hour == 9 && minute >= 5) || (10 <= hour && hour <= 15) || (hour == 16 && minute <= 30)) {
                     urlContainer0.src = "https://pbs.twimg.com/media/Gicsl-QbcAAMaVZ?format=jpg&name=small";
                     urlContainer1.innerHTML = '<h5 class="card-title"><a href="https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=73031" target="_blank">組込みC, C++言語B（2024_月曜1・2限_IT1B/IT1D）</a></h5>';
                     urlContainer2.innerHTML = '<p class="card-text">後期(24_共_IT)</p>';
