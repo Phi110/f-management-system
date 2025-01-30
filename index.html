@@ -89,10 +89,6 @@
             margin-left: auto;
             margin-right: 0;
         }
-        .right-side {
-            margin-left: auto;
-            margin-right: 0;
-        }
         .lms {
             padding-left: 30px;
             font-size: 25px;
@@ -112,6 +108,16 @@
         .bottom-space {
             padding-bottom: 6px;
         }
+        .left-space {
+            padding-left: 13px;
+        }
+        .same-row {
+            display: flex;
+        }
+        .right-side {
+            margin-left: auto;
+            margin-right: 0;
+        }
         
         /* タブレット */
         @media (min-width: 813px) and (max-width: 1024px) {
@@ -120,6 +126,9 @@
             }
             h2 {
                 font-size: 20px;
+            }
+            p {
+                font-size: 14px;
             }
             table {
                 font-size: 12.5px;
@@ -156,6 +165,12 @@
             }
             .small-text {
                 font-size: 0.8rem;
+            }
+            .top-space {
+                padding-top: 6px;
+            }
+            .left-space {
+                padding-left: 9px;
             }
             .btn-xs {
                 font-size: 0.7rem;
@@ -213,6 +228,12 @@
             .small-text {
                 font-size: 0.8rem;
             }
+            .top-space {
+                padding-top: 6px;
+            }
+            .left-space {
+                padding-left: 11px;
+            }
             .btn-xs {
                 font-size: 0.7rem;
                 padding: 0.2rem 0.4rem;
@@ -228,7 +249,7 @@
                 font-size: 15px;
             }
             h5 {
-                font-size: 14px;
+                font-size: 8px;
             }
             p {
                 font-size: 12px;
@@ -287,9 +308,15 @@
             .small-text {
                 font-size: 0.7rem;
             }
+            .top-space {
+                padding-top: 5px;
+            }
+            .left-space {
+                padding-left: 14px;
+            }
             .btn-xs {
-                font-size: 0.6rem;
-                padding: 0.1rem 0.3rem;
+                font-size: .7rem;
+                padding: 0.2rem 0.4rem;
             }
         }
     </style>
@@ -559,9 +586,34 @@
                 </tbody>
             </table>
             
-            <!-- テスト対策用（未実装） -->
-            <h2>テスト対策</h2>
-            <p>欲しいものがあれば言ってください</p>
+            <!-- テスト対策用タブ -->
+            <nav>
+                <div class="nav nav-tabs small-text" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">対策用</button>
+                    <button class="nav-link" id="nav-promana-tab" data-bs-toggle="tab" data-bs-target="#nav-promana" type="button" role="tab" aria-controls="nav-promana" aria-selected="false">プロマネ</button>
+                    <button class="nav-link" id="nav-mathofinfo-tab" data-bs-toggle="tab" data-bs-target="#nav-mathofinfo" type="button" role="tab" aria-controls="nav-mathofinfo" aria-selected="false">情報数学</button>
+                    <button class="nav-link" id="nav-cpp-tab" data-bs-toggle="tab" data-bs-target="#nav-cpp" type="button" role="tab" aria-controls="nav-cpp" aria-selected="false">C++</button>
+                </div>
+            </nav>
+            <div class="tab-content small-text" id="nav-tabContent">
+                <div class="tab-pane fade show active top-space left-space" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                    科目：<br>
+                    <div class="left-space">
+                        プロマネ<br>
+                        情報数学<br>
+                        C++<br><br>
+                    </div>
+                </div>
+                <div class="tab-pane fade top-space left-space" id="nav-promana" role="tabpanel" aria-labelledby="nav-promana-tab" tabindex="0">
+                    現在作成中...<br><br><br><br><br>
+                </div>
+                <div class="tab-pane fade top-space left-space" id="nav-mathofinfo" role="tabpanel" aria-labelledby="nav-mathofinfo-tab" tabindex="0">
+                    現在作成中...<br><br><br><br><br>
+                </div>
+                <div class="tab-pane fade top-space left-space" id="nav-cpp" role="tabpanel" aria-labelledby="nav-cpp-tab" tabindex="0">
+                    現在作成中...<br><br><br><br><br>
+                </div>
+            </div>
             
             <!-- 意見・要望フォーム -->
             <h2 id="form" class="enter-form">意見・要望</h2>
@@ -595,12 +647,13 @@
                         <textarea class="form-control" placeholder="現在作成中です..." name="message" id="comment" rows="8"></textarea>
                     </div>
                 </div>
-                <div class="top-space">
+                <div class="same-row top-space">
                     <button type="submit" class="btn btn-outline-secondary btn-sm btn-xs">送信</button>
+                    <p class="right-side">*任意</p>
                 </div>
             </form>
 
-            <p class="right-side">*任意</p>
+            
             
             <img src="https://pbs.twimg.com/media/GiROrC_aEAAFxMx?format=jpg&name=360x360"
                 class="picture">
