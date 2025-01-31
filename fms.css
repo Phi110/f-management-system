@@ -38,7 +38,7 @@ table {
 .background {
     margin-bottom: 20px;
     position: relative;
-    background-image: url('https://pbs.twimg.com/media/GiTqUufaIAAgMex?format=jpg&name=small');
+    background-image: url('images/title.webp');
     background-size: cover;
     background-position: center;
 }

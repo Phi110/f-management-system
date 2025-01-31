@@ -12,7 +12,7 @@ const minute = currentTime.getMinutes();
 if (day == 3) {
     /* 3限 13:10 - 14:50 */
     if (hour == 13 && 10 <= minute && minute <= 50) {
-        urlContainer0.src = "https://pbs.twimg.com/media/GiZ60bvbkAA7k_T?format=jpg&name=small";
+        urlContainer0.src = "images/attendance1.webp";
         urlContainer1.innerHTML = '<h5 class="card-title"><a href="https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72622" target="_blank">コミュニケーションツールD（2024_火曜2限_IT1D）</a></h5>';
         urlContainer2.innerHTML = '<p class="card-text">後期(24_学部共)</p>';
         urlContainer3.innerHTML = '<p class="card-text"><small class="text-body-secondary">13:20 - 14:50</small></p>';
@@ -23,7 +23,7 @@ if (day == 3) {
 if (day == 5) {
     /* 1限 9:05 - 4限 16:30 */
     if ((hour == 9 && minute >= 5) || (10 <= hour && hour <= 15) || (hour == 16 && minute <= 30)) {
-        urlContainer0.src = "https://pbs.twimg.com/media/Gicsl-QbcAAMaVZ?format=jpg&name=small";
+        urlContainer0.src = "images/attendance2.webp";
         urlContainer1.innerHTML = '<h5 class="card-title"><a href="https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=73031" target="_blank">組込みC, C++言語B（2024_月曜1・2限_IT1B/IT1D）</a></h5>';
         urlContainer2.innerHTML = '<p class="card-text">後期(24_共_IT)</p>';
         urlContainer3.innerHTML = '<p class="card-text"><small class="text-body-secondary">9:15 - 16:30</small></p>';
