@@ -31,7 +31,7 @@ if (day == 5) {
 }
 
 /* checkanswers */
-function checkAnswers() {
+function checkAnswers1() {
     let correctAnswers = {
         answer1_1: "独自性・有期性",
         answer1_2: "新しい価値",
@@ -59,8 +59,8 @@ function checkAnswers() {
         answer1_9: document.getElementById("answer1_9").value,
         answer2_1: document.getElementById("answer2_1").value,
         answer2_2: document.getElementById("answer2_2").value,
-        answer2_3: document.getElementById("answer2_3").value
-    }
+        answer2_3: document.getElementById("answer2_3").value,
+    };
     
     let correctCount = 0;
     let totalQuestions = Object.keys(correctAnswers).length;
@@ -74,6 +74,45 @@ function checkAnswers() {
         }
     }
     
-    result.innerHTML = `<p>${correctCount}問/${totalQuestions}問 正解です</p>`;
+    result1.innerHTML = `<p>${correctCount}問/${totalQuestions}問 正解です</p>`;
 
+}
+function checkAnswers2() {
+    let correctAnswers = {
+        answer3_1: "予測型",
+        answer3_2: "アジャイル型",
+        answer3_3: "スコープ",
+        answer3_4: "反復型",
+        answer4_1: "ステークホルダー",
+        answer4_2: "要求",
+        answer4_3: "価値",
+        answer4_4: "無駄",
+        answer4_5: "3"
+    };
+
+    let userAnswers = {
+        answer3_1: document.getElementById("answer3_1").value,
+        answer3_2: document.getElementById("answer3_2").value,
+        answer3_3: document.getElementById("answer3_3").value,
+        answer3_4: document.getElementById("answer3_4").value,
+        answer4_1: document.getElementById("answer4_1").value,
+        answer4_2: document.getElementById("answer4_2").value,
+        answer4_3: document.getElementById("answer4_3").value,
+        answer4_4: document.getElementById("answer4_4").value,
+        answer4_5: document.getElementById("answer4_5").value
+    };
+
+    let correctCount = 0;
+    let totalQuestions = Object.keys(correctAnswers).length;
+    for (let key in correctAnswers) {
+        let result = document.getElementById("result" + key.slice(-3));
+        if (correctAnswers[key] === userAnswers[key]) {
+            result.innerHTML = " O "; 
+            correctCount++;
+        } else {
+            result.innerHTML = " X ";
+        }
+    }
+    
+    result2.innerHTML = `<p>${correctCount}問/${totalQuestions}問 正解です</p>`;
 }
