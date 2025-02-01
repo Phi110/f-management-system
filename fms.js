@@ -1,3 +1,5 @@
+/* current time */
+
 /* attendance */
 const urlContainer0 = document.getElementById('url-container0');
 const urlContainer1 = document.getElementById('url-container1');
