@@ -26,10 +26,30 @@
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <!-- Firebase -->
+    <script type="module">
+        // Firebaseの設定 (Firebaseコンソールの設定ページからコピー)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+      
+        const firebaseConfig = {
+          apiKey: "AIzaSyCo3wV-0UysTzhSJuahnXxI29I4XryhYUI",
+          authDomain: "f-management-system.firebaseapp.com",
+          projectId: "f-management-system",
+          storageBucket: "f-management-system.appspot.com",
+          messagingSenderId: "674332684290",
+          appId: "1:674332684290:web:19665cd604658ed565b71b"
+        };
+      
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+    </script>
+      
 </head>
     
 <body>
-    <!-- navigation bar -->
+    <!-- ナビゲーションバー -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top bar">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">FMS</a>
@@ -56,6 +76,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#form">Form</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#login">LogIn</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -65,10 +88,12 @@
     <div class="container-xxl custom-container">
         <div class="starter-template">
             
-            <!-- タイトル -->
             <div class="ver">
-                Ver. 2025.02.01. 伊東 颯紀
+                Ver. 2025.02.02. 伊東 颯紀
             </div>
+            <br><br>
+
+            <!-- タイトル -->
             <div class="row">
                 <div class="col-sm-12">
                     <div class="background">
@@ -81,24 +106,32 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 現在時 -->
+            <div class="custom-container">
+                <span id="whattime"></span>
+            </div>
             
             <!-- カルーセルインジケーター -->
             <div id="carouselExampleDark" class="carousel carousel-dark slide custom-container top-space bottom-space">
                 <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
-                  <div class="carousel-item active" data-bs-interval="10000">
-                    <img src="images/studyroom2.1.webp" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item" data-bs-interval="2000">
-                    <img src="images/studyroom2.2.webp" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="images/studyroom2.1.webp" class="d-block w-100" alt="...">
-                  </div>
+                    <div class="carousel-item active" data-bs-interval="10000">
+                        <h3>今週の自習・談話室</h3>
+                        <img src="images/studyroom2.1.webp" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <h3>来週の自習・談話室</h3>
+                        <img src="images/studyroom2.2.webp" class="d-block w-100">
+                    </div>
+                    <div class="carousel-item">
+                        <h3>お知らせ</h3>
+                        <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -169,7 +202,7 @@
                                 第14回 class課題
                             </a>
                         </td>
-                    </tr> -->
+                    </tr>
                     <tr>
                         <td>2/1 (土) ～23:59</td>
                         <td>コミュツ</td>
@@ -178,7 +211,7 @@
                                 最終課題「私の取説」提出
                             </a>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td>2/2 (日) ～23:59</td>
                         <td>Python</td>
@@ -245,38 +278,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr>
-                        <td>1/28 (火)</td>
-                        <td>1, 2限</td>
-                        <td>371, 3</td>
-                        <td>情報数学</td>
-                        <td>3限</td>
-                        <td>374, 6</td>
-                        <td>Python</td>
-                    </tr>
                     <tr>
-                        <td></td>
-                        <td>4限</td>
-                        <td>345</td>
-                        <td>力学</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>1/29 (水)</td>
-                        <td>3限</td>
-                        <td>374</td>
-                        <td>コミュツ</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr> -->
-                    <tr>
-                        <td>1/31 (金)</td>
-                        <td>1～4限</td>
-                        <td>374, 6</td>
-                        <td>C++</td>
+                        <td>- / - ( - )</td>
+                        <td>- 限</td>
+                        <td>- - -</td>
+                        <td>-</td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -290,28 +296,28 @@
                     <tr>
                         <th>日時</th>
                         <th>時限</th>
-                        <th>教室</th>
                         <th>科目</th>
+                        <th>教室</th>
                         <th>時限</th>
-                        <th>教室</th>
                         <th>科目</th>
+                        <th>教室</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>2/6 (木)</td>
                         <td>2限</td>
-                        <td>-</td>
                         <td>情報数学</td>
+                        <td>341, 351</td>
                         <td>4限</td>
-                        <td>-</td>
                         <td>C++</td>
+                        <td>311</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>5限</td>
-                        <td>-</td>
                         <td>プロマネ</td>
+                        <td>341,2</td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -319,11 +325,11 @@
                     <tr>
                         <td>2/7 (金)</td>
                         <td>3限</td>
-                        <td>-</td>
                         <td>解析学</td>
+                        <td>311, 351,3</td>
                         <td>4限</td>
-                        <td>-</td>
                         <td>線形代数</td>
+                        <td>311, 351,3</td>
                     </tr>
                 </tbody>
             </table>
@@ -387,42 +393,59 @@
             <h2 id="form" class="enter-form">意見・要望</h2>
             <form action="submit.php" method="post">
                 <div class="row g-3">
-                    <div class="col-sm-5">
-                        <div class="form-group">
-                            <div class="bottom-space">
-                                <label for="number">学籍番号*</label>
-                            </div>
-                            <div class="input-group flex-nowrap">
-                                <span class="input-group-text small-text" id="addon-wrapping">TK</span>
-                                <input type="text" class="form-control" id="number" placeholder="24XXXX" aria-describedby="addon-wrapping">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="form-group">
-                            <div class="bottom-space">
-                                <label for="name">氏名*</label>
-                            </div>
-                            <input type="text" class="form-control" id="name" placeholder="Username" name="comment">
-                        </div>
-                    </div>
-                </div>
-                <div class="top-space">
-                    <div class="form-group">
+                    <div class="form-group col-sm-5">
                         <div class="bottom-space">
-                            <label for="comment">コメント</label>
+                            <label for="number">学籍番号*</label>
                         </div>
-                        <textarea class="form-control" placeholder="現在作成中です..." name="message" id="comment" rows="8"></textarea>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text small-text" id="addon-wrapping">TK</span>
+                            <input type="text" class="form-control" id="number" placeholder="24XXXX" aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-7">
+                        <div class="bottom-space">
+                            <label for="name">氏名*</label>
+                        </div>
+                        <input type="text" class="form-control" id="name" placeholder="Username" name="comment">
                     </div>
                 </div>
+                
+                <div class="form-group top-space">
+                    <label class="bottom-space" for="comment">コメント</label>
+                    <textarea class="form-control" placeholder="現在作成中です..." name="message" id="comment" rows="8"></textarea>
+                </div>
+                
                 <div class="top-space">
-                    <button type="submit" class="btn btn-outline-secondary btn-sm btn-xs">送信</button>
+                    <button type="submit" class="btn btn-outline-primary btn-sm btn-xs">送信</button>
                     <p class="right-side left-space">*任意</p>
                 </div>
             </form>
 
-            
-            
+            <!-- ログイン -->
+            <h2 id="login" class="enter-form">ログイン</h2>
+            <form action="submit.php" method="post">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div class="bottom-space">
+                            <label for="mailaddress">メールアドレス</label>
+                        </div>
+                        <input type="text" class="form-control" id="mailaddress" placeholder="example@gmail.com">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="bottom-space">
+                            <label for="password">パスワード</label>
+                        </div>
+                        <input type="text" class="form-control" id="password" placeholder="password">
+                    </div>
+                    
+                    <div class="top-space">
+                        <button type="submit" class="btn btn-outline-primary btn-sm btn-xs">ログイン</button>
+                        <button type="submit" class="btn btn-outline-secondary btn-sm btn-xs">新規登録</button>
+                    </div>
+                </div>
+            </form>
+
+
             <img src="images/bar.webp" class="picture">
         </div>
     </div>
