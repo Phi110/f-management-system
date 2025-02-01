@@ -36,7 +36,7 @@ function checkAnswers(th, start, end) {
     let totalCount = 0;
     for (let i = start; i <= end; i++) {
         let result = document.getElementById("result" + String(i));
-        if (document.getElementById("a" + String(i)).value == "1") {
+        if (document.getElementById("answer" + String(i)).value == "1") {
             result.innerHTML = '<i class="bi bi-check-lg text-success right-space"></i>';
             correctCount++;
         } else {
