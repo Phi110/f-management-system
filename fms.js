@@ -57,7 +57,7 @@ function checkAnswers(th, start, end) {
         word = '<span class="text-primary">Good</span>';
     } else {
         markis = '<i class="bi bi-x-lg text-danger right-space"></i>';
-        word = '<span class="text-danger">Oh...</span>';
+        word = '<span class="text-danger"></span>';
     }
 
     let score = document.getElementById("score" + String(th));
