@@ -1,0 +1,254 @@
+<!-- Test1 -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>F Management System</title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+
+    <!-- fms.css(main) -->
+    <link rel="stylesheet" href="fms.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+    
+<body>
+    <div class="container-xxl custom-container">
+        <div class="starter-template">
+
+            <!-- navigation bar -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top bar">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">FMS</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#test1">Test1</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#test2">Test2</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Title -->
+            <div class="ver">
+                Ver. 2025.02.01. 伊東 颯紀
+            </div>
+            <h2 class="bottom-space">プロジェクトマネジメント</h2>
+
+            <br>
+            
+            <!-- パンくずリスト -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb left-space">
+                    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="test1.html">Test1</li>
+                    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="test2.html">Test2</a></li>
+                    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="test3.html">Test3</a></li>
+                </ol>
+            </nav>
+
+            <br>
+            
+            <!-- Test1 -->
+            <h3 id="test1" class="left-space">Test1</h3>
+            <p class="lead small-text left-space">
+                プロジェクトとは、 
+                <select id="answer1_1" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="新規性・収益性">新規性・収益性</option>
+                    <option value="独自性・有期性">独自性・有期性</option>
+                    <option value="計画性・有益性">計画性・有益性</option>
+                </select> <span id="result1_1"></span> のある活動であり、
+                <select id="answer1_2" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="収益">収益</option>
+                    <option value="新商品">新商品</option>
+                    <option value="新しい価値">新しい価値</option>
+                </select> <span id="result1_2"></span> 生み出すことである。<br>プロジェクトマネジメントとは、
+                <select id="answer1_3" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="知識・スキル">知識・スキル</option>
+                    <option value="チーム力・熱意">チーム力・熱意</option>
+                    <option value="技能・資格">技能・資格</option>
+                </select> <span id="result1_3"></span> 
+                <select id="answer1_4" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="能力・資格">能力・資格</option>
+                    <option value="ツール・技法">ツール・技法</option>
+                    <option value="資産・人脈">資産・人脈</option>
+                </select> <span id="result1_4"></span> などを利用する活動である。<br>プロジェクトマネジメントの目的は、決められた
+                <select id="answer1_5" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="チーム">チーム</option>
+                    <option value="期限">期限</option>
+                    <option value="目標">目標</option>
+                </select> <span id="result1_5"></span> 、使える
+                <select id="answer1_6" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="資材・ツール">資材・ツール</option>
+                    <option value="情報・材料">情報・材料</option>
+                    <option value="資源・予算">資源・予算</option>
+                </select> <span id="result1_6"></span> の中で
+                <select id="answer1_7" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="売上・成長">売上・成長</option>
+                    <option value="目的・目標">目的・目標</option>
+                    <option value="戦略・夢">戦略・夢</option>
+                </select> <span id="result1_7"></span> を達成することである。しかし、プロジェクトを進めるには
+                <select id="answer1_8" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="困難">困難</option>
+                    <option value="不確実性">不確実性</option>
+                    <option value="課題">課題</option>
+                </select> <span id="result1_8"></span> がある。<br>そのため、うまく進めるための
+                <select id="answer1_9" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="手法">手法</option>
+                    <option value="戦略">戦略</option>
+                    <option value="コツ">コツ</option>
+                </select> <span id="result1_9"></span> が必要である。
+                
+            </p>
+            <p class="lead small-text left-space">
+                プロジェクトの３大制約とは、 
+                <select id="answer2_1" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="予算・資源・期限">予算・資源・期限</option>
+                    <option value="スコープ・スケジュール・コスト">スコープ・スケジュール・コスト</option>
+                    <option value="ニーズ・顧客・資材">ニーズ・顧客・資材</option>
+                </select> <span id="result2_1"></span> である。<br>ウォーターフォール開発手法で固定する制約は、
+                <select id="answer2_2" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="スケジュール">スケジュール</option>
+                    <option value="スコープ">スコープ</option>
+                    <option value="コスト">コスト</option>
+                </select> <span id="result2_2"></span> である。<br>アジャイル開発手法で固定する制約は、
+                <select id="answer2_3" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="スコープとスケジュール">スコープとスケジュール</option>
+                    <option value="スコープとコスト">スコープとコスト</option>
+                    <option value="スケジュールとコスト">スケジュールとコスト</option>
+                </select> <span id="result2_3"></span> である。
+            </p>
+            
+            <div class="left-space bottom-space">
+                <button class="btn btn-outline-secondary btn-sm btn-xs" onclick="checkAnswers1()">結果</button>
+                <span id="result1"></span>
+            </div>
+            
+            <br>
+
+            <!-- Test2 -->
+            <h3 id="test2" class="left-space">Test2</h3>
+            <p class="lead small-text left-space">
+                プロジェクトの開始時点でスコープが明確な場合に適している開発方法は、
+                <select id="answer3_1" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="適応型">適応型</option>
+                    <option value="予測型">予測型</option>
+                    <option value="反復型">反復型</option>
+                </select> <span id="result3_1"></span> 開発アプローチである。<br>適応型開発アプローチのひとつである
+                <select id="answer3_2" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="反復型">反復型</option>
+                    <option value="アジャイル型">アジャイル型</option>
+                    <option value="継続型">継続型</option>
+                </select> <span id="result3_2"></span> 開発アプローチでは、顧客と共に開発を進めることで、プロジェクト期間中に
+                <select id="answer3_3" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="社会">社会</option>
+                    <option value="ニーズ">ニーズ</option>
+                    <option value="スコープ">スコープ</option>
+                </select> <span id="result3_3"></span> の変化に対応する。<br>プロトタイプを開発することで要求事項を明確化する方法は
+                <select id="answer3_4" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="反復型">反復型</option>
+                    <option value="アジャイル型">アジャイル型</option>
+                    <option value="予測型">予測型</option>
+                </select> <span id="result3_4"></span> 開発アプローチでみられる。
+            </p>
+            <p class="lead small-text left-space">
+                プロジェクトの原則（４点）とは、<br>１．
+                <select id="answer4_1" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="スポンサー">スポンサー</option>
+                    <option value="ステークホルダー">ステークホルダー</option>
+                    <option value="チーム">チーム</option>
+                </select> <span id="result4_1"></span> の協力を得る<br>２．
+                <select id="answer4_2" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="要求">要求</option>
+                    <option value="環境">環境</option>
+                    <option value="目的">目的</option>
+                </select> <span id="result4_2"></span> の変化に柔軟に対応する<br>３．成果物そのものよりも成果物により得られる
+                <select id="answer4_3" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="利益">利益</option>
+                    <option value="評判">評判</option>
+                    <option value="価値">価値</option>
+                </select> <span id="result4_3"></span> を重視する<br>４．状況に合わせて
+                <select id="answer4_4" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="相談">相談</option>
+                    <option value="無駄">無駄</option>
+                    <option value="無理">無理</option>
+                </select> <span id="result4_4"></span> なくシンプルに実行する<br><br>プロジェクトマネジメントの原則・原則、方法論を４つあげるとすると、<br>
+                <select id="answer4_5" class="form-select custom-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="1">PMI、PRINCE2、アジャイルソフトウェア開発宣言（アジャイルマニフェスト）、ITIL</option>
+                    <option value="2">PRINCE2、アジャイルソフトウェア開発宣言（アジャイルマニフェスト）、PMBOK、CCTA（中央コンピュータ電気通信局）</option>
+                    <option value="3">アジャイルソフトウェア開発宣言（アジャイルマニフェスト）、PMBOK、ITIL、PRINCE2</option>
+                </select> <span id="result4_5"></span>
+            </p>
+            <div class="left-space bottom-space">
+                <button class="btn btn-outline-secondary btn-sm btn-xs" onclick="checkAnswers2()">結果</button>
+                <span id="result2"></span>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- fms.js -->
+    <script src="fms.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
