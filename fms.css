@@ -37,6 +37,21 @@ table {
     padding-left: 20px;
     padding-top: 0px;
 }
+#score4 {
+    display: inline-block;
+    padding-left: 20px;
+    padding-top: 0px;
+}
+#score5 {
+    display: inline-block;
+    padding-left: 20px;
+    padding-top: 0px;
+}
+#score6 {
+    display: inline-block;
+    padding-left: 20px;
+    padding-top: 0px;
+}
 .bar {
   display: flex;
   position: fixed;
