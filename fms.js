@@ -46,6 +46,20 @@ function checkAnswers(th, start, end) {
         }
         totalCount++;
     }
+
+    let markis, word;
+    let answerRate = correctCount / totalCount;
+    if (answerRate == 1) {
+        markis = '<i class="bi bi-circle text-success right-space"></i>';
+        word = '<span class="text-success">Perfect</span>';
+    } else if (answerRate >= 0.5) {
+        markis = '<i class="bi bi-triangle text-primary right-space"></i>';
+        word = '<span class="text-primary">Good</span>';
+    } else {
+        markis = '<i class="bi bi-x-lg text-danger right-space"></i>';
+        word = '<span class="text-danger">Oh...</span>';
+    }
+
     let score = document.getElementById("score" + String(th));
-    score.innerHTML = `<p><strong>${correctCount}問</strong> / ${totalCount}問 正解です</p>`;
+    score.innerHTML = `<p>${markis}<strong>${correctCount}問</strong> / ${totalCount}問 正解です ${word}</p>`;
 }
