@@ -31,89 +31,19 @@ if (day == 5) {
 }
 
 /* checkanswers */
-function checkAnswers1() {
-    let correctAnswers = {
-        answer1_1: "独自性・有期性",
-        answer1_2: "新しい価値",
-        answer1_3: "知識・スキル",
-        answer1_4: "ツール・技法",
-        answer1_5: "期限",
-        answer1_6: "資源・予算",
-        answer1_7: "目的・目標",
-        answer1_8: "不確実性",
-        answer1_9: "手法",
-        answer2_1: "スコープ・スケジュール・コスト",
-        answer2_2: "スコープ",
-        answer2_3: "スケジュールとコスト"
-    };
-
-    let userAnswers = {
-        answer1_1: document.getElementById("answer1_1").value,
-        answer1_2: document.getElementById("answer1_2").value,
-        answer1_3: document.getElementById("answer1_3").value,
-        answer1_4: document.getElementById("answer1_4").value,
-        answer1_5: document.getElementById("answer1_5").value,
-        answer1_6: document.getElementById("answer1_6").value,
-        answer1_7: document.getElementById("answer1_7").value,
-        answer1_8: document.getElementById("answer1_8").value,
-        answer1_9: document.getElementById("answer1_9").value,
-        answer2_1: document.getElementById("answer2_1").value,
-        answer2_2: document.getElementById("answer2_2").value,
-        answer2_3: document.getElementById("answer2_3").value,
-    };
-    
+function checkAnswers(th, start, end) {
     let correctCount = 0;
-    let totalQuestions = Object.keys(correctAnswers).length;
-    for (let key in correctAnswers) {
-        let result = document.getElementById("result" + key.slice(-3));
-        if (correctAnswers[key] === userAnswers[key]) {
+    let totalCount = 0;
+    for (let i = start; i <= end; i++) {
+        let result = document.getElementById("result" + String(i));
+        if (document.getElementById("a" + String(i)).value == "1") {
             result.innerHTML = '<i class="bi bi-check-lg text-success right-space"></i>';
             correctCount++;
         } else {
             result.innerHTML = '<i class="bi bi-x-lg text-danger right-space"></i>';
         }
+        totalCount++;
     }
-    
-    result1.innerHTML = `<p><strong>${correctCount}問</strong> / ${totalQuestions}問 正解です</p>`;
-
-}
-
-function checkAnswers2() {
-    let correctAnswers = {
-        answer3_1: "予測型",
-        answer3_2: "アジャイル型",
-        answer3_3: "スコープ",
-        answer3_4: "反復型",
-        answer4_1: "ステークホルダー",
-        answer4_2: "要求",
-        answer4_3: "価値",
-        answer4_4: "無駄",
-        answer4_5: "3"
-    };
-
-    let userAnswers = {
-        answer3_1: document.getElementById("answer3_1").value,
-        answer3_2: document.getElementById("answer3_2").value,
-        answer3_3: document.getElementById("answer3_3").value,
-        answer3_4: document.getElementById("answer3_4").value,
-        answer4_1: document.getElementById("answer4_1").value,
-        answer4_2: document.getElementById("answer4_2").value,
-        answer4_3: document.getElementById("answer4_3").value,
-        answer4_4: document.getElementById("answer4_4").value,
-        answer4_5: document.getElementById("answer4_5").value
-    };
-
-    let correctCount = 0;
-    let totalQuestions = Object.keys(correctAnswers).length;
-    for (let key in correctAnswers) {
-        let result = document.getElementById("result" + key.slice(-3));
-        if (correctAnswers[key] === userAnswers[key]) {
-            result.innerHTML = '<i class="bi bi-check-lg text-success right-space"></i>';
-            correctCount++;
-        } else {
-            result.innerHTML = '<i class="bi bi-x-lg text-danger right-space"></i>';
-        }
-    }
-    
-    result2.innerHTML = `<p><strong>${correctCount}問</strong> / ${totalQuestions}問 正解です</p>`;
+    let score = document.getElementById("score" + String(th));
+    score.innerHTML = `<p><strong>${correctCount}問</strong> / ${totalCount}問 正解です</p>`;
 }

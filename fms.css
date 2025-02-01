@@ -22,12 +22,17 @@ h5 {
 table {
     font-size: 15px;
 }
-#result1 {
+#score1 {
     display: inline-block;
     padding-left: 20px;
     padding-top: 0px;
 }
-#result2 {
+#score2 {
+    display: inline-block;
+    padding-left: 20px;
+    padding-top: 0px;
+}
+#score3 {
     display: inline-block;
     padding-left: 20px;
     padding-top: 0px;
