@@ -105,11 +105,21 @@ function checkAnswers(th, start, end) {
 
 function checkAnswers2(th) {
     let word = "quiz" + th;
-    const selected = document.querySelector(`input[name=${word}]:checked`);
-    let outcome = document.getElementById("outcome" + th);
+    let selected = document.querySelector(`input[name=${word}]:checked`);
+    let outcome = document.getElementById("outcome" + String(th));
     if (selected.value == "1") {
         outcome.innerHTML = '<i class="bi bi-circle text-success left-space"></i>';
     } else {
         outcome.innerHTML = '<i class="bi bi-x-lg text-danger left-space"></i>';
+    }
+}
+
+function checkAnswers3(th, answer) {
+    let input = document.getElementById("input" + String(th));
+    let consequence = document.getElementById("consequence" + String(th));
+    if (input.value == answer) {
+        consequence.innerHTML = '<i class="bi bi-circle text-success left-space"></i>';
+    } else {
+        consequence.innerHTML = '<i class="bi bi-x-lg text-danger left-space"></i>';
     }
 }
