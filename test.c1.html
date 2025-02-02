@@ -73,6 +73,10 @@
 
             <!-- Test -->
             <h3 id="test" class="bottom-space">Test</h3>
+
+            <br>
+
+            <!-- 問１ -->
             <p>
                 <strong>問１（Arduino）</strong> 
                 デジタル 4 番ピンが LED に接続され、デジタル 6 番ピンがボタンに接続されている Arduino 上で
@@ -81,7 +85,7 @@
                 ただし、 delay 関数の呼び出し以外の実行にかかる時間は無視してよい。
             </p>
 
-<pre>
+<pre class="program">
 <code>
     int ledPin = 4;
     int buttonPin = 6;
@@ -120,79 +124,203 @@
             <div class="custom-container2">
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <input class="form-check-input me-1" type="radio" name="quiz" value="" id="radio1" checked>
+                        <input class="form-check-input me-1" type="radio" name="quiz1" value="" id="radio1" checked>
                         <label class="form-check-label" for="radio1">
                             <span class="right-space"> <strong>1. </strong> </span>
                             消灯の状態となり、そのままずっと消灯し続ける。
                         </label>
                     </li>
                     <li class="list-group-item">
-                        <input class="form-check-input me-1" type="radio" name="quiz" value="" id="radio2">
+                        <input class="form-check-input me-1" type="radio" name="quiz1" value="" id="radio2">
                         <label class="form-check-label" for="radio2">
                             <span class="right-space"> <strong>2. </strong> </span>
                             点灯の状態となり、そのままずっと点灯し続ける。
                         </label>
                     </li>
                     <li class="list-group-item">
-                        <input class="form-check-input me-1" type="radio" name="quiz" value="" id="radio3">
+                        <input class="form-check-input me-1" type="radio" name="quiz1" value="" id="radio3">
                         <label class="form-check-label" for="radio3">
                             <span class="right-space"> <strong>3. </strong> </span>
                             消灯の状態となり、その後約 50 ミリ秒後に点灯し、そのままずっと点灯し続ける。
                         </label>
                     </li>
                     <li class="list-group-item">
-                        <input class="form-check-input me-1" type="radio" name="quiz" value="" id="radio4">
+                        <input class="form-check-input me-1" type="radio" name="quiz1" value="" id="radio4">
                         <label class="form-check-label" for="radio4">
                             <span class="right-space"> <strong>4. </strong> </span>
                             点灯の状態となり、その後約 50 ミリ秒後に消灯し、そのままずっと消灯し続ける。
                         </label>
                     </li>
                     <li class="list-group-item">
-                        <input class="form-check-input me-1" type="radio" name="quiz" value="1" id="radio5">
+                        <input class="form-check-input me-1" type="radio" name="quiz1" value="1" id="radio5">
                         <label class="form-check-label" for="radio5">
                             <span class="right-space"> <strong>5. </strong> </span>
                             約 50 ミリ秒の消灯と約 50 ミリ秒の点灯をこの順で繰り返し続ける。
                         </label>
                     </li>
                     <li class="list-group-item">
-                        <input class="form-check-input me-1" type="radio" name="quiz" value="" id="radio6">
+                        <input class="form-check-input me-1" type="radio" name="quiz1" value="" id="radio6">
                         <label class="form-check-label" for="radio6">
                             <span class="right-space"> <strong>6. </strong> </span>
                             約 50 ミリ秒の点灯と約 50 ミリ秒の消灯をこの順で繰り返し続ける。
                         </label>
                     </li>
                     <li class="list-group-item">
-                        <input class="form-check-input me-1" type="radio" name="quiz" value="" id="radio7">
+                        <input class="form-check-input me-1" type="radio" name="quiz1" value="" id="radio7">
                         <label class="form-check-label" for="radio7">
                             <span class="right-space"> <strong>7. </strong> </span>
                             消灯の状態となり、その後約 1 秒後に点灯し、そのままずっと点灯し続ける。
                         </label>
                     </li>
                     <li class="list-group-item">
-                        <input class="form-check-input me-1" type="radio" name="quiz" value="" id="radio8">
+                        <input class="form-check-input me-1" type="radio" name="quiz1" value="" id="radio8">
                         <label class="form-check-label" for="radio8">
                             <span class="right-space"> <strong>8. </strong> </span>
                             点灯の状態となり、その後約 1 ミリ秒後に消灯し、そのままずっと消灯し続ける。
                         </label>
                     </li>
                     <li class="list-group-item">
-                        <input class="form-check-input me-1" type="radio" name="quiz" value="" id="radio9">
+                        <input class="form-check-input me-1" type="radio" name="quiz1" value="" id="radio9">
                         <label class="form-check-label" for="radio9">
                             <span class="right-space"> <strong>9. </strong> </span>
                             約 1 秒の消灯と約 1 秒の点灯をこの順で繰り返し続ける。
                         </label>
                     </li>
                     <li class="list-group-item">
-                        <input class="form-check-input me-1" type="radio" name="quiz" value="" id="radio10">
+                        <input class="form-check-input me-1" type="radio" name="quiz1" value="" id="radio10">
                         <label class="form-check-label" for="radio10">
                             <span class="right-space"> <strong>10. </strong> </span>
                             約 1 秒の点灯と約 1 秒の消灯をこの順で繰り返し続ける。
                         </label>
                     </li>
                 </ul>
-                <div class="top-space">
-                    <button class="btn btn-outline-secondary btn-sm btn-xs" onclick="checkAnswers2()">結果</button>
-                    <span id="outcome"></span>
+                <div class="top-space bottom-space">
+                    <button class="btn btn-outline-secondary btn-sm btn-xs" onclick="checkAnswers2(1)">結果</button>
+                    <span id="outcome1"></span>
+                </div>
+            </div>
+
+            <br>
+
+            <!-- 問２ -->
+            <p>
+                <strong>問２（Ubuntu）</strong> 
+                Ubuntu (Linux) のシェル (bash) を起動して、次のコマンドを順に入力したとする。
+
+<pre class="ubuntu">
+<code>
+    cd
+    ls
+</code>
+</pre>
+
+                すると、次の印字を得た。
+
+<pre class="dotubuntu">
+<code>
+    cpp.2024
+</code>
+</pre>
+
+                その後、次のコマンドを順に入力したとする。
+
+<pre class="ubuntu">
+<code>
+    mkdir -p d0/d1
+    cd d0
+    mkdir d2
+    cd d2
+    touch c.txt
+    cd
+</code>
+</pre>
+
+                その後、ディレクトリ cpp.2024 とその下に存在するディレクトリやファイルを再帰的に印字するための 次の find コマンドを入力したとする。
+
+<pre class="ubuntu">
+<code>
+    find cpp.2024
+</code>
+</pre>
+
+                その結果印字される内容として最も適切なものを以下の選択肢から選びなさい。
+
+            </p>
+            <div class="custom-container2">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1" type="radio" name="quiz2" value="" id="radio11" checked>
+                            <label class="form-check-label" for="radio11">
+                                <span class="bottom-space"> <strong>1. </strong> </span>
+                            </label>
+<pre class="dotubuntu">
+<code>
+ cpp.2024
+ cpp.2024/d0
+ cpp.2024/d0/d1
+ cpp.2024/d0/d2
+ cpp.2024/d0/d2/c.txt 
+</code>
+</pre>                            
+                        </li>
+                    </div>
+                    <div class="col-sm-3">
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1" type="radio" name="quiz2" value="" id="radio12">
+                            <label class="form-check-label" for="radio12">
+                                <span class="right-space"> <strong>2. </strong> </span>
+                            </label>
+<pre class="dotubuntu">
+<code>
+ cpp.2024
+ cpp.2024/d0
+ cpp.2024/d0/d1
+ cpp.2024/d2
+ cpp.2024/c.txt
+</code>
+</pre>
+                        </li>
+                    </div>
+                    <div class="col-sm-3">
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1" type="radio" name="quiz2" value="" id="radio13">
+                            <label class="form-check-label" for="radio13">
+                                <span class="right-space"> <strong>3. </strong> </span>
+                            </label>
+<pre class="dotubuntu">
+<code>
+ cpp.2024
+ cpp.2024/d0
+ cpp.2024/d1
+ cpp.2024/d0/d2
+ cpp.2024/d0/d2/c.txt 
+</code>
+</pre>
+                        </li>
+                    </div>
+                    <div class="col-sm-3">
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1" type="radio" name="quiz2" value="1" id="radio14">
+                            <label class="form-check-label" for="radio14">
+                                <span class="right-space"> <strong>4. </strong> </span>
+                            </label>
+<pre class="dotubuntu">
+<code>
+ cpp.2024
+
+
+
+
+</code>
+</pre>
+                        </li>
+                    </div>
+                </div>
+
+                <div class="bottom-space">
+                    <button class="btn btn-outline-secondary btn-sm btn-xs" onclick="checkAnswers2(2)">結果</button>
+                    <span id="outcome2"></span>
                 </div>
             </div>
 

@@ -103,9 +103,10 @@ function checkAnswers(th, start, end) {
     score.innerHTML = `<p>${markis}<strong>${correctCount}問</strong> / ${totalCount}問 (${correctRate}%) 正解です ${word}</p>`;
 }
 
-function checkAnswers2() {
-    const selected = document.querySelector('input[name="quiz"]:checked');
-    let outcome = document.getElementById("outcome");
+function checkAnswers2(th) {
+    let word = "quiz" + th;
+    const selected = document.querySelector(`input[name=${word}]:checked`);
+    let outcome = document.getElementById("outcome" + th);
     if (selected.value == "1") {
         outcome.innerHTML = '<i class="bi bi-circle text-success left-space"></i>';
     } else {
