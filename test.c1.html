@@ -370,8 +370,38 @@
             <p>
                 <strong>問４（ポインタ）</strong>
                 次の C プログラムを実行して得られる印字内容を回答欄に書きなさい
-
             </p>
+<pre class="vscode">
+<code>
+    #include &lt;stdio.h&gt;
+    void f(int* a, int* b);
+
+    void f(int* a, int* b) {
+        int* c;
+        c = a;
+        a = b;
+        b = c;
+    }
+
+    int main(void) {
+        int a = 15;
+        int b = 5;
+        f(&a, &b);
+        printf("%d,%d\n", a, b);
+        return 0;
+    }
+</code>
+</pre>
+            <p>
+                <strong>問４ 解答欄</strong> 
+            </p>
+            <div class="mb-3">
+                <input type="text" id="input2" class="form-control" placeholder="">
+            </div>
+            <div class="bottom-space">
+                <button class="btn btn-outline-secondary btn-sm btn-xs" onclick='checkAnswers3(2, "15,5")'>結果</button>
+                <span id="consequence2"></span>
+            </div>
 
             <br><br>
 
