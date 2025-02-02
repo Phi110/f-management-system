@@ -411,6 +411,77 @@
                 次の C++ プログラムを実行して得られる印字内容を回答欄に書きなさい
 
             </p>
+<pre class="vscode">
+<code>
+    #include &lt;iostream&gt;
+    #include &lt;string&gt;
+    #include &lt;vector&gt;
+    using namespace std;
+    
+    class Takoyaki {
+    public:
+        string name;
+        string where;
+        int price;
+        Takoyaki() {
+            name = "ソース";
+            where = "店内";
+            price = 800;
+        }
+        Takoyaki(string name0, int price0) {
+            name = name0;
+            where = "お持ち帰り";
+            price = price0;
+        }
+        Takoyaki(string name0, string where0, int price0) {
+            name = name0;
+            where = where0;
+            price = price0;
+        }
+        Takoyaki add(Takoyaki t) {
+            string name0 = name + "と" + t.name;
+            string where0;
+            if (where == t.where) {
+                where0 = where;
+            } else {
+                where0 = "店内";
+            }
+            int price0 = price + t.price;
+            Takoyaki t0 {name0, where0, price0};
+            return t0;
+        }
+        string checkout() {
+            if (where == "お持ち帰り") {
+                price *= 0.98;
+            }
+            return name + "を"
+             + to_string(price) + "円分買います\n";
+        }
+    };
+    
+    int main() {
+        Takoyaki t0 {"てりたま", "お持ち帰り", 1000};
+        Takoyaki t1 {"ねぎだこ", 900};
+        vector&lt;Takoyaki&gt; fune {t0, t1};
+        Takoyaki t {};
+        for (int i = 0; i &lt; fune.size(); i++) {
+            t = t.add(fune[i]);
+        }
+        cout &lt;&lt; t.checkout() &lt;&lt; endl;
+    }
+</code>
+</pre>
+
+            <p>
+                <strong>問５ 解答欄</strong> 
+            </p>
+            <div class="mb-3">
+                <input type="text" id="input3" class="form-control" placeholder="">
+            </div>
+            <div class="bottom-space">
+                <button class="btn btn-outline-secondary btn-sm btn-xs" onclick='checkAnswers3(3, "ソースとてりたまとねぎだこを2700円分買います")'>結果</button>
+                <span id="consequence3"></span>
+            </div>
 
             <br><br><br>
 
