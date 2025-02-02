@@ -100,7 +100,7 @@
 
     void loop() {
         int valueButtonpin = digitalRead(buttonPin);
-        if (valueBottonpin == HIGH || 0 &lt; counter && counter &lt;= 50) {
+        if (valueBottonpin == HIGH || (0 &lt; counter && counter &lt;= 50)) {
             stateLedPin = LOW;
             counter = counter + 1;
         }
