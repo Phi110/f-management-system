@@ -22,9 +22,9 @@ if ((day==6 || day==0)) {
     period = 5;
 } else if ((hour==18 && minute>10) || (hour==19 && minute<=50)) {
     period = 6;
-} else if ((hour==19 && minute>50) || (hour==20) || (hour==21 && minute<=30)) {
+} /*else if ((hour==19 && minute>50) || (hour==20) || (hour==21 && minute<=30)) {
     period = 7;
-}
+}*/
 
 let li = [month+1, date, hour, minute];
 for (let i = 0; i < li.length; i++) {
@@ -36,7 +36,8 @@ for (let i = 0; i < li.length; i++) {
 
 let wday = ["日", "月", "火", "水", "木", "金", "土"];
 const whattime = document.getElementById('whattime');
-whattime.innerHTML = `<h2><span class="emphasize">${li[0]}</span> /
+whattime.innerHTML = `<h2>
+    <span class="emphasize">${li[0]}</span> /
     <span class="emphasize">${li[1]}</span> 
     <span class="right-space">(${wday[day]})</span> 
     <span class="emphasize">${li[2]}</span> : 
