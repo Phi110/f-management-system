@@ -1,3 +1,5 @@
+// fms.js
+
 const currentTime = new Date();
 const year = currentTime.getFullYear();
 const month = currentTime.getMonth();
@@ -99,4 +101,14 @@ function checkAnswers(th, start, end) {
 
     let score = document.getElementById("score" + String(th));
     score.innerHTML = `<p>${markis}<strong>${correctCount}問</strong> / ${totalCount}問 (${correctRate}%) 正解です ${word}</p>`;
+}
+
+function checkAnswers2() {
+    const selected = document.querySelector('input[name="quiz"]:checked');
+    let outcome = document.getElementById("outcome");
+    if (selected.value == "1") {
+        outcome.innerHTML = '<i class="bi bi-circle text-success left-space"></i>';
+    } else {
+        outcome.innerHTML = '<i class="bi bi-x-lg text-danger left-space"></i>';
+    }
 }
