@@ -74,19 +74,26 @@
                 <textarea class="form-control" placeholder="ここに入力" id="count" rows="8"></textarea>
             </div>
 
-            <div class="row">
-                <div class="col-sm-2 top-space bottom-space">
-                    <div class="left-space">
-                        <button class="btn btn-outline-secondary btn-sm btn-xs" onclick="countString()">結果</button>
-                    </div>
-                </div>
-                <div class="col-sm-5 top-space">
-                    <p class="left-space">文字数 (改行文字含む) : <span id="times1"></span></p>
-                    <p class="left-space">文字数 (改行文字除く) : <span id="times2"></span></p>
-                </div>
+            
+            <div class="top-space bottom-space left-space">
+                <button class="btn btn-outline-secondary btn-sm btn-xs" onclick="countString()">結果</button>
             </div>
 
-        <br><br>
+            <div class="offset-sm-1">
+                <p class="left-space">文字数 (改行文字含む) : <span id="times1"></span></p>
+                <p class="left-space">文字数 (改行文字除く) : <span id="times2"></span></p>
+            </div>
+
+            <br><br>
+
+            <!-- パンくずリスト -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb left-space">
+                    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="countString">Useful</li>
+                </ol>
+            </nav>
+
         </div>
     </div>
 
