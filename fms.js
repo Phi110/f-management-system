@@ -146,7 +146,36 @@ function checkAnswers_discription(th) {
         8: "マトリックス型組織では、組織の管理者とプロジェクト管理者からの業務指示が集中し、ダブルバインドが発生する可能性があるため、メンバーへの配慮が必要である。",
         9: "リーダーシップとは、変革を起こし、変革の方向性を決めることであるのに対し、マネジメントとは、計画に基づき業務を進めながら、複雑な状況にうまく対処することである。"
     };
-    let input = document.getElementById("test" + String(th));
+    let constraints = {
+        7: [100, "スコープ", "スケジュール", "コスト"],
+        8: [75, "組織", "プロジェクト", "業務指示"],
+        9: [75, "変革", "計画"]
+    };
+    
+    let torf = document.getElementById("torf" + String(th));
     let discript = document.getElementById("discript" + String(th));
+    let input = document.getElementById("test" + String(th)).value;
+    let input_string = input.replace(/[\n\r]/g, '');
+    let count = input_string.length;
+    let contains = constraints[th];
+    let num = contains[0];
+    let mark;
+    let stricted_word = "";
+    if (num * 0.8 <= count && count <= num * 1.2) {
+        mark = '<i class="bi bi-circle text-success"></i>';
+    } else if (num * 0.6 <= count && count <= num * 1.4) {
+        mark = '<i class="bi bi-triangle text-primary"></i>';
+    } else {
+        mark = '<i class="bi bi-x-lg text-danger"></i>';
+    }
+    for (let i = 1; i < contains.length; i++) {
+        let regex = new RegExp(contains[i]);
+        if (regex.test(input_string)) {
+            stricted_word += `${contains[i]}<i class="bi bi-circle text-success right-space"></i>`;
+        } else {
+            stricted_word += `${contains[i]}<i class="bi bi-x-lg text-danger right-space"></i>`;
+        }
+    }
+    torf.innerHTML = `<span class="left-space"> 語句）${stricted_word} </span> <span class="left-space"> 字数）${count} 字${mark} </span>`;
     discript.innerHTML = `<p class="top-space left-space text-danger">解答例:<br> <span class="left-space"> ${correctAnswer[th]} </span> </p>`;
 }
