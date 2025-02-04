@@ -142,11 +142,11 @@ function checkAnswers3(th, answer) {
 // 記述
 function checkAnswers_discription(th) {
     let correctAnswer = {
-        7: "模範解答: ウォーターフォール型プロジェクトは、プロジェクト開始時に３大制約条件のスコープ、スケジュール、コストがきっちり定められている。",
-        8: "模範解答: ",
-        9: "模範解答: "
+        7: "予測型開発は、顧客の要求事項であるスコープを最も重視すべき制約条件とし、スケジュール・コストの変化を許容する。一方、適応型開発は、開発期間中にスコープが変化することをあらかじめ想定し、スケジュールとコストを固定する。",
+        8: "マトリックス型組織では、組織の管理者とプロジェクト管理者からの業務指示が集中し、ダブルバインドが発生する可能性があるため、メンバーへの配慮が必要である。",
+        9: "リーダーシップとは、変革を起こし、変革の方向性を決めることであるのに対し、マネジメントとは、計画に基づき業務を進めながら、複雑な状況にうまく対処することである。"
     };
     let input = document.getElementById("test" + String(th));
     let discript = document.getElementById("discript" + String(th));
-    discript.innerHTML = `<p class="top-space left-space text-danger"> ${correctAnswer[th]} </p>`;
+    discript.innerHTML = `<p class="top-space left-space text-danger">解答例:<br> <span class="left-space"> ${correctAnswer[th]} </span> </p>`;
 }
