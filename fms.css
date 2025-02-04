@@ -113,6 +113,11 @@ table {
     position: relative;
     z-index: 2;
 }
+.carousel {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
 .program {
     border: 1px solid black;
     background-color: rgb(244, 250, 255);
@@ -358,6 +363,11 @@ table {
     }
     .starter-template {
         padding: 10px 15px;
+    }
+    .carousel {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
     }
     .text {
         padding-left: 25px;
