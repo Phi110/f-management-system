@@ -8,7 +8,7 @@ const day = currentTime.getDay();
 const hour = currentTime.getHours();
 const minute = currentTime.getMinutes();
 let period = "--";
-
+let gen = "限"
 
 /* 現在時 */
 if ((day==6 || day==0)) {
@@ -16,6 +16,8 @@ if ((day==6 || day==0)) {
     period = 1;
 } else if ((hour==10 && minute>45) || (hour==11) || (hour==12 && minute<=25)) {
     period = 2;
+} else if ((hour==12 && minute>25) || (hour==13 && minute<= 10)) {
+    period = "お昼休み"; gen = "";
 } else if ((hour==13 && minute>10) || (hour==14 && minute<=50)) {
     period = 3;
 } else if ((hour==14 && minute>50) || (hour==15) || (hour==16 && minute<=30)) {
@@ -43,8 +45,8 @@ whattime.innerHTML = `<h2>
     <span class="emphasize">${li[1]}</span> 
     <span class="right-space">(${wday[day]})</span> 
     <span class="emphasize">${li[2]}</span> : 
-    <span class="emphasize">${li[3]}</span> ${period}限
-</h2>`
+    <span class="emphasize">${li[3]}</span> ${period}${gen}
+</h2>`;
 
 
 /* 出席 */
@@ -71,7 +73,20 @@ if (day == 5) {
     }
 }
 
+/* 便利機能 */
+// 文字数チェッカー
+function countString() {
+    let input = document.getElementById("count").value;
+    let times1 = document.getElementById("times1");
+    let times2 = document.getElementById("times2");
+    let count = input.length;
+    let count2 = input.replace(/[\n\r]/g, '').length;
+    times1.innerHTML = `<span class="text-danger left-space">${String(count)}</span>`;
+    times2.innerHTML = `<span class="text-danger left-space">${String(count2)}</span>`;
+}
+
 /* 自動採点 */
+// 選択
 function checkAnswers(th, start, end) {
     let correctCount = 0;
     let totalCount = 0;
@@ -122,4 +137,16 @@ function checkAnswers3(th, answer) {
     } else {
         consequence.innerHTML = '<i class="bi bi-x-lg text-danger left-space"></i>';
     }
+}
+
+// 記述
+function checkAnswers_discription(th) {
+    let correctAnswer = {
+        7: "模範解答: ウォーターフォール型プロジェクトは、プロジェクト開始時に３大制約条件のスコープ、スケジュール、コストがきっちり定められている。",
+        8: "模範解答: ",
+        9: "模範解答: "
+    };
+    let input = document.getElementById("test" + String(th));
+    let discript = document.getElementById("discript" + String(th));
+    discript.innerHTML = `<p class="top-space left-space text-danger"> ${correctAnswer[th]} </p>`;
 }
