@@ -263,7 +263,73 @@ int main() {
     cout &lt;&lt; "(n?) "; cin &gt;&gt; n;
     cout &lt;&lt; <span class="text-primary">fibonacci</span>(n) &lt;&lt; endl;
 }`,
-        "5"
+`class Meeting {
+public:
+    /* ここにコードを書きましょう */
+    int frequency;
+    string doing;
+    Meeting () {}
+    Meeting (string doing0) {
+        frequency = 3;
+        doing = doing0;
+    }
+    Meeting (int frequency0, string doing0) {
+        frequency = frequency0;
+        doing = doing0;
+    }
+};
+
+class IT {
+public:
+    /* ここにコードを書きましょう */
+    string name;
+    int number;
+    Meeting meeting;
+    IT () {}
+    IT (string name0, Meeting meeting0) {
+        name = name0;
+        number = 30;
+        meeting = meeting0;
+    }
+    IT (string name0, int number0, Meeting meeting0) {
+        name = name0;
+        number = number0;
+        meeting = meeting0;
+    }
+    string info() {
+        return name + "クラス: " + to_string(number) + "人、月に"
+         + to_string(meeting.frequency) + "回" + meeting.doing + "をする。";
+    }
+};
+
+class Students {
+public:
+    /* ここにコードを書きましょう */
+    vector<IT> students;
+    bool is_fun;
+    Students () {}
+    Students (vector<IT> students0, bool is_fun0) {
+        students = students0;
+        is_fun = is_fun0;
+    }
+    string info() {
+        string sum_string = "";
+        string fun = "楽しくない";
+        int sum = 0;
+        int f = 0;
+        for (int i = 0; i < students.size(); i++) {
+            sum_string += students[i].info() + "&#92;n";
+            sum += students[i].number;
+            f += students[i].meeting.frequency;
+        }
+        if (is_fun) {
+            fun = "楽しい";
+        }
+        sum_string += "===&#92;nTotal: " + to_string(sum) + "人&#92;nAverage: 月" 
+            + to_string(f/students.size()) + "回&#92;nEveryone: " + fun;
+        return sum_string;
+    }
+};`
     ];
     let show = document.getElementById("show" + String(th));
     show.innerHTML = `<pre class="redcode"><code>${correctAnswer[th]}</code></pre>`;
