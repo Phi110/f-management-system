@@ -199,7 +199,54 @@ void descending_order(int* a, int* b, int* c) {
         *c = var;
     }</span>
 }`,
-        "3",
+`#include &lt;iostream&gt;
+#include &lt;<span class="text-success">fstream</span>&gt;
+#include &lt;string&gt;
+#include &ltvector&gt;
+using namespace std;
+
+int <span class="text-primary">gp</span>(string grade) {
+    if (grade == "D") {
+        return 0;
+    } else if (grade == "C") {
+        return 1;
+    } else if (grade == "B") {
+        return 2;
+    } else if (grade == "A") {
+        return 3;
+    } else if (grade == "S") {
+        return 4;
+    } else {
+        return -1;
+    }
+}
+
+int main() {
+    <span class="text-success">ifstream</span> in_file {"cpp.0.input.csv"};
+    <span class="text-success">ofstream</span> out_file {"cpp.0.output.csv"};
+    string line;
+    while (getline(in_file, line)) {
+        int end_1st = line.<span class="text-danger">find</span>(",", 0);
+        string number = line.<span class="text-danger">substr</span>(0, end_1st);
+        if (number == "Number") {
+            out_file << "Number,Python,C++,Math,English,GPA" << endl;
+            continue;
+        }
+        int end_2nd = line<span class="text-danger">.find</span>(",", end_1st+1);
+        int end_3rd = line<span class="text-danger">.find</span>(",", end_2nd+1);
+        int end_4th = line<span class="text-danger">.find</span>(",", end_3rd+1);
+        int end_5th = line<span class="text-danger">.find</span>(",", end_4th+1);
+        string text = line.substr(0, end_5th-1);
+        string python = line<span class="text-danger">.substr</span>(end_1st+1, end_2nd-end_1st-1);
+        string cpp = line<span class="text-danger">.substr</span>(end_2nd+1, end_3rd-end_2nd-1);
+        string math = line<span class="text-danger">.substr</span>(end_3rd+1, end_4th-end_3rd-1);
+        string english = line<span class="text-danger">.substr</span>(end_4th+1, end_5th-end_4th-1);
+        int gpa = (<span class="text-primary">gp</span>(python) + <span class="text-primary">gp</span>(cpp) + <span class="text-primary">gp</span>(math) + <span class="text-primary">gp</span>(english)) / 4;
+        out_file << text + "," << gpa << endl;
+    }
+    in_file.close();
+    out_file.close();
+}`,
         "4",
         "5"
     ];
