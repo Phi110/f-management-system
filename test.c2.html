@@ -589,10 +589,10 @@ int main() {
     Meeting m0 {1, "お茶会"};
     Meeting m1 {"作文"};
 
-    IT it0 {"Toby", m0};
-    IT it1 {"Mizukami", 25, m1};
+    IT itA {"Toby", m0};
+    IT itD {"Mizukami", 25, m1};
     
-    vector&lt;IT&gt; its {it0, it1};
+    vector&lt;IT&gt; its {itA, itD};
     cout &lt;&lt; "*** IT List ***" &lt;&lt; endl;
     for (int i = 0; i &lt; its.size(); i++) {
         cout &lt;&lt; "(" + to_string(i) + ") " &lt;&lt; its[i].info() &lt;&lt; endl;
