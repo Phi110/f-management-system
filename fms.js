@@ -22,7 +22,7 @@ if ((day==6 || day==0)) {
     period = 3;
 } else if ((hour==14 && minute>50) || (hour==15) || (hour==16 && minute<=30)) {
     period = 4;
-} else if ((hour==16 && minute>30) || (hour==18 && minute<=10)) {
+} else if ((hour==16 && minute>30) || (hour==17) || (hour==18 && minute<=10)) {
     period = 5;
 } else if ((hour==18 && minute>10) || (hour==19 && minute<=50)) {
     period = 6;
