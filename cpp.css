@@ -145,6 +145,14 @@ table {
 th, td {
     border: 1px solid black;
 }
+.gray {
+    background-color: rgb(234, 234, 234);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.left-big-space {
+    padding-left: 20%;
+}
 .picture {
     width: 100%;
     max-width: 135px;
