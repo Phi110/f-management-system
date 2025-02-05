@@ -247,7 +247,22 @@ int main() {
     in_file.close();
     out_file.close();
 }`,
-        "4",
+`#include &lt;iostream&gt;
+using namespace std;
+
+int <span class="text-primary">fibonacci</span>(int n) {
+    <span class="text-danger">if (n == 0 || n == 1) {
+        return 1;
+    } else {
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }</span>
+}
+
+int main() {
+    int n;
+    cout &lt;&lt; "(n?) "; cin &gt;&gt; n;
+    cout &lt;&lt; <span class="text-primary">fibonacci</span>(n) &lt;&lt; endl;
+}`,
         "5"
     ];
     let show = document.getElementById("show" + String(th));
