@@ -464,14 +464,6 @@ TK241003,B,C,C,S,2
                 <br>
                 <span class="left-space"><strong>2.</strong></span>
                 文字列 <span class="gray">do</span> (やること)
-                <br>
-                また文字列を返すメンバ関数 <span class="gray">info()</span> を持つ。返り値は次の形の文字列とする。
-            </p>
-            <p>
-                <span class="gray">
-                    月に
-                    <i><u>frequency</u></i> 回 <i><u>do</u></i> をする。
-                </span>
             </p>
 
             <p>
@@ -490,7 +482,7 @@ TK241003,B,C,C,S,2
             </p>
             <p>
                 <span class="gray">
-                    <i><u>name</u></i> クラス :
+                    <i><u>name</u></i> クラス: 
                     <i><u>number</u></i> 人、月に
                     <i><u>frequency</u></i> 回 <i><u>do</u></i> をする。
                 </span>
@@ -503,28 +495,32 @@ TK241003,B,C,C,S,2
                 <span class="left-space"><strong>1.</strong></span>
                 ITクラスの ベクター <span class="gray">students</span>
                 <br>
+                <span class="left-space"><strong>2.</strong></span>
+                真理値 <span class="gray">is_fun</span> (楽しいか)
+                <br>
                 また文字列を返すメンバ関数 <span class="gray">info()</span> を持つ。返り値は
                 ベクター <span class="gray">students</span> の要素数が n であるとき、次の形の文字列とする。
             </p>
             <p>
                 <div class="gray">
-                    <i><u>name<sub>0</sub></u></i> クラス :
+                    <i><u>name<sub>0</sub></u></i> クラス: 
                     <i><u>number<sub>0</sub></u></i> 人、月に
                     <i><u>frequency<sub>0</sub></u></i> 回 <i><u>do<sub>0</sub></u></i> をする。
                     <br>
-                    <i><u>name<sub>1</sub></u></i> クラス :
+                    <i><u>name<sub>1</sub></u></i> クラス: 
                     <i><u>number<sub>1</sub></u></i> 人、月に
                     <i><u>frequency<sub>1</sub></u></i> 回 <i><u>do<sub>1</sub></u></i> をする。
                     <br>
                     <div class="left-big-space">
                         :
                     </div>
-                    <i><u>name<sub>n-1</sub></u></i> クラス :
+                    <i><u>name<sub>n-1</sub></u></i> クラス: 
                     <i><u>number<sub>n-1</sub></u></i> 人、月に
                     <i><u>frequency<sub>n-1</sub></u></i> 回 <i><u>do<sub>n-1</sub></u></i> をする。
                     <br>===<br>
-                    Total : <i><u>合計人数</u></i> 人<br>
-                    Average : 月 <i><u>平均頻度</u></i> 回
+                    Total: <i><u>合計人数</u></i> 人<br>
+                    Average: 月 <i><u>平均頻度</u></i> 回<br>
+                    Everyone: <i><u>楽しい</u> or <u>楽しくない</u></i>
                 </div>
             </p>
 
@@ -552,15 +548,37 @@ public:
 };
 
 int main() {
+    Meeting m0 {1, "お茶会"};
+    Meeting m1 {"作文"};
 
+    IT it0 {"Toby", m0};
+    IT it1 {"Mizukami", 25, m1};
+    
+    vector&lt;IT&gt; its {it0, it1};
+    cout &lt;&lt; "*** IT List ***" &lt;&lt; endl;
+    for (int i = 0; i &lt; its.size(); i++) {
+        cout &lt;&lt; "(" + to_string(i) + ") " &lt;&lt; its[i].info() &lt;&lt; endl;
+    }
+    cout &lt;&lt; endl;
 
-    return 0;
+    Students s0 {its, true};
+    cout &lt;&lt; "*** Students ***" &lt;&lt; endl;
+    cout &lt;&lt; s0.info() &lt;&lt; endl;
 }
 </code></pre>
 
             <div class="small-text">実行結果</div>
-<pre class="vscode"><code>
+<pre class="vscode"><code>*** IT List ***
+(0) Tobyクラス: 30人、月に1回お茶会をする。
+(1) Mizukamiクラス: 25人、月に3回作文をする。
 
+*** Students ***
+Tobyクラス: 30人、月に1回お茶会をする。
+Mizukamiクラス: 25人、月に3回作文をする。
+===
+Total: 55人
+Average: 月2回
+Everyone: 楽しい
 </code></pre>
 
             <br><br><br>
