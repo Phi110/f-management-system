@@ -139,6 +139,11 @@ table {
     background-color: white;
     padding: 5px;
 }
+.redcode {
+    border: 1px solid red;
+    background-color: white;
+    padding: 5px;
+}
 .hyou {
     border-collapse: collapse;
 }

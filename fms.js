@@ -146,17 +146,35 @@ int main(void) {
     int n;
     printf("(n? (65 <= n <= 122)) ");
     scanf("%d", &n);
+
     /* ここにコードを書きましょう */
-    printf("%c&#92;n", n);
+    <span class="text-danger">printf("%c&#92;n", n);</span>
 }`,
-        "1",
+`#include &lt;stdio.h&gt;
+#define N 256
+int main(void) {
+    char text[N];
+    printf("(text?) ");
+    fgets(text, sizeof(text), stdin);
+
+    /* ここにコードを書きましょう */
+    <span class="text-danger">int gap = 'a' - 'A';
+    for (int i = 0; i &lt; sizeof(text); i++) {
+        if ('A' &lt;= text[i] && text[i] &lt;= 'Z') {
+            text[i] += gap;
+        } else if ('a' &lt;= text[i] && text[i] &lt;= 'z') {
+            text[i] -= gap;
+        }
+    }
+    printf("%s&#92;n", text);</span>
+}`,
         "2",
         "3",
         "4",
         "5"
     ];
     let show = document.getElementById("show" + String(th));
-    show.innerHTML = `<pre class="offset-sm-1 col-sm-11 text-danger"><code>${correctAnswer[th]}</code></pre>`;
+    show.innerHTML = `<pre class="redcode"><code>${correctAnswer[th]}</code></pre>`;
 }
 
 // 記述
