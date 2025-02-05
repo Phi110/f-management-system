@@ -168,7 +168,37 @@ int main(void) {
     }
     printf("%s&#92;n", text);</span>
 }`,
-        "2",
+`#include &lt;stdio.h&gt;
+void descending_order(int* a, int* b, int* c);
+int main() {
+    int x, y, z;
+    printf("(x?) "); scanf("%d", &x);
+    printf("(y?) "); scanf("%d", &y);
+    printf("(z?) "); scanf("%d", &z);
+    descending_order(&x, &y, &z);
+    printf("%d&#92;n", x);
+    printf("%d&#92;n", y);
+    printf("%d&#92;n", z);
+}
+void descending_order(int* a, int* b, int* c) {
+    /* ここにコードを書きましょう */
+    <span class="text-danger">int var;
+    if (*c > *a) {
+        var = *a;
+        *a = *c;
+        *c = var;
+    }
+    if (*b > *a) {
+        var = *a;
+        *a = *b;
+        *b = var;
+    }
+    if (*c > *b) {
+        var = *b;
+        *b = *c;
+        *c = var;
+    }</span>
+}`,
         "3",
         "4",
         "5"
