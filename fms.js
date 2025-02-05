@@ -266,14 +266,14 @@ int main() {
 `class Meeting {
 public:
     /* ここにコードを書きましょう */
-    int frequency;
-    string doing;
-    Meeting () {}
-    Meeting (string doing0) {
+    int <span class="text-primary">frequency</span>;
+    string <span class="text-primary">doing</span>;
+    <span class="text-warning">Meeting</span> () {}
+    <span class="text-warning">Meeting</span> (string doing0) {
         frequency = 3;
         doing = doing0;
     }
-    Meeting (int frequency0, string doing0) {
+    <span class="text-warning">Meeting</span> (int frequency0, string doing0) {
         frequency = frequency0;
         doing = doing0;
     }
@@ -282,21 +282,21 @@ public:
 class IT {
 public:
     /* ここにコードを書きましょう */
-    string name;
-    int number;
+    string <span class="text-primary">name</span>;
+    int <span class="text-primary">number</span>;
     Meeting meeting;
-    IT () {}
-    IT (string name0, Meeting meeting0) {
+    <span class="text-warning">IT</span> () {}
+    <span class="text-warning">IT</span> (string name0, Meeting meeting0) {
         name = name0;
         number = 30;
         meeting = meeting0;
     }
-    IT (string name0, int number0, Meeting meeting0) {
+    <span class="text-warning">IT</span> (string name0, int number0, Meeting meeting0) {
         name = name0;
         number = number0;
         meeting = meeting0;
     }
-    string info() {
+    string <span class="text-success">info</span>() {
         return name + "クラス: " + to_string(number) + "人、月に"
          + to_string(meeting.frequency) + "回" + meeting.doing + "をする。";
     }
@@ -305,14 +305,14 @@ public:
 class Students {
 public:
     /* ここにコードを書きましょう */
-    vector<IT> students;
-    bool is_fun;
-    Students () {}
-    Students (vector<IT> students0, bool is_fun0) {
+    vector<IT> <span class="text-primary">students</span>;
+    bool <span class="text-primary">is_fun</span>;
+    <span class="text-warning">Students</span> () {}
+    <span class="text-warning">Students</span> (vector<IT> students0, bool is_fun0) {
         students = students0;
         is_fun = is_fun0;
     }
-    string info() {
+    string <span class="text-success">info</span>() {
         string sum_string = "";
         string fun = "楽しくない";
         int sum = 0;
