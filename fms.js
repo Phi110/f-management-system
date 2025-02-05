@@ -138,6 +138,26 @@ function checkAnswers3(th, answer) {
         consequence.innerHTML = '<i class="bi bi-x-lg text-danger left-space"></i>';
     }
 }
+// C++
+function showAnswer(th) {
+    let correctAnswer = [
+`#include &lt;stdio.h&gt;
+int main(void) {
+    int n;
+    printf("(n? (65 <= n <= 122)) ");
+    scanf("%d", &n);
+    /* ここにコードを書きましょう */
+    printf("%c&#92;n", n);
+}`,
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+    ];
+    let show = document.getElementById("show" + String(th));
+    show.innerHTML = `<pre class="offset-sm-1 col-sm-11 text-danger"><code>${correctAnswer[th]}</code></pre>`;
+}
 
 // 記述
 function checkAnswers_discription(th) {
