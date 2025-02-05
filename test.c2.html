@@ -455,29 +455,77 @@ TK241003,B,C,C,S,2
                 次の仕様を満たすクラスを、以下に示す参考プログラムの /* ここにコードを書きましょう */ と書かれた部分にコードを追記する形で
                 それぞれ定義しなさい。その際、必要なコンストラクタも書きなさい（main 関数の body を見て必要なコンストラクタを把握しましょう）。
             </p>
-
+            
             <p>
-                <strong>Aki クラス</strong><br>
+                <strong>Meeting クラス</strong><br>
                 のインスタンスは次の情報を持つ：<br>
                 <span class="left-space"><strong>1.</strong></span>
+                整数 <span class="gray">frequency</span> (頻度: 回 / 月)
                 <br>
                 <span class="left-space"><strong>2.</strong></span>
+                文字列 <span class="gray">do</span> (やること)
+                <br>
+                また文字列を返すメンバ関数 <span class="gray">info()</span> を持つ。返り値は次の形の文字列とする。
+            </p>
+            <p>
+                <span class="gray">
+                    月に
+                    <i><u>frequency</u></i> 回 <i><u>do</u></i> をする。
+                </span>
             </p>
 
             <p>
-                <strong>Toby クラス</strong><br>
+                <strong>IT クラス</strong><br>
                 のインスタンスは次の情報を持つ：<br>
-                <span class="left-space"><strong>1.</strong></span>
+                <span class="left-space"><strong>1. </strong></span>
+                文字列 <span class="gray">name</span> (名前)
                 <br>
                 <span class="left-space"><strong>2.</strong></span>
+                整数 <span class="gray">number</span> (人数)
+                <br>
+                <span class="left-space"><strong>3.</strong></span>
+                Meetingクラス <span class="gray">meeting</span> (担任ミーティング)
+                <br>
+                また文字列を返すメンバ関数 <span class="gray">info()</span> を持つ。返り値は次の形の文字列とする。
+            </p>
+            <p>
+                <span class="gray">
+                    <i><u>name</u></i> クラス :
+                    <i><u>number</u></i> 人、月に
+                    <i><u>frequency</u></i> 回 <i><u>do</u></i> をする。
+                </span>
             </p>
 
+
             <p>
-                <strong>Mizukami クラス</strong><br>
+                <strong>Students クラス</strong><br>
                 のインスタンスは次の情報を持つ：<br>
                 <span class="left-space"><strong>1.</strong></span>
+                ITクラスの ベクター <span class="gray">students</span>
                 <br>
-                <span class="left-space"><strong>2.</strong></span>
+                また文字列を返すメンバ関数 <span class="gray">info()</span> を持つ。返り値は
+                ベクター <span class="gray">students</span> の要素数が n であるとき、次の形の文字列とする。
+            </p>
+            <p>
+                <div class="gray">
+                    <i><u>name<sub>0</sub></u></i> クラス :
+                    <i><u>number<sub>0</sub></u></i> 人、月に
+                    <i><u>frequency<sub>0</sub></u></i> 回 <i><u>do<sub>0</sub></u></i> をする。
+                    <br>
+                    <i><u>name<sub>1</sub></u></i> クラス :
+                    <i><u>number<sub>1</sub></u></i> 人、月に
+                    <i><u>frequency<sub>1</sub></u></i> 回 <i><u>do<sub>1</sub></u></i> をする。
+                    <br>
+                    <div class="left-big-space">
+                        :
+                    </div>
+                    <i><u>name<sub>n-1</sub></u></i> クラス :
+                    <i><u>number<sub>n-1</sub></u></i> 人、月に
+                    <i><u>frequency<sub>n-1</sub></u></i> 回 <i><u>do<sub>n-1</sub></u></i> をする。
+                    <br>===<br>
+                    Total : <i><u>合計人数</u></i> 人<br>
+                    Average : 月 <i><u>平均頻度</u></i> 回
+                </div>
             </p>
 
             <div class="small-text">
@@ -488,20 +536,20 @@ TK241003,B,C,C,S,2
 #include &lt;vector&gt;
 using namespace std;
 
-class Aki {
+class IT {
 public:
     /* ここにコードを書きましょう */
 };
 
-class Toby {
+class Meeting {
 public:
     /* ここにコードを書きましょう */
-}
+};
 
-class Mizukami {
+class Students {
 public:
     /* ここにコードを書きましょう */
-}
+};
 
 int main() {
 
