@@ -151,6 +151,11 @@ table {
     padding-bottom: 10px;
     font-size: 17px
 }
+.reduction {
+    max-width: 50%;
+    padding-bottom: 3%;
+    padding-left: 3%
+}
 .small-text {
         font-size: 1rem;
 }
