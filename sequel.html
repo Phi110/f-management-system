@@ -97,24 +97,26 @@ cout &lt;&lt; name.size() &lt;&lt; endl;
             というコードを書くと、
 <pre class="vscode"><code>4
 </code></pre>
-            と出力されます。ここで、<span class="text-warning">String</span> クラスを定義して、size()
-<pre class="vscode"><code>class String {
+            と出力されます。これはいつも通りだと思います。<br>
+            ここで、<span class="text-warning">String</span> クラスを以下のように定義して、
+<pre class="vscode"><code>class <span class="text-warning">String</span> {
 public:
-    string str;
-    int size_str;
-    String (string str0) {
-        str = str0;
-        size_str = str.size();
+    int <span class="text-primary">size_str</span>;
+    <span class="text-warning">String</span> (string str0) {
+        <span class="text-primary">size_str</span> = str0.size();
     }
-    int size() {
-        return size_str;
+    int <span class="text-success">size</span>() {
+        return <span class="text-primary">size_str</span>;
     }
 };
-
-int main() {
+</code></pre>
+            メンバ関数 size() を呼び出すと、
+<pre class="vscode"><code>int main() {
     String name {"toby"};
     cout &lt;&lt; name.size() &lt;&lt; endl;
 }
+</code></pre>
+<pre class="vscode"><code>4
 </code></pre>
                 </p>
 
