@@ -5,14 +5,12 @@
     src: url("../fonts/NotoSansJP-VariableFont_wght.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
 }
 @font-face {
     font-family: 'Noto Sans JP h';
     src: url("../fonts/NotoSansJP-Medium.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
 }
 body {
     padding-top: 55px;
