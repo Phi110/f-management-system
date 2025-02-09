@@ -94,30 +94,36 @@
 <pre class="vscode"><code>string name = "toby";
 cout &lt;&lt; name.size() &lt;&lt; endl;
 </code></pre>
-            というコードを書くと、
+                というコードを書くと、
 <pre class="vscode"><code>4
 </code></pre>
-            と出力されます。これはいつも通りだと思います。<br>
-            ここで、<span class="text-warning">String</span> クラスを以下のように定義して、
+                と出力されます。これはいつも通りだと思います。<br><br>
+                ここで、<span class="text-warning">String</span> クラスを以下のように定義します。
 <pre class="vscode"><code>class <span class="text-warning">String</span> {
 public:
-    int <span class="text-primary">size_str</span>;
-    <span class="text-warning">String</span> (string str0) {
+    int <span class="text-primary">size_str</span>;     <span class="text-success">// メンバ変数 size_str</span>
+    <span class="text-warning">String</span> (string str0) {     <span class="text-success">// コンストラクタ</span>
         <span class="text-primary">size_str</span> = str0.size();
     }
-    int <span class="text-success">size</span>() {
+    int <span class="text-info">size</span>() {     <span class="text-success">// メンバ関数 size</span>
         return <span class="text-primary">size_str</span>;
     }
 };
 </code></pre>
-            メンバ関数 size() を呼び出すと、
+                ( string 型と .size() を使っているのは目を瞑ってください。 )<br><br>
+                <span class="text-warning">String</span>クラスのインスタンス name を生成して、初期値に "toby" を渡します。<br>
+                name のメンバ関数 <span class="text-info">size</span>() を呼び出すと、
 <pre class="vscode"><code>int main() {
     String name {"toby"};
     cout &lt;&lt; name.size() &lt;&lt; endl;
 }
-</code></pre>
+</code></pre>           
+                のようになり、最初のコードとほとんど同じになっているのがわかります。<br>
+                出力結果は当然 4 になります。
 <pre class="vscode"><code>4
 </code></pre>
+                このように、
+                 
                 </p>
 
             </div>
