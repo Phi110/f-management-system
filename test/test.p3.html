@@ -1,0 +1,180 @@
+<!-- test.p3.html -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>F Management System</title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <!-- fms.css(main) -->
+    <link rel="stylesheet" href="/css/fms.css">
+</head>
+    
+<body>
+    <!-- fms.js -->
+    <script src="/js/fms.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <div class="container-xxl custom-container">
+        <div class="starter-template">
+
+            <!-- ナビゲーションバー -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top bar">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">FMS</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#test3.1">Test 3.1</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#test3.2">Test 3.2</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#test3.3">Test 3.3</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- タイトル -->
+            <div class="ver">
+                Ver. 2025.02.05. 伊東 颯紀
+            </div>
+            <br>
+            <h2 class="bottom-space">プロジェクトマネジメント</h2>
+            <br>
+            
+            <!-- パンくずリスト -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb left-space">
+                    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="/index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="/test/test.p1.html">Test 1</a></li>
+                    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="/test/test.p2.html">Test 2</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Test 3</li>
+                </ol>
+            </nav>
+
+            <br><br>
+
+            <!-- Test 3.1 -->
+            <h3 id="test3.1" class="left-space">Test 3.1</h3>
+            <br>
+
+            <h5 class="left-space">
+                予測型開発（ウォーターフォール型）、適応型開発（反復型、アジャイル型）の違いについて、以下の語句を用いて 100 字程度で説明せよ。<br>
+            </h5>
+            <p class="lead small-text left-space">
+                
+            </p>
+            <div class="form-group top-space left-space">
+                <label class="bottom-space" for="comment">語句）スコープ、スケジュール、コスト</label>
+                <textarea class="form-control" placeholder="100字程度" name="message" id="test7" rows="8"></textarea>
+            </div>
+
+            <div class="top-space bottom-space left-space">
+                <button class="btn btn-outline-secondary btn-sm btn-xs" onclick="checkAnswers_discription(7)">結果</button>
+                <span id="torf7"></span>
+                <span id="discript7"></span>
+            </div>
+
+            <br><br>
+
+            <!-- Test 3.2 -->
+            <h3 id="test3.2" class="left-space">Test 3.2</h3>
+            <br>
+
+            <h5 class="left-space">
+                日本国内では比較的多いとされているマトリックス型組織であるが、その弱点は何か。以下の語句を用いて 75 字程度で説明せよ。
+                <br>
+            </h5>
+            <p class="lead small-text left-space">
+                
+            </p>
+            <div class="form-group top-space left-space">
+                <label class="bottom-space" for="comment">語句）組織、プロジェクト、業務指示</label>
+                <textarea class="form-control" placeholder="75字程度" name="message" id="test8" rows="7"></textarea>
+            </div>
+
+            <div class="top-space bottom-space left-space">
+                <button class="btn btn-outline-secondary btn-sm btn-xs" onclick="checkAnswers_discription(8)">結果</button>
+                <span id="torf8"></span>
+                <span id="discript8"></span>
+            </div>
+
+            <br><br>
+
+            <!-- Test 3.3 -->
+            <h3 id="test3.3" class="left-space">Test 3.3</h3>
+            <br>
+
+            <h5 class="left-space">
+                リーダーシップとマネジメントの違いを、以下の語句を用いて 75 字程度で説明せよ。
+                <br>
+            </h5>
+            <p class="lead small-text left-space">
+                
+            </p>
+            <div class="form-group top-space left-space">
+                <label class="bottom-space" for="comment">語句）変革、計画</label>
+                <textarea class="form-control" placeholder="75字程度" name="message" id="test9" rows="7"></textarea>
+            </div>
+
+            <div class="top-space bottom-space left-space">
+                <button class="btn btn-outline-secondary btn-sm btn-xs" onclick="checkAnswers_discription(9)">結果</button>
+                <span id="torf9"></span>
+                <span id="discript9"></span>
+            </div>
+
+            <h3 id="test3.4" class="left-space">テスト直前対策</h3>
+            <br>
+            <h3>WBS</h3>
+
+            <h3>ガントチャート</h3>
+
+
+            <br><br><br>
+
+            <!-- パンくずリスト -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb left-space">
+                    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="/index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="/test/test.p1.html">Test 1</a></li>
+                    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="/test/test.p2.html">Test 2</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Test 3</li>
+                </ol>
+            </nav>
+
+        </div>
+    </div>    
+</body>
+
+</html>
