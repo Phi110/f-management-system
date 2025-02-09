@@ -97,14 +97,14 @@ public:
     <span class="text-warning">String</span> (string str0) {     <span class="text-success">// コンストラクタ</span>
         <span class="text-primary">size_str</span> = str0.size();
     }
-    int <span class="text-info">size</span>() {     <span class="text-success">// メンバ関数 size</span>
+    int <span class="text-info">size</span> () {     <span class="text-success">// メンバ関数 size</span>
         return <span class="text-primary">size_str</span>;
     }
 };
 </code></pre>
                 ( string 型と .size() を使っているのは目を瞑ってください。 )<br><br>
                 <span class="text-warning">String</span>クラスのインスタンス name を生成して、初期値に "toby" を渡します。<br>
-                name のメンバ関数 <span class="text-info">size</span>() を呼び出すと、
+                name のメンバ関数 (Python ではメソッド) の <span class="text-info">size</span> () を呼び出すと、
 <pre class="vscode"><code>int main() {
     String name {"toby"};
     cout &lt;&lt; name.size() &lt;&lt; endl;
@@ -114,7 +114,12 @@ public:
                 出力結果は当然 4 になります。
 <pre class="vscode"><code>4
 </code></pre>
-                このように、
+                このように、私たちは日常的に メンバ関数 (メソッド) を呼び出しているのです！<br><br>
+                size () のような関数を毎回書いていては、コードが長くなって実装も大変になってしまいますが、
+                モジュールの形でインポートすることで、複雑な処理も簡単に書きやすくなります。<br>
+                これがいわゆる <span class="text-danger">オブジェクト指向</span> というものです。<br><br>
+                <span class="text-danger">オブジェクト指向</span> を意識してコーディングが出来ると、より実用的なコードに近づくと思います。<br>
+                更なるスキルアップのために、これからも一緒に頑張りましょう！！
                  
                 </p>
 
