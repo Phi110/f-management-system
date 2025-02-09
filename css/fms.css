@@ -87,7 +87,7 @@ table {
 .background {
     margin-bottom: 20px;
     position: relative;
-    background-image: url('/images/title.webp');
+    background-image: url('../images/title.webp');
     background-size: cover;
     background-position: center;
 }
