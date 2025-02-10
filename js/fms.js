@@ -45,7 +45,7 @@ whattime.innerHTML = `<h2>
     <span class="emphasize">${li[1]}</span> 
     <span class="right-space">(${wday[day]})</span> 
     <span class="emphasize">${li[2]}</span> : 
-    <span class="emphasize">${li[3]}</span> ${period}${gen}
+    <span class="emphasize">${li[3]}</span> (${period}${gen})
 </h2>`;
 
 
