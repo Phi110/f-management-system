@@ -38,10 +38,7 @@
                         <a class="nav-link" href="#attendance">Attendance</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#assignment">Assignment</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#test">Test</a>
+                        <a class="nav-link" href="#information">Information</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#useful">Useful</a>
@@ -60,7 +57,7 @@
         <div class="starter-template">
             
             <div class="ver">
-                Ver. 2025.02.17. 伊東 颯紀
+                Ver. 2025.03.02. 伊東 颯紀
             </div>
             <br><br>
 
@@ -93,7 +90,7 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-ride="8000">
                         <h3>今週の自習・談話室</h3>
-                        <img src="images/studyroom2.3.webp" class="d-block w-100">
+                        <img src="images/studyroom3.1.webp" class="d-block w-100">
                     </div>
                     <!--
                     <div class="carousel-item" data-bs-interval="5000">
@@ -105,6 +102,7 @@
                         <h3>お知らせ</h3>
                         <div class="left-space">
                             <p class="left-space">
+                                # 03/02 (日) 23:03 | 春ですね～ <i class="bi bi-flower2 pink"></i> 。色々まとめました。<br>
                                 # 02/17 (月) 10:24 | "2/19(水) 実習カリキュラム説明会" は新2年生参加必須なので忘れずに参加しましょう<br>
                                 # 02/10 (月) 12:19 | <span class="right-space bottom-space"> <a class="btn btn-primary" href="https://discord.gg/Bx28Rx6w" target="_blank">
                                     <i class="bi bi-discord"></i> 勉強会 </a> </span> みんなで勉強します。出入り自由です。<br>
@@ -130,6 +128,7 @@
                 </button>
             </div>
             
+            <br>
             
             <!-- 出席システム -->
             <h2 id="attendance" class="bottom-space">出席</h2>
@@ -145,73 +144,148 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- 課題掲示板 -->
-            <h2 id="assignment">課題</h2>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th class="col-sm-3">日時</th>
-                        <th class="col-sm-3">科目</th>
-                        <th class="col-sm-6">内容</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>
-                            -
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <!-- 補講掲示板 -->
-            <h2 id="makeup">補講</h2>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th class="col-sm-2">日時</th>
-                        <th class="col-sm-2">時限</th>
-                        <th class="col-sm-2">教室</th>
-                        <th class="col-sm-6">科目</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>2/19 (水)</td>
-                        <td>1～4限</td>
-                        <td>Bホール</td>
-                        <td>2年次 実習カリキュラム説明会</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <h2 id="test">テスト</h2>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th class="col-sm-2">日時</th>
-                        <th class="col-sm-2">時限</th>
-                        <th class="col-sm-2">教室</th>
-                        <th class="col-sm-6">科目</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <!-- テスト対策 -->
-            <h2>テスト対策</h2>
 
             <br>
+            
+            <!-- タブ -->
+            <h2 id="information" class="bottom-space">情報</h2>
+            <nav>
+                <div class="nav nav-tabs small-text" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-assignment-tab" data-bs-toggle="tab" data-bs-target="#nav-assignment" type="button" role="tab" aria-controls="nav-assignment" aria-selected="true">課題</button>
+                    <button class="nav-link" id="nav-schedule-tab" data-bs-toggle="tab" data-bs-target="#nav-schedule" type="button" role="tab" aria-controls="nav-schedule" aria-selected="false">日程</button>
+                    <button class="nav-link" id="nav-test-tab" data-bs-toggle="tab" data-bs-target="#nav-test" type="button" role="tab" aria-controls="nav-test" aria-selected="false">テスト</button>
+                </div>
+            </nav>
+            <div class="tab-content small-text" id="nav-tabContent">
+                <div class="tab-pane fade show active top-space" id="nav-assignment" role="tabpanel" aria-labelledby="nav-assignment-tab" tabindex="0">
+                    
+                    <!-- 課題 -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-3">日時</th>
+                                <th class="col-sm-4">科目</th>
+                                <th class="col-sm-5">内容</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>3/14 (金) ～23:59</td>
+                                <td>地域共創デザイン実習</td>
+                                <td>
+                                    <a class="link-offset-2 link-underline link-underline-opacity-0" target="_blank"
+                                    href="https://docs.google.com/forms/d/1-iyOxafihG-0HTB6b6i158-Lp5V8_E4KeHH0EjJFVBA/preview">
+                                        希望調査票
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>前期選択科目</td>
+                                <td>
+                                    <a class="link-offset-2 link-underline link-underline-opacity-0" target="_blank"
+                                    href="https://forms.office.com/r/B9iTmXRCHQ">
+                                        教材申込
+                                    </a>
+                                    (任意)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3 月中</td>
+                                <td>キャリアガイダンス</td>
+                                <td>スーツ・名刺作り</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="tab-pane fade top-space" id="nav-schedule" role="tabpanel" aria-labelledby="nav-schedule-tab" tabindex="0">
+                    
+                    <!-- 日程 -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-2">日時</th>
+                                <th class="col-sm-3"></th>
+                                <th class="col-sm-3">教室</th>
+                                <th class="col-sm-4">内容</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>4/2 (水)</td>
+                                <td>11:00 ～ 12:30</td>
+                                <td>371(AI), 374(IoT)</td>
+                                <td>オリエン</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>14:00 ～ 15:30</td>
+                                <td>311</td>
+                                <td>キャリアガイダンス</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>16:00 ～ 17:00</td>
+                                <td>別途案内</td>
+                                <td>担任ミーティング</td>
+                            </tr>
+                            <tr>
+                                <td>4/3 (木)</td>
+                                <td>13:00 ～ 15:00</td>
+                                <td>311</td>
+                                <td>奨学金説明会</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>15:00 ～ 17:00</td>
+                                <td>別途案内</td>
+                                <td>サークル交流会</td>
+                            </tr>
+                            <tr>
+                                <td>4/7 (月) ～</td>
+                                <td></td>
+                                <td></td>
+                                <td>授業開始</td>
+                            </tr>
+                            <tr>
+                                <td>4/26 (土)</td>
+                                <td>12:00 ～ 18:00</td>
+                                <td>A ホール</td>
+                                <td>新入生歓迎会</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="tab-pane fade top-space" id="nav-test" role="tabpanel" aria-labelledby="nav-test-tab" tabindex="0">
+
+                    <!-- テスト -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-2">日時</th>
+                                <th class="col-sm-2">時限</th>
+                                <th class="col-sm-2">教室</th>
+                                <th class="col-sm-6">科目</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            
+            <br><br>
+            <!-- テスト対策 -->
+            <h2 class="bottom-space">テスト対策</h2>
             
             <div class="left-space">
                 <i class="bi bi-compass"></i> プロジェクトマネジメント<br>
@@ -252,12 +326,10 @@
             </div>
 
             <br>
-
+            <br>
 
             <!-- 資格・検定 -->
-            <h2>資格・検定</h2>
-
-            <br>
+            <h2 class="bottom-space">資格・検定</h2>
 
             <div class="left-space">
                 <i class="bi bi-info-circle"></i> 情報技術者試験 <br>・
@@ -276,12 +348,10 @@
             </div>
 
             <br>
-
+            <br>
             
             <!-- 便利機能 -->
-            <h2 id="useful">便利機能</h2>
-
-                <br>
+            <h2 id="useful" class="bottom-space">便利機能</h2>
 
                 <div class="left-space">
                     ・ 
@@ -301,48 +371,10 @@
                 </div>
             
             <br>
-            
-
-            <!-- tabs (test)
-            <nav>
-                <div class="nav nav-tabs small-text" id="nav-tab" role="tablist">
-                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">ホーム</button>
-                    <button class="nav-link" id="nav-promana-tab" data-bs-toggle="tab" data-bs-target="#nav-promana" type="button" role="tab" aria-controls="nav-promana" aria-selected="false">Test1</button>
-                    <button class="nav-link" id="nav-mathofinfo-tab" data-bs-toggle="tab" data-bs-target="#nav-mathofinfo" type="button" role="tab" aria-controls="nav-mathofinfo" aria-selected="false">Test2</button>
-                    <button class="nav-link" id="nav-cpp-tab" data-bs-toggle="tab" data-bs-target="#nav-cpp" type="button" role="tab" aria-controls="nav-cpp" aria-selected="false">Test3</button>
-                </div>
-            </nav>
-            <div class="tab-content small-text" id="nav-tabContent">
-                <div class="tab-pane fade show active top-space left-space" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-                    
-                </div>
-                <div class="tab-pane fade" id="nav-promana" role="tabpanel" aria-labelledby="nav-promana-tab" tabindex="0">
-                    <div class="container mt-5">
-            
-                        <h3>Test1</h3>
-                        
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="nav-mathofinfo" role="tabpanel" aria-labelledby="nav-mathofinfo-tab" tabindex="0">
-                    <div class="container mt-5">
-
-                        <h3>Test2</h3>
-
-                    </div>
-                </div>
-                <div class="tab-pane fade top-space left-space" id="nav-cpp" role="tabpanel" aria-labelledby="nav-cpp-tab" tabindex="0">
-                    <div class="container mt-5">
-
-                        <h3>Test2</h3>
-
-                    </div>
-                </div>
-            </div>
-            -->
-
+            <br>
             
             <!-- 意見・要望フォーム -->
-            <h2 id="form">意見・要望</h2>
+            <h2 id="form" class="bottom-space">意見・要望</h2>
             <form action="#" method="post">
                 <div class="row g-3">
                     <div class="form-group col-sm-5">
@@ -372,6 +404,8 @@
                     <p class="right-side left-space">*任意</p>
                 </div>
             </form>
+
+            <br>
 
             <!-- ログイン -->
             <!-- <h2 id="login" class="enter-form">ログイン</h2>

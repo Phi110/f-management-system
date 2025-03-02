@@ -150,6 +150,9 @@ table {
     margin-left: auto;
     margin-right: 0;
 }
+.pink {
+    color: pink;
+}
 .lms {
     padding-left: 30px;
     font-size: 25px;
