@@ -343,10 +343,10 @@ table {
 /* スマホ */
 @media (max-width: 600px) {
     h1 {
-        font-size: 30px;
+        font-size: 35px;
     }
     h2 {
-        font-size: 18px;
+        font-size: 20px;
     }
     h3 {
         font-size: 15px;
@@ -355,7 +355,7 @@ table {
         font-size: 15px;
     }
     p {
-        font-size: 15px;
+        font-size: 18px;
     }
     table {
         font-size: 12px;
