@@ -30,7 +30,7 @@ document.getElementById('surveyForm').addEventListener('submit', async (e) => {
             name: name,
             timestamp: new Date()
         });
-        alert('意見・要望が送信されました！');
+        alert('要望・感想が送信されました！');
         document.getElementById('surveyForm').reset();
     } catch (e) {
         console.error("エラー: ", e);
