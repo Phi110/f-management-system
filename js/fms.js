@@ -11,7 +11,7 @@ let period = "--";
 let gen = "限"
 
 /* 現在時 */
-if ((day==6 || day==0)) {
+if ((day==0 || day==6)) {
 } else if ((hour==9 && minute>5) || (hour==10 && minute<=45)) {
     period = 1;
 } else if ((hour==10 && minute>45) || (hour==11) || (hour==12 && minute<=25)) {
@@ -51,255 +51,193 @@ whattime.innerHTML = `<h2>
 
 /* 出席 */
 
-let course = [];
-let design = [];
-let url = [];
-let subject = [];
-let descrive = [];
+class Attendance {
+    constructor() {
+        this.course = [];
+        this.picture = [];
+        this.subject = [];
+        this.classroom = [];
+        this.teacher = [];
+        this.url = [];
+    }
+
+    add(course0, picture0, subject0, classroom0, teacher0, url0) {
+        this.course.push(course0);
+        this.picture.push(picture0);
+        this.subject.push(subject0);
+        this.classroom.push(classroom0);
+        this.teacher.push(teacher0);
+        this.url.push(url0);
+    }
+
+    get to_card() {
+        let templates = [];
+        if (this.course.length == 0) {
+            templates.push(true,
+                `<div class="card">
+                    <img id="design" src="images/attendance/moon.webp" class="card-img-top">
+                    <div class="card-body">
+                        <h4 class="card-title">No Class</h4>
+                        <div class="card-text">-</div>
+                    </div>
+                </div>`
+            );
+        } else {
+            templates.push(false);
+            for (let i = 0; i < this.course.length; i++) {
+                templates.push(
+                    `<h3>
+                        ・${this.course[i]}
+                    </h3>
+                    <div class="card">
+                        <a href=${this.url[i]}>
+                            <img src="images/attendance/${this.picture[i]}.webp" class="card-img-top">
+                        </a>
+                        <div class="card-body">
+                            <h4 class="card-title text-center middle-text stretch">
+                                <a href=${this.url[i]} target="_blank" class="link-offset-2 link-underline link-underline-opacity-0">
+                                    ${this.subject[i]}
+                                </a>
+                            </h4>
+                            <div class="card-text row justify-content-evenly">
+                                <div class="col-5 text-center middle-text">${this.classroom[i]}</div>
+                                |
+                                <div class="col-5 text-center middle-text">${this.teacher[i]}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>`
+                );
+            }
+        }
+        return templates;
+    }
+}
+
+const a = new Attendance();
 
 if (day == 1) {
     if (period == 1) {
         // 共通
-        course.push("共通");
-        design.push("dj");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("英語コミュニケーション Ⅱ a");
-        descrive.push("09:15 - 12:25");
+        a.add("共通", "dj", "英語コミュニケーション Ⅱ aB", "345", "門田 裕次", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
     if (period == 2) {
         // 共通
-        course.push("共通");
-        design.push("dj");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("英語コミュニケーション Ⅱ a");
-        descrive.push("09:15 - 12:25");
+        a.add("共通", "dj", "英語コミュニケーション Ⅱ aA", "341", "津森 紀乃", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
     if (period == 3) {
         // AI
-        course.push("AI");
-        design.push("programming");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("プログラミング概論");
-        descrive.push("351");
+        a.add("AI", "programming", "プログラミング概論", "351", "齊藤亜・山口", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
         // IoT
-        course.push("IoT");
-        design.push("rainy");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("確率統計論");
-        descrive.push("342");
+        a.add("IoT", "rainy", "確率統計論", "342", "兒玉・野村", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
     if (period == 4) {
         // AI
-        course.push("AI");
-        design.push("rainy");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("確率統計論");
-        descrive.push("351");
+        a.add("AI", "rainy", "確率統計論", "351", "兒玉・野村", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
     if (period == 5) {
         // AI
-        course.push("AI");
-        design.push("tree");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("自然言語処理");
-        descrive.push("351");
+        a.add("AI", "tree", "自然言語処理", "351", "町出・野村", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
 }
 
 if (day == 2) {
     if (period == 1) {
         // IoT
-        course.push("IoT");
-        design.push("programming");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("プログラミング概論");
-        descrive.push("351");
+        a.add("IoT", "programming", "プログラミング概論", "351", "齊藤亜・山口", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
     if (period == 2) {
         // IoT
-        course.push("IoT");
-        design.push("meeting");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("IoTシステム開発 Ⅰ");
-        descrive.push("354");
+        a.add("IoT", "meeting", "IoTシステム開発 Ⅰ", "354", "藤井・山本裕", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
     if (period == 3) {
         // IoT
-        course.push("IoT");
-        design.push("meeting");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("IoTシステム開発 Ⅰ");
-        descrive.push("354");
+        a.add("IoT", "meeting", "IoTシステム開発 Ⅰ", "354", "藤井・山本裕", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
     if (period == 4) {
         // AI
-        course.push("AI");
-        design.push("read");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("人工知能システム開発 Ⅰ");
-        descrive.push("371・373");
+        a.add("AI", "read", "人工知能システム開発 Ⅰ", "371・373", "神沼・齊藤亜", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
         // IoT
-        course.push("IoT");
-        design.push("meeting");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("IoTシステム開発 Ⅰ");
-        descrive.push("354");
+        a.add("IoT", "meeting", "IoTシステム開発 Ⅰ", "354", "藤井・山本裕", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
     if (period == 5) {
         // AI
-        course.push("AI");
-        design.push("read");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("人工知能システム開発 Ⅰ");
-        descrive.push("371・373");
+        a.add("AI", "read", "人工知能システム開発 Ⅰ", "371・373", "神沼・齊藤亜", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
         // IoT
-        course.push("IoT");
-        design.push("video");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("担任ミーティング Ⅱ");
-        descrive.push("354");
+        a.add("IoT", "video", "担任ミーティング Ⅱ", "354", "兒玉 賢史", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
         
     }
     if (period == 6) {
         // AI
-        course.push("AI");
-        design.push("video");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("担任ミーティング Ⅱ");
-        descrive.push("371・373");
+        a.add("AI", "video", "担任ミーティング Ⅱ", "371・373", "駒井 章治", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
 }
 
 if (day == 3) {
     if (period == 1) {
         // 共通
-        course.push("共通");
-        design.push("suit");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("キャリアガイダンス Ⅰ");
-        descrive.push("09:15 - 10:45");
+        a.add("共通", "suit", "キャリアガイダンス Ⅰ", "-", "-", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
     if (2 <= period && period <= 5) {
         // 共通
-        course.push("共通");
-        design.push("club");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("地域共創デザイン実習");
-        descrive.push("10:55 - 18:10");
+        a.add("共通", "club", "地域共創デザイン実習", "-", "-", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
 }
 
 if (day == 4) {
     if (period == 1) {
         // AI
-        course.push("AI");
-        design.push("exam");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("人工知能数学");
-        descrive.push("311");
+        a.add("AI", "exam", "人工知能数学", "311", "三宅・神田", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
         // IoT-A
-        course.push("IoT-A");
-        design.push("crane");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("センサ・アクチュエータ");
-        descrive.push("361");
+        a.add("IoT-A", "crane", "センサ・アクチュエータ", "361", "西田 麻美", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
     if (period == 2) {
         // AI
-        course.push("AI");
-        design.push("speak");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("人工知能基礎");
-        descrive.push("311");
+        a.add("AI", "speak", "人工知能基礎", "311", "齊藤亜・神田", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
         // IoT-B
-        course.push("IoT-B");
-        design.push("crane");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("センサ・アクチュエータ");
-        descrive.push("251");
+        a.add("IoT-B", "crane", "センサ・アクチュエータ", "251", "西田 麻美", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
     if (3 <= period && period <= 4) {
         // 共通
-        course.push("共通");
-        design.push("club");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("地域共創デザイン実習");
-        descrive.push("13:20 - 16:30");
+        a.add("共通", "club", "地域共創デザイン実習", "-", "-", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
 }
 
 if (day == 5) {
     if (period == 1) {
         // 共通
-        course.push("共通");
-        design.push("dj");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("英語コミュニケーション Ⅱ a");
-        descrive.push("09:15 - 12:25");
+        a.add("共通", "dj", "英語コミュニケーション Ⅱ aB", "345", "門田 裕次", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
     if (period == 2) {
         // 共通
-        course.push("共通");
-        design.push("dj");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("英語コミュニケーション Ⅱ a");
-        descrive.push("09:15 - 12:25");
+        a.add("共通", "dj", "英語コミュニケーション Ⅱ aA", "341", "津森 紀乃", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
     if (period == 3) {
         // AI
-        course.push("AI");
-        design.push("bookshelf");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("データベース基礎と応用");
-        descrive.push("311");
+        a.add("AI", "bookshelf", "データベース基礎と応用", "311", "飛澤・山口", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
         // IoT
-        course.push("IoT");
-        design.push("power");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("制御工学基礎");
-        descrive.push("351");
+        a.add("IoT", "power", "制御工学基礎", "351", "水上憲・中村", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
     if (period == 4) {
         // IoT
-        course.push("IoT");
-        design.push("bookshelf");
-        url.push("https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
-        subject.push("データベース基礎と応用");
-        descrive.push("351");
+        a.add("IoT", "bookshelf", "データベース基礎と応用", "351", "飛澤・山口", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=72858");
     }
 }
 
-if (design.length == 0) {
-    let template = 
-    `<div class="card">
-        <img id="design" src="images/attendance/moon.webp" class="card-img-top">
-        <div class="card-body">
-            <h4 class="card-title">No Class</h4>
-            <p class="card-text">-</p>
-        </div>
-    </div>`;
+let template = a.to_card;
 
+if (template[0]) {
     let card = document.getElementById(`card0`);
-    card.innerHTML = template;
-}
-
-for (let i = 0; i < design.length; i++) {
-    let template = 
-    `<h3>${course[i]}</h3>
-    <div class="card">
-        <img id="design" src="images/attendance/${design[i]}.webp" class="card-img-top">
-        <div class="card-body">
-            <h4 class="card-title"><a href=${url[i]} target="_blank" class="link-offset-2 link-underline link-underline-opacity-0">${subject[i]}</a></h4>
-            <p class="card-text">${descrive[i]}</p>
-        </div>
-    </div>`;
-
-    let card = document.getElementById(`card${i}`);
-    card.innerHTML = template;
+    card.innerHTML = template[1];
+} else {
+    for (let i = 0; i < template.length-1; i++) {
+        let card = document.getElementById(`card${i}`);
+        card.innerHTML = template[i+1];
+    }
 }
 
 
-/* 便利機能 */
+/* 便利 */
 // 文字数チェッカー
 function countString() {
     let input = document.getElementById("count").value;

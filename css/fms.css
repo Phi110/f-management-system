@@ -23,10 +23,10 @@ h1 {
     font-family: 'Noto Sans JP h';
 }
 h2 {
-    padding-top: 20px;
-    color: indigo;
     font-size: 25px;
     font-family: 'Noto Sans JP h';
+    padding-top: 20px;
+    color: indigo;
 }
 h3 {
     font-size: 20px;
@@ -41,7 +41,7 @@ h5 {
     font-family: 'Noto Sans JP h';
 }
 table {
-    font-size: 15px;
+    font-size: 16px;
 }
 #score1 {
     display: inline-block;
@@ -73,6 +73,15 @@ table {
     padding-left: 20px;
     padding-top: 0px;
 }
+.middle-text {
+    font-size: 17px;
+}
+.small-text {
+    font-size: 1rem;
+}
+.nav-link {
+    font-size: 16px;
+}
 .bar {
   display: flex;
   position: fixed;
@@ -80,6 +89,9 @@ table {
 }
 .emphasize {
     font-size: 140%;
+}
+.stretch {
+    font-size: 115%;
 }
 .custom-container {
     padding-left: 10%;
@@ -174,9 +186,6 @@ table {
 .small-picture2 {
     max-width: 80%;
 }
-.small-text {
-        font-size: 1rem;
-}
 .enter-form {
     padding-bottom: 10px;
 }
@@ -204,9 +213,7 @@ table {
     width: 150px;
     font-size: 14px;
 }
-
 .custom-select option {
-    
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 80px;
@@ -349,6 +356,9 @@ table {
         font-size: 18px;
     }
     h3 {
+        font-size: 17px;
+    }
+    h4 {
         font-size: 15px;
     }
     h5 {
@@ -358,7 +368,7 @@ table {
         font-size: 13px;
     }
     table {
-        font-size: 10px;
+        font-size: 10.5px;
     }
     label {
         font-size: 14px;
@@ -368,6 +378,15 @@ table {
     }
     textarea::placeholder {
         font-size: 0.8rem;
+    }
+    .middle-text {
+        font-size: 15px;
+    }
+    .small-text {
+        font-size: 0.7rem;
+    }
+    .nav-link {
+        font-size: 14px;
     }
     .bar {
         padding-left: 0;
@@ -386,9 +405,6 @@ table {
     }
     .starter-template {
         padding: 10px 15px;
-    }
-    .nav-link {
-        font-size: 14px;
     }
     .text {
         padding-left: 25px;
@@ -410,9 +426,6 @@ table {
     }
     .enter-form {
         padding-bottom: 0px;
-    }
-    .small-text {
-        font-size: 0.7rem;
     }
     .top-space {
         padding-top: 5px;
