@@ -77,8 +77,8 @@ class Attendance {
                 `<div class="card">
                     <img id="design" src="images/attendance/moon.webp" class="card-img-top">
                     <div class="card-body">
-                        <h4 class="card-title">No Class</h4>
-                        <div class="card-text">-</div>
+                        <h4 class="card-title text-center middle-text stretch">No Class</h4>
+                        <div class="card-text text-center middle-text">-</div>
                     </div>
                 </div>`
             );

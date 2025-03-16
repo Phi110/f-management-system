@@ -2,13 +2,13 @@
 
 @font-face {
     font-family: 'Noto Sans JP body';
-    src: url("../fonts/NotoSansJP-VariableFont_wght.woff2") format("woff2");
+    src: url("fonts/NotoSansJP-VariableFont_wght.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'Noto Sans JP h';
-    src: url("../fonts/NotoSansJP-Medium.woff2") format("woff2");
+    src: url("fonts/NotoSansJP-Medium.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
 }
@@ -23,9 +23,10 @@ h1 {
     font-family: 'Noto Sans JP h';
 }
 h2 {
-    padding-top: 20px;
     font-size: 25px;
     font-family: 'Noto Sans JP h';
+    padding-top: 20px;
+    color: indigo;
 }
 h3 {
     font-size: 20px;
