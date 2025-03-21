@@ -95,6 +95,9 @@ table {
   position: fixed;
   padding-left: 15%;
 }
+.alert {
+    margin-bottom: 0;
+}
 .emphasize {
     font-size: 140%;
 }
@@ -129,15 +132,15 @@ table {
     position: relative;
     display: inline-block;
     margin-top: 15px;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
     margin-left: 30px;
-    margin-right: 40px;
+    margin-right: 0px;
 }
 .text {
     padding-top: 17.5px;
     padding-bottom: 10px;
     padding-left: 30px;
-    padding-right: 100px;
+    padding-right: 160px;
     position: relative;
     z-index: 2;
 }
@@ -148,7 +151,7 @@ table {
     z-index: 2;
 }
 .title {
-    padding: 0 90px;
+    padding: 0 70px;
     background-color: white;
 }
 .carousel {
