@@ -12,6 +12,14 @@
     font-weight: normal;
     font-style: normal;
 }
+
+/* css */
+/*
+    iPhone12,13,14  : 390x844
+    iPhone15,pro,16 : 393×852
+*/
+
+
 body {
     padding-top: 55px;
     padding-bottom: 50px;
@@ -94,25 +102,23 @@ table {
     font-size: 115%;
 }
 .custom-container {
-    padding-left: 10%;
-    padding-right: 10%;
+    padding: 0 7%;
 }
 .custom-container2 {
     padding-left: 2%;
-    padding-right: 2%
+    padding-right: 2%;
 }
 .starter-template {
-    padding: 25px 75px;
+    padding: 25px 118px;
     background-color: white;
 }
 .background {
-    margin-bottom: 20px;
     position: relative;
     background-image: url('../images/title.webp');
     background-size: cover;
     background-position: center;
 }
-.backgroung-box {
+.background-box {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -123,20 +129,31 @@ table {
     position: relative;
     display: inline-block;
     margin-top: 15px;
-    margin-bottom: 40px;
-    margin-left: 15px;
+    margin-bottom: 60px;
+    margin-left: 30px;
     margin-right: 40px;
 }
 .text {
-    padding-top: 10px;
+    padding-top: 17.5px;
+    padding-bottom: 10px;
     padding-left: 30px;
     padding-right: 100px;
     position: relative;
     z-index: 2;
 }
+.lms {
+    padding-left: 30px;
+    font-size: 25px;
+    position: relative;
+    z-index: 2;
+}
+.title {
+    padding: 0 90px;
+    background-color: white;
+}
 .carousel {
     width: 100%;
-    height: 400px;
+    height: 420px;
     overflow: hidden;
 }
 .program {
@@ -165,12 +182,7 @@ table {
 .pink {
     color: pink;
 }
-.lms {
-    padding-left: 30px;
-    font-size: 25px;
-    position: relative;
-    z-index: 2;
-}
+
 .ver {
     padding-bottom: 10px;
     font-size: 17px
@@ -260,6 +272,9 @@ table {
     .lms {
         font-size: 20px;
     }
+    .title {
+        padding: 0 50px;
+    }
     .ver {
         padding-bottom: 10px;
         font-size: 15px
@@ -324,6 +339,9 @@ table {
     }
     .lms {
         font-size: 20px;
+    }
+    .title {
+        padding: 0 13px;
     }
     .ver {
         padding-bottom: 10px;
@@ -394,10 +412,10 @@ table {
     .text-container {
         position: relative;
         display: inline-block;
-        margin-top: 10px;
+        margin-top: 20px;
         margin-right: 20px;
         margin-left: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
     }
     .custom-container {
         padding-left: 0;
@@ -408,7 +426,10 @@ table {
     }
     .text {
         padding-left: 25px;
-        padding-right: 100px;
+        padding-right: 50px;
+    }
+    .title {
+        padding: 0 0;
     }
     .picture {
         width: 100%;
@@ -439,7 +460,7 @@ table {
     }
     .carousel {
         width: 100%;
-        height: 218px;
+        height: 212px;
         overflow: hidden;
     }
 }
