@@ -19,18 +19,18 @@ const db = getFirestore(app);
 document.getElementById('surveyForm').addEventListener('submit', async (e) => {
     e.preventDefault();
   
-    const number = document.getElementById('number').value;
-    const name = document.getElementById('name').value;
+    /* const number = document.getElementById('number').value;
+    const name = document.getElementById('name').value; */
     const feedback = document.getElementById('feedback').value;
   
     try {
         await addDoc(collection(db, "surveys"), {
             feedback: feedback,
-            number: number,
-            name: name,
+            /* number: number,
+            name: name, */
             timestamp: new Date()
         });
-        alert('要望・感想が送信されました！');
+        alert('リクエスト が送信されました！');
         document.getElementById('surveyForm').reset();
     } catch (e) {
         console.error("エラー: ", e);
