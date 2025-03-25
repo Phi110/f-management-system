@@ -87,6 +87,9 @@ table {
 .small-text {
     font-size: 1rem;
 }
+.card-text {
+    font-size: 16px;
+}
 .nav-link {
     font-size: 16px;
 }
@@ -396,6 +399,9 @@ table {
     .small-text {
         font-size: 0.8rem;
     }
+    .card-text {
+        font-size: 14px;
+    }
     .top-space {
         padding-top: 6px;
     }
@@ -441,10 +447,13 @@ table {
         font-size: 14px;
     }
     .middle-text {
-        font-size: 15px;
+        font-size: 16px;
     }
     .small-text {
         font-size: 0.7rem;
+    }
+    .card-text {
+        font-size: 14px;
     }
     .nav-link {
         font-size: 14px;
@@ -506,7 +515,7 @@ table {
         padding-bottom: 0px;
     }
     .top-space {
-        padding-top: 5px;
+        padding-top: 8px;
     }
     .left-space {
         padding-left: 14px;

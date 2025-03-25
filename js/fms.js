@@ -100,9 +100,9 @@ class Attendance {
                                 </a>
                             </h4>
                             <div class="card-text row justify-content-evenly">
-                                <div class="col-5 text-center middle-text">${this.classroom[i]}</div>
+                                <div class="col-5 text-center">${this.classroom[i]}</div>
                                 |
-                                <div class="col-5 text-center middle-text">${this.teacher[i]}</div>
+                                <div class="col-5 text-center">${this.teacher[i]}</div>
                             </div>
                         </div>
                     </div>
