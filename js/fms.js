@@ -72,43 +72,39 @@ class Attendance {
 
     get to_card() {
         let templates = [];
-        if (this.course.length == 0) {
-            templates.push(true,
-                `<div class="card">
-                    <img id="design" src="images/attendance/moon.webp" class="card-img-top">
+        for (let i = 0; i < this.course.length; i++) {
+            let dot = "・";
+            if (this.course[i] == "") {
+                dot = "";
+            }
+            let link = `${this.subject[i]}`;
+            if (this.url[i] != "") {
+                link = 
+                `<a href=${this.url[i]} target="_blank" class="link-offset-2 link-underline link-underline-opacity-0">
+                    ${this.subject[i]}
+                </a>`;
+            }
+            templates.push(
+                `<h3>
+                    ${dot}${this.course[i]}
+                </h3>
+                <div class="card">
+                    <a href=${this.url[i]}>
+                        <img src="images/attendance/${this.picture[i]}.webp" class="card-img-top">
+                    </a>
                     <div class="card-body">
-                        <h4 class="card-title text-center middle-text stretch">No Class</h4>
-                        <div class="card-text text-center middle-text">-</div>
-                    </div>
-                </div>`
-            );
-        } else {
-            templates.push(false);
-            for (let i = 0; i < this.course.length; i++) {
-                templates.push(
-                    `<h3>
-                        ・${this.course[i]}
-                    </h3>
-                    <div class="card">
-                        <a href=${this.url[i]}>
-                            <img src="images/attendance/${this.picture[i]}.webp" class="card-img-top">
-                        </a>
-                        <div class="card-body">
-                            <h4 class="card-title text-center middle-text stretch">
-                                <a href=${this.url[i]} target="_blank" class="link-offset-2 link-underline link-underline-opacity-0">
-                                    ${this.subject[i]}
-                                </a>
-                            </h4>
-                            <div class="card-text row justify-content-evenly">
-                                <div class="col-5 text-center">${this.classroom[i]}</div>
-                                |
-                                <div class="col-5 text-center">${this.teacher[i]}</div>
-                            </div>
+                        <h4 class="card-title text-center middle-text stretch">
+                            ${link}
+                        </h4>
+                        <div class="card-text row justify-content-evenly">
+                            <div class="col-5 text-center">${this.classroom[i]}</div>
+                            |
+                            <div class="col-5 text-center">${this.teacher[i]}</div>
                         </div>
                     </div>
-                    <br>`
-                );
-            }
+                </div>
+                <br>`
+            );
         }
         return templates;
     }
@@ -224,16 +220,15 @@ if (day == 5) {
     }
 }
 
+if (a.course.length == 0) {
+    a.add("", "moon", "No Class", "-", "-", "");
+}
+
 let template = a.to_card;
 
-if (template[0]) {
-    let card = document.getElementById(`card0`);
-    card.innerHTML = template[1];
-} else {
-    for (let i = 0; i < template.length-1; i++) {
-        let card = document.getElementById(`card${i}`);
-        card.innerHTML = template[i+1];
-    }
+for (let i = 0; i < template.length; i++) {
+    let card = document.getElementById(`card${i}`);
+    card.innerHTML = template[i];
 }
 
 
@@ -302,6 +297,7 @@ function checkAnswers3(th, answer) {
         consequence.innerHTML = '<i class="bi bi-x-lg text-danger left-space"></i>';
     }
 }
+
 // C++
 function showAnswer(th) {
     let correctAnswer = [

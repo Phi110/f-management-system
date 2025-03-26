@@ -93,11 +93,6 @@ table {
 .nav-link {
     font-size: 16px;
 }
-.bar {
-  display: flex;
-  position: fixed;
-  padding-left: 15%;
-}
 .alert {
     margin-bottom: 0;
 }
@@ -105,7 +100,10 @@ table {
     font-size: 140%;
 }
 .stretch {
-    font-size: 115%;
+    font-size: 110%;
+}
+.bar-container {
+    padding: 0 8%;
 }
 .custom-container {
     padding: 0 8%;
@@ -270,12 +268,11 @@ table {
     textarea::placeholder {
         font-size: 15px;
     }
-    .bar {
-        padding-left: 5%;
+    .bar-container {
+        padding: 0 5.5%;
     }
     .custom-container {
-        padding-left: 5%;
-        padding-right: 5%;
+        padding: 0 5%;
     }
     .starter-template {
         padding: 25px 35px;
@@ -353,8 +350,8 @@ table {
     textarea::placeholder {
         font-size: 15px;
     }
-    .bar {
-        padding-left: 0;
+    .bar-container {
+        padding: 0 1.5%;
     }
     .custom-container {
         padding-left: 0;
@@ -398,6 +395,9 @@ table {
     }
     .small-text {
         font-size: 0.8rem;
+    }
+    .alert {
+        font-size: 15px;
     }
     .card-text {
         font-size: 14px;
@@ -455,11 +455,14 @@ table {
     .card-text {
         font-size: 14px;
     }
+    .alert {
+        font-size: 14px;
+    }
     .nav-link {
         font-size: 14px;
     }
-    .bar {
-        padding-left: 0;
+    .bar-container {
+        padding: 0 12px;
     }
     .text-container {
         position: relative;
