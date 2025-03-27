@@ -244,6 +244,102 @@ function countString() {
     times2.innerHTML = `<span class="text-danger left-space">${String(count2)}</span>`;
 }
 
+
+/* アンケート */
+// 科目調査アンケート
+document.addEventListener("DOMContentLoaded", function () {
+    const whichCourse = {
+        IT: [ "IA", "IS", "IR" ],
+        DE: [ "DG", "DL", "DC" ]
+    };
+
+    const whichClass = {
+        IA: [ "A", "B" ],
+        IS: [ "A", "B" ],
+        IR: [ "A" ],
+        DG: [ "A" ],
+        DL: [ "A" ],
+        DC: [ "A", "B" ]
+    };
+
+    function updateCourses(selectedDepartment) {
+        const courseContainer = document.getElementById("course");
+        courseContainer.innerHTML = "";
+
+        whichCourse[selectedDepartment].forEach((course, index) => {
+            const div = document.createElement("div");
+            div.classList.add("form-check", "form-check-inline");
+
+            const input = document.createElement("input");
+            input.classList.add("form-check-input");
+            input.type = "radio";
+            input.name = "course";
+            input.id = "course" + course;
+            input.value = course;
+
+            if (index === 0) {
+                input.checked = true;
+            }
+            
+            const label = document.createElement("label");
+            label.classList.add("form-check-label");
+            label.htmlFor = "course" + course;
+            label.textContent = course;
+
+            div.appendChild(input);
+            div.appendChild(label);
+            courseContainer.appendChild(div);
+        });
+
+        updateClasses(whichCourse[selectedDepartment][0]);
+
+        document.querySelectorAll('input[name="course"]').forEach(radio => {
+            radio.addEventListener("change", function () {
+                updateClasses(this.value);
+            });
+        });
+    }
+
+    function updateClasses(selectedCourse) {
+        const classContainer = document.getElementById("class");
+        classContainer.innerHTML = "";
+
+        whichClass[selectedCourse].forEach((className, index) => {
+            const div = document.createElement("div");
+            div.classList.add("form-check", "form-check-inline");
+
+            const input = document.createElement("input");
+            input.classList.add("form-check-input");
+            input.type = "radio";
+            input.name = "class";
+            input.id = "class" + className;
+            input.value = className;
+
+            if (index === 0) {
+                input.checked = true;
+            }
+            
+            const label = document.createElement("label");
+            label.classList.add("form-check-label");
+            label.htmlFor = "class" + className;
+            label.textContent = className;
+
+            div.appendChild(input);
+            div.appendChild(label);
+            classContainer.appendChild(div);
+        });
+    }
+
+    updateCourses(document.querySelector('input[name="department"]:checked').value);
+
+    document.querySelectorAll('input[name="department"]').forEach(radio => {
+        radio.addEventListener("change", function () {
+            updateCourses(this.value);
+        });
+    });
+});
+
+
 /* 自動採点 */
 // 選択
 function checkAnswers(th, start, end) {

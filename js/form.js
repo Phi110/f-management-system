@@ -19,18 +19,22 @@ const db = getFirestore(app);
 document.getElementById('surveyForm').addEventListener('submit', async (e) => {
     e.preventDefault();
   
+    const department = document.querySelector('input[name="department"]:checked').value;
     const course = document.querySelector('input[name="course"]:checked').value;
+    const className = document.querySelector('input[name="class"]:checked').value;
     const english = document.querySelector('input[name="english"]:checked').value;
     const internship = document.querySelector('input[name="internship"]:checked').value;
     const permission = Array.from(document.querySelectorAll('input[name="hope"]:checked')).map(checkbox => checkbox.value);
   
     try {
         await addDoc(collection(db, "surveys"), {
-            course: course,
-            english: english,
-            internship: internship,
-            permission: permission,
-            timestamp: new Date()
+            a_学科: department,
+            b_コース: course,
+            c_クラス: className,
+            d_英語: english,
+            e_実習: internship,
+            f_承認: permission,
+            g_タイムスタンプ: new Date()
         });
         alert('科目調査アンケート が送信されました！');
         document.getElementById('surveyForm').reset();
@@ -48,10 +52,10 @@ document.getElementById('requestForm').addEventListener('submit', async (e) => {
   
     try {
         await addDoc(collection(db, "requests"), {
-            feedback: feedback,
+            コメント: feedback,
             /* number: number,
             name: name, */
-            timestamp: new Date()
+            タイムスタンプ: new Date()
         });
         alert('リクエスト が送信されました！');
         document.getElementById('requestForm').reset();

@@ -134,7 +134,7 @@
                     <div class="carousel-item" data-bs-interval="10000">
                         <h4>お知らせ</h4>
                         <p>
-                            # 03/26 (水) 15:53 | <a href="#enquete" class="text-danger link-offset-2 link-underline link-underline-opacity-0">科目調査</a>アンケートへの回答をお願いします<br>
+                            # 03/26 (水) 15:53 | <a href="#enquetes" class="text-danger link-offset-2 link-underline link-underline-opacity-0">科目調査</a>アンケートへの回答をお願いします<br>
                             # 03/19 (水) 01:05 | 履修登録期間です。忘れずに行いましょう<br>
                             # 03/18 (火) 00:20 | フォームを正常に送信できなかったので修正しました<br>
                             # 03/17 (月) 04:15 | <a href="#request" class="text-danger link-offset-2 link-underline link-underline-opacity-0">リクエスト</a>フォームが使用可能になりました<br>
@@ -514,32 +514,28 @@
                             <form id="surveyForm">
 
                                 <div class="form-group bottom-space">
-                                    <label class="bottom-space" for="course">コース</label>
+                                    <label class="bottom-space" for="departmentIT">学科</label>
                                     <br>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="course" id="course0" value="IA" checked>
-                                        <label class="form-check-label" for="course0">IA</label>
+                                        <input class="form-check-input" type="radio" name="department" id="departmentIT" value="IT" checked>
+                                        <label class="form-check-label" for="departmentIT">IT</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="course" id="course1" value="IS">
-                                        <label class="form-check-label" for="course1">IS</label>
+                                        <input class="form-check-input" type="radio" name="department" id="departmentDE" value="DE">
+                                        <label class="form-check-label" for="departmentDE">DE</label>
                                     </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="course" id="course2" value="IR">
-                                        <label class="form-check-label" for="course2">IR</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="course" id="course3" value="DG">
-                                        <label class="form-check-label" for="course3">DG</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="course" id="course4" value="DL">
-                                        <label class="form-check-label" for="course4">DL</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="course" id="course5" value="DC">
-                                        <label class="form-check-label" for="course5">DC</label>
-                                    </div>
+                                </div>
+
+                                <div class="form-group bottom-space">
+                                    <label class="bottom-space" for="course">コース</label>
+                                    <br>
+                                    <div id="course"></div>
+                                </div>
+
+                                <div class="form-group bottom-space">
+                                    <label class="bottom-space" for="class">クラス</label>
+                                    <br>
+                                    <div id="class"></div>
                                 </div>
 
                                 <div class="form-group top-space bottom-space">
