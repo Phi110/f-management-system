@@ -222,8 +222,9 @@ if (day == 5) {
     }
 }
 
-if (a.course.length == 0) {
-    a.add("", "moon", "No Class", "-", "-", "");
+if (a.course.length != 0) {
+    let card0 = document.getElementById(`card0`);
+    card0.innerHTML = "";
 }
 
 let template = a.to_card;

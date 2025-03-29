@@ -68,7 +68,7 @@
                 <form class="d-flex right-side" role="search">
                     <div class="input-group">
                         <span class="input-group-text"><i class="bi bi-search"></i></span>
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control me-2" type="search" placeholder="作成中..." aria-label="Search">
                     </div>
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
@@ -88,7 +88,7 @@
         <div class="starter-template">
 
             <div class="ver">
-                Ver. 2025.03.27. 伊東 颯紀
+                Ver. 2025.03.29. 伊東 颯紀
             </div>
 
         </div>
@@ -138,7 +138,7 @@
                     <div class="carousel-item" data-bs-interval="10000">
                         <h4>お知らせ</h4>
                         <p>
-                            # 03/26 (水) 15:53 | <a href="#enquetes" class="text-danger link-offset-2 link-underline link-underline-opacity-0">科目調査</a>アンケートへの回答をお願いします<br>
+                            # 03/26 (水) 15:53 | <a href="#enquete" class="text-danger link-offset-2 link-underline link-underline-opacity-0">科目調査</a>アンケートへの回答をお願いします<br>
                             # 03/19 (水) 01:05 | 履修登録期間です。忘れずに行いましょう<br>
                             # 03/18 (火) 00:20 | フォームを正常に送信できなかったので修正しました<br>
                             # 03/17 (月) 04:15 | <a href="#request" class="text-danger link-offset-2 link-underline link-underline-opacity-0">リクエスト</a>フォームが使用可能になりました<br>
@@ -173,12 +173,26 @@
             <!-- 出席システム -->
             <h2 id="attendance" class="bottom-space">出席</h2>
 
-            <div class="row">
+            <div class="row right-space">
                 <div class="col-sm-6">
-                    <span id="card0"></span>
+                    <div id="card0">
+                        <div class="card">
+                            <img id="classImage" src="images/attendance/moon.webp" class="card-img-top">
+                            <div class="card-body">
+                                <h4 id="className" class="card-title text-center middle-text stretch">
+                                    No Class
+                                </h4>
+                                <div class="card-text row justify-content-evenly">
+                                    <div id="classRoom" class="col-5 text-center">-</div>
+                                    |
+                                    <div id="classTeacher" class="col-5 text-center">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-6">
-                    <span id="card1"></span>
+                    <div id="card1"></div>
                 </div>
             </div>
 
@@ -461,10 +475,22 @@
             <h2 class="bottom-space">資格・検定</h2>
 
             <div class="left-space middle-text">
-                <i class="bi bi-info-circle"></i> 情報技術者試験 <br>・
-                <a class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" href="https://www.ipa.go.jp/shiken/index.html">
-                    公式 HP
-                </a>
+                <i class="bi bi-info-circle"></i> 情報技術者試験
+                <div class="row">
+                    <div class="col-md-3">
+                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" href="https://www.ipa.go.jp/shiken/index.html">
+                            公式 HP
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" href="https://www.ap-siken.com/apkakomon.php">
+                            過去問道場
+                        </a>
+                        (AP)
+                    </div>
+                </div>
+                
+                
             </div>
 
             <div class="top-space left-space middle-text">
