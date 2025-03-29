@@ -219,6 +219,9 @@ table {
 .right-space {
     padding-right: 6px;
 }
+.card-space {
+    padding-right: 15%;
+}
 .same-row {
     display: flex;
 }
@@ -306,6 +309,9 @@ table {
     }
     .left-space {
         padding-left: 9px;
+    }
+    .card-space {
+        padding-right: 7.5%;
     }
     .btn-xs {
         font-size: 0.7rem;
@@ -395,6 +401,9 @@ table {
     }
     .left-space {
         padding-left: 11px;
+    }
+    .card-space {
+        padding-right: 5%;
     }
     .btn-xs {
         font-size: 13px;
@@ -507,6 +516,10 @@ table {
     }
     .left-space {
         padding-left: 14px;
+    }
+    .card-space {
+        padding-left: 2.5%;
+        padding-right: 7.5%;
     }
     .btn-xs {
         font-size: 13px;
