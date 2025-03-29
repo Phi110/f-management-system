@@ -49,6 +49,23 @@ whattime.innerHTML = `<h2>
 </h2>`;
 
 
+// 今週の自習・談話室
+function getWeekNumber() {
+    const firstDay = new Date(year, month, 1);
+    const gap = (8 - firstDay.getDay()) % 7;
+    const firstMonday = (new Date(year, month, 1 + gap)).getDate();
+
+    if (date < firstMonday) return 0;
+
+    const weekNumber = 1 + Math.floor((date - firstMonday) / 7);
+    return weekNumber;
+}
+
+
+let studyroom = document.getElementById(`studyroom`);
+studyroom.src = "images/studyroom/studyroom" + (month+1) + "." + getWeekNumber() + ".webp";
+
+
 // 出席
 class Attendance {
     constructor() {
