@@ -85,7 +85,7 @@ table {
     font-size: 17px;
 }
 .small-text {
-    font-size: 1rem;
+    font-size: 15px;
 }
 .card-text {
     font-size: 16px;
@@ -193,10 +193,6 @@ table {
 .pink {
     color: pink;
 }
-.ver {
-    padding-bottom: 10px;
-    font-size: 17px
-}
 .reduction {
     max-width: 50%;
     padding-bottom: 3%;
@@ -290,10 +286,6 @@ table {
     .title {
         padding: 0 30px;
     }
-    .ver {
-        padding-bottom: 10px;
-        font-size: 15px
-    }
     .accordion-button {
         font-size: 16px;
     }
@@ -373,10 +365,6 @@ table {
     .curriculum {
         padding: 2% 3%;
     }
-    .ver {
-        padding-bottom: 10px;
-        font-size: 13px
-    }
     .carousel {
         max-height: 330px;
         padding: 0 8%;
@@ -423,7 +411,7 @@ table {
         font-size: 18px;
     }
     h3 {
-        font-size: 13px;
+        font-size: 17px;
     }
     h4 {
         font-size: 15px;
@@ -507,9 +495,6 @@ table {
     .lms {
         font-size: 15px;
         padding-left: 25px;
-    }
-    .ver {
-        font-size: 11px;
     }
     .accordion-button {
         font-size: 15px;
