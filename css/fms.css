@@ -219,8 +219,22 @@ table {
 .right-space {
     padding-right: 6px;
 }
-.card-space {
-    padding-right: 15%;
+.card-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 0 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.2) transparent;
+}
+.scroll-container::-webkit-scrollbar {
+    height: 6px;
+}
+.card {
+    width: 300px;
+    height: 235px;
+    flex-shrink: 0;
 }
 .same-row {
     display: flex;
