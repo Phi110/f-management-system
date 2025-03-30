@@ -28,25 +28,25 @@ body {
 }
 h1 {
     font-size: 40px;
-    font-family: 'Noto Sans JP h';
+    font-family: 'Noto Sans JP h', sans-serif;
 }
 h2 {
     font-size: 25px;
-    font-family: 'Noto Sans JP h';
+    font-family: 'Noto Sans JP h', sans-serif;
     padding-top: 20px;
     color: indigo;
 }
 h3 {
     font-size: 20px;
-    font-family: 'Noto Sans JP h';
+    font-family: 'Noto Sans JP h', sans-serif;
 }
 h4 {
     font-size: 18px;
-    font-family: 'Noto Sans JP h';
+    font-family: 'Noto Sans JP h', sans-serif;
 }
 h5 {
     font-size: 15px;
-    font-family: 'Noto Sans JP h';
+    font-family: 'Noto Sans JP h', sans-serif;
 }
 table {
     font-size: 16px;
