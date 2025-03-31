@@ -416,6 +416,9 @@ table {
     .card-text {
         font-size: 14px;
     }
+    .form-select {
+        font-size: 15px;
+    }
     .top-space {
         padding-top: 6px;
     }
@@ -480,6 +483,9 @@ table {
         font-size: 14px;
     }
     .nav-link {
+        font-size: 14px;
+    }
+    .form-select {
         font-size: 14px;
     }
     .bar-container {

@@ -8,8 +8,7 @@ const date = currentTime.getDate();
 const day = currentTime.getDay();
 const hour = currentTime.getHours();
 const minute = currentTime.getMinutes();
-let period = "--";
-let gen = "限"
+let period = "";
 
 if ((day==0 || day==6)) {
 } else if ((hour==9 && minute>5) || (hour==10 && minute<=45)) {
@@ -30,6 +29,11 @@ if ((day==0 || day==6)) {
     period = 7;
 }*/
 
+let whatperiod = ""
+if (period != "") {
+    whatperiod = `(${period}限)`
+}
+
 let li = [month+1, date, hour, minute];
 for (let i = 0; i < li.length; i++) {
     let element = String(li[i])
@@ -45,7 +49,7 @@ whattime.innerHTML = `<h2>
     <span class="emphasize">${li[1]}</span> 
     <span class="right-space">(${wday[day]})</span> 
     <span class="emphasize">${li[2]}</span> : 
-    <span class="emphasize">${li[3]}</span> (${period}${gen})
+    <span class="emphasize">${li[3]}</span> ${whatperiod}
 </h2>`;
 
 

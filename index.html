@@ -88,7 +88,7 @@
         <div class="starter-template">
 
             <div class="small-text bottom-space">
-                Ver. 2025.03.30. 伊東 颯紀
+                Ver. 2025.04.01. 伊東 颯紀
             </div>
 
         </div>
@@ -138,6 +138,7 @@
                     <div class="carousel-item" data-bs-interval="10000">
                         <h4>お知らせ</h4>
                         <p>
+                            # 04/01 (火) 03:55 | <a href="#enquete" class="text-danger link-offset-2 link-underline link-underline-opacity-0">出席URL</a> 入力への回答をお願いします<br>
                             # 03/30 (日) 23:32 | 京都橘大学のHPに <a class="link-offset-2 link-underline link-underline-opacity-0" href="images/名刺の作り方(Word).pdf">
                                 名刺の作り方(Word)
                             </a> が掲載されていたのでよかったら参考にしてください<br>
@@ -531,7 +532,7 @@
                 ・
                 <a class="link-offset-2 link-underline link-underline-opacity-0" href="images/名刺の作り方(Word).pdf">
                     名刺の作り方(Word)
-                </a>
+                </a><span class="badge bg-secondary">New</span>
             </div>
             
             <br>
@@ -546,11 +547,68 @@
             <!-- アコーディオン -->
             <div class="accordion" id="accordion">
 
+                <!-- 出席 URL -->
+                <div class="accordion-item">
+                    <h3 id="attendance-url-accordion" class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#attendance-url" aria-expanded="true" aria-controls="attendance-url">
+                            <span class="right-space">出席 URL 入力</span>
+                            <span class="badge bg-secondary">New</span>
+                        </button>
+                    </h3>
+                    <div id="attendance-url" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            <form id="urlForm">
+                                <div class="form-group bottom-space">
+                                    <label class="bottom-space" for="departmentIT-url">学科</label>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="department-url" id="departmentIT-url" value="IT" checked>
+                                        <label class="form-check-label" for="departmentIT-url">IT</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="department-url" id="departmentDE-url" value="DE">
+                                        <label class="form-check-label" for="departmentDE-url">DE</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="department-url" id="departmentOther-url" value="その他">
+                                        <label class="form-check-label" for="departmentOther-url">その他</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group bottom-space">
+                                    <label class="bottom-space" for="course-url">コース</label>
+                                    <br>
+                                    <div id="course-url"></div>
+                                </div>
+
+                                <div class="form-group bottom-space">
+                                    <label class="bottom-space" for="class-url">授業</label>
+                                    <br>
+                                    <select id="class-url" class="form-select d-inline w-auto">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group top-space bottom-space">
+                                    <label class="bottom-space" for="class-url">出席 URL</label>
+                                    <br>
+                                    <input type="text" id="url" class="form-control" placeholder="例: https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78892">
+                                </div>
+
+                                <div class="top-space bottom-space">
+                                    <button type="submit" class="btn btn-success btn-sm btn-xs">送信</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- 科目調査 -->
                 <div class="accordion-item">
                     <h3 id="subject-survey-accordion" class="accordion-header">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#subject-survey" aria-expanded="true" aria-controls="subject-survey">
-                            科目調査アンケート<span class="badge bg-secondary">New</span>
+                            <span class="right-space">科目調査アンケート</span>
+                            <span class="badge bg-secondary">New</span>
                         </button>
                     </h3>
                     <div id="subject-survey" class="accordion-collapse collapse show">
@@ -679,7 +737,7 @@
                 <div class="accordion-item">
                     <h3 id="request-accordion" class="accordion-header">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#request" aria-expanded="false" aria-controls="request">
-                            リクエスト
+                            リクエストフォーム
                         </button>
                     </h3>
                     <div id="request" class="accordion-collapse collapse show">
