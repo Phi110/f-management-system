@@ -202,7 +202,7 @@ document.getElementById('urlForm').addEventListener('submit', async (e) => {
             d_URL: url,
             e_タイムスタンプ: new Date()
         });
-        alert('出席URL が送信されました！');
+        alert('出席URL入力 が送信されました！');
         document.getElementById('urlForm').reset();
     } catch (e) {
         console.error("エラー: ", e);
@@ -250,7 +250,7 @@ document.getElementById('requestForm').addEventListener('submit', async (e) => {
             name: name, */
             タイムスタンプ: new Date()
         });
-        alert('リクエスト が送信されました！');
+        alert('リクエストフォーム が送信されました！');
         document.getElementById('requestForm').reset();
     } catch (e) {
         console.error("エラー: ", e);
