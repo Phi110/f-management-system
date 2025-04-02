@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         DG: [],
         DL: [],
         DC: [],
-        共通: [ "英語B", "英語C", "英語E", "英語F", "英語G" ]
+        共通: [ "英語B", "英語E", "英語F", "英語G" ]
     }
 
     const whichCourse = {
