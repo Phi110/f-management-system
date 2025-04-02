@@ -141,9 +141,9 @@ if (day == 1) {
     }
     if (period == 2) {
         // 共通
-        a.add("共通", "dj", "英語コミュニケーション Ⅱ aA", "341", "津森 紀乃", "");
+        a.add("共通", "dj", "英語コミュニケーション Ⅱ aA", "341", "津森 紀乃", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79016");
         // 共通
-        a.add("共通", "dj", "英語コミュニケーション Ⅱ aC", "345", "門田 裕次", "");
+        a.add("共通", "dj", "英語コミュニケーション Ⅱ aC", "345", "門田 裕次", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=77820");
         // 共通
         a.add("共通", "dj", "英語コミュニケーション Ⅱ aE", "342", "菅谷 孝義", "");
         // 共通
@@ -180,13 +180,13 @@ if (day == 2) {
     }
     if (period == 4) {
         // AI
-        a.add("AI", "read", "人工知能システム開発 Ⅰ A", "371・373", "神沼・齊藤亜", "");
+        a.add("AI", "read", "人工知能システム開発 Ⅰ A", "371・373", "神沼・齊藤亜", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79076");
         // IoT
         a.add("IoT", "meeting", "IoTシステム開発 Ⅰ A", "354", "藤井・山本裕", "");
     }
     if (period == 5) {
         // AI
-        a.add("AI", "read", "人工知能システム開発 Ⅰ A", "371・373", "神沼・齊藤亜", "");
+        a.add("AI", "read", "人工知能システム開発 Ⅰ A", "371・373", "神沼・齊藤亜", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79076");
         // IoT
         a.add("IoT", "video", "担任ミーティング Ⅱ", "354", "兒玉 賢史", "");
         
@@ -238,7 +238,7 @@ if (day == 5) {
     }
     if (period == 2) {
         // 共通
-        a.add("共通", "dj", "英語コミュニケーション Ⅱ aA", "341", "津森 紀乃", "");
+        a.add("共通", "dj", "英語コミュニケーション Ⅱ aA", "341", "津森 紀乃", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79016");
         // 共通
         a.add("共通", "dj", "英語コミュニケーション Ⅱ aB", "345", "門田 裕次", "");
         // 共通
