@@ -16,7 +16,7 @@ if ((day==0 || day==6)) {
 } else if ((hour==10 && minute>45) || (hour==11) || (hour==12 && minute<=25)) {
     period = 2;
 } else if ((hour==12 && minute>25) || (hour==13 && minute<= 10)) {
-    period = "お昼休み"; gen = "";
+    period = "(お昼休み)";
 } else if ((hour==13 && minute>10) || (hour==14 && minute<=50)) {
     period = 3;
 } else if ((hour==14 && minute>50) || (hour==15) || (hour==16 && minute<=30)) {
@@ -29,9 +29,9 @@ if ((day==0 || day==6)) {
     period = 7;
 }*/
 
-let whatperiod = ""
-if (period != "") {
-    whatperiod = `(${period}限)`
+let whatperiod = period;
+if (typeof(period) != 'string') {
+    whatperiod = `(${period}限)`;
 }
 
 let li = [month+1, date, hour, minute];
@@ -240,7 +240,7 @@ if (day == 5) {
         // 共通
         a.add("共通", "dj", "英語コミュニケーション Ⅱ aA", "341", "津森 紀乃", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79016");
         // 共通
-        a.add("共通", "dj", "英語コミュニケーション Ⅱ aB", "345", "門田 裕次", "");
+        a.add("共通", "dj", "英語コミュニケーション Ⅱ aC", "345", "門田 裕次", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=77820");
         // 共通
         a.add("共通", "dj", "英語コミュニケーション Ⅱ aE", "342", "菅谷 孝義", "");
         // 共通

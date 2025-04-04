@@ -18,7 +18,7 @@
 
     <!-- fms.css(main) -->
     <link rel="stylesheet" href="css/fms.css">
-      
+
 </head>
     
 <body>
@@ -209,12 +209,15 @@
                     <button class="nav-link" id="nav-schedule-tab" data-bs-toggle="tab" data-bs-target="#nav-schedule" type="button" role="tab" aria-controls="nav-schedule" aria-selected="false">
                         日程
                     </button>
+                    <button class="nav-link" id="nav-calendar-tab" data-bs-toggle="tab" data-bs-target="#nav-calendar" type="button" role="tab" aria-controls="nav-calendar" aria-selected="false">
+                        カレンダー
+                    </button>
                     <button class="nav-link disabled" id="nav-test-tab" data-bs-toggle="tab" data-bs-target="#nav-test" type="button" role="tab" aria-controls="nav-test" aria-selected="false">
                         テスト
                     </button>
                 </div>
             </nav>
-            <div class="tab-content small-text tab-container" id="information-tab">
+            <div class="tab-content small-text" id="information-tab">
                 <div class="tab-pane fade show active top-space" id="nav-assignment" role="tabpanel" aria-labelledby="nav-assignment-tab" tabindex="0">
                     
                     <!-- 課題 -->
@@ -384,6 +387,14 @@
                     </table>
 
                 </div>
+
+                <div class="tab-pane fade top-space" id="nav-calendar" role="tabpanel" aria-labelledby="nav-calendar-tab" tabindex="0">
+                    <div id="calendar"></div>
+                    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FTokyo&showTitle=0&showTz=0&showPrint=0&showCalendars=0&src=a21kazFjZHFzYmppdm92a2VjbGNoNDNldGRyNmw2ZThAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23F09300"
+                        style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no">
+                    </iframe>
+                </div>
+
                 <div class="tab-pane fade top-space" id="nav-test" role="tabpanel" aria-labelledby="nav-test-tab" tabindex="0">
 
                     <!-- テスト -->
@@ -841,9 +852,11 @@
     <!-- js -->
     <script src="js/fms.js" type="module"></script>
     <script src="js/form.js" type="module"></script>
+    <script src="js/calendar.js" type="module"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
     
 </html>
