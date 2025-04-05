@@ -87,8 +87,11 @@ iframe {
     padding-top: 0px;
 }
 #attendance {
+    display: inline;
+}
+.attendance {
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 .middle-text {
     font-size: 17px;
@@ -491,9 +494,9 @@ iframe {
     textarea::placeholder {
         font-size: 14px;
     }
-    #attendance {
+    .attendance {
         padding-top: 15px;
-        padding-left: 0;
+        padding-bottom: 15px;
     }
     .middle-text {
         font-size: 16px;
@@ -578,7 +581,7 @@ iframe {
         padding-top: 8px;
     }
     .left-space {
-        padding-left: 14px;
+        padding-left: 8px;
     }
     .card-space {
         padding-left: 2.5%;
