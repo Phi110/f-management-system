@@ -238,6 +238,7 @@ iframe {
     display: flex;
     overflow-x: auto;
     gap: 16px;
+    padding: 0 5px;
     margin-bottom: 20px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
