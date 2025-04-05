@@ -90,7 +90,7 @@ iframe {
     display: inline;
 }
 .attendance {
-    padding-top: 10px;
+    padding-top: 25px;
     padding-bottom: 20px;
 }
 .middle-text {
@@ -495,7 +495,6 @@ iframe {
         font-size: 14px;
     }
     .attendance {
-        padding-top: 15px;
         padding-bottom: 15px;
     }
     .middle-text {
