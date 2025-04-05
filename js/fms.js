@@ -157,11 +157,11 @@ if (day == 1) {
     }
     if (period == 4) {
         // AI
-        a.add("AI", "rainy", "確率統計論A", "351", "兒玉・野村", "");
+        a.add("AI", "rainy", "確率統計論A", "351", "兒玉・野村", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79268");
     }
     if (period == 5) {
         // AI
-        a.add("AI", "tree", "自然言語処理A", "351", "町出・野村", "");
+        a.add("AI", "tree", "自然言語処理A", "351", "町出・野村", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79314");
     }
 }
 
@@ -193,7 +193,7 @@ if (day == 2) {
     }
     if (period == 6) {
         // AI
-        a.add("AI", "video", "担任ミーティング Ⅱ", "371・373", "駒井 章治", "");
+        a.add("AI", "video", "担任ミーティング Ⅱ", "371・373", "駒井 章治", "https://lms-tokyo.iput.ac.jp/course/view.php?id=3320");
     }
 }
 

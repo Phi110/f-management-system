@@ -86,6 +86,10 @@ iframe {
     padding-left: 20px;
     padding-top: 0px;
 }
+#attendance {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 .middle-text {
     font-size: 17px;
 }
@@ -231,7 +235,9 @@ iframe {
     display: flex;
     overflow-x: auto;
     gap: 16px;
+    
     padding: 0 10px;
+    margin-bottom: 20px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
     scrollbar-color: rgba(0,0,0,0.2) transparent;
@@ -240,8 +246,8 @@ iframe {
     height: 6px;
 }
 .card {
-    width: 350px;
-    height: 260px;
+    width: 320px;
+    height: 245px;
     flex-shrink: 0;
 }
 
@@ -485,16 +491,26 @@ iframe {
     textarea::placeholder {
         font-size: 14px;
     }
+    #attendance {
+        padding-top: 15px;
+        padding-left: 0;
+    }
     .middle-text {
         font-size: 16px;
     }
     .small-text {
         font-size: 0.7rem;
     }
+    .card-container {
+        margin-bottom: 10px;
+    }
     .card {
-        width: 300px;
-        height: 235px;
+        width: 280px;
+        height: 220px;
         flex-shrink: 0;
+    }
+    .card-text {
+        font-size: 14px;
     }
     .alert {
         font-size: 14px;
