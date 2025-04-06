@@ -4,6 +4,10 @@
 window.addEventListener('load', function() {
     imageMapResize();
 });
+const modal = document.getElementById('exampleModalToggle');
+modal.addEventListener('shown.bs.modal', function () {
+    imageMapResize();
+});
 
 // 現在時
 const currentTime = new Date();
