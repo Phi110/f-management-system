@@ -1,5 +1,10 @@
 /* fms.js */
 
+// イメージマップ
+window.addEventListener('load', function() {
+    imageMapResize();
+});
+
 // 現在時
 const currentTime = new Date();
 const year = currentTime.getFullYear();
@@ -129,6 +134,7 @@ class Attendance {
 }
 
 const a = new Attendance();
+
 
 if (day == 1) {
     if (period == 1) {

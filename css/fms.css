@@ -583,4 +583,8 @@ iframe {
         font-size: 13px;
         padding: 0.2rem 0.4rem;
     }
+    .modal-sm {
+        width: 60%;
+        left: 18%;
+    }
 }

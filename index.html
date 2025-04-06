@@ -117,7 +117,11 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="images/curriculum/curriculumAI.webp" style="width: 100%;">
+                                    <img src="images/curriculum/curriculumAI.webp" usemap="#curriculumAI-map" class="img-fluid">
+                                    <map name="curriculumAI-map">
+                                        <area shape="rect" coords="19,19,108,133" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3113" target="_blank">
+                                        <area shape="rect" coords="19,133,108,190" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3200" target="_blank">
+                                    </map>
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">次へ</button>
@@ -133,7 +137,23 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="images/curriculum/curriculumEnglish.webp" style="width: 100%;">
+                                    <img src="images/curriculum/curriculumEnglish.webp" class="img-fluid">
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal">次へ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
+                        <div class="modal-dialog modal-sm modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">タイムテーブル</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="images/curriculum/curriculumTable.webp" class="img-fluid">
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">次へ</button>
@@ -852,6 +872,8 @@
     </div>
 
     <!-- js -->
+    <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+
     <script src="js/fms.js" type="module"></script>
     <script src="js/form.js" type="module"></script>
 
