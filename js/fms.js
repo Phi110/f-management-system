@@ -20,19 +20,19 @@ const minute = currentTime.getMinutes();
 let period = "";
 
 if ((day==0 || day==6)) {
-} else if ((hour==9 && minute>5) || (hour==10 && minute<=45)) {
+} else if ((hour==9 && minute>=5) || (hour==10 && minute<45)) {
     period = 1;
-} else if ((hour==10 && minute>45) || (hour==11) || (hour==12 && minute<=25)) {
+} else if ((hour==10 && minute>=45) || (hour==11) || (hour==12 && minute<25)) {
     period = 2;
-} else if ((hour==12 && minute>25) || (hour==13 && minute<= 10)) {
+} else if ((hour==12 && minute>=25) || (hour==13 && minute<10)) {
     period = "(お昼休み)";
-} else if ((hour==13 && minute>10) || (hour==14 && minute<=50)) {
+} else if ((hour==13 && minute>=10) || (hour==14 && minute<50)) {
     period = 3;
-} else if ((hour==14 && minute>50) || (hour==15) || (hour==16 && minute<=30)) {
+} else if ((hour==14 && minute>=50) || (hour==15) || (hour==16 && minute<30)) {
     period = 4;
-} else if ((hour==16 && minute>30) || (hour==17) || (hour==18 && minute<=10)) {
+} else if ((hour==16 && minute>=30) || (hour==17) || (hour==18 && minute<10)) {
     period = 5;
-} else if ((hour==18 && minute>10) || (hour==19 && minute<=50)) {
+} else if ((hour==18 && minute>=10) || (hour==19 && minute<50)) {
     period = 6;
 } /*else if ((hour==19 && minute>50) || (hour==20) || (hour==21 && minute<=30)) {
     period = 7;
@@ -60,6 +60,31 @@ whattime.innerHTML = `<h2>
     <span class="emphasize">${li[2]}</span> : 
     <span class="emphasize">${li[3]}</span> ${whatperiod}
 </h2>`;
+
+
+// リロード
+function reloadPage(hour, minute, second) {
+    const target = new Date();
+    target.setHours(hour, minute, second, 0);
+
+    if (currentTime > target) {
+        target.setDate(target.getDate() + 1);
+    }
+
+    const timeUntilReload = target - currentTime;
+
+    setTimeout(() => {
+        location.reload();
+    }, timeUntilReload);
+}
+
+reloadPage(9, 5, 0);
+reloadPage(10, 45, 0);
+reloadPage(13, 10, 0);
+reloadPage(14, 50, 0);
+reloadPage(16, 30, 0);
+reloadPage(18, 10, 0);
+/* reloadPage(19, 50, 0); */
 
 
 // 今週の自習・談話室
