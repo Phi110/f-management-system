@@ -86,7 +86,7 @@
         <div class="starter-template">
 
             <div class="small-text bottom-space">
-                Ver. 2025.04.06. 伊東 颯紀
+                Ver. 2025.04.08. 伊東 颯紀
             </div>
 
         </div>
@@ -108,6 +108,7 @@
             <!-- 出席システム -->
             <div class="attendance">
                 <h2 id="attendance">出席</h2>
+                <!-- 時間割モーダル -->
                 <span class="left-space">
                     <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                         <div class="modal-dialog modal-dialog-centered">
@@ -180,7 +181,7 @@
                     <button id="attendance-button" class="btn btn-secondary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">時間割</button>
                 </span>
             </div>
-            
+            <!-- 出席カード -->
             <div class="card-container">
                 <div id="card0">
                     <div class="card">
@@ -226,6 +227,7 @@
                     <div class="carousel-item">
                         <h4>お知らせ</h4>
                         <p>
+                            # 04/08 (火) 12:10 | 授業開始時間の 10分前 に自動でリロードするようにしました。<br>
                             # 04/06 (日) 04:22 | レイアウトを変えました。<a href="#" class="link-offset-2 link-underline link-underline-opacity-0">時間割</a>を見やすくしました<br>
                             # 04/05 (土) 18:38 | まだ設定できていない出席については <a href="#attendance-url-accordion" class="link-offset-2 link-underline link-underline-opacity-0">出席URL</a> へ入力して頂ければ反映できます<br>
                             # 03/30 (日) 23:32 | 京都橘大学のHPに <a class="link-offset-2 link-underline link-underline-opacity-0" href="images/名刺の作り方(Word).pdf">
@@ -626,7 +628,7 @@
                             <span class="badge bg-secondary">New</span>
                         </button>
                     </h3>
-                    <div id="subject-survey" class="accordion-collapse collapse show">
+                    <div id="subject-survey" class="accordion-collapse collapse">
                         <div class="accordion-body">
                             <form id="surveyForm">
 
@@ -756,7 +758,7 @@
                             <span class="badge bg-secondary">New</span>
                         </button>
                     </h3>
-                    <div id="attendance-url" class="accordion-collapse collapse show">
+                    <div id="attendance-url" class="accordion-collapse collapse">
                         <div class="accordion-body">
                             <form id="urlForm">
                                 <div class="text-secondary small-text bottom-space">
@@ -815,7 +817,7 @@
                             リクエストフォーム
                         </button>
                     </h3>
-                    <div id="request" class="accordion-collapse collapse show">
+                    <div id="request" class="accordion-collapse collapse">
                         <div class="accordion-body">
                             <form id="requestForm">
                                 <!-- <div class="row g-3">
