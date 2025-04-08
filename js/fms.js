@@ -233,13 +233,13 @@ if (day == 2) {
 }
 
 if (day == 3) {
-    if (period == 2 || period == 3) {
+    if (period == 1) {
         // 共通
         a.add("共通", "suit", "キャリアガイダンス Ⅰ", "-", "-", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78899");
     }
-    if (4 <= period && period <= 5) {
+    if (2 <= period && period <= 5) {
         // 共通
-        a.add("共通", "club", "地域共創デザイン実習", "-", "-", "");
+        a.add("共通", "club", "地域共創デザイン実習", "-", "-", "https://lms-tokyo.iput.ac.jp/course/view.php?id=3309");
     }
 }
 
