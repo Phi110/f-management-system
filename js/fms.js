@@ -239,14 +239,14 @@ if (day == 3) {
     }
     if (2 <= period && period <= 5) {
         // 共通
-        a.add("共通", "club", "地域共創デザイン実習", "-", "-", "https://lms-tokyo.iput.ac.jp/course/view.php?id=3309");
+        a.add("共通", "club", "地域共創デザイン実習", "-", "-", "https://lms-tokyo.iput.ac.jp/my/courses.php");
     }
 }
 
 if (day == 4) {
     if (period == 1) {
         // AI
-        a.add("AI", "exam", "人工知能数学A", "311", "三宅・神田", "");
+        a.add("AI", "exam", "人工知能数学A", "311", "三宅・神田", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79662");
         // IoT-A
         a.add("IoT-A", "crane", "センサ・アクチュエータA", "361", "西田 麻美", "");
     }
