@@ -4,8 +4,16 @@
 window.addEventListener('load', function() {
     imageMapResize();
 });
-const modal = document.getElementById('exampleModalToggle');
-modal.addEventListener('shown.bs.modal', function () {
+const modalAI = document.getElementById('modalAI');
+const modalIoT = document.getElementById('modalIoT');
+const modalCG = document.getElementById('modalCG');
+modalAI.addEventListener('shown.bs.modal', function () {
+    imageMapResize();
+});
+modalIoT.addEventListener('shown.bs.modal', function () {
+    imageMapResize();
+});
+modalCG.addEventListener('shown.bs.modal', function () {
     imageMapResize();
 });
 

@@ -86,7 +86,7 @@
         <div class="starter-template">
 
             <div class="small-text bottom-space">
-                Ver. 2025.04.08. 伊東 颯紀
+                Ver. 2025.04.10. 伊東 颯紀
             </div>
 
         </div>
@@ -109,78 +109,160 @@
             <div class="attendance">
                 <h2 id="attendance">出席</h2>
                 <!-- 時間割モーダル -->
+                
+                <!-- AI -->
+                <div class="modal fade" id="modalAI" aria-hidden="true" aria-labelledby="modalAILabel" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title fs-5" id="modalAILabel">前期 AIコース</h3>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="images/curriculum/curriculumAI.webp" usemap="#curriculumAI-map" class="img-fluid">
+                                <map name="curriculumAI-map">
+                                    <!-- 月 -->
+                                    <area shape="rect" coords="33,38,213,264" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3113" target="_blank">
+                                    <area shape="rect" coords="33,264,213,376" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3200" target="_blank">
+                                    <area shape="rect" coords="33,376,213,489" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3196" target="_blank">
+                                    <area shape="rect" coords="33,489,213,602" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3208" target="_blank">
+                                    <!-- 火 -->
+                                    <area shape="rect" coords="213,376,392,602" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3190" target="_blank">
+                                    <area shape="rect" coords="213,602,392,714" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3320" target="_blank">
+                                    <!-- 水 -->
+                                    <area shape="rect" coords="392,38,572,151" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3305" target="_blank">
+                                    <area shape="rect" coords="392,151,572,602" href="https://lms-tokyo.iput.ac.jp/my/courses.php" target="_blank">
+                                    <!-- 木 -->
+                                    <area shape="rect" coords="572,38,752,151" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3210" target="_blank">
+                                    <area shape="rect" coords="572,151,752,264" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3206" target="_blank">
+                                    <area shape="rect" coords="572,264,752,489" href="https://lms-tokyo.iput.ac.jp/my/courses.php" target="_blank">
+                                    <!-- 金 -->
+                                    <area shape="rect" coords="752,38,931,264" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3113" target="_blank">
+                                    <area shape="rect" coords="752,264,931,376" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3203" target="_blank">
+                                </map>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" data-bs-target="#modalEnglish" data-bs-toggle="modal">次へ</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 英語 -->
+                <div class="modal fade" id="modalEnglish" aria-hidden="true" aria-labelledby="modalEnglishLabel" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modalEnglishLabel">英語コミュニケーションⅡa</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="images/curriculum/curriculumEnglish.webp" class="img-fluid">
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" data-bs-target="#modalIoT" data-bs-toggle="modal">次へ</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- IoT -->
+                <div class="modal fade" id="modalIoT" aria-hidden="true" aria-labelledby="modalIoTLabel" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title fs-5" id="modalIoTLabel">前期 IoTコース</h3>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="images/curriculum/curriculumIoT.webp" usemap="#curriculumIoT-map" class="img-fluid">
+                                <map name="curriculumIoT-map">
+                                    <!-- 月 -->
+                                    <area shape="rect" coords="33,38,212,264" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3113" target="_blank">
+                                    <area shape="rect" coords="33,264,212,376" href="#" target="_blank">
+                                    <!-- 火 -->
+                                    <area shape="rect" coords="212,38,391,151" href="#" target="_blank">
+                                    <area shape="rect" coords="212,151,391,489" href="#" target="_blank">
+                                    <area shape="rect" coords="212,489,391,602" href="#" target="_blank">
+                                    <!-- 水 -->
+                                    <area shape="rect" coords="391,38,570,151" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3305" target="_blank">
+                                    <area shape="rect" coords="391,151,570,602" href="https://lms-tokyo.iput.ac.jp/my/courses.php" target="_blank">
+                                    <!-- 木 -->
+                                    <area shape="rect" coords="570,38,749,151" href="#" target="_blank">
+                                    <area shape="rect" coords="570,151,749,264" href="#" target="_blank">
+                                    <area shape="rect" coords="570,264,749,489" href="https://lms-tokyo.iput.ac.jp/my/courses.php" target="_blank">
+                                    <!-- 金 -->
+                                    <area shape="rect" coords="749,38,928,264" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3113" target="_blank">
+                                    <area shape="rect" coords="749,264,928,376" href="#" target="_blank">
+                                    <area shape="rect" coords="749,376,928,489" href="#" target="_blank">
+                                </map>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" data-bs-target="#modalCG" data-bs-toggle="modal">次へ</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- CG -->
+                <div class="modal fade" id="modalCG" aria-hidden="true" aria-labelledby="modalCGLabel" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title fs-5" id="modalCGLabel">前期 CGコース</h3>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="images/curriculum/curriculumCG.webp" usemap="#curriculumCG-map" class="img-fluid">
+                                <map name="curriculumCG-map">
+                                    <!-- 月 -->
+                                    <area shape="rect" coords="33,38,212,264" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3113" target="_blank">
+                                    <area shape="rect" coords="33,264,212,602" href="#" target="_blank">
+                                    <!-- 火 -->
+                                    <area shape="rect" coords="212,151,391,264" href="#" target="_blank">
+                                    <area shape="rect" coords="212,264,391,376" href="#" target="_blank">
+                                    <area shape="rect" coords="212,376,391,489" href="#" target="_blank">
+                                    <!-- 水 -->
+                                    <area shape="rect" coords="391,38,570,151" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3305" target="_blank">
+                                    <area shape="rect" coords="391,151,570,602" href="https://lms-tokyo.iput.ac.jp/my/courses.php" target="_blank">
+                                    <!-- 木 -->
+                                    <area shape="rect" coords="570,38,749,264" href="#" target="_blank">
+                                    <area shape="rect" coords="570,264,749,489" href="https://lms-tokyo.iput.ac.jp/my/courses.php" target="_blank">
+                                    <!-- 金 -->
+                                    <area shape="rect" coords="749,38,986,264" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3113" target="_blank">
+                                        <!-- A -->
+                                        <area shape="rect" coords="749,264,868,376" href="#" target="_blank">
+                                        <area shape="rect" coords="749,376,868,489" href="#" target="_blank">
+                                        <!-- B -->
+                                        <area shape="rect" coords="868,264,986,376" href="#" target="_blank">
+                                        <area shape="rect" coords="868,376,986,489" href="#" target="_blank">
+                                </map>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" data-bs-target="#modalTable" data-bs-toggle="modal">次へ</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- テーブル -->
+                <div class="modal fade" id="modalTable" aria-hidden="true" aria-labelledby="modalTableLabel" tabindex="-1">
+                    <div class="modal-dialog modal-sm modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modalTableLabel">テーブル</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="images/curriculum/curriculumTable.webp" class="img-fluid">
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" data-bs-target="#modalAI" data-bs-toggle="modal">次へ</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <span class="left-space">
-                    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h3 class="modal-title fs-5" id="exampleModalToggleLabel">前期 AIコース</h3>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <img src="images/curriculum/curriculumAI.webp" usemap="#curriculumAI-map" class="img-fluid">
-                                    <map name="curriculumAI-map">
-                                        <!-- 月 -->
-                                        <area shape="rect" coords="33,38,209,264" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3113" target="_blank">
-                                        <area shape="rect" coords="33,264,209,376" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3200" target="_blank">
-                                        <area shape="rect" coords="33,376,209,489" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3196" target="_blank">
-                                        <area shape="rect" coords="33,489,209,602" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3208" target="_blank">
-                                        <!-- 火 -->
-                                        <area shape="rect" coords="209,376,386,602" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3190" target="_blank">
-                                        <area shape="rect" coords="209,602,386,714" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3320" target="_blank">
-                                        <!-- 水 -->
-                                        <area shape="rect" coords="386,38,562,151" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3305" target="_blank">
-                                        <area shape="rect" coords="386,151,562,602" href="https://lms-tokyo.iput.ac.jp/my/courses.php" target="_blank">
-                                        <!-- 木 -->
-                                        <area shape="rect" coords="562,38,739,151" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3210" target="_blank">
-                                        <area shape="rect" coords="562,151,739,264" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3206" target="_blank">
-                                        <area shape="rect" coords="562,264,739,489" href="https://lms-tokyo.iput.ac.jp/my/courses.php" target="_blank">
-                                        <!-- 金 -->
-                                        <area shape="rect" coords="739,38,916,264" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3113" target="_blank">
-                                        <area shape="rect" coords="739,264,916,376" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3203" target="_blank">
-                                    </map>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">次へ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">英語コミュニケーションⅡa</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <img src="images/curriculum/curriculumEnglish.webp" class="img-fluid">
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle3" data-bs-toggle="modal">次へ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
-                        <div class="modal-dialog modal-sm modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel3">タイムテーブル</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <img src="images/curriculum/curriculumTable.webp" class="img-fluid">
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">次へ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button id="attendance-button" class="btn btn-secondary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">時間割</button>
+                    <button id="attendance-button" class="btn btn-secondary" data-bs-target="#modalAI" data-bs-toggle="modal">時間割</button>
                 </span>
             </div>
+
             <!-- 出席カード -->
             <div class="card-container">
                 <div id="card0">
@@ -272,9 +354,6 @@
                     <button class="nav-link active" id="nav-assignment-tab" data-bs-toggle="tab" data-bs-target="#nav-assignment" type="button" role="tab" aria-controls="nav-assignment" aria-selected="true">
                         課題
                     </button>
-                    <!-- <button class="nav-link" id="nav-schedule-tab" data-bs-toggle="tab" data-bs-target="#nav-schedule" type="button" role="tab" aria-controls="nav-schedule" aria-selected="false">
-                        日程
-                    </button> -->
                     <button class="nav-link" id="nav-calendar-tab" data-bs-toggle="tab" data-bs-target="#nav-calendar" type="button" role="tab" aria-controls="nav-calendar" aria-selected="false">
                         カレンダー
                     </button>
