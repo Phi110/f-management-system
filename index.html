@@ -63,16 +63,30 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="d-flex right-side" role="search">
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-search"></i></span>
-                        <input class="form-control me-2" type="search" placeholder="作成中..." aria-label="Search">
-                    </div>
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <button type="button" class="btn btn-success right-side" data-bs-toggle="modal" data-bs-target="#modalLogin">
+                    ログイン
+                </button>
             </div>
         </div>
     </nav>
+    <!-- Modal -->
+    <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalLoginLabel">ログイン</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    作成中...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- アラート -->
     <div class="alert alert-primary alert-dismissible fade show text-center" role="alert">
@@ -86,7 +100,7 @@
         <div class="starter-template">
 
             <div class="small-text bottom-space">
-                Ver. 2025.04.10. 伊東 颯紀
+                Ver. 2025.04.11. 伊東 颯紀
             </div>
 
         </div>
@@ -298,7 +312,7 @@
                     <!-- <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button> -->
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="15000">
+                    <div class="carousel-item active" data-bs-interval="20000">
                         <h4>今週の自習・談話室</h4>
                         <img id="studyroom" src="images/studyroom/studyroom.webp" class="d-block w-100">
                     </div>
@@ -378,9 +392,11 @@
                             <tr>
                                 <td>4/14 (月)</td>
                                 <td>人工知能数学</td>
-                                <td><a class="link-offset-2 link-underline link-underline-opacity-0" href="https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=79664" target="_blank">
-                                    演習問題１
-                                </a></td>
+                                <td>
+                                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=79664" target="_blank">
+                                        演習問題１
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>4/14 (月)</td>
@@ -893,7 +909,7 @@
             </form> -->
 
             <h4 class="top-space text-center">FMS</h4>
-            <div class="small-text text-center bottom-space">※学内生への再配布を認めます</div>
+            <div class="small-text text-center bottom-space">- 学習を円滑に -</div>
 
             <img src="images/bar.webp" class="picture top-space bottom-space">
             

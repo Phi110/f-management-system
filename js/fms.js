@@ -291,7 +291,7 @@ if (day == 5) {
     }
     if (period == 3) {
         // AI
-        a.add("AI", "bookshelf", "データベース基礎と応用A", "311", "飛澤・山口", "");
+        a.add("AI", "bookshelf", "データベース基礎と応用A", "311", "飛澤・山口", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79755");
         // IoT
         a.add("IoT", "power", "制御工学基礎A", "351", "水上憲・中村", "");
     }
