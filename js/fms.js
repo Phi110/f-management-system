@@ -112,7 +112,7 @@ studyroom.src = "images/studyroom/studyroom" + (month+1) + "." + getWeekNumber()
 
 
 let internshipModalImage = document.getElementById(`internshipModalImage`);
-if (day == 2) {
+if (day == 3) {
     internshipModalImage.src = `images/internship/wednesday.webp`;
 } else if (day == 4) {
     internshipModalImage.src = `images/internship/thursday.webp`;
@@ -252,9 +252,6 @@ if (day == 2) {
         a.add("AI", "video", "担任ミーティング Ⅱ", "371・373", "駒井 章治", "https://lms-tokyo.iput.ac.jp/course/view.php?id=3320");
     }
 }
-
-// 共通
-a.add("共通", "club", "地域共創デザイン実習", "教室一覧", "-", "https://lms-tokyo.iput.ac.jp/course/view.php?id=3089");
 
 if (day == 3) {
     if (period == 1) {
