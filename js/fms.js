@@ -44,7 +44,7 @@ if ((day==0 || day==6)) {
     period = 6;
 } /*else if ((hour==19 && minute>50) || (hour==20) || (hour==21 && minute<=30)) {
     period = 7;
-}*/
+} */
 
 let whatperiod = period;
 if (typeof(period) != 'string') {
@@ -111,6 +111,13 @@ let studyroom = document.getElementById(`studyroom`);
 studyroom.src = "images/studyroom/studyroom" + (month+1) + "." + getWeekNumber() + ".webp";
 
 
+let internshipModalImage = document.getElementById(`internshipModalImage`);
+if (day == 2) {
+    internshipModalImage.src = `images/internship/wednesday.webp`;
+} else if (day == 4) {
+    internshipModalImage.src = `images/internship/thursday.webp`;
+}
+
 // 出席
 class Attendance {
     constructor() {
@@ -134,16 +141,23 @@ class Attendance {
     get to_card() {
         let templates = [];
         for (let i = 0; i < this.course.length; i++) {
-            let picLink = `<img src="images/attendance/${this.picture[i]}.webp" class="card-img-top">`;
+            let imgLink = `<img src="images/attendance/${this.picture[i]}.webp" class="card-img-top">`;
             let strLink = `${this.subject[i]}`;
             if (this.url[i] != "") {
                 strLink = 
                 `<a href=${this.url[i]} target="_blank" class="link-offset-2 link-underline link-underline-opacity-0">
                     ${this.subject[i]}
                 </a>`;
-                picLink = 
+                imgLink = 
                 `<a href=${this.url[i]} target="_blank">
                     <img src="images/attendance/${this.picture[i]}.webp" class="card-img-top">
+                </a>`;
+            }
+            let clsLink = `${this.classroom[i]}`;
+            if (this.classroom[i] == "教室一覧") {
+                clsLink =
+                `<a href="#" data-bs-target="#internshipModal" data-bs-toggle="modal" class="text-dark link-offset-2 link-underline link-underline-opacity-0">
+                    ${this.classroom[i]}
                 </a>`;
             }
             templates.push(
@@ -151,13 +165,13 @@ class Attendance {
                     ・${this.course[i]}
                 </h3>
                 <div class="card">
-                    ${picLink}
+                    ${imgLink}
                     <div class="card-body">
                         <h4 class="card-title text-center middle-text stretch">
                             ${strLink}
                         </h4>
                         <div class="card-text row justify-content-evenly">
-                            <div class="col-5 text-center">${this.classroom[i]}</div>
+                            <div class="col-5 text-center">${clsLink}</div>
                             |
                             <div class="col-5 text-center">${this.teacher[i]}</div>
                         </div>
@@ -171,7 +185,6 @@ class Attendance {
 }
 
 const a = new Attendance();
-
 
 if (day == 1) {
     if (period == 1) {
@@ -240,20 +253,23 @@ if (day == 2) {
     }
 }
 
+// 共通
+a.add("共通", "club", "地域共創デザイン実習", "教室一覧", "-", "https://lms-tokyo.iput.ac.jp/course/view.php?id=3089");
+
 if (day == 3) {
     if (period == 1) {
         // 共通
-        a.add("共通", "suit", "キャリアガイダンス Ⅰ", "-", "-", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78899");
+        a.add("共通", "suit", "キャリアガイダンス Ⅰ", "Bホール", "-", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78899");
     }
     if (2 <= period && period <= 5) {
         // 共通
-        a.add("共通", "club", "地域共創デザイン実習", "-", "-", "https://lms-tokyo.iput.ac.jp/my/courses.php");
+        a.add("共通", "club", "地域共創デザイン実習", "-", "-", "https://lms-tokyo.iput.ac.jp/course/view.php?id=3089");
     }
 }
 
 if (day == 4) {
     if (period == 1) {
-        // AI
+        // AI                                                                                                                                                                       u
         a.add("AI", "exam", "人工知能数学A", "311", "三宅・神田", "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79662");
         // IoT-A
         a.add("IoT-A", "crane", "センサ・アクチュエータA", "361", "西田 麻美", "");
