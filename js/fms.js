@@ -260,7 +260,7 @@ if (day == 3) {
     }
     if (2 <= period && period <= 5) {
         // 共通
-        a.add("共通", "club", "地域共創デザイン実習", "-", "-", "https://lms-tokyo.iput.ac.jp/course/view.php?id=3089");
+        a.add("共通", "club", "地域共創デザイン実習", "教室一覧", "-", "https://lms-tokyo.iput.ac.jp/course/view.php?id=3089");
     }
 }
 
