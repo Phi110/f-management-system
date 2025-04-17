@@ -32,9 +32,7 @@ if ((day==0 || day==6)) {
     period = 1;
 } else if ((hour==10 && minute>=45) || (hour==11) || (hour==12 && minute<25)) {
     period = 2;
-} else if ((hour==12 && minute>=25) || (hour==13 && minute<10)) {
-    period = "(お昼休み)";
-} else if ((hour==13 && minute>=10) || (hour==14 && minute<50)) {
+} else if ((hour==12 && minute>=25) || (hour==13) || (hour==14 && minute<50)) {
     period = 3;
 } else if ((hour==14 && minute>=50) || (hour==15) || (hour==16 && minute<30)) {
     period = 4;
@@ -111,11 +109,11 @@ let studyroom = document.getElementById(`studyroom`);
 studyroom.src = "images/studyroom/studyroom" + (month+1) + "." + getWeekNumber() + ".webp";
 
 
-let internshipModalImage = document.getElementById(`internshipModalImage`);
+let internshipModalDescribe = document.getElementById(`internshipModalDescribe`);
 if (day == 3) {
-    internshipModalImage.src = `images/internship/wednesday.webp`;
+    internshipModalDescribe.innerHTML = `<img src="images/internship/wednesday.webp" class="img-fluid">`;
 } else if (day == 4) {
-    internshipModalImage.src = `images/internship/thursday.webp`;
+    internshipModalDescribe.innerHTML = `<img src="images/internship/thursday.webp" class="img-fluid">`;
 }
 
 // 出席
