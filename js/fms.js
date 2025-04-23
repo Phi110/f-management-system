@@ -68,6 +68,13 @@ whattime.innerHTML = `<h2>
 </h2>`;
 
 
+if (month == 3 && date == 24) {
+    document.body.style.backgroundColor = '#ffcccc';
+} else {
+    document.body.style.backgroundColor = '#feffce';
+}
+
+
 // リロード
 function reloadPage(hour, minute, second) {
     const target = new Date();

@@ -23,7 +23,7 @@
 body {
     padding-top: 55px;
     padding-bottom: 50px;
-    background-color: #feffce;
+    transition: background-color 0.5s ease;
     font-family: 'Noto Sans JP body', sans-serif;
 }
 h1 {
@@ -270,6 +270,9 @@ iframe {
     text-overflow: ellipsis;
     max-width: 80px;
     display: block;
+}
+.login-container {
+    padding: 50px 20%;
 }
 
 /* タブレット */
