@@ -106,7 +106,7 @@ class Assignment {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('../csv/assignment.csv')
+    fetch('./csv/assignment.csv')
     .then(response => response.text())
     .then(data => parseCSV(data));
 });
