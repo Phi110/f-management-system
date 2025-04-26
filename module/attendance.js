@@ -37,7 +37,7 @@ export class Attendance {
             let clsLink = `${this.classroom[i]}`;
             if (this.classroom[i] == "教室一覧") {
                 clsLink =
-                `<a href="#" data-bs-target="#internshipModal" data-bs-toggle="modal" class="text-dark link-offset-2 link-underline link-underline-opacity-0">
+                `<a href="#" data-bs-target="#modalPractice" data-bs-toggle="modal" class="text-dark link-offset-2 link-underline link-underline-opacity-0">
                     ${this.classroom[i]}
                 </a>`;
             }
