@@ -116,9 +116,9 @@ let studyroom = document.getElementById(`studyroom`);
 studyroom.src = "images/studyroom/studyroom" + (month+1) + "." + getWeekNumber() + ".webp";
 
 
-let internshipModalDescribe = document.getElementById(`internshipModalDescribe`);
+let modalPracticeDescribe = document.getElementById(`modalPracticeDescribe`);
 if (day == 3) {
-    internshipModalDescribe.innerHTML = `<img src="images/internship/wednesday.webp" class="img-fluid">`;
+    modalPracticeDescribe.innerHTML = `<img src="images/internship/wednesday.webp" class="img-fluid">`;
 } else if (day == 4) {
-    internshipModalDescribe.innerHTML = `<img src="images/internship/thursday.webp" class="img-fluid">`;
+    modalPracticeDescribe.innerHTML = `<img src="images/internship/thursday.webp" class="img-fluid">`;
 }

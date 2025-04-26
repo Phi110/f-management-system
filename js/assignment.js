@@ -87,7 +87,7 @@ class Assignment {
             }
 
             tableContent += 
-            `<tr>
+            `<tr data-id="${this.id[newArray[1][i]]}">
                 <td>${designatedDate}</td>
                 <td>${subject}</td>
                 <td>
