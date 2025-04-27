@@ -60,7 +60,7 @@ function checkAllTasksCompleted() {
     }
 }
 
-function setAutoOpenTimer() {
+function setAutoOpenTimer(takeEnglish, takePractical) {
     const scheduleByDay = {
         1: [
             { time: "13:15", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78892" },
@@ -72,10 +72,10 @@ function setAutoOpenTimer() {
             { time: "16:35", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79076" },
         ],
         3: [
-            { time: "9:10", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78899" }
+            { time: "09:10", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78899" }
         ],
         4: [
-            { time: "9:10", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79662" },
+            { time: "09:10", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79662" },
             { time: "10:50", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78895" }
         ],
         5: [
@@ -84,11 +84,56 @@ function setAutoOpenTimer() {
     };
     
     const today = new Date().getDay();
-    const todaySchedule = scheduleByDay[today] || [];
+    if (!scheduleByDay[today]) {
+        scheduleByDay[today] = [];
+    }
     
-    for (const item of todaySchedule) {
+    if (takeEnglish === "A") {
+        const englishASchedule = {
+            0: [{ time: "10:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79016" }],
+            5: [{ time: "10:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79016" }]
+        };
+        if (englishASchedule[today]) {
+            scheduleByDay[today].push(...englishASchedule[today]);
+        }
+    } else if (takeEnglish === "D") {
+        const englishDSchedule = {
+            1: [{ time: "09:05", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78804" }],
+            5: [{ time: "09:05", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78804" }]
+        };
+        if (englishDSchedule[today]) {
+            scheduleByDay[today].push(...englishDSchedule[today]);
+        }
+    }
+
+    if (takePractical === "キューブ") {
+        const practicalCubeSchedule = {
+            3: [{ time: "10:50", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79690" }],
+            4: [{ time: "13:15", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79690" }]
+        };
+        if (practicalCubeSchedule[today]) {
+            scheduleByDay[today].push(...practicalCubeSchedule[today]);
+        }
+    } else if (takePractical === "テレ朝") {
+        const practicalTvSchedule = {
+            3: [{ time: "10:50", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78610" }],
+            4: [{ time: "13:15", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78610" }]
+        };
+        if (practicalTvSchedule[today]) {
+            scheduleByDay[today].push(...practicalTvSchedule[today]);
+        }
+    } else if (takePractical === "オンワード") {
+        const practicalOnwardSchedule = {
+            3: [{ time: "10:50", url: "https://lms-tokyo.iput.ac.jp/my/courses.php" }],
+            4: [{ time: "13:15", url: "https://lms-tokyo.iput.ac.jp/my/courses.php" }]
+        };
+        if (practicalOnwardSchedule[today]) {
+            scheduleByDay[today].push(...practicalOnwardSchedule[today]);
+        }
+    }
+
+    for (const item of scheduleByDay[today]) {
         const [hour, minute] = item.time.split(":").map(Number);
-    
         const now = new Date();
         const openTime = new Date();
         openTime.setHours(hour, minute, 0, 0);
@@ -111,11 +156,13 @@ auth.onAuthStateChanged(async user => {
         const data = doc.data() || {};
 
         const autoOpen = data.autoOpen !== undefined ? data.autoOpen : true;
+        const takeEnglish = data.takeEnglish || "";
+        const takePractical = data.takePractical || "";
 
         userInfo.innerHTML = `
             <h4 class="bottom-space">ログイン中: ${user.displayName} (${user.email})</h3>
-            <label class="top-space bottom-space" for="auto-open-yes">5 分前に自動で出席 URL を開く</label>
-            <br>
+
+            <label class="top-space bottom-space">5 分前に自動で出席 URL を開く</label><br>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="auto-open" id="auto-open-yes" value="はい" ${autoOpen ? "checked" : ""}>
                 <label class="form-check-label" for="auto-open-yes">はい</label>
@@ -124,13 +171,51 @@ auth.onAuthStateChanged(async user => {
                 <input class="form-check-input" type="radio" name="auto-open" id="auto-open-no" value="いいえ" ${!autoOpen ? "checked" : ""}>
                 <label class="form-check-label" for="auto-open-no">いいえ</label>
             </div>
+
+            <div id="english-practical-settings" style="display: ${autoOpen ? 'block' : 'none'};">
+
+                <label class="top-space bottom-space">-英語</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="english" id="english-none" value="" ${!takeEnglish ? "checked" : ""}>
+                    <label class="form-check-label" for="english-none">なし</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="english" id="english-A" value="A" ${takeEnglish === "A" ? "checked" : ""}>
+                    <label class="form-check-label" for="english-A">A</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="english" id="english-D" value="D" ${takeEnglish === "D" ? "checked" : ""}>
+                    <label class="form-check-label" for="english-D">D</label>
+                </div>
+
+                <br>
+
+                <label class="top-space bottom-space">-実習</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="practical" id="practical-none" value="" ${!takePractical ? "checked" : ""}>
+                    <label class="form-check-label" for="practical-none">なし</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="practical" id="practical-cube" value="キューブ" ${takePractical === "キューブ" ? "checked" : ""}>
+                    <label class="form-check-label" for="practical-cube">キューブ</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="practical" id="practical-tv" value="テレ朝" ${takePractical === "テレ朝" ? "checked" : ""}>
+                    <label class="form-check-label" for="practical-tv">テレ朝</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="practical" id="practical-onward" value="オンワード" ${takePractical === "オンワード" ? "checked" : ""}>
+                    <label class="form-check-label" for="practical-onward">オンワード</label>
+                </div>
+
+            </div>
         `;
 
         logoutBtn.style.display = "inline";
         loginBtn.style.display = "none";
 
         if (data.autoOpen) {
-            setAutoOpenTimer();
+            setAutoOpenTimer(takeEnglish, takePractical);
         }
 
         selectedIds = new Set(data.selectedCells || []);
@@ -150,6 +235,7 @@ auth.onAuthStateChanged(async user => {
 
     // 自動出席URL
     const autoOpenRadios = document.querySelectorAll('input[name="auto-open"]');
+    const englishPracticalSettings = document.getElementById('english-practical-settings');
 
     autoOpenRadios.forEach(radio => {
         radio.addEventListener('change', () => {
@@ -157,6 +243,36 @@ auth.onAuthStateChanged(async user => {
                 const selectedValue = document.querySelector('input[name="auto-open"]:checked').value;
                 db.collection('users').doc(userId).set({
                     autoOpen: selectedValue === "はい"
+                }, { merge: true });
+
+                if (selectedValue === "はい") {
+                    englishPracticalSettings.style.display = 'block';
+                } else {
+                    englishPracticalSettings.style.display = 'none';
+                }
+            }
+        });
+    });
+
+    const englishRadios = document.querySelectorAll('input[name="english"]');
+    englishRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (userId) {
+                const selectedEnglish = document.querySelector('input[name="english"]:checked').value;
+                db.collection('users').doc(userId).set({
+                    takeEnglish: selectedEnglish
+                }, { merge: true });
+            }
+        });
+    });
+
+    const practicalRadios = document.querySelectorAll('input[name="practical"]');
+    practicalRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (userId) {
+                const selectedPractical = document.querySelector('input[name="practical"]:checked').value;
+                db.collection('users').doc(userId).set({
+                    takePractical: selectedPractical
                 }, { merge: true });
             }
         });
