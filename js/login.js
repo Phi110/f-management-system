@@ -163,7 +163,7 @@ auth.onAuthStateChanged(user => {
             const takePractical = data.takePractical || "";
 
             userInfo.innerHTML = `
-                <h4 class="bottom-space">ログイン中: ${user.displayName} (${user.email})</h3>
+                <h4 class="bottom-space">ログイン中: ${user.displayName} (${user.email})</h4>
 
                 <label class="top-space bottom-space">5 分前に自動で出席 URL を開く</label><br>
                 <div class="form-check form-check-inline">
@@ -221,19 +221,18 @@ auth.onAuthStateChanged(user => {
             const englishPracticalSettings = userInfo.querySelector('#english-practical-settings');
 
             autoOpenRadios.forEach(radio => {
-            radio.addEventListener('change', () => {
-                const val = userInfo.querySelector('input[name="auto-open"]:checked').value;
-                // Firestore に保存
-                db.collection('users').doc(userId).set(
-                { autoOpen: val === "はい" },
-                { merge: true }
-                );
-                // 英語／実習セクションの表示切替
-                englishPracticalSettings.style.display = (val==="はい" ? 'block' : 'none');
-            });
+                radio.addEventListener('change', e => {
+                    console.log("[debug] auto-open changed:", e.target.value);
+                    const enabled = (e.target.value === "はい");
+                    db.collection('users')
+                        .doc(userId)
+                        .set({ autoOpen: enabled }, { merge: true })
+                        .then(() => console.log("[debug] autoOpen saved:", enabled))
+                        .catch(err => console.error("[debug] autoOpen save error:", err));
+                    englishPracticalSettings.style.display = enabled ? 'block' : 'none';
+                });
             });
 
-            // 英語ラジオ
             userInfo.querySelectorAll('input[name="english"]').forEach(radio => {
             radio.addEventListener('change', () => {
                 const v = userInfo.querySelector('input[name="english"]:checked').value;
@@ -241,7 +240,6 @@ auth.onAuthStateChanged(user => {
             });
             });
 
-            // 実習ラジオ
             userInfo.querySelectorAll('input[name="practical"]').forEach(radio => {
             radio.addEventListener('change', () => {
                 const v = userInfo.querySelector('input[name="practical"]:checked').value;
@@ -268,27 +266,6 @@ auth.onAuthStateChanged(user => {
         logoutBtn.style.display = "none";
         loginBtn.style.display = "inline";
     }
-
-    // 自動出席URL
-    const autoOpenRadios = document.querySelectorAll('input[name="auto-open"]');
-    const englishPracticalSettings = document.getElementById('english-practical-settings');
-
-    autoOpenRadios.forEach(radio => {
-        radio.addEventListener('change', () => {
-            if (userId) {
-                const selectedValue = document.querySelector('input[name="auto-open"]:checked').value;
-                db.collection('users').doc(userId).set({
-                    autoOpen: selectedValue === "はい"
-                }, { merge: true });
-
-                if (selectedValue === "はい") {
-                    englishPracticalSettings.style.display = 'block';
-                } else {
-                    englishPracticalSettings.style.display = 'none';
-                }
-            }
-        });
-    });
 
     const englishRadios = document.querySelectorAll('input[name="english"]');
     englishRadios.forEach(radio => {
