@@ -35,22 +35,22 @@ class Assignment {
         if (dateArray[0].length == 0) {
             return [[], []];
         }
-        let max = dateArray[0][0];
+        let min = dateArray[0][0];
         let index = dateArray[1][0];
-        let maxIndex = 0;
+        let minIndex = 0;
         for (let i = 1; i < dateArray[0].length; i++) {
-            if (dateArray[0][i] > max) {
-                max = dateArray[0][i];
+            if (dateArray[0][i] < min) {
+                min = dateArray[0][i];
                 index = dateArray[1][i];
-                maxIndex = i;
+                minIndex = i;
             }
         }
-        let newDateArray = dateArray[0].slice(0, maxIndex).concat(dateArray[0].slice(maxIndex+1));
-        let newIndexArray = dateArray[1].slice(0, maxIndex).concat(dateArray[1].slice(maxIndex+1));
-        let shuffledArray = this.sort([newDateArray, newIndexArray]);
-        let shuffledDateArray = shuffledArray[0].concat(max);
-        let shuffledIndexArray = shuffledArray[1].concat(index);
-        return [shuffledDateArray, shuffledIndexArray];
+        let newDateArray = dateArray[0].slice(0, minIndex).concat(dateArray[0].slice(minIndex+1));
+        let newIndexArray = dateArray[1].slice(0, minIndex).concat(dateArray[1].slice(minIndex+1));
+        let sortedArray = this.sort([newDateArray, newIndexArray]);
+        let sortedDateArray = [min].concat(sortedArray[0]);
+        let sortedIndexArray = [index].concat(sortedArray[1]);
+        return [sortedDateArray, sortedIndexArray];
     }
 
     get to_table() {

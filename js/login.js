@@ -90,7 +90,7 @@ function setAutoOpenTimer(takeEnglish, takePractical) {
     
     if (takeEnglish === "A") {
         const englishASchedule = {
-            0: [{ time: "10:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79016" }],
+            1: [{ time: "10:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79016" }],
             5: [{ time: "10:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79016" }]
         };
         if (englishASchedule[today]) {
