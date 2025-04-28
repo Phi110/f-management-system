@@ -98,8 +98,8 @@ function setAutoOpenTimer(takeEnglish, takePractical) {
         }
     } else if (takeEnglish === "D") {
         const englishDSchedule = {
-            1: [{ time: "09:05", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78804" }],
-            5: [{ time: "09:05", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78804" }]
+            1: [{ time: "09:10", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78804" }],
+            5: [{ time: "09:10", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78804" }]
         };
         if (englishDSchedule[today]) {
             scheduleByDay[today].push(...englishDSchedule[today]);
@@ -151,10 +151,13 @@ function setAutoOpenTimer(takeEnglish, takePractical) {
 
 auth.onAuthStateChanged(user => {
     if (user) {
+        if (!user) {
+            return;
+        }
+
         userId = user.uid;
         db.collection("users").doc(userId).get().then(doc => {
             const data = doc.data() || {};
-
             const autoOpen = data.autoOpen !== undefined ? data.autoOpen : true;
             const takeEnglish = data.takeEnglish || "";
             const takePractical = data.takePractical || "";
@@ -213,6 +216,38 @@ auth.onAuthStateChanged(user => {
 
             logoutBtn.style.display = "inline";
             loginBtn.style.display = "none";
+
+            const autoOpenRadios = userInfo.querySelectorAll('input[name="auto-open"]');
+            const englishPracticalSettings = userInfo.querySelector('#english-practical-settings');
+
+            autoOpenRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                const val = userInfo.querySelector('input[name="auto-open"]:checked').value;
+                // Firestore に保存
+                db.collection('users').doc(userId).set(
+                { autoOpen: val === "はい" },
+                { merge: true }
+                );
+                // 英語／実習セクションの表示切替
+                englishPracticalSettings.style.display = (val==="はい" ? 'block' : 'none');
+            });
+            });
+
+            // 英語ラジオ
+            userInfo.querySelectorAll('input[name="english"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const v = userInfo.querySelector('input[name="english"]:checked').value;
+                db.collection('users').doc(userId).set({ takeEnglish: v }, { merge: true });
+            });
+            });
+
+            // 実習ラジオ
+            userInfo.querySelectorAll('input[name="practical"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const v = userInfo.querySelector('input[name="practical"]:checked').value;
+                db.collection('users').doc(userId).set({ takePractical: v }, { merge: true });
+            });
+            });
 
             if (data.autoOpen) {
                 setAutoOpenTimer(takeEnglish, takePractical);
