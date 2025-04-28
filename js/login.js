@@ -149,84 +149,85 @@ function setAutoOpenTimer(takeEnglish, takePractical) {
     }
 }
 
-auth.onAuthStateChanged(async user => {
+auth.onAuthStateChanged(user => {
     if (user) {
         userId = user.uid;
-        const doc = await db.collection("users").doc(userId).get();
-        const data = doc.data() || {};
+        db.collection("users").doc(userId).get().then(doc => {
+            const data = doc.data() || {};
 
-        const autoOpen = data.autoOpen !== undefined ? data.autoOpen : true;
-        const takeEnglish = data.takeEnglish || "";
-        const takePractical = data.takePractical || "";
+            const autoOpen = data.autoOpen !== undefined ? data.autoOpen : true;
+            const takeEnglish = data.takeEnglish || "";
+            const takePractical = data.takePractical || "";
 
-        userInfo.innerHTML = `
-            <h4 class="bottom-space">ログイン中: ${user.displayName} (${user.email})</h3>
+            userInfo.innerHTML = `
+                <h4 class="bottom-space">ログイン中: ${user.displayName} (${user.email})</h3>
 
-            <label class="top-space bottom-space">5 分前に自動で出席 URL を開く</label><br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="auto-open" id="auto-open-yes" value="はい" ${autoOpen ? "checked" : ""}>
-                <label class="form-check-label" for="auto-open-yes">はい</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="auto-open" id="auto-open-no" value="いいえ" ${!autoOpen ? "checked" : ""}>
-                <label class="form-check-label" for="auto-open-no">いいえ</label>
-            </div>
-
-            <div id="english-practical-settings" style="display: ${autoOpen ? 'block' : 'none'};">
-
-                <label class="top-space bottom-space">-英語</label><br>
+                <label class="top-space bottom-space">5 分前に自動で出席 URL を開く</label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="english" id="english-none" value="" ${!takeEnglish ? "checked" : ""}>
-                    <label class="form-check-label" for="english-none">なし</label>
+                    <input class="form-check-input" type="radio" name="auto-open" id="auto-open-yes" value="はい" ${autoOpen ? "checked" : ""}>
+                    <label class="form-check-label" for="auto-open-yes">はい</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="english" id="english-A" value="A" ${takeEnglish === "A" ? "checked" : ""}>
-                    <label class="form-check-label" for="english-A">A</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="english" id="english-D" value="D" ${takeEnglish === "D" ? "checked" : ""}>
-                    <label class="form-check-label" for="english-D">D</label>
+                    <input class="form-check-input" type="radio" name="auto-open" id="auto-open-no" value="いいえ" ${!autoOpen ? "checked" : ""}>
+                    <label class="form-check-label" for="auto-open-no">いいえ</label>
                 </div>
 
-                <br>
+                <div id="english-practical-settings" style="display: ${autoOpen ? 'block' : 'none'};">
 
-                <label class="top-space bottom-space">-実習</label><br>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="practical" id="practical-none" value="" ${!takePractical ? "checked" : ""}>
-                    <label class="form-check-label" for="practical-none">なし</label>
+                    <label class="top-space bottom-space">-英語</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="english" id="english-none" value="" ${!takeEnglish ? "checked" : ""}>
+                        <label class="form-check-label" for="english-none">なし</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="english" id="english-A" value="A" ${takeEnglish === "A" ? "checked" : ""}>
+                        <label class="form-check-label" for="english-A">A</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="english" id="english-D" value="D" ${takeEnglish === "D" ? "checked" : ""}>
+                        <label class="form-check-label" for="english-D">D</label>
+                    </div>
+
+                    <br>
+
+                    <label class="top-space bottom-space">-実習</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="practical" id="practical-none" value="" ${!takePractical ? "checked" : ""}>
+                        <label class="form-check-label" for="practical-none">なし</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="practical" id="practical-cube" value="キューブ" ${takePractical === "キューブ" ? "checked" : ""}>
+                        <label class="form-check-label" for="practical-cube">キューブ</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="practical" id="practical-tv" value="テレ朝" ${takePractical === "テレ朝" ? "checked" : ""}>
+                        <label class="form-check-label" for="practical-tv">テレ朝</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="practical" id="practical-onward" value="オンワード" ${takePractical === "オンワード" ? "checked" : ""}>
+                        <label class="form-check-label" for="practical-onward">オンワード</label>
+                    </div>
+
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="practical" id="practical-cube" value="キューブ" ${takePractical === "キューブ" ? "checked" : ""}>
-                    <label class="form-check-label" for="practical-cube">キューブ</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="practical" id="practical-tv" value="テレ朝" ${takePractical === "テレ朝" ? "checked" : ""}>
-                    <label class="form-check-label" for="practical-tv">テレ朝</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="practical" id="practical-onward" value="オンワード" ${takePractical === "オンワード" ? "checked" : ""}>
-                    <label class="form-check-label" for="practical-onward">オンワード</label>
-                </div>
+            `;
 
-            </div>
-        `;
+            logoutBtn.style.display = "inline";
+            loginBtn.style.display = "none";
 
-        logoutBtn.style.display = "inline";
-        loginBtn.style.display = "none";
+            if (data.autoOpen) {
+                setAutoOpenTimer(takeEnglish, takePractical);
+            }
 
-        if (data.autoOpen) {
-            setAutoOpenTimer(takeEnglish, takePractical);
-        }
+            selectedIds = new Set(data.selectedCells || []);
+        
+            document.querySelectorAll('input[type="checkbox"]').forEach(box => {
+                const id = box.dataset.id;
+                box.checked = selectedIds.has(id);
+            });
 
-        selectedIds = new Set(data.selectedCells || []);
-    
-        document.querySelectorAll('input[type="checkbox"]').forEach(box => {
-            const id = box.dataset.id;
-            box.checked = selectedIds.has(id);
+            updateRowAppearance();
+            checkAllTasksCompleted();
         });
-
-        updateRowAppearance();
-        checkAllTasksCompleted();
     } else {
         userInfo.textContent = "ログインしていません。";
         logoutBtn.style.display = "none";
