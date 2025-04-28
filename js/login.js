@@ -164,7 +164,7 @@ auth.onAuthStateChanged(user => {
         userId = user.uid;
         db.collection("users").doc(userId).get().then(doc => {
             const data = doc.data() || {};
-            const autoOpen = data.autoOpen !== undefined ? data.autoOpen : true;
+            const autoOpen = data.autoOpen !== undefined ? data.autoOpen : false;
             const takeEnglish = data.takeEnglish || "";
             const takePractical = data.takePractical || "";
 
@@ -174,11 +174,11 @@ auth.onAuthStateChanged(user => {
                 <label class="top-space bottom-space">5 分前に自動で出席 URL を開く</label><br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="auto-open" id="auto-open-yes" value="はい" ${autoOpen ? "checked" : ""}>
-                    <label class="form-check-label" for="auto-open-yes">はい</label>
+                    <label class="form-check-label" for="auto-open-yes">オン</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="auto-open" id="auto-open-no" value="いいえ" ${!autoOpen ? "checked" : ""}>
-                    <label class="form-check-label" for="auto-open-no">いいえ</label>
+                    <label class="form-check-label" for="auto-open-no">オフ</label>
                 </div>
 
                 <div id="english-practical-settings" style="display: ${autoOpen ? 'block' : 'none'};">
