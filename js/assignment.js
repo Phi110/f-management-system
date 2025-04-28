@@ -57,12 +57,14 @@ class Assignment {
         let tableContent = "";
         let prevDate = "";
         let prevSubject = "";
+
+        let indexArray = [];
         for (let i = 0; i < this.date.length; i++) {
-            let indexArray = [];
-            for (let i = 0; i < this.date.length; i++) {
-                indexArray.push(i);
-            }
-            let newArray = this.sort([this.date, indexArray]);
+            indexArray.push(i);
+        }
+        let newArray = this.sort([this.date, indexArray]);
+
+        for (let i = 0; i < this.date.length; i++) {
             let date = newArray[0][i];
 
             let designatedDate = "";
