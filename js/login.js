@@ -124,8 +124,14 @@ function setAutoOpenTimer(takeEnglish, takePractical) {
         }
     } else if (takePractical === "オンワード") {
         const practicalOnwardSchedule = {
-            3: [{ time: "10:50", url: "https://lms-tokyo.iput.ac.jp/my/courses.php" }],
-            4: [{ time: "13:15", url: "https://lms-tokyo.iput.ac.jp/my/courses.php" }]
+            3: [{ time: "10:50", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78880" },
+                { time: "13:15", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78880" },
+                { time: "14:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78880" },
+                { time: "16:35", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78880" }
+            ],
+            4: [{ time: "13:15", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78880" },
+                { time: "14:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78880" }
+            ]
         };
         if (practicalOnwardSchedule[today]) {
             scheduleByDay[today].push(...practicalOnwardSchedule[today]);
