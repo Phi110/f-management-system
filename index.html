@@ -94,8 +94,7 @@
     </div>
 
     <!-- アラート -->
-    <div class="alert alert-primary alert-dismissible fade show text-center" role="alert">
-        <a href="#" class="alert-link">ログイン</a>の自動出席URLのデフォルトをオフにしました。オンにすることで利用できます
+    <div id="alert" class="alert alert-primary alert-dismissible fade show text-center" role="alert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
@@ -105,7 +104,7 @@
         <div class="starter-template">
 
             <div class="small-text bottom-space">
-                Ver. 2025.04.27. 伊東 颯紀
+                Ver. 2025.05.02. 伊東 颯紀
             </div>
 
         </div>
@@ -402,7 +401,7 @@
                     </div> -->
                     <div class="carousel-item">
                         <h4>お知らせ</h4>
-                        <p>
+                        <p id="notification">
                             # 04/27 (日) 23:27 | 自動 URL 読み込み に 英語、実習のオプションをつけました。細かい要望等あれば<a href="#enquete" class="link-offset-2 link-underline link-underline-opacity-0">アンケート</a>にお願いします<br>
                             # 04/27 (日) 04:11 | <a href="#" data-bs-target="#modalLogin" data-bs-toggle="modal" class="link-offset-2 link-underline link-underline-opacity-0 text-danger">ログイン</a>すると、自動で出席 URL を開くようにしました（なしにも設定できます）<br>
                             # 04/27 (日) 00:54 | 時間割モーダルにページネーションを採用しました<br>
@@ -924,7 +923,6 @@
     <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
 
     <script src="js/fms.js" type="module"></script>
-    <script src="js/assignment.js" type="module"></script>
     <script src="js/attendance.js" type="module"></script>
     <script src="js/form.js" type="module"></script>
     <script src="js/login.js" type="module"></script>

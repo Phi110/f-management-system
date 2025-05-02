@@ -122,3 +122,49 @@ if (day == 3) {
 } else if (day == 4) {
     modalPracticeDescribe.innerHTML = `<img src="images/internship/thursday.webp" class="img-fluid">`;
 }
+
+
+// 課題
+import { Assignment } from "../module/sentence.js";
+// お知らせ
+import { Notification } from "../module/sentence.js";
+// アラート
+import { Alert } from "../module/sentence.js";
+
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('./csv/assignment.csv')
+    .then(response => response.text())
+    .then(data => parseAssignmentCSV(data));
+
+    fetch('./csv/notification.csv')
+    .then(response => response.text())
+    .then(data => parseNotificationCSV(data));
+
+    fetch('./csv/alert.csv')
+    .then(response => response.text())
+    .then(data => parseAlertCSV(data));
+});
+
+function parseAssignmentCSV(data) {
+    const a = new Assignment();
+    a.paragraph = data;
+    a.processing();
+    let assignmentTable = document.getElementById(`assignment-table`);
+    assignmentTable.innerHTML = a.paragraph;
+}
+
+function parseNotificationCSV(data) {
+    const n = new Notification();
+    n.paragraph = data;
+    n.processing();
+    let notification = document.getElementById(`notification`);
+    notification.innerHTML = n.paragraph;
+}
+
+function parseAlertCSV(data) {
+    const a = new Alert();
+    a.paragraph = data;
+    a.processing();
+    let alert = document.getElementById(`alert`);
+    alert.innerHTML += a.paragraph;
+}

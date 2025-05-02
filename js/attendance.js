@@ -1,7 +1,7 @@
 /* attendance.js */
 
 // 出席
-import { Attendance } from "../module/attendance.js";
+import { Attendance } from "../module/sentence.js";
 
 const currentTime = new Date();
 const day = currentTime.getDay();
