@@ -33,16 +33,29 @@ class Sentence {
                     let datum = String(Number(date[i]));
                     date[i] = datum.length == 1 && addZero ? '0' + datum: datum;
                 }
-                return `${date[0]}/${date[1]} (${wdays[wday]}) `;
+                return ` ${date[0]}/${date[1]} (${wdays[wday]}) `;
             case /:/.test(numbers):
                 let time = numbers.split(':');
                 for (let i = 0; i < time.length; i++) {
                     let datum = String(time[i]);
                     time[i] = datum.length == 1 && addZero ? '0' + datum: datum;
                 }
-                return `${time[0]}:${time[1]} | `;
+                return ` ${time[0]}:${time[1]} | `;
             default:
                 return false;
+        }
+    }
+
+    whatColor(word) {
+        switch(word) {
+            case "red":
+                return "text-danger";
+            case "black":
+                return "text-dark";
+            case "gray":
+                return "text-secondary";
+            default:
+                return "";
         }
     }
 }
@@ -220,24 +233,30 @@ export class Notification extends Sentence {
         for (let i = this.sentences.length - 1; i >= 0; i--) {
             let element = this.sentences[i].split(',');
             let processee = "# ";
+            let color;
             for (let j = 0; j < element.length; j++) {
                 let number;
+                if (color = this.whatColor(element[j])) {
+                    j++;
+                }
                 if ((number = this.addWday(element[j], true))) {
-                    processee += number;
+                    processee += `<span class="${color}">${number}</span>`;
+                    color = "";
                     continue;
                 }
                 switch (element[j]) {
                     case "link":
-                        processee += ` <a href="${element[j + 2]}" class="link-offset-2 link-underline link-underline-opacity-0" target="_blank">${element[j + 1]}</a> `;
+                        processee += ` <a href="${element[j + 2]}" class="${color} link-offset-2 link-underline link-underline-opacity-0" target="_blank">${element[j + 1]}</a> `;
                         j += 2;
                         break;
                     case "modal":
-                        processee += ` <a href="#" data-bs-target="${element[j + 2]}" data-bs-toggle="modal" class="link-offset-2 link-underline link-underline-opacity-0">${element[j + 1]}</a> `;
+                        processee += ` <a href="#" data-bs-target="${element[j + 2]}" data-bs-toggle="modal" class="${color} link-offset-2 link-underline link-underline-opacity-0">${element[j + 1]}</a> `;
                         j += 2;
                         break;
                     default:
-                        processee += element[j];
+                        processee += `<span class="${color}">${element[j]}</span>`;
                 }
+                color = "";
             }
             this.processees += processee + `<br>`;
         }
