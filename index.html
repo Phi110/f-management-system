@@ -399,40 +399,11 @@
                         <h4>昨年度時間割</h4>
                         <img src="images/curriculum.2024.webp" class="d-block w-100">
                     </div> -->
-                    <div class="carousel-item">
+                    <div class="carousel-item" data-bs-interval="10000">
                         <h4>お知らせ</h4>
-                        <p id="notification">
-                            # 04/27 (日) 23:27 | 自動 URL 読み込み に 英語、実習のオプションをつけました。細かい要望等あれば<a href="#enquete" class="link-offset-2 link-underline link-underline-opacity-0">アンケート</a>にお願いします<br>
-                            # 04/27 (日) 04:11 | <a href="#" data-bs-target="#modalLogin" data-bs-toggle="modal" class="link-offset-2 link-underline link-underline-opacity-0 text-danger">ログイン</a>すると、自動で出席 URL を開くようにしました（なしにも設定できます）<br>
-                            # 04/27 (日) 00:54 | 時間割モーダルにページネーションを採用しました<br>
-                            # 04/27 (日) 00:51 | 課題欄のチェックボックスを押すとグレーアウトするようにしました<br>
-                            # 04/27 (日) 00:49 | <a href="#enquete" class="link-offset-2 link-underline link-underline-opacity-0">アンケート</a>が送信できない不具合を解消（ログインしないと送信できないように）しました<br>
-                            # 04/16 (水) 13:46 | 地域共創の<a href="#" data-bs-target="#modalPractice" data-bs-toggle="modal" class="link-offset-2 link-underline link-underline-opacity-0">教室一覧</a>を出席のところに掲示しました<br>
-                            # 04/11 (金) 16:08 | 課題欄にチェックボックスを配置しました。先にログインすることで情報を保存できます<br>
-                            # 04/08 (火) 12:10 | 授業開始時間の 10分前 に自動でリロードするようにしました。<br>
-                            # 04/06 (日) 04:22 | レイアウトを変えました。<a href="#" class="link-offset-2 link-underline link-underline-opacity-0">時間割</a>を見やすくしました<br>
-                            # 04/05 (土) 18:38 | まだ設定できていない出席については <a href="#attendance-url-accordion" class="link-offset-2 link-underline link-underline-opacity-0">出席URL</a> へ入力して頂ければ反映できます<br>
-                            # 03/30 (日) 23:32 | 京都橘大学のHPに <a class="link-offset-2 link-underline link-underline-opacity-0" href="images/名刺の作り方(Word).pdf">
-                                名刺の作り方(Word)
-                            </a> が掲載されていたのでよかったら参考にしてください<br>
-                            # 03/26 (水) 15:53 | <a href="#enquete" class="text-danger link-offset-2 link-underline link-underline-opacity-0">科目調査</a>アンケートへの回答をお願いします<br>
-                            # 03/19 (水) 01:05 | 履修登録期間です。忘れずに行いましょう<br>
-                            # 03/18 (火) 00:20 | フォームを正常に送信できなかったので修正しました<br>
-                            # 03/17 (月) 04:15 | <a href="#request" class="text-danger link-offset-2 link-underline link-underline-opacity-0">リクエスト</a>フォームが使用可能になりました<br>
-                            # 03/14 (金) 19:11 | 出席システムを仮導入しました。時間割を整理して掲示しました<br>
-                            # 03/02 (日) 23:03 | 春ですね～ <i class="bi bi-flower2 pink"></i> 。色々まとめました<br>
-                            # 02/17 (月) 10:24 | "2/19(水) 実習カリキュラム説明会" は新2年生参加必須なので忘れずに参加しましょう<br>
-                            # 02/10 (月) 12:19 | <span class="right-space bottom-space"> <a class="btn btn-primary" href="https://discord.gg/E5CEUBCY" target="_blank">
-                                <i class="bi bi-discord"></i> 勉強会 </a> </span> みんなで勉強します。出入り自由です<br>
-                            # 02/08 (土) 21:24 | C++ の 後日談 を追加しました<br>
-                            # 02/07 (金) 12:08 | 今日は 3,4 限が<span class="text-danger">テスト</span>です。後期ラスト頑張りましょう！<br>
-                            # 02/06 (木) 13:23 | プロマネ直前テスト対策を追加しました。<br>
-                            # 02/06 (木) 09:15 | 今日は 2,4,5 限が<span class="text-danger">テスト</span>です。通知設定の見直しをしましょう<br>
-                            # 02/05 (水) 15:21 | C++ の Test (記述) 問６(クラス) を追加しました<br>
-                            # 02/05 (水) 06:10 | C++ の記述 (コーディング) テストを実装しました<br>
-                            # 02/05 (水) 01:34 | カルーセル (これ) を時間でスライドするようにしました<br>
-                            # 02/05 (水) 01:22 | プロマネ Test3 (記述) の自動採点を実装しました<br>
-                        </p>
+                        <div class="overflow-auto">
+                            <p id="notification"></p>
+                        </div>
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselDark" data-bs-slide="prev">

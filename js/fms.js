@@ -25,28 +25,31 @@ const date = currentTime.getDate();
 const day = currentTime.getDay();
 const hour = currentTime.getHours();
 const minute = currentTime.getMinutes();
-let period = "";
 
-if ((day==0 || day==6)) {
-} else if ((hour==9 && minute>=5) || (hour==10 && minute<45)) {
-    period = 1;
-} else if ((hour==10 && minute>=45) || (hour==11) || (hour==12 && minute<25)) {
-    period = 2;
-} else if ((hour==12 && minute>=25) || (hour==13) || (hour==14 && minute<50)) {
-    period = 3;
-} else if ((hour==14 && minute>=50) || (hour==15) || (hour==16 && minute<30)) {
-    period = 4;
-} else if ((hour==16 && minute>=30) || (hour==17) || (hour==18 && minute<10)) {
-    period = 5;
-} else if ((hour==18 && minute>=10) || (hour==19 && minute<50)) {
-    period = 6;
-} /*else if ((hour==19 && minute>50) || (hour==20) || (hour==21 && minute<=30)) {
-    period = 7;
-} */
+export function calculatePeriod() {
+    switch(true) {
+        case (day==0 || day==6):
+            return "";
+        case (hour==9 && minute>=5) || (hour==10 && minute<45):
+            return 1;
+        case (hour==10 && minute>=45) || (hour==11) || (hour==12 && minute<25):
+            return 2;
+        case (hour==12 && minute>=25) || (hour==13) || (hour==14 && minute<50):
+            return 3;
+        case (hour==14 && minute>=50) || (hour==15) || (hour==16 && minute<30):
+            return 4;
+        case (hour==16 && minute>=30) || (hour==17) || (hour==18 && minute<10):
+            return 5;
+        case (hour==18 && minute>=10) || (hour==19 && minute<50):
+            return 6;
+        default:
+            return "";
+    }
+}
 
-let whatperiod = period;
-if (typeof(period) != 'string') {
-    whatperiod = `(${period}限)`;
+let period;
+if (period = calculatePeriod()) {
+    period = `(${period}限)`;
 }
 
 let li = [month+1, date, hour, minute];
@@ -64,7 +67,7 @@ whattime.innerHTML = `<h2>
     <span class="emphasize">${li[1]}</span> 
     <span class="right-space">(${wday[day]})</span> 
     <span class="emphasize">${li[2]}</span> : 
-    <span class="emphasize">${li[3]}</span> ${whatperiod}
+    <span class="emphasize">${li[3]}</span> ${period}
 </h2>`;
 
 
@@ -97,7 +100,6 @@ reloadPage(13, 10, 0);
 reloadPage(14, 50, 0);
 reloadPage(16, 30, 0);
 reloadPage(18, 10, 0);
-/* reloadPage(19, 50, 0); */
 
 
 // 今週の自習・談話室
@@ -125,11 +127,9 @@ if (day == 3) {
 
 
 // 課題
-import { Assignment } from "../module/sentence.js";
 // お知らせ
-import { Notification } from "../module/sentence.js";
 // アラート
-import { Alert } from "../module/sentence.js";
+import { Assignment, Notification, Alert } from "../module/sentence.js";
 
 document.addEventListener('DOMContentLoaded', function() {
     fetch('./csv/assignment.csv')

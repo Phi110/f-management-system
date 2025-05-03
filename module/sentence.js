@@ -246,7 +246,7 @@ export class Notification extends Sentence {
                 }
                 switch (element[j]) {
                     case "link":
-                        processee += ` <a href="${element[j + 2]}" class="${color} link-offset-2 link-underline link-underline-opacity-0" target="_blank">${element[j + 1]}</a> `;
+                        processee += ` <a href="${element[j + 2]}" class="${color} link-offset-2 link-underline link-underline-opacity-0">${element[j + 1]}</a> `;
                         j += 2;
                         break;
                     case "modal":
