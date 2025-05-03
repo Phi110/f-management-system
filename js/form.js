@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         DG: [],
         DL: [],
         DC: [],
-        共通: [ "英語B", "英語E", "英語F", "英語G", "TOO", "けいはんな", "近藤設備", "歌舞伎町", "3DBiz", "オンワード" ]
+        共通: [ "英語B", "英語E", "英語F", "英語G", "TOO", "けいはんな", "近藤設備", "歌舞伎町", "3DBiz" ]
     }
 
     const whichCourse = {

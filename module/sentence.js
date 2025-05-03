@@ -219,20 +219,20 @@ export class Notification extends Sentence {
     processing() {
         for (let i = this.sentences.length - 1; i >= 0; i--) {
             let element = this.sentences[i].split(',');
-            let processee = "";
+            let processee = "# ";
             for (let j = 0; j < element.length; j++) {
                 let number;
                 if ((number = this.addWday(element[j], true))) {
                     processee += number;
                     continue;
                 }
-                switch (element[j + 1]) {
+                switch (element[j]) {
                     case "link":
-                        processee += ` <a href="${element[j + 2]}" class="link-offset-2 link-underline link-underline-opacity-0">${element[j]}</a> `;
+                        processee += ` <a href="${element[j + 2]}" class="link-offset-2 link-underline link-underline-opacity-0" target="_blank">${element[j + 1]}</a> `;
                         j += 2;
                         break;
                     case "modal":
-                        processee += ` <a href="#" data-bs-target="${element[j + 2]}" data-bs-toggle="modal" class="link-offset-2 link-underline link-underline-opacity-0">${element[j]}</a> `;
+                        processee += ` <a href="#" data-bs-target="${element[j + 2]}" data-bs-toggle="modal" class="link-offset-2 link-underline link-underline-opacity-0">${element[j + 1]}</a> `;
                         j += 2;
                         break;
                     default:
@@ -250,13 +250,13 @@ export class Alert extends Sentence {
         let element = this.sentences[0].split(',');
         let processee = "";
         for (let i = 0; i < element.length; i++) {
-            switch (element[i + 1]) {
+            switch (element[i]) {
                 case "link":
-                    processee += `<a href="${element[i + 2]}" class="alert-link">${element[i]}</a>`;
+                    processee += `<a href="${element[i + 2]}" class="alert-link">${element[i + 1]}</a>`;
                     i += 2;
                     break;
                 case "modal":
-                    processee += `<a href="#" data-bs-target="${element[i + 2]}" data-bs-toggle="modal" class="alert-link">${element[i]}</a>`;
+                    processee += `<a href="#" data-bs-target="${element[i + 2]}" data-bs-toggle="modal" class="alert-link">${element[i + 1]}</a>`;
                     i += 2;
                     break;
                 default:
