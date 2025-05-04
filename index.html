@@ -104,7 +104,7 @@
         <div class="starter-template">
 
             <div class="small-text bottom-space">
-                Ver. 2025.05.03. 伊東 颯紀
+                Ver. 2025.05.05. 伊東 颯紀
             </div>
 
         </div>
@@ -425,8 +425,11 @@
                     <button class="nav-link active" id="nav-assignment-tab" data-bs-toggle="tab" data-bs-target="#nav-assignment" type="button" role="tab" aria-controls="nav-assignment" aria-selected="true">
                         課題
                     </button>
-                    <button class="nav-link" id="nav-calendar-tab" data-bs-toggle="tab" data-bs-target="#nav-calendar" type="button" role="tab" aria-controls="nav-calendar" aria-selected="false">
-                        カレンダー
+                    <button class="nav-link" id="nav-event-tab" data-bs-toggle="tab" data-bs-target="#nav-event" type="button" role="tab" aria-controls="nav-event" aria-selected="false">
+                        イベント
+                    </button>
+                    <button class="nav-link disabled" id="nav-calendar-tab" data-bs-toggle="tab" data-bs-target="#nav-calendar" type="button" role="tab" aria-controls="nav-calendar" aria-selected="false">
+                        カレンダ
                     </button>
                     <button class="nav-link disabled" id="nav-test-tab" data-bs-toggle="tab" data-bs-target="#nav-test" type="button" role="tab" aria-controls="nav-test" aria-selected="false">
                         テスト
@@ -452,6 +455,23 @@
                     <div id="congratulations-message" class="hidden">
                         🎉 すべての課題が完了しました！ 🎉
                     </div>
+
+                </div>
+
+                <div class="tab-pane fade top-space" id="nav-event" role="tabpanel" aria-labelledby="nav-event-tab" tabindex="0">
+                    
+                    <!-- イベント -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-2">日付</th>
+                                <th class="col-sm-2">時間</th>
+                                <th class="col-sm-5">内容</th>
+                                <th class="col-sm-1"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="event-table"></tbody>
+                    </table>
 
                 </div>
 

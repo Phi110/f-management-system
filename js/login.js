@@ -60,6 +60,10 @@ function checkAllTasksCompleted() {
     }
 }
 
+// heart-btn
+const heartButtons = document.querySelectorAll(".heart-btn");
+heartButtons.forEach(btn => btn.disabled = true);
+
 function setAutoOpenTimer(takeEnglish, takePractical) {
     const scheduleByDay = {
         1: [
@@ -339,6 +343,54 @@ auth.onAuthStateChanged(user => {
             }
         });
     });
+
+
+    // ハートボタン
+    heartButtons.forEach(btn => btn.disabled = false);
+
+    heartButtons.forEach(btn => {
+        const itemId = btn.dataset.id;
+        const itemRef = doc(db, "likes", itemId);
+        onSnapshot(itemRef, snap => {
+            if (snap.exists()) {
+                document.getElementById(`like-count-${itemId}`).textContent =
+                    snap.data().totalLikes;
+            }
+        });
+    });
+
+    // クリック処理の設定
+    heartButtons.forEach(btn => {
+        btn.addEventListener("click", async () => {
+            const itemId = btn.dataset.id;
+            const uid = user.uid;
+            const itemRef = doc(db, "likes", itemId);
+            const userLikeRef = doc(db, "likes", itemId, "likedUsers", uid);
+    
+            // ユーザーの既存カウント取得
+            const userSnap = await getDoc(userLikeRef);
+            const userCount = userSnap.exists() ? userSnap.data().count : 0;
+    
+            if (userCount >= 10) {
+                alert("このアイテムには最大10回までしかハートを付けられません。");
+                return;
+            }
+    
+            // トランザクション的に２つを同時更新
+            await updateDoc(itemRef, {
+                totalLikes: increment(1)
+            });
+    
+            if (userSnap.exists()) {
+                await updateDoc(userLikeRef, {
+                    count: increment(1)
+                });
+            } else {
+                await setDoc(userLikeRef, { count: 1 });
+            }
+        });
+    });
+
 
     // フォーム
     document.getElementById('urlForm').addEventListener('submit', async (e) => {

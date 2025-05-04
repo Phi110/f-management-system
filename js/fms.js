@@ -126,15 +126,17 @@ if (day == 3) {
 }
 
 
-// 課題
-// お知らせ
-// アラート
-import { Assignment, Notification, Alert } from "../module/sentence.js";
+// 課題  // イベント  // お知らせ  // アラート
+import { Assignment, Event, Notification, Alert } from "../module/sentence.js";
 
 document.addEventListener('DOMContentLoaded', function() {
     fetch('./csv/assignment.csv')
     .then(response => response.text())
     .then(data => parseAssignmentCSV(data));
+
+    fetch('./csv/event.csv')
+    .then(response => response.text())
+    .then(data => parseEventCSV(data));
 
     fetch('./csv/notification.csv')
     .then(response => response.text())
@@ -151,6 +153,14 @@ function parseAssignmentCSV(data) {
     a.processing();
     let assignmentTable = document.getElementById(`assignment-table`);
     assignmentTable.innerHTML = a.paragraph;
+}
+
+function parseEventCSV(data) {
+    const e = new Event();
+    e.paragraph = data;
+    e.processing();
+    let eventTable = document.getElementById(`event-table`);
+    eventTable.innerHTML = e.paragraph;
 }
 
 function parseNotificationCSV(data) {

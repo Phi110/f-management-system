@@ -1,7 +1,12 @@
+/* sentence.js (module) */
+
+
 const currentTime = new Date();
-let year = currentTime.getFullYear();
-let month = currentTime.getMonth();
-let mday = currentTime.getDate();
+const currentYear = currentTime.getFullYear();
+const currentMonth = currentTime.getMonth();
+const currentMday = currentTime.getDate();
+const currentHour = currentTime.getHours();
+const currentMinute = currentTime.getMinutes();
 let wdays = ["日", "月", "火", "水", "木", "金", "土"];
 
 
@@ -11,7 +16,7 @@ class Sentence {
         this.processees = "";
     }
 
-    set paragraph(sentence) {
+    set paragraph(sentence) {  // "date,first,second\n4/24,r,i\n12/15,r,u\n4/24 20:00,a,i\n"
         let element = sentence.split('\n');
         for (let i = 1; i < element.length; i++) {
             if (element[i]) {
@@ -22,28 +27,6 @@ class Sentence {
 
     get paragraph() {
         return this.processees;
-    }
-
-    addWday(numbers, addZero) {
-        switch(true) {
-            case /\//.test(numbers):
-                let date = numbers.split('/');
-                let wday = (new Date(year, date[0] - 1, date[1])).getDay();
-                for (let i = 0; i < date.length; i++) {
-                    let datum = String(Number(date[i]));
-                    date[i] = datum.length == 1 && addZero ? '0' + datum: datum;
-                }
-                return ` ${date[0]}/${date[1]} (${wdays[wday]}) `;
-            case /:/.test(numbers):
-                let time = numbers.split(':');
-                for (let i = 0; i < time.length; i++) {
-                    let datum = String(time[i]);
-                    time[i] = datum.length == 1 && addZero ? '0' + datum: datum;
-                }
-                return ` ${time[0]}:${time[1]} | `;
-            default:
-                return false;
-        }
     }
 
     whatColor(word) {
@@ -57,6 +40,223 @@ class Sentence {
             default:
                 return "";
         }
+    }
+}
+
+
+class Datetime extends Sentence {
+    constructor() {
+        super();
+        this.history = false;
+    }
+    sort (list) {  // [[4242359, 'r', 'i')], [12152359, 'r', 'u'], [4242200, 'a', 'i']]
+        if (list.length === 0) {
+            return [];
+        }
+        let min = list[0][0];
+        let minIndex = 0;
+        for (let i = 1; i < list.length; i++) {
+            if (list[i][0] < min) {
+                min = list[i][0];
+                minIndex = i;
+            }
+        }
+        let newList = list.slice(0, minIndex).concat(list.slice(minIndex + 1));
+        return [list[minIndex]].concat(this.sort(newList));
+    }
+
+    addWday(month, mday) {  // 4, 24  // 12, 15
+        let date = new Date(currentYear, month - 1, mday);
+        let wday = date.getDay();
+        return `${month}/${mday} (${wdays[wday]})`;
+    }
+
+    toCalenderDate(datetime) {  // 4242200  // 12152359
+        let month = Math.floor(datetime / 1000000);
+        let day = Math.floor(datetime % 1000000 / 10000);
+        let hour = `${Math.floor(datetime % 10000 / 100)}`;
+        let minute = `${datetime % 100}`;
+        let date = this.addWday(month, day);
+        hour = hour.length === 1 ? "0" + hour: hour;
+        minute = minute.length === 1 ? "0" + minute: minute;
+        let time = `${hour}:${minute}`;
+        if (time === "23:59") {
+            return date;  // "12/15 (月)"
+        } else {
+            return date + " " + time;  // "4/24 (木) 22:00"
+        }
+    }
+
+    toNumberDate(sentence, history) {  // "4/24 22:00"  // "12/15"
+        let datetimes = sentence.split(' ');
+        let dates = datetimes[0].split('/');
+        let times;
+        try {
+            times = datetimes[1].split(':');
+        } catch {
+            times = ['23', '59'];
+        }
+        
+        let settedDatetime = Number(dates[0]) * 1000000 + Number(dates[1]) * 10000 + Number(times[0]) * 100 + Number(times[1]);
+        let currentDatetime = (currentMonth + 1) * 1000000 + currentMday * 10000 + currentHour * 100 + currentMinute;
+        if (settedDatetime < currentDatetime && !history) {
+            return 0;
+        } else {
+            return settedDatetime;  // 4242200  // 12152359
+        }
+    }
+
+    refine() {  // ["4/24,r,i", "12/15,r,u", "4/24 20:00,a,i"]
+        let shapedList = [];
+        for (let i = 0; i < this.sentences.length; i++) {
+            let cells = this.sentences[i].split(',');
+            if (cells[0] = this.toNumberDate(cells[0], this.history)) {
+                shapedList.push(cells);
+            } else {
+                continue;
+            }
+        }
+        shapedList = this.sort(shapedList);
+        for (let i = 0; i < shapedList.length; i++) {
+            shapedList[i][0] = this.toCalenderDate(shapedList[i][0]);
+        }
+        this.sentences = shapedList;  // [['4/24 (木) 20:00','a','i'], ['4/24 (木)','r','i'], ['12/15 (月)','r','u']]
+    }
+}
+
+
+export class Assignment extends Datetime {
+    processing() {
+        this.refine();  // this.sentences = [['4/24 (木) 20:00','a','i'], ['4/24 (木)','r','i'], ['12/15 (月)','r','u']]
+        let table = "", prevDate = "", prevSubject = "";
+        for (let i = 0; i < this.sentences.length; i++) {
+            let list = this.sentences[i];
+
+            let date = list[0];
+            let subject = list[1];
+            if (date === prevDate) {
+                date = "";
+                if (subject === prevSubject) {
+                    subject = "";
+                }
+            }
+            let content = list[2];
+            if (list[3] != "") {
+                content = `
+                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="${list[3]}" target="_blank">
+                        ${content}
+                    </a>
+                `;
+            }
+            let id = list[4];
+
+            table += `
+                <tr data-id="${id}">
+                    <td>${date}</td>
+                    <td>${subject}</td>
+                    <td>
+                        ${content}
+                    </td>
+                    <td>
+                        <input class="form-check-input" type="checkbox" data-id="${id}">
+                    </td>
+                </tr>
+            `;
+
+            prevDate = date;
+            prevSubject = subject;
+        }
+        this.processees += table;
+    }
+}
+
+
+export class Event extends Datetime {
+    processing() {
+        this.refine();  // this.sentences = [['4/24 (木) 20:00','a','i'], ['4/24 (木)','r','i'], ['12/15 (月)','r','u']]
+        let table = "", prevDate = "";
+        for (let i = 0; i < this.sentences.length; i++) {
+            let list = this.sentences[i];
+
+            let date = list[0];
+            if (date === prevDate) {
+                date = "";
+            }
+            let time = list[1], content = list[2], id = list[3];
+
+            table += `
+                <tr>
+                    <td>${date}</td>
+                    <td>${time}</td>
+                    <td>${content}</td>
+                    <td>
+                        
+                    </td>
+                </tr>
+            `;
+            /* <button class="btn btn-outline-danger heart-btn" data-id="${id}" disabled>
+                <i class="bi bi-heart"></i>
+            </button>
+            <span id="like-count-item${i}">0</span> */
+
+            prevDate = date;
+        }
+        this.processees += table;
+    }
+}
+
+
+export class Notification extends Datetime {
+    processing() {
+        this.history = true;
+        this.refine();  // this.sentences = [['4/24 (木) 20:00','a','i'], ['4/24 (木)','r','i'], ['12/15 (月)','r','u']]
+        for (let i = this.sentences.length - 1; i >= 0; i--) {
+            let list = this.sentences[i];
+            let processee = `# ${list[0]} | `;
+            let color;
+            for (let j = 1; j < list.length; j++) {
+                if (color = this.whatColor(list[j])) {
+                    j++;
+                }
+                switch (list[j]) {
+                    case "link":
+                        processee += ` <a href="${list[j + 2]}" class="${color} link-offset-2 link-underline link-underline-opacity-0">${list[j + 1]}</a> `;
+                        j += 2;
+                        break;
+                    case "modal":
+                        processee += ` <a href="#" data-bs-target="${list[j + 2]}" data-bs-toggle="modal" class="${color} link-offset-2 link-underline link-underline-opacity-0">${list[j + 1]}</a> `;
+                        j += 2;
+                        break;
+                    default:
+                        processee += `<span class="${color}">${list[j]}</span>`;
+                }
+                color = "";
+            }
+            this.processees += processee + `<br>`;
+        }
+    }
+}
+
+
+export class Alert extends Sentence {
+    processing() {
+        let list = this.sentences[0].split(',');
+        let processee = "";
+        for (let i = 0; i < list.length; i++) {
+            switch (list[i]) {
+                case "link":
+                    processee += `<a href="${list[i + 2]}" class="alert-link">${list[i + 1]}</a>`;
+                    i += 2;
+                    break;
+                case "modal":
+                    processee += `<a href="#" data-bs-target="${list[i + 2]}" data-bs-toggle="modal" class="alert-link">${list[i + 1]}</a>`;
+                    i += 2;
+                    break;
+                default:
+                    processee += list[i];
+            }
+        }
+        this.processees += processee;
     }
 }
 
@@ -123,165 +323,5 @@ export class Attendance {
             );
         }
         return templates;
-    }
-}
-
-
-export class Assignment extends Sentence {
-    constructor() {
-        super();
-        this.date = [];
-        this.subject = [];
-        this.content = [];
-        this.url = [];
-        this.id = [];
-    }
-
-    sort(dateArray) {
-        if (dateArray[0].length == 0) {
-            return [[], []];
-        }
-        let min = dateArray[0][0];
-        let index = dateArray[1][0];
-        let minIndex = 0;
-        for (let i = 1; i < dateArray[0].length; i++) {
-            if (dateArray[0][i] < min) {
-                min = dateArray[0][i];
-                index = dateArray[1][i];
-                minIndex = i;
-            }
-        }
-        let newDateArray = dateArray[0].slice(0, minIndex).concat(dateArray[0].slice(minIndex+1));
-        let newIndexArray = dateArray[1].slice(0, minIndex).concat(dateArray[1].slice(minIndex+1));
-        let sortedArray = this.sort([newDateArray, newIndexArray]);
-        let sortedDateArray = [min].concat(sortedArray[0]);
-        let sortedIndexArray = [index].concat(sortedArray[1]);
-        return [sortedDateArray, sortedIndexArray];
-    }
-
-    processing() {
-        for (let i = 0; i < this.sentences.length; i++) {
-            let sentence = this.sentences[i].split(',');
-            let numberDates = sentence[0].split('/');
-            let numberDate = Number(numberDates[0]) * 100 + Number(numberDates[1]);
-            let date = (month + 1) * 100 + mday;
-            if (numberDate < date) {
-                continue;
-            }
-            this.date.push(numberDate);
-            this.subject.push(sentence[1]);
-            this.content.push(sentence[2]);
-            this.url.push(sentence[3]);
-            this.id.push(sentence[4]);
-        }
-
-        let tableContent = "";
-        let prevDate = "";
-        let prevSubject = "";
-
-        let indexArray = [];
-        for (let i = 0; i < this.date.length; i++) {
-            indexArray.push(i);
-        }
-        let newArray = this.sort([this.date, indexArray]);
-
-        for (let i = 0; i < this.date.length; i++) {
-            let date = newArray[0][i];
-
-            let designatedDate = "";
-            if (date != prevDate) {
-                let datum = String(date);
-                datum = datum.length == 3 ? datum.slice(0, 1) + '/' + datum.slice(1): datum.slice(0, 2) + '/' + datum.slice(2);
-                designatedDate = this.addWday(datum, false);
-            }
-
-            let subject = `${this.subject[newArray[1][i]]}`;
-            if (subject == prevSubject && date == prevDate) {
-                subject = "";
-            }
-
-            let newContent = `${this.content[newArray[1][i]]}`;
-            if (this.url[newArray[1][i]] != "") {
-                newContent =
-                `<a class="link-offset-2 link-underline link-underline-opacity-0" href="${this.url[newArray[1][i]]}" target="_blank">
-                    ${newContent}
-                </a>`;
-            }
-
-            tableContent += 
-            `<tr data-id="${this.id[newArray[1][i]]}">
-                <td>${designatedDate}</td>
-                <td>${subject}</td>
-                <td>
-                    ${newContent}
-                </td>
-                <td>
-                    <input class="form-check-input" type="checkbox" data-id="${this.id[newArray[1][i]]}">
-                </td>
-            </tr>`;
-
-            prevDate = date;
-            prevSubject = subject;
-        }
-        this.processees += tableContent;
-    }
-}
-
-
-export class Notification extends Sentence {
-    processing() {
-        for (let i = this.sentences.length - 1; i >= 0; i--) {
-            let element = this.sentences[i].split(',');
-            let processee = "# ";
-            let color;
-            for (let j = 0; j < element.length; j++) {
-                let number;
-                if (color = this.whatColor(element[j])) {
-                    j++;
-                }
-                if ((number = this.addWday(element[j], true))) {
-                    processee += `<span class="${color}">${number}</span>`;
-                    color = "";
-                    continue;
-                }
-                switch (element[j]) {
-                    case "link":
-                        processee += ` <a href="${element[j + 2]}" class="${color} link-offset-2 link-underline link-underline-opacity-0">${element[j + 1]}</a> `;
-                        j += 2;
-                        break;
-                    case "modal":
-                        processee += ` <a href="#" data-bs-target="${element[j + 2]}" data-bs-toggle="modal" class="${color} link-offset-2 link-underline link-underline-opacity-0">${element[j + 1]}</a> `;
-                        j += 2;
-                        break;
-                    default:
-                        processee += `<span class="${color}">${element[j]}</span>`;
-                }
-                color = "";
-            }
-            this.processees += processee + `<br>`;
-        }
-    }
-}
-
-
-export class Alert extends Sentence {
-    processing() {
-        let element = this.sentences[0].split(',');
-        let processee = "";
-        for (let i = 0; i < element.length; i++) {
-            switch (element[i]) {
-                case "link":
-                    processee += `<a href="${element[i + 2]}" class="alert-link">${element[i + 1]}</a>`;
-                    i += 2;
-                    break;
-                case "modal":
-                    processee += `<a href="#" data-bs-target="${element[i + 2]}" data-bs-toggle="modal" class="alert-link">${element[i + 1]}</a>`;
-                    i += 2;
-                    break;
-                default:
-                    processee += element[i];
-            }
-        }
-        this.processees += processee;
     }
 }
