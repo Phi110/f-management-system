@@ -10,13 +10,13 @@ const wdays = ["日", "月", "火", "水", "木", "金", "土"];
 const currentWday = wdays[now.getDay()];
 const currentHour = now.getHours();
 const currentMinute = now.getMinutes();
-const currentPeriod = calculatePeriod();
+let currentPeriod = calculatePeriod();
 
 
 
-function calculatePeriod() {
+function calculatePeriod(addSaturday = false) {
     switch(true) {
-        case currentWday === '土' || currentWday === '日':
+        case (currentWday === '土' && !addSaturday) || currentWday === '日':
             return "";
         case (currentHour === 9 && currentMinute >= 5) || (currentHour === 10 && currentMinute < 45):
             return 1;
@@ -76,8 +76,9 @@ function range(start, end, step = 1) {
 
 
 /*  */
-export function toClock() {
+export function toClock(addSaturday = false) {
     const calendar = [currentMonth, currentMday, currentHour, currentMinute].map(c => addZero(String(c)));
+    currentPeriod = calculatePeriod(addSaturday);
     const period = currentPeriod ? `(${currentPeriod}限)`: currentPeriod;
 
     return `<h2>

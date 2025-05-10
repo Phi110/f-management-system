@@ -12,7 +12,7 @@ document.body.style.backgroundColor = '#feffce';
 
 
 const whattime = document.getElementById('whattime');
-whattime.innerHTML = toClock();
+whattime.innerHTML = toClock(true);  // addSaturday
 
 
 reloadPage();
