@@ -133,7 +133,7 @@ export function reloadPage() {
 
 
 
-class CSV {
+export class CSV {
     constructor(raw = "") {
         this.raw = raw;
         this.tableData = [];
@@ -373,10 +373,6 @@ export class Version extends CSV {
         this.html += `Ver. ${currentYear}.${month}.${mday}. 伊東 颯紀`
     }
 }
-
-const v = new Version('iminai\n\n5,6\n');
-v.processing();
-console.log(v.paragraph)
 
 
 export class Alert extends CSV {

@@ -7,10 +7,6 @@
 import { toClock, reloadPage, toStudyroom, toPracticalModal } from '../module/module.js';
 
 
-// document.body.style.backgroundColor = '#ffcccc';
-document.body.style.backgroundColor = '#feffce';
-
-
 const whattime = document.getElementById('whattime');
 whattime.innerHTML = toClock(true);  // addSaturday
 
