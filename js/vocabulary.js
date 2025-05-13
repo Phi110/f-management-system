@@ -1,8 +1,10 @@
 /* vocabulary.js */
 
 
-import { VocabularyList, FillInTheBlank } from "../module/vocabulary.js";
+import { VocabularyList, MultipleChoice, FillInTheBlank } from "../module/vocabulary.js";
 
+
+let answerList;
 
 document.addEventListener('DOMContentLoaded', function() {
     Promise.all([
@@ -29,22 +31,60 @@ document.addEventListener('DOMContentLoaded', function() {
         isOpen = !isOpen;
     });
 
-    const checkButton = document.getElementById("check-button");
+    const multipleChoiceButton = document.getElementById("multiple-choice-button");
 
-    checkButton.addEventListener("click", () => {
+    multipleChoiceButton.addEventListener("click", () => {
+        let correctCount = 0;
         for (let i = 0; i < 5; i++) {
             const selectElement = document.getElementById(`answer-select${i}`);
             const selectedValue = selectElement.value;
 
-            const result = document.getElementById(`result${i}`);
+            const result = document.getElementById(`result-select${i}`);
 
             if (selectedValue === "true") {
                 result.innerHTML = '<i class="bi bi-check-lg text-success right-space"></i>';
+                correctCount++;
             } else {
                 result.innerHTML = '<i class="bi bi-x-lg text-danger right-space"></i>';
             }
         }
-        
+        const correctRate = Math.floor(correctCount / 5 * 100);
+        const mark = correctRate >= 50 ? "bi-circle text-success": "bi-x-lg text-danger";
+
+        const score = document.getElementById(`multiple-choice-score5`);
+        score.innerHTML = `<span class="fill-in-the-blank">\n`
+                        + `    <i class="bi ${mark} right-space left-space"></i>`
+                        + `<strong>${correctCount}</strong> out of 5 questions `
+                        + `( <strong>${correctRate}</strong> %) correct\n`
+                        + `</span>\n`;
+    });
+
+    const fillInTheBlankButton = document.getElementById("fill-in-the-blank-button");
+
+    fillInTheBlankButton.addEventListener("click", () => {
+        let correctCount = 0;
+        for (let i = 0; i < 5; i++) {
+            const writtenElement = document.getElementById(`answer-written${i}`);
+            const selectedValue = writtenElement.value;
+
+            const result = document.getElementById(`result-written${i}`);
+
+            if (selectedValue === answerList[i]) {
+                result.innerHTML = '<i class="bi bi-check-lg text-success right-space"></i>';
+                correctCount++;
+            } else {
+                result.innerHTML = '<i class="bi bi-x-lg text-danger right-space"></i>';
+            }
+        }
+        const correctRate = Math.floor(correctCount / 5 * 100);
+        const mark = correctRate >= 50 ? "bi-circle text-success": "bi-x-lg text-danger";
+
+        const score = document.getElementById(`fill-in-the-blank-score5`);
+        score.innerHTML = `<span class="fill-in-the-blank">\n`
+                        + `    <i class="bi ${mark} right-space left-space"></i>`
+                        + `<strong>${correctCount}</strong> out of 5 questions `
+                        + `( <strong>${correctRate}</strong> %) correct\n`
+                        + `</span>\n`;
     });
 });
 
@@ -57,9 +97,16 @@ function parseVocabularyCSV(data1, data2) {
     const vocabularyList = document.getElementById('vocabulary-list');
     vocabularyList.innerHTML = v.paragraph;
 
+    const m = new MultipleChoice();
+    m.paragraph = data1;
+    m.processing();
+    const multipleChoice = document.getElementById('multiple-choice');
+    multipleChoice.innerHTML = m.paragraph;
+
     const f = new FillInTheBlank();
     f.paragraph = data1;
     f.processing();
+    answerList = f.answerList;
     const fillInTheBlank = document.getElementById('fill-in-the-blank');
     fillInTheBlank.innerHTML = f.paragraph;
 }
