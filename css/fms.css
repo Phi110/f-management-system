@@ -545,6 +545,9 @@ iframe {
     .multiple-choice {
         font-size: 14.5px;
     }
+    .fill-in-the-blank {
+        width: 100px;
+    }
     .attendance {
         padding-bottom: 5px;
         padding-left: 0;
