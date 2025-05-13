@@ -109,6 +109,13 @@ iframe {
     opacity: 0;
 }
 
+.vocabulary {
+    font-size: 16px;
+    height: 25px;
+}
+.fill-in-the-blank {
+    font-size: 16px;
+}
 .attendance {
     padding-top: 25px;
 }
@@ -528,6 +535,13 @@ iframe {
         margin-top: 12px;
     }
 
+    .vocabulary {
+        font-size: 13px;
+        height: 22px;
+    }
+    .fill-in-the-blank {
+        font-size: 14px;
+    }
     .attendance {
         padding-bottom: 5px;
         padding-left: 0;

@@ -1,5 +1,5 @@
 /* vocabulary.js (module) */
-
+// @ts-nocheck
 
 
 function getRandomInt(min, max) {
@@ -61,11 +61,24 @@ class Vocabulary {
 export class VocabularyList extends Vocabulary {
     constructor(rawSentence = "") {
         super(rawSentence);
+        this.meaning = [];
+    }
+
+    set addMeaning(meaningSentence) {
+        this.meaning = meaningSentence.split('\n').filter(item => item);
     }
 
     processing() {
-        this.makeVocabList().forEach(element => {
-            this.html +=`・${element}<br>`;
+        this.makeVocabList().forEach((element, index) => {
+            const meaningList = this.meaning;
+            this.html += `<div class="row vocabulary">\n`
+                      + `   <div class="col-4">・${element}</div>\n`
+                      + `   <div class="col-4">\n`
+                      + `       <div class="collapse" id="collapse${index}">\n`
+                      + `           ${meaningList[index]}\n`
+                      + `       </div>\n`
+                      + `   </div>\n`
+                      + `</div>\n`;
         });
     }
 }
@@ -94,25 +107,28 @@ export class FillInTheBlank extends Vocabulary {
             const option = optionIndices.map(element => vocabularyList[element]);
             const shuffledOption = getUniqueRandomInt(0, 3, 4).map(element => option[element]);
 
-            let questionSentence = `<select class="form-select d-inline w-auto">
-                    <option value=""></option>\n`;
+            let questionSentence = `<select class="form-select d-inline w-auto">\n`
+                                 + `    <option value=""></option>\n`;
 
             shuffledOption.forEach(element => {
                 const value = true ? element == answerWord || element == answerWord.toLowerCase(): false;
-                questionSentence += `<option value="${value}">${element}</option>\n`;
+                questionSentence += `   <option value="${value}">${element}</option>\n`;
             })
 
             questionSentence += `</select> <span id="result${i}"></span>`;
 
             const pattern = new RegExp([answerWord, answerWord.toLowerCase()].join("|"), "gi");
-            const question = '・' + targetList[2].replace(pattern, questionSentence);
+            const question = `<div class="bottom-space">・\n`
+                           + targetList[2].replace(pattern, questionSentence)
+                           + `</div>\n`
 
-            this.html += question + '<br>';
+            this.html += question;
         }
     }
 }
 
-const v = new FillInTheBlank();
+
+const v = new VocabularyList();
 v.paragraph = `A
 Adhere
 Verb, To stick firmly to a rule, agreement, or belief. 
@@ -200,5 +216,23 @@ Verb, To weaken or damage something gradually or secretly.
 
 Rumors about layoffs may undermine employee morale.
 `;
+
+v.addMeaning = `従う
+強制する
+条件付きの
+信用
+不足
+実現可能
+動機を与える
+委任
+無視できる
+監督する
+予備的な
+払い戻す
+療法
+仮の
+弱体化させる
+`;
+
 v.processing();
-//console.log(v.paragraph);
+console.log(v.paragraph);
