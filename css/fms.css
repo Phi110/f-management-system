@@ -536,11 +536,11 @@ iframe {
     }
 
     .vocabulary {
-        font-size: 13px;
+        font-size: 14.5px;
         height: 22px;
     }
     .fill-in-the-blank {
-        font-size: 14px;
+        font-size: 14.5px;
     }
     .attendance {
         padding-bottom: 5px;
@@ -632,7 +632,7 @@ iframe {
         padding-left: 8px;
     }
     .btn-xs {
-        font-size: 13px;
+        font-size: 14px;
         padding: 0.2rem 0.4rem;
     }
     .modal-sm {
