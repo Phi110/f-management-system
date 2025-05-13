@@ -28,6 +28,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         isOpen = !isOpen;
     });
+
+    const checkButton = document.getElementById("check-button");
+
+    checkButton.addEventListener("click", () => {
+        for (let i = 0; i < 5; i++) {
+            const selectElement = document.getElementById(`answer-select${i}`);
+            const selectedValue = selectElement.value;
+
+            const result = document.getElementById(`result${i}`);
+
+            if (selectedValue === "true") {
+                result.innerHTML = '<i class="bi bi-check-lg text-success right-space"></i>';
+            } else {
+                result.innerHTML = '<i class="bi bi-x-lg text-danger right-space"></i>';
+            }
+        }
+        
+    });
 });
 
 
