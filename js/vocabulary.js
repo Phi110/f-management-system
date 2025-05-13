@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const toggleButton = document.getElementById("toggle-all-button");
-    const collapses = Array.from(document.querySelectorAll(".collapse"));
     let isOpen = false;
 
     toggleButton.addEventListener("click", () => {
