@@ -107,7 +107,7 @@ export class FillInTheBlank extends Vocabulary {
             const option = optionIndices.map(element => vocabularyList[element]);
             const shuffledOption = getUniqueRandomInt(0, 3, 4).map(element => option[element]);
 
-            let questionSentence = `<select class="form-select d-inline w-auto">\n`
+            let questionSentence = `<select id="answer-select${i}" class="form-select d-inline w-auto">\n`
                                  + `    <option value=""></option>\n`;
 
             shuffledOption.forEach(element => {
