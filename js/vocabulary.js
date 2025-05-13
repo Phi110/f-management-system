@@ -1,19 +1,25 @@
 /* vocabulary.js */
 
 
-import { VocabularyList } from "../module/vocabulary.js";
+import { VocabularyList, FillInTheBlank } from "../module/vocabulary.js";
 
 
 document.addEventListener('DOMContentLoaded', function() {
     fetch('../../csv/test.e5.csv')
     .then(response => response.text())
-    .then(data => parseVersionCSV(data));
+    .then(data => parseVocabularyCSV(data))
 });
 
-function parseVersionCSV(data) {
+function parseVocabularyCSV(data) {
     const v = new VocabularyList();
     v.paragraph = data;
     v.processing();
     const vocabularyList = document.getElementById('vocabulary-list');
     vocabularyList.innerHTML = v.paragraph;
+
+    const f = new FillInTheBlank();
+    f.paragraph = data;
+    f.processing();
+    const fillInTheBlank = document.getElementById('fill-in-the-blank');
+    fillInTheBlank.innerHTML = f.paragraph;
 }

@@ -1,6 +1,34 @@
 /* vocabulary.js (module) */
 
 
+
+function getRandomInt(min, max) {
+    if (max === undefined) {
+        max = min;
+        min = 0;
+    }
+    const gap = max - min;
+    return Math.floor(Math.random() * gap) + min;
+}
+
+
+function getUniqueRandomInt(min, max, count, exclude = []) {
+    const numbers = [];
+    for (let i = min; i <= max; i++) {
+        if (!exclude.includes(i)) {
+            numbers.push(i);
+        }
+    }
+
+    for (let i = numbers.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+    }
+
+    return numbers.slice(0, count);
+}
+
+
 class Vocabulary {
     constructor(rawSentence = "") {
         this.rawSentence = "";
@@ -23,6 +51,10 @@ class Vocabulary {
     get paragraph() {
         return this.html;
     }
+
+    makeVocabList() {
+        return this.list.map(innerArray => innerArray[0].toLowerCase());
+    }
 }
 
 
@@ -32,11 +64,9 @@ export class VocabularyList extends Vocabulary {
     }
 
     processing() {
-        const newList = this.list.map(innerArray => innerArray[0]);
-        newList.forEach(element => {
+        this.makeVocabList().forEach(element => {
             this.html +=`・${element}<br>`;
         });
-
     }
 }
 
@@ -47,10 +77,42 @@ export class FillInTheBlank extends Vocabulary {
     }
 
     processing() {
+        const vocabularyList = this.makeVocabList();
+        const len = vocabularyList.length;
+        const numberOfQuestion = 5;
+        
+        const randomIndices = getUniqueRandomInt(0, len - 1, numberOfQuestion);
+
+        for (let i = 0; i < numberOfQuestion; i++) {
+            const currentIndex = randomIndices[i]
+            const targetList = this.list[currentIndex];
+            const answerWord = targetList[0];
+
+            let optionIndices = getUniqueRandomInt(0, len - 1, 3, [currentIndex])
+            optionIndices.push(currentIndex);
+
+            const option = optionIndices.map(element => vocabularyList[element]);
+            const shuffledOption = getUniqueRandomInt(0, 3, 4).map(element => option[element]);
+
+            let questionSentence = `<select class="form-select d-inline w-auto">
+                    <option value=""></option>\n`;
+
+            shuffledOption.forEach(element => {
+                const value = true ? element == answerWord || element == answerWord.toLowerCase(): false;
+                questionSentence += `<option value="${value}">${element}</option>\n`;
+            })
+
+            questionSentence += `</select> <span id="result${i}"></span>`;
+
+            const pattern = new RegExp([answerWord, answerWord.toLowerCase()].join("|"), "gi");
+            const question = '・' + targetList[2].replace(pattern, questionSentence);
+
+            this.html += question + '<br>';
+        }
     }
 }
 
-const v = new VocabularyList();
+const v = new FillInTheBlank();
 v.paragraph = `A
 Adhere
 Verb, To stick firmly to a rule, agreement, or belief. 
@@ -139,4 +201,4 @@ Verb, To weaken or damage something gradually or secretly.
 Rumors about layoffs may undermine employee morale.
 `;
 v.processing();
-console.log(v.paragraph);
+//console.log(v.paragraph);
