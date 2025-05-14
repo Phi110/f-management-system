@@ -156,16 +156,12 @@ function setAutoOpenTimer(takeEnglish, takePractical) {
     }
 }
 
-auth.onAuthStateChanged(user => {
+const unsubscribe = auth.onAuthStateChanged(user => {
     if (user) {
-        if (!user) {
-            return;
-        }
-
         userId = user.uid;
         db.collection("users").doc(userId).get().then(doc => {
             const data = doc.data() || {};
-            const autoOpen = data.autoOpen !== undefined ? data.autoOpen : false;
+            const autoOpen = data.autoOpen ?? false;
             const takeEnglish = data.takeEnglish || "";
             const takePractical = data.takePractical || "";
 
@@ -267,6 +263,8 @@ auth.onAuthStateChanged(user => {
 
             updateRowAppearance();
             checkAllTasksCompleted();
+
+            unsubscribe();
         });
     } else {
         userInfo.textContent = "ログインしていません。";
