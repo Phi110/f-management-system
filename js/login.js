@@ -168,7 +168,10 @@ const unsubscribe = auth.onAuthStateChanged(user => {
             userInfo.innerHTML = `
                 <h4 class="bottom-space">ログイン中: ${user.displayName} (${user.email})</h4>
 
-                <label class="top-space bottom-space">5 分前に自動で出席 URL を開く</label><br>
+                <label class="top-space bottom-space">
+                    5 分前に自動で出席 URL を開く<br>
+                    (※ Chrome の ポップアップブロックを "許可" にしてください)
+                </label><br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="auto-open" id="auto-open-yes" value="はい" ${autoOpen ? "checked" : ""}>
                     <label class="form-check-label" for="auto-open-yes">オン</label>
