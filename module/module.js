@@ -172,6 +172,8 @@ export class CSV {
                 return "text-dark";
             case "gray":
                 return "text-secondary";
+            case "blue":
+                return "text-primary";
             default:
                 return "";
         }
