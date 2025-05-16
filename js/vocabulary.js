@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const correctRate = Math.floor(correctCount / 5 * 100);
         const mark = correctRate >= 50 ? "bi-circle text-success": "bi-x-lg text-danger";
 
-        const score = document.getElementById(`multiple-choice-score5`);
+        const score = document.getElementById(`multiple-choice-score`);
         score.innerHTML = `<span class="fill-in-the-blank">\n`
                         + `    <i class="bi ${mark} right-space left-space"></i>`
                         + `<strong>${correctCount}</strong> out of 5 questions `
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const correctRate = Math.floor(correctCount / 5 * 100);
         const mark = correctRate >= 50 ? "bi-circle text-success": "bi-x-lg text-danger";
 
-        const score = document.getElementById(`fill-in-the-blank-score5`);
+        const score = document.getElementById(`fill-in-the-blank-score`);
         score.innerHTML = `<span class="fill-in-the-blank">\n`
                         + `    <i class="bi ${mark} right-space left-space"></i>`
                         + `<strong>${correctCount}</strong> out of 5 questions `
