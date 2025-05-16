@@ -7,9 +7,12 @@ import { VocabularyList, MultipleChoice, FillInTheBlank } from "../module/vocabu
 let answerList;
 
 document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const index = urlParams.get('i');
+
     Promise.all([
-        fetch('../../csv/test.v5.csv').then(response => response.text()),
-        fetch('../../csv/test.m5.csv').then(response => response.text())
+        fetch(`../csv/english/vocabulary${index}.csv`).then(response => response.text()),
+        fetch(`../csv/english/meaning${index}.csv`).then(response => response.text())
     ])
     .then(([data1, data2]) => {
         parseVocabularyCSV(data1, data2);
