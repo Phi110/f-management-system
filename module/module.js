@@ -77,7 +77,7 @@ function range(start, end, step = 1) {
 
 /*  */
 export function toClock(addSaturday = false) {
-    const calendar = [currentMonth+1, currentMday, currentHour, currentMinute].map(c => addZero(String(c)));
+    const calendar = [currentMonth + 1, currentMday, currentHour, currentMinute].map(c => addZero(String(c)));
     currentPeriod = calculatePeriod(addSaturday);
     const period = currentPeriod ? `(${currentPeriod}限)`: currentPeriod;
 
