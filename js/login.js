@@ -143,7 +143,7 @@ function setAutoOpenTimer(takeEnglish, takePractical) {
         const [hour, minute] = item.time.split(":").map(Number);
         const now = new Date();
         const openTime = new Date();
-        openTime.setHours(hour, minute, 0, 0);
+        openTime.setHours(hour, minute, 10, 0);
     
         let delay = openTime.getTime() - now.getTime();
         if (delay < 0) {
