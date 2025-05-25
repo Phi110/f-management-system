@@ -213,7 +213,11 @@ class Datetime extends CSV {
     }  // '4/24 (木)'  // '12/15 (月)'
 
     toCalenderDate(datetime) {  // 4242200  // 12152359
-        const date = this.addWday(`${Math.floor(datetime / 1000000)}/${Math.floor(datetime % 1000000 / 10000)}`);
+        const month = Math.floor(datetime / 1000000);
+        const mday = Math.floor(datetime % 1000000 / 10000);
+        let date = this.addWday(`${month}/${mday}`);
+        if (mday === 0) date = `${month}月上旬`;
+        if (mday === 32) date = `${month}月下旬`;
         let hour = `${Math.floor(datetime % 10000 / 100)}`, minute = `${datetime % 100}`;
         hour = hour.length === 1 ? "0" + hour: hour;
         minute = minute.length === 1 ? "0" + minute: minute;
@@ -228,6 +232,18 @@ class Datetime extends CSV {
     toNumberDate(sentence, history) {  // "4/24 22:00"  // "12/15"
         const datetimes = sentence.split(' ');
         const dates = datetimes[0].split('/');
+        const month = dates[0];
+        let mday;
+        switch (dates[1]) {
+            case "上旬":
+                mday = '0';
+                break;
+            case "下旬":
+                mday = '32';
+                break;
+            default:
+                mday = dates[1];
+        }
         let times;
         try {
             times = datetimes[1].split(':');
@@ -235,7 +251,7 @@ class Datetime extends CSV {
             times = ['23', '59'];
         }
         
-        const settedDatetime = Number(dates[0]) * 1000000 + Number(dates[1]) * 10000 + Number(times[0]) * 100 + Number(times[1]);
+        const settedDatetime = Number(month) * 1000000 + Number(mday) * 10000 + Number(times[0]) * 100 + Number(times[1]);
         const currentDatetime = (currentMonth + 1) * 1000000 + currentMday * 10000 + currentHour * 100 + currentMinute;
         if (settedDatetime < currentDatetime && !history) {
             return 0;
@@ -333,6 +349,20 @@ export class Event extends Datetime {
         this.html += table;
     }
 }
+
+const e = new Event();
+e.paragraph = `
+日付,時間,内容
+
+5/10,4・5限,AIシステム開発
+7/11,2限,前期TOEIC L/R 受験
+5/19,2限,特別講義: Amazon Japan
+5/19,プログラミング概論,確率統計論 の 教科書持参
+7/下旬,人工知能数学,期末レポート
+7/3,担任ミーティング,30分程度
+`;
+e.processing();
+console.log(e.paragraph);
 
 
 export class Notification extends Datetime {
