@@ -1,0 +1,157 @@
+<!-- englishChapter.html -->
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>F Management System</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <!-- fms.css(main) -->
+    <link rel="stylesheet" href="../css/fms.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+</head>
+    
+<body>
+
+    <!-- ナビゲーションバー -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-xxl bar-container">
+            <a class="navbar-brand" href="#">FMS</a>
+        </div>
+    </nav>
+
+
+    <!-- メイン -->
+    <div class="container-xxl custom-container">
+
+        <div class="starter-template">
+
+            <div class="small-text bottom-space">
+                Ver. 2025.05.16. Fuki Ito
+            </div>
+            <br>
+            <h2 class="bottom-space">Vocabulary Test</h2>
+            <br>
+
+            <!-- パンくずリスト -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb left-space">
+                    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="../index.html#test">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Chapter</li>
+                    <li class="breadcrumb-item active">Test</li>
+                </ol>
+            </nav>
+
+            <br><br>
+            
+            
+            <h3>Chapter</h3>
+            <div class="left-space top-space bottom-space">
+                ・<a class="link-offset-2 link-underline link-underline-opacity-0 bottom-space" href="vocabularyTest.html?i=1">
+                    Test 1
+                </a>
+                <br>
+                ・<a class="link-offset-2 link-underline link-underline-opacity-0 bottom-space" href="vocabularyTest.html?i=2">
+                    Test 2
+                </a>
+                <br>
+                ・<a class="link-offset-2 link-underline link-underline-opacity-0 bottom-space" href="vocabularyTest.html?i=3">
+                    Test 3
+                </a>
+                <br>
+                ・<a class="link-offset-2 link-underline link-underline-opacity-0 bottom-space" href="vocabularyTest.html?i=4">
+                    Test 4
+                </a>
+                <br>
+                ・<a class="link-offset-2 link-underline link-underline-opacity-0 bottom-space" href="vocabularyTest.html?i=5">
+                    Test 5
+                </a>
+                <br>
+                ・<a class="link-offset-2 link-underline link-underline-opacity-0 bottom-space" href="vocabularyTest.html?i=6">
+                    Test 6
+                </a>
+                <br>
+                ・<a class="link-offset-2 link-underline link-underline-opacity-0 bottom-space" href="vocabularyTest.html?i=7">
+                    Test 7
+                </a>
+                <br>
+                ・<a class="link-offset-2 link-underline link-underline-opacity-0 bottom-space" href="vocabularyTest.html?i=8">
+                    Test 8
+                </a>
+                <br>
+                ・<a class="link-offset-2 link-underline link-underline-opacity-0 bottom-space" href="vocabularyTest.html?i=9">
+                    Test 9
+                </a>
+                <br>
+                ・<a class="link-offset-2 link-underline link-underline-opacity-0 bottom-space" href="vocabularyTest.html?i=10">
+                    Test 10
+                </a>
+                <br>
+                ・<a class="link-offset-2 link-underline link-underline-opacity-0 bottom-space" href="vocabularyTest.html?i=11">
+                    Test 11
+                </a>
+                <br>
+                ・<a class="link-offset-2 link-underline link-underline-opacity-0 bottom-space" href="vocabularyTest.html?i=12">
+                    Test 12
+                </a>
+                <br>
+                ・<a class="link-offset-2 link-underline link-underline-opacity-0 bottom-space" href="vocabularyTest.html?i=13">
+                    Test 13
+                </a>
+            </div>
+
+            <br><br>
+
+            <h3>Compilation</h3>
+            <div class="left-space top-space bottom-space">
+                ・<a class="link-offset-2 link-underline link-underline-opacity-0 bottom-space" href="vocabularyTest.html?i=100">
+                    Test 1～13
+                </a>
+            </div>
+            
+            <br><br><br><br>
+
+
+            <!-- パンくずリスト -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb left-space">
+                    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="../index.html#test">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Chapter</li>
+                    <li class="breadcrumb-item active">Test</li>
+                </ol>
+            </nav>
+
+            <br><br>
+
+        </div>
+
+    </div>
+
+
+    <!-- js -->
+    <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+</body>
+    
+</html>

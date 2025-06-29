@@ -76,7 +76,7 @@ export class VocabularyList extends Vocabulary {
             const meaningList = this.meaning;
             this.html += `<div class="row vocabulary">\n`
                       + `   <div class="col-5">・${element}</div>\n`
-                      + `   <div class="col-5">\n`
+                      + `   <div class="col-7">\n`
                       + `       <div class="collapse" id="collapse${index}">\n`
                       + `           ${meaningList[index]}\n`
                       + `       </div>\n`
