@@ -34,8 +34,8 @@ modalAI.addEventListener('shown.bs.modal', function () {
 
 
 /* CSV */
-// 更新日  // 課題  // イベント  // お知らせ  // アラート // 出席
-import { Version, Assignment, Event, Notification, Alert, Attendance } from "../module/module.js";
+// 更新日  // 課題  // イベント  // テスト  // お知らせ  // アラート // 出席
+import { Version, Assignment, Event, Test, Notification, Alert, Attendance } from "../module/module.js";
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -50,6 +50,10 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch('./csv/event.csv')
     .then(response => response.text())
     .then(data => parseEventCSV(data));
+
+    fetch('./csv/test.csv')
+    .then(response => response.text())
+    .then(data => parseTestCSV(data));
 
     fetch('./csv/notification.csv')
     .then(response => response.text())
@@ -83,6 +87,13 @@ function parseEventCSV(data) {
     e.processing();
     let eventTable = document.getElementById(`event-table`);
     eventTable.innerHTML = e.paragraph;
+}
+
+function parseTestCSV(data) {
+    const t = new Test(data);
+    t.processing();
+    let testTable = document.getElementById(`test-table`);
+    testTable.innerHTML = t.paragraph;
 }
 
 function parseNotificationCSV(data) {

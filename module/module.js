@@ -350,19 +350,31 @@ export class Event extends Datetime {
     }
 }
 
-const e = new Event();
-e.paragraph = `
-日付,時間,内容
 
-5/10,4・5限,AIシステム開発
-7/11,2限,前期TOEIC L/R 受験
-5/19,2限,特別講義: Amazon Japan
-5/19,プログラミング概論,確率統計論 の 教科書持参
-7/下旬,人工知能数学,期末レポート
-7/3,担任ミーティング,30分程度
-`;
-e.processing();
-console.log(e.paragraph);
+export class Test extends Datetime {
+    processing() {
+        this.refine();  // this.tableData = [['4/24 (木) 20:00','a','i'], ['4/24 (木)','r','i'], ['12/15 (月)','r','u']]
+        let table = "", prevDate = "";
+        for (let i = 0; i < this.tableData.length; i++) {
+            const list = this.tableData[i];
+
+            let date = list[0], period = list[1], classroom = list[2], subject = list[3];
+            if (date === prevDate) {
+                date = "";
+            }
+
+            table += `<tr>`
+                  +  `    <td>${date}</td>`
+                  +  `    <td>${period}</td>`
+                  +  `    <td>${classroom}</td>`
+                  +  `    <td>${subject}</td>`
+                  +  `</tr>`;
+            
+            prevDate = date;
+        }
+        this.html += table;
+    }
+}
 
 
 export class Notification extends Datetime {
