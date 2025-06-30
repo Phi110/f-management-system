@@ -297,7 +297,7 @@ export class Assignment extends Datetime {
             let id = list[2], concrete = list[3];
             if (list[4] !== "") {
                 concrete = `
-                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="${list[3]}" target="_blank">
+                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="${list[4]}" target="_blank">
                         ${concrete}
                     </a>
                 `;
