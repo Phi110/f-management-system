@@ -1,19 +1,13 @@
-期限,科目,内容,URL,ID
+期限,科目,ID,内容,URL (,画像,名)
 
-6/20,AIシステム開発,第７回個人課題,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=83876,46
-6/24,AIシステム開発,第３回グループ課題,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=83877,47
-6/16,プログラミング概論,授業内課題,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=84686,48
-6/16,確率統計論,ノート提出,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=84207,49
-6/23 22:00,人工知能数学,復習問題１０,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=84844,50
-6/23 22:00,人工知能数学,演習問題１０,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=84845,51
-7/9 20:00,人工知能基礎,発表資料事前提出,https://lms-tokyo.iput.ac.jp/course/view.php?id=3206#section-14,52
-6/30 13:20,プログラミング概論,授業後課題,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=85164,53
-7/7,確率統計論,認定課題 (1),https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=85148,54
-7/3,自然言語処理,共起ネットワーク図,https://forms.office.com/r/Ae4ZyKTauy,55
-6/30,AIシステム開発,第８回個人課題,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=85264,56
-7/28 22:00,人工知能数学,期末課題,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=85284,57
-6/30 22:00,人工知能数学,演習問題１１,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=85280,58
-7/20,人工知能基礎,期末レポート_おもちゃ,https://lms-tokyo.iput.ac.jp/mod/lti/view.php?id=85335,59
-8/6 15:00,人工知能基礎,期末発表_抄録,https://lms-tokyo.iput.ac.jp/mod/lti/view.php?id=85334,60
-7/下旬,自然言語処理,期末レポート,images/nlp.webp,61
-7/7 13:20,プログラミング概論,第 12 回授業後課題,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=85620,62
+7/9 20:00,人工知能基礎,52,発表資料事前提出,https://lms-tokyo.iput.ac.jp/course/view.php?id=3206#section-14
+6/30 13:20,プログラミング概論,53,授業後課題,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=85164
+7/7,確率統計論,54,認定課題 (1),https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=85148
+7/3,自然言語処理,55,共起ネットワーク図,https://forms.office.com/r/Ae4ZyKTauy
+6/30,AIシステム開発,56,第８回個人課題,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=85264
+7/28 22:00,人工知能数学,57,期末課題,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=85284
+6/30 22:00,人工知能数学,58,演習問題１１,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=85280
+7/20,人工知能基礎,59,期末レポート_おもちゃ,https://lms-tokyo.iput.ac.jp/mod/lti/view.php?id=85335
+8/6 15:00,人工知能基礎,60,期末発表_抄録,https://lms-tokyo.iput.ac.jp/mod/lti/view.php?id=85334
+7/下旬,自然言語処理,61,期末レポート,,(概要),nlp.webp
+7/7 13:20,プログラミング概論,62,第 12 回授業後課題,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=85620,(概要),programming.webp

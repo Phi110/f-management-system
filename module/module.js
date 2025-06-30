@@ -294,13 +294,25 @@ export class Assignment extends Datetime {
                     subject = "";
                 }
             }
-            let content = list[2], id = list[4];
-            if (list[3] !== "") {
-                content = `
+            let id = list[2], concrete = list[3];
+            if (list[4] !== "") {
+                concrete = `
                     <a class="link-offset-2 link-underline link-underline-opacity-0" href="${list[3]}" target="_blank">
-                        ${content}
+                        ${concrete}
                     </a>
                 `;
+            }
+
+            let sub = "";
+            if (list.length > 5) {
+                sub = list[5];
+                if (list[6] !== "" || list.length === 6) {
+                    sub = `
+                        <a class="text-success" href="images/assignment/${list[6]}">
+                            ${sub}
+                        </a>
+                    `;
+                }
             }
 
             table += `
@@ -308,7 +320,8 @@ export class Assignment extends Datetime {
                     <td>${date}</td>
                     <td>${subject}</td>
                     <td>
-                        ${content}
+                        ${concrete}
+                        ${sub}
                     </td>
                     <td>
                         <input class="form-check-input" type="checkbox" data-id="${id}">
