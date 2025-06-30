@@ -294,24 +294,39 @@ export class Assignment extends Datetime {
                     subject = "";
                 }
             }
-            let id = list[2], concrete = list[3];
+            let id = list[2], main = list[3];
             if (list[4] !== "") {
-                concrete = `
+                main = `
                     <a class="link-offset-2 link-underline link-underline-opacity-0" href="${list[4]}" target="_blank">
-                        ${concrete}
+                        ${main}
                     </a>
                 `;
             }
 
-            let sub = "";
+            let sub = "", modal = "";
             if (list.length > 5) {
                 sub = list[5];
-                if (list[6] !== "" || list.length === 6) {
-                    sub = `
-                        <a class="text-success" href="images/assignment/${list[6]}">
-                            ${sub}
-                        </a>
-                    `;
+                if (list[6] !== "" && list.length > 6) {
+                    sub = `<a href="#" data-bs-target="#modal${i}" data-bs-toggle="modal" class="text-success">\n`
+                        + `    ${sub}\n`
+                        + `</a>\n`;
+
+                    modal = `<div class="modal fade" id="modal${i}" tabindex="-1" aria-labelledby="modal${i}Label" aria-hidden="true">\n`
+                          + `  <div class="modal-dialog modal-dialog-centered modal-lg">\n`
+                          + `    <div class="modal-content">\n`
+                          + `      <div class="modal-header">\n`
+                          + `        <h1 class="modal-title fs-5" id="modal${i}Label">${list[5]}</h1>\n`
+                          + `        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n`
+                          + `      </div>\n`
+                          + `        <div class="modal-body">\n`
+                          + `          <img src="images/assignment/${list[6]}.webp" class="img-fluid">\n`
+                          + `        </div>\n`
+                          + `      <div class="modal-footer">\n`
+                          + `        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>\n`
+                          + `      </div>\n`
+                          + `    </div>\n`
+                          + `  </div>\n`
+                          + `</div>\n`;
                 }
             }
 
@@ -320,13 +335,14 @@ export class Assignment extends Datetime {
                     <td>${date}</td>
                     <td>${subject}</td>
                     <td>
-                        ${concrete}
+                        ${main}
                         ${sub}
                     </td>
                     <td>
                         <input class="form-check-input" type="checkbox" data-id="${id}">
                     </td>
                 </tr>
+                ${modal}
             `;
 
             prevDate = date;
