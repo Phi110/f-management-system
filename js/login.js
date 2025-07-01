@@ -156,7 +156,29 @@ function setAutoOpenTimer(takeEnglish, takePractical) {
     }
 }
 
+const updateAuthUI = (user) => {
+    const authStatusContainer = document.getElementById('auth-status');
+    authStatusContainer.innerHTML = ''; // 中身を一旦空にする
+
+    if (user) {
+        // ログイン中：アイコンを表示
+        const logoutBtn = document.createElement('button');
+        logoutBtn.className = 'btn py-0';
+        logoutBtn.innerHTML = `<img src="${user.photoURL}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" alt="User Icon" style="width: 40px; height: 40px; border-radius: 50%;">`;
+        authStatusContainer.appendChild(logoutBtn);
+    } else {
+        // ログアウト中：ログインボタンを表示
+        const loginBtn = document.createElement('button');
+        loginBtn.className = 'btn btn-primary';
+        loginBtn.textContent = 'ログイン';
+        loginBtn.onclick = () => firebase.auth().signInWithPopup(provider);
+        authStatusContainer.appendChild(loginBtn);
+    }
+};
+
 const unsubscribe = auth.onAuthStateChanged(user => {
+    updateAuthUI(user);
+
     if (user) {
         userId = user.uid;
         db.collection("users").doc(userId).get().then(doc => {
@@ -166,7 +188,7 @@ const unsubscribe = auth.onAuthStateChanged(user => {
             const takePractical = data.takePractical || "";
 
             userInfo.innerHTML = `
-                <h4 class="bottom-space">ログイン中: ${user.displayName} (${user.email})</h4>
+                <h5 class="bottom-space">ログイン中: ${user.displayName} (${user.email})</h5>
 
                 <label class="top-space bottom-space">
                     5 分前に自動で出席 URL を開く<br>
@@ -267,7 +289,6 @@ const unsubscribe = auth.onAuthStateChanged(user => {
             updateRowAppearance();
             checkAllTasksCompleted();
 
-            unsubscribe();
         });
     } else {
         userInfo.textContent = "ログインしていません。";

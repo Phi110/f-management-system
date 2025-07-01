@@ -1,3 +1,3 @@
-sentence(,link,LINK,URL)(,modal,MODAL,#modalX)
+sentence(,link,LINK,URL)(,modal,MODAL,#modalX)(,offcanvas,OFFCANVAS,#offcanvasY)
 
-link,基本情報技術者試験,#test, の用語解説ページを制作中です...
+offcanvas,ログイン,#offcanvasRight, の 5分前に自動で出席URLを開く が自動的にオフになる不具合を解消しました

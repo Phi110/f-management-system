@@ -427,6 +427,10 @@ export class Notification extends Datetime {
                         table += ` <a href="#" data-bs-target="${list[j + 2]}" data-bs-toggle="modal" class="${color} link-offset-2 link-underline link-underline-opacity-0">${list[j + 1]}</a> `;
                         j += 2;
                         break;
+                    case "offcanvas":
+                        table += `<a href="#" data-bs-target="${list[j + 2]}" data-bs-toggle="offcanvas" class="${color} link-offset-2 link-underline link-underline-opacity-0">${list[j + 1]}</a> `;
+                        j += 2;
+                        break;
                     default:
                         table += `<span class="${color}">${list[j]}</span>`;
                 }
@@ -460,6 +464,10 @@ export class Alert extends CSV {
                     break;
                 case "modal":
                     table += `<a href="#" data-bs-target="${list[i + 2]}" data-bs-toggle="modal" class="alert-link">${list[i + 1]}</a>`;
+                    i += 2;
+                    break;
+                case "offcanvas":
+                    table += `<a href="#" data-bs-target="${list[i + 2]}" data-bs-toggle="offcanvas" class="alert-link">${list[i + 1]}</a>`;
                     i += 2;
                     break;
                 default:
