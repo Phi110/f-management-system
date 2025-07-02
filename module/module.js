@@ -185,6 +185,8 @@ class Datetime extends CSV {
     constructor(raw = "") {
         super(raw);
         this.history = false;
+        this.supplement = "";
+        this.modal = "";
     }
 
 
@@ -275,6 +277,41 @@ class Datetime extends CSV {
         }
         this.tableData = shapedList;  // [['4/24 (木) 20:00','a','i'], ['4/24 (木)','r','i'], ['12/15 (月)','r','u']]
     }
+
+    toModal(index, list) {
+        if (list.length > 5) {
+            this.supplement = list[5];
+            if (list[6] !== "" && list.length > 6) {
+                this.supplement = `<a href="#" data-bs-target="#modal${index * 10}" data-bs-toggle="modal" class="text-success">\n`
+                                + `  ${this.supplement}\n`
+                                + `</a>\n`;
+            }
+        }
+        for (let i = 0; i < list.length - 6; i++) {
+            const j = index * 10 + i;
+            let nextButton = "";
+            if (list.length > 7 + i) {
+                nextButton = `<button class="btn btn-primary" data-bs-target="#modal${j + 1}" data-bs-toggle="modal">Next</button>`;
+            }
+            this.modal += `<div class="modal fade" id="modal${j}" tabindex="-1" aria-labelledby="modal${j}Label" aria-hidden="true">\n`
+                        + `  <div class="modal-dialog modal-dialog-centered modal-lg">\n`
+                        + `    <div class="modal-content">\n`
+                        + `      <div class="modal-header">\n`
+                        + `        <h1 class="modal-title fs-5" id="modal${j}Label">${list[5]}</h1>\n`
+                        + `        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n`
+                        + `      </div>\n`
+                        + `        <div class="modal-body">\n`
+                        + `          <img src="images/assignment/${list[6 + i]}.webp" class="img-fluid">\n`
+                        + `        </div>\n`
+                        + `      <div class="modal-footer">\n`
+                        + `        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>\n`
+                        + `        ${nextButton}\n`
+                        + `      </div>\n`
+                        + `    </div>\n`
+                        + `  </div>\n`
+                        + `</div>\n`;
+        }
+    }
 }
 
 
@@ -296,55 +333,28 @@ export class Assignment extends Datetime {
             }
             let id = list[2], main = list[3];
             if (list[4] !== "") {
-                main = `
-                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="${list[4]}" target="_blank">
-                        ${main}
-                    </a>
-                `;
+                main = `<a class="link-offset-2 link-underline link-underline-opacity-0" href="${list[4]}" target="_blank">\n`
+                     + `  ${main}\n`
+                     + `</a>\n`;
             }
 
-            let sub = "", modal = "";
-            if (list.length > 5) {
-                sub = list[5];
-                if (list[6] !== "" && list.length > 6) {
-                    sub = `<a href="#" data-bs-target="#modal${i}" data-bs-toggle="modal" class="text-success">\n`
-                        + `    ${sub}\n`
-                        + `</a>\n`;
+            this.toModal(i, list);
 
-                    modal = `<div class="modal fade" id="modal${i}" tabindex="-1" aria-labelledby="modal${i}Label" aria-hidden="true">\n`
-                          + `  <div class="modal-dialog modal-dialog-centered modal-lg">\n`
-                          + `    <div class="modal-content">\n`
-                          + `      <div class="modal-header">\n`
-                          + `        <h1 class="modal-title fs-5" id="modal${i}Label">${list[5]}</h1>\n`
-                          + `        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>\n`
-                          + `      </div>\n`
-                          + `        <div class="modal-body">\n`
-                          + `          <img src="images/assignment/${list[6]}.webp" class="img-fluid">\n`
-                          + `        </div>\n`
-                          + `      <div class="modal-footer">\n`
-                          + `        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>\n`
-                          + `      </div>\n`
-                          + `    </div>\n`
-                          + `  </div>\n`
-                          + `</div>\n`;
-                }
-            }
+            table += `<tr data-id="${id}">\n`
+                  +  `<td>${date}</td>\n`
+                  +  `<td>${subject}</td>\n`
+                  +  `<td>\n`
+                  +  `  ${main}\n`
+                  +  `  ${this.supplement}\n`
+                  +  `</td>\n`
+                  +  `<td>\n`
+                  +  `  <input class="form-check-input" type="checkbox" data-id="${id}">\n`
+                  +  `</td>\n`
+                  +  `</tr>\n`
+                  +  `${this.modal}\n`;
 
-            table += `
-                <tr data-id="${id}">
-                    <td>${date}</td>
-                    <td>${subject}</td>
-                    <td>
-                        ${main}
-                        ${sub}
-                    </td>
-                    <td>
-                        <input class="form-check-input" type="checkbox" data-id="${id}">
-                    </td>
-                </tr>
-                ${modal}
-            `;
-
+            this.supplement = "";
+            this.modal = "";
             prevDate = date;
             prevSubject = subject;
         }
@@ -352,6 +362,13 @@ export class Assignment extends Datetime {
     }
 }
 
+const a = new Assignment();
+a.paragraph = `期限,科目,ID,内容,URL (,画像,名)
+
+7/28 22:00,人工知能数学,57,期末課題,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=85284,(補足),aimath1,aimath2,aimath3
+`;
+a.processing();
+console.log(a.paragraph);
 
 export class Event extends Datetime {
     processing() {
@@ -392,12 +409,12 @@ export class Test extends Datetime {
                 date = "";
             }
 
-            table += `<tr>`
-                  +  `    <td>${date}</td>`
-                  +  `    <td>${period}</td>`
-                  +  `    <td>${classroom}</td>`
-                  +  `    <td>${subject}</td>`
-                  +  `</tr>`;
+            table += `<tr>\n`
+                  +  `    <td>${date}</td>\n`
+                  +  `    <td>${period}</td>\n`
+                  +  `    <td>${classroom}</td>\n`
+                  +  `    <td>${subject}</td>\n`
+                  +  `</tr>\n`;
             
             prevDate = date;
         }
