@@ -14,6 +14,7 @@ const loginBtn = document.getElementById("login");
 
 let userId = null;
 let selectedIds = new Set();
+let autoOpenTimeouts = [];
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
@@ -62,6 +63,9 @@ function checkAllTasksCompleted() {
 
 
 function setAutoOpenTimer(takeEnglish, takePractical) {
+    autoOpenTimeouts.forEach(timeoutId => clearTimeout(timeoutId));
+    autoOpenTimeouts = [];
+
     const scheduleByDay = {
         1: [
             { time: "13:15", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78892" },
@@ -150,9 +154,10 @@ function setAutoOpenTimer(takeEnglish, takePractical) {
             continue;
         }
     
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
             window.open(item.url, "_blank");
         }, delay);
+        autoOpenTimeouts.push(timeoutId);
     }
 }
 
@@ -246,41 +251,51 @@ const unsubscribe = auth.onAuthStateChanged(user => {
             loginBtn.style.display = "none";
 
             const autoOpenRadios = userInfo.querySelectorAll('input[name="auto-open"]');
+            const englishRadios = userInfo.querySelectorAll('input[name="english"]');
+            const practicalRadios = userInfo.querySelectorAll('input[name="practical"]');
             const englishPracticalSettings = userInfo.querySelector('#english-practical-settings');
+
+            const reloadAndSetTimer = () => {
+                // オフの時にタイマーをクリア
+                autoOpenTimeouts.forEach(timeoutId => clearTimeout(timeoutId));
+                autoOpenTimeouts = [];
+
+                const isAutoOpen = userInfo.querySelector('input[name="auto-open"]:checked').value === 'はい';
+                if (isAutoOpen) {
+                    const currentEnglish = userInfo.querySelector('input[name="english"]:checked').value;
+                    const currentPractical = userInfo.querySelector('input[name="practical"]:checked').value;
+                    setAutoOpenTimer(currentEnglish, currentPractical);
+                }
+            }
 
             autoOpenRadios.forEach(radio => {
                 radio.addEventListener('change', e => {
-                    console.log("[debug] auto-open changed:", e.target.value);
                     const enabled = (e.target.value === "はい");
-                    db.collection('users')
-                        .doc(userId)
-                        .set({ autoOpen: enabled }, { merge: true })
-                        .then(() => console.log("[debug] autoOpen saved:", enabled))
-                        .catch(err => console.error("[debug] autoOpen save error:", err));
+                    db.collection('users').doc(userId).set({ autoOpen: enabled }, { merge: true });
                     englishPracticalSettings.style.display = enabled ? 'block' : 'none';
+                    reloadAndSetTimer();
                 });
             });
 
-            userInfo.querySelectorAll('input[name="english"]').forEach(radio => {
-            radio.addEventListener('change', () => {
-                const v = userInfo.querySelector('input[name="english"]:checked').value;
-                db.collection('users').doc(userId).set({ takeEnglish: v }, { merge: true });
-            });
-            });
-
-            userInfo.querySelectorAll('input[name="practical"]').forEach(radio => {
-            radio.addEventListener('change', () => {
-                const v = userInfo.querySelector('input[name="practical"]:checked').value;
-                db.collection('users').doc(userId).set({ takePractical: v }, { merge: true });
-            });
+            englishRadios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    const v = userInfo.querySelector('input[name="english"]:checked').value;
+                    db.collection('users').doc(userId).set({ takeEnglish: v }, { merge: true })
+                        .then(reloadAndSetTimer);
+                });
             });
 
-            if (data.autoOpen) {
-                setAutoOpenTimer(takeEnglish, takePractical);
-            }
+            practicalRadios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    const v = userInfo.querySelector('input[name="practical"]:checked').value;
+                    db.collection('users').doc(userId).set({ takePractical: v }, { merge: true })
+                        .then(reloadAndSetTimer);
+                });
+            });
+
+            reloadAndSetTimer();
 
             selectedIds = new Set(data.selectedCells || []);
-        
             document.querySelectorAll('input[type="checkbox"]').forEach(box => {
                 const id = box.dataset.id;
                 box.checked = selectedIds.has(id);
@@ -291,34 +306,16 @@ const unsubscribe = auth.onAuthStateChanged(user => {
 
         });
     } else {
-        userInfo.textContent = "ログインしていません。";
+        // ログアウト時の処理
+        userId = null;
+        userInfo.innerHTML = '<p>ログインして設定や課題の進捗を管理しましょう。</p>';
         logoutBtn.style.display = "none";
         loginBtn.style.display = "inline";
+
+        // タイマーをクリア
+        autoOpenTimeouts.forEach(timeoutId => clearTimeout(timeoutId));
+        autoOpenTimeouts = [];
     }
-
-    const englishRadios = document.querySelectorAll('input[name="english"]');
-    englishRadios.forEach(radio => {
-        radio.addEventListener('change', () => {
-            if (userId) {
-                const selectedEnglish = document.querySelector('input[name="english"]:checked').value;
-                db.collection('users').doc(userId).set({
-                    takeEnglish: selectedEnglish
-                }, { merge: true });
-            }
-        });
-    });
-
-    const practicalRadios = document.querySelectorAll('input[name="practical"]');
-    practicalRadios.forEach(radio => {
-        radio.addEventListener('change', () => {
-            if (userId) {
-                const selectedPractical = document.querySelector('input[name="practical"]:checked').value;
-                db.collection('users').doc(userId).set({
-                    takePractical: selectedPractical
-                }, { merge: true });
-            }
-        });
-    });
 
     // チェックボックス
     document.querySelectorAll('input[type="checkbox"]').forEach(box => {
