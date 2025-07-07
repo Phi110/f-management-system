@@ -1,6 +1,4 @@
-<!-- englishChapter.html -->
-
-
+<!-- probAndStat.html -->
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -24,11 +22,9 @@
 
     <!-- fms.css(main) -->
     <link rel="stylesheet" href="../css/fms.css">
-    
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <!-- cpp.css -->
+    <link rel="stylesheet" href="../css/cpp.css">
 
 </head>
     
@@ -53,7 +49,7 @@
         <div class="starter-template">
 
             <div class="small-text bottom-space">
-                Ver. 2025.07.03. 伊東颯紀
+                Ver. 2025.07.07. 伊東颯紀
             </div>
             <br>
             <h2 class="bottom-space">確率統計論</h2>
@@ -69,10 +65,67 @@
 
             <br><br>
             
-            
+            <!-- Test -->
             <h3>模擬テスト</h3>
-            <div class="left-space top-space bottom-space">
-                ・
+            
+            <br>
+
+            <!-- 問１ -->
+            <p>
+                <strong>問１（平均, 分散, 標準偏差）</strong>
+                <table class="table table-striped-columns hyou">
+                    <thead>
+                        <tr>
+                            <th>学科</th>
+                            <th></th><th></th><th></th><th></th><th></th>
+                            <th></th><th></th><th></th><th></th><th></th>
+                            <th>合計</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>IT</td>
+                            <td>7</td><td>8</td><td>4</td><td>6</td><td>6</td>
+                            <td>5</td><td>2</td><td>3</td><td>9</td><td>10</td>
+                            <td>60</td>
+                        </tr>
+                        <tr>
+                            <td>DE</td>
+                            <td>4</td><td>6</td><td>6</td><td>8</td><td>7</td>
+                            <td>6</td><td>9</td><td>3</td><td>7</td><td>4</td>
+                            <td>60</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="left-space bottom-space">
+                    IT学科, DE学科のそれぞれ 10 人が計算テストを行った.<br>
+                    IT学科の得点を \( x \) 点, DE学科の得点を \( y \) 点として,<br>
+                    変量 \( x \) の平均 \( \bar{x} \) , 分散 \( S_x^2 \) , 標準偏差 \( S_x \) および
+                    変量 \( y \) の平均 \( \bar{y} \) , 分散 \( S_y^2 \) , 標準偏差 \( S_y \) を求めよ.
+                </div>
+            </p>
+
+            <p>
+                <strong>問１ 解答欄</strong>
+            </p>
+
+            <p>
+                <span class="left-space right-space">\( \bar{x} \)</span> <input id="answer1-1" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                <span class="left-space right-space">\( S_x^2 \)</span> <input id="answer1-2" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank ">
+                <span class="left-space right-space">\( S_x \)</span> <input id="answer1-3" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+
+                <br>
+
+                <span class="left-space right-space">\( \bar{y} \)</span> <input id="answer1-4" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                <span class="left-space right-space">\( S_y^2 \)</span> <input id="answer1-5" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank ">
+                <span class="left-space right-space">\( S_y \)</span> <input id="answer1-6" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+            </p>
+
+            <div>
+                <button id="fill-in-the-blank-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+                <span id="fill-in-the-blank-score"></span>
             </div>
             
             <br><br><br><br><br>
@@ -94,6 +147,11 @@
 
 
     <!-- js -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
