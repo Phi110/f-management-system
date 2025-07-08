@@ -289,7 +289,10 @@ class Datetime extends CSV {
         }
         for (let i = 0; i < list.length - 6; i++) {
             const j = index * 10 + i;
-            let nextButton = "";
+            let nextButton = "", prevButton = "";
+            if (i != 0) {
+                prevButton = `<button class="btn btn-secondary" data-bs-target="#modal${j - 1}" data-bs-toggle="modal">Prev</button>`
+            }
             if (list.length > 7 + i) {
                 nextButton = `<button class="btn btn-primary" data-bs-target="#modal${j + 1}" data-bs-toggle="modal">Next</button>`;
             }
@@ -304,7 +307,7 @@ class Datetime extends CSV {
                         + `          <img src="images/assignment/${list[6 + i]}.webp" class="img-fluid">\n`
                         + `        </div>\n`
                         + `      <div class="modal-footer">\n`
-                        + `        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>\n`
+                        + `        ${prevButton}\n`
                         + `        ${nextButton}\n`
                         + `      </div>\n`
                         + `    </div>\n`
