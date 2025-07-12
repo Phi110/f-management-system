@@ -24,10 +24,8 @@
     padding: 5px;
 }
 .hyou {
+    border: 0.5px solid black;
     border-collapse: collapse;
-}
-th, td {
-    border: 1px solid black;
 }
 .gray {
     background-color: rgb(234, 234, 234);
