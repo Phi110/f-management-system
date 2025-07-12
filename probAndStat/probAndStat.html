@@ -56,7 +56,7 @@
         <div class="starter-template">
 
             <div class="small-text bottom-space">
-                Ver. 2025.07.11. 伊東颯紀
+                Ver. 2025.07.12. 伊東颯紀
             </div>
             <br>
             <h2 class="bottom-space">確率統計論</h2>
@@ -75,7 +75,7 @@
             <!-- Test -->
             <h3>模擬テスト</h3>
             
-            <br>
+            <br><br>
 
             <!-- 問１ -->
             <p>
@@ -86,26 +86,23 @@
                             <th>学科</th>
                             <th></th><th></th><th></th><th></th><th></th>
                             <th></th><th></th><th></th><th></th><th></th>
-                            <th>合計</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>IT</td>
-                            <td>7</td><td>8</td><td>4</td><td>6</td><td>6</td>
-                            <td>5</td><td>2</td><td>3</td><td>9</td><td>10</td>
-                            <td>60</td>
+                            <td>4</td><td>7</td><td>5</td><td>7</td><td>7</td>
+                            <td>3</td><td>9</td><td>8</td><td>7</td><td>3</td>
                         </tr>
                         <tr>
                             <td>DE</td>
-                            <td>4</td><td>6</td><td>6</td><td>8</td><td>7</td>
-                            <td>6</td><td>9</td><td>3</td><td>7</td><td>4</td>
-                            <td>60</td>
+                            <td>7</td><td>5</td><td>8</td><td>9</td><td>3</td>
+                            <td>10</td><td>9</td><td>1</td><td>2</td><td>6</td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="left-space bottom-space">
-                    IT学科, DE学科のそれぞれ 10 人が計算テストを行った.<br>
+                    IT学科, DE学科のそれぞれ 10 人が計算テストを行った. 結果は上表の通りである.<br>
                     IT学科の得点を \( x \) 点, DE学科の得点を \( y \) 点として,<br>
                     変量 \( x \) の平均 \( \bar{x} \) , 分散 \( S_x^2 \) , 標準偏差 \( S_x \) および
                     変量 \( y \) の平均 \( \bar{y} \) , 分散 \( S_y^2 \) , 標準偏差 \( S_y \) を求めよ.
@@ -117,29 +114,45 @@
             </p>
 
             <p>
-                <span class="left-space right-space">\( \bar{x} \)</span> <input id="answer1-1" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
-                <span class="left-space right-space">\( S_x^2 \)</span> <input id="answer1-2" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank ">
-                <span class="left-space right-space">\( S_x \)</span> <input id="answer1-3" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                <span class="left-space right-space">\( \bar{x} \)</span>
+                <input id="question1-1" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                <span id="question1-1-answer"></span>
+
+                <span class="left-space right-space">\( S_x^2 \)</span>
+                <input id="question1-2" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank ">
+                <span id="question1-2-answer"></span>
+
+                <span class="left-space right-space">\( S_x \)</span>
+                <input id="question1-3" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                <span id="question1-3-answer"></span>
 
                 <br>
 
-                <span class="left-space right-space">\( \bar{y} \)</span> <input id="answer1-4" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
-                <span class="left-space right-space">\( S_y^2 \)</span> <input id="answer1-5" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank ">
-                <span class="left-space right-space">\( S_y \)</span> <input id="answer1-6" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                <span class="left-space right-space">\( \bar{y} \)</span>
+                <input id="question1-4" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                <span id="question1-4-answer"></span>
+
+                <span class="left-space right-space">\( S_y^2 \)</span>
+                <input id="question1-5" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank ">
+                <span id="question1-5-answer"></span>
+
+                <span class="left-space right-space">\( S_y \)</span>
+                <input id="question1-6" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                <span id="question1-6-answer"></span>
             </p>
 
             <div>
-                <button id="fill-in-the-blank-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                <button id="question1-button" type="submit" class="btn btn-success btn-sm btn-xs">
                     Check
                 </button>
-                <span id="fill-in-the-blank-score"></span>
+                <span id="question1-answer"></span>
             </div>
 
-            <br><br>
+            <br><br><br>
             
             <!-- 問２ -->
             <p>
-                <strong>問２（〃）</strong>
+                <strong>問２（確率密度関数）</strong>
             </p>
             <p>
                 コインを 3 回投げる試行において, "オモテが出る" を +1, "ウラが出る" を -1 で表すとする.<br>
@@ -147,34 +160,68 @@
                 確率変数 \( X \) を, \( X  = ( (  i ,  j ,  k  ) ) =  i + j + k \) と定義するとき,
             </p>
             <p>
-                (1) \( X \) の 確率密度関数 \( f(x) \) を求めよ. また, そのときのグラフを選べ.
+                (1) \( X \) の 確率密度関数 \( f(x) \) のグラフを選べ.
             </p>
             <p>
-                (2) \( P ( -1 \leq X \leq 1 ) \)
+                (2) \( P ( -1 \leq X \leq 1 ) \) を求めよ.
             </p>
             <br>
 
             <p>
                 <strong>問２ 解答欄</strong>
+                <div>(1)</div>
             </p>
-            <p>
-                (1) \( f(x) =  \) 
-                <input id="answer1-6" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
-                ( \( x = \)
-                <input id="answer1-6" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
-                のとき )
-            </p>
-            (2)
             <div class="row">
-                <canvas id="pmfChart1" width="400" height="300" class="col-sm-6"></canvas>
-                <canvas id="pmfChart2" width="400" height="300" class="col-sm-6"></canvas>
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question2-1" value="" id="radio1" checked>
+                    <label class="form-check-label" for="radio1">
+                        <span class="bottom-space"> <strong>1. </strong> </span>
+                    </label>
+                    <canvas id="pmfChart1" width="225" height="225"></canvas>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question2-1" value="1" id="radio2">
+                    <label class="form-check-label" for="radio2">
+                        <span class="bottom-space"> <strong>2. </strong> </span>
+                    </label>
+                    <canvas id="pmfChart2" width="225" height="225"></canvas>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question2-1" value="" id="radio3">
+                    <label class="form-check-label" for="radio3">
+                        <span class="bottom-space"> <strong>3. </strong> </span>
+                    </label>
+                    <canvas id="pmfChart3" width="225" height="225"></canvas>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question2-1" value="" id="radio4">
+                    <label class="form-check-label" for="radio4">
+                        <span class="bottom-space"> <strong>4. </strong> </span>
+                    </label>
+                    <canvas id="pmfChart4" width="225" height="225"></canvas>
+                </div>
             </div>
+
             <div>
-                <button id="fill-in-the-blank-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                <button id="question2-1-button" type="submit" class="btn btn-success btn-sm btn-xs">
                     Check
                 </button>
-                <span id="fill-in-the-blank-score"></span>
+                <span id="question2-1-answer"></span>
             </div>
+
+            <br>
+
+            <p>
+                <span class="right-space">(2)</span>
+                <input id="question2-2" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+            </p>
+            <div>
+                <button id="question2-2-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+                <span id="question2-2-answer"></span>
+            </div>
+
 
             <br><br><br>
 
@@ -240,6 +287,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
     <script src="./probAndStat.js" type="module"></script>
+    <script src="./checkAnswers.js" type="module"></script>
 
 </body>
     

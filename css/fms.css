@@ -307,6 +307,15 @@ iframe {
     opacity: 0.4;
 }
 
+.custom-tooltip {
+    --bs-tooltip-bg: var(--bs-light);
+}
+
+.custom-tooltip .tooltip-inner {
+    color: red;
+    font-size: 17px;
+}
+
 /* タブレット */
 @media (min-width: 813px) and (max-width: 1024px) {
     h1 {
