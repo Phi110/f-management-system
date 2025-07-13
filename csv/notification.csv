@@ -31,3 +31,4 @@ X/X,0:0,sentence(,link,LINK,URL)(,modal,MODAL,#modalX)(,offcanvas,OFFCANVAS,#off
 7/2 23:26,offcanvas,ログイン,#offcanvasRight,機能の 5 分前に自動で出席 URL を開くオプションが ,red,オフ, になってしまう不具合を解消しました
 7/2 23:47,FMSの,red,アイコン,を設定しました
 7/3 9:17,modal,CGコース,#modalCG,の時間割を追加しました
+7/13 9:22,確率統計論 の ,link,模擬テスト,probAndStat/probAndStat.html, を作成しました. (問１・問２・問７)
