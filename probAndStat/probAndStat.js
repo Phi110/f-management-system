@@ -106,7 +106,9 @@ class MyCdfChart {
                 const numerator = Math.round(value * denominator);
 
                 if (numerator === 0) return '0';
+                if (numerator === - denominator) return '-1';
                 if (numerator === denominator) return '1';
+                if (numerator === 2 * denominator) return '2';
                 return `${numerator}/${denominator}`;
               }
             },
