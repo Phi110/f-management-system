@@ -60,4 +60,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
     createWrittenQuestion("7", ["0.1", "6", "50", "24", "2.015", "4.03", "45.97", "54.03"]);
 
+    createRadioQuestion("4", "4.");
 });

@@ -46,7 +46,7 @@
 
     <!-- アラート -->
     <div id="alert" class="alert alert-primary alert-dismissible fade show text-center" role="alert">
-        問１, 問２, 問３, 問７が完成しました.
+        問１～４, 問７が完成しました.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
@@ -275,8 +275,63 @@
 
             <!-- 問４ -->
             <p>
-                <strong>問４（〃）</strong>
+                <strong>問４（累積分布関数）</strong>
             </p>
+            <p>
+                \[
+                f(x) =
+                \begin{cases}
+                \frac{1}{2} & \text{if } -1 \leq x \leq 1 \\
+                0           & \text{otherwise}
+                \end{cases}
+                \]
+                をもつ確率変数 \( X \) について, (累積)分布関数 \( F(x) \) のグラフを選べ.
+            </p>
+
+            <br>
+
+            <p>
+                <strong>問４ 解答欄</strong>
+            </p>
+            <div class="row">
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question4" value="" id="radio5" checked>
+                    <label class="form-check-label" for="radio5">
+                        <span class="bottom-space"> <strong>1. </strong> </span>
+                    </label>
+                    <canvas id="cdfChart1" width="225" height="200"></canvas>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question4" value="" id="radio6">
+                    <label class="form-check-label" for="radio6">
+                        <span class="bottom-space"> <strong>2. </strong> </span>
+                    </label>
+                    <canvas id="cdfChart2" width="225" height="200"></canvas>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question4" value="" id="radio7">
+                    <label class="form-check-label" for="radio7">
+                        <span class="bottom-space"> <strong>3. </strong> </span>
+                    </label>
+                    <canvas id="cdfChart3" width="225" height="200"></canvas>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question4" value="1" id="radio8">
+                    <label class="form-check-label" for="radio8">
+                        <span class="bottom-space"> <strong>4. </strong> </span>
+                    </label>
+                    <canvas id="cdfChart4" width="225" height="200"></canvas>
+                </div>
+            </div>
+            <div>
+                <button id="question4-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+                <span id="question4-answer"></span>
+            </div>
+
+            <br><br><br>
+
 
             <!-- 問５ -->
             <p>
