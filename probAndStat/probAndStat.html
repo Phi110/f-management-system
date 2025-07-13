@@ -46,7 +46,7 @@
 
     <!-- アラート -->
     <div id="alert" class="alert alert-primary alert-dismissible fade show text-center" role="alert">
-        問１～４, 問７が完成しました.
+        全問完成しました.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
@@ -337,12 +337,214 @@
             <p>
                 <strong>問５（正規分布）</strong>
             </p>
-            <!-- <canvas id="pdfChart" width="400" height="200"></canvas> -->
+            <p>
+                IPUT 学生 <strong>100</strong> 人の GPA が 平均 <strong>2.5</strong> , 標準偏差が <strong>1</strong> の正規分布に従う.<br>
+                GPAが <strong>1.99</strong> から <strong>3.01</strong> までの人数はおよそ何人か.
+                ただし, 必要があれば
+                <a href="#" data-bs-target="#modal-normal-distribution" data-bs-toggle="modal">正規分布表</a>
+                を使用して良い.
+            </p>
+
+            <div class="modal fade" id="modal-normal-distribution" tabindex="-1" aria-labelledby="modal-normal" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="modal-normal">正規分布表</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                標準正規分布 \( N(0, 1) \) に従う確率変数 \( Z \) についての
+                                確率 \( P (0 < Z \leq z ) \)
+                            </p>
+                            
+                            <table class="table table-striped-columns hyou">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sm-1 text-center border-col">z</th>
+                                        <th class="col-sm-1 text-center">.00</th>
+                                        <th class="col-sm-1 text-center">.01</th>
+                                        <th class="col-sm-1 text-center">.02</th>
+                                        <th class="col-sm-1 text-center">.03</th>
+                                        <th class="col-sm-1 text-center">.04</th>
+                                        <th class="col-sm-1 text-center">.05</th>
+                                        <th class="col-sm-1 text-center">.06</th>
+                                        <th class="col-sm-1 text-center">.07</th>
+                                        <th class="col-sm-1 text-center">.08</th>
+                                        <th class="col-sm-1 text-center">.09</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="col-sm-1 text-center border-col"> <strong>0.0</strong> </td>
+                                        <td>0.0000</td>
+                                        <td>0.0040</td>
+                                        <td>0.0080</td>
+                                        <td>0.0120</td>
+                                        <td>0.0160</td>
+                                        <td>0.0199</td>
+                                        <td>0.0239</td>
+                                        <td>0.0279</td>
+                                        <td>0.0319</td>
+                                        <td>0.0359</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.1</strong> </td>
+                                        <td>0.0398</td>
+                                        <td>0.0438</td>
+                                        <td>0.0478</td>
+                                        <td>0.0517</td>
+                                        <td>0.0557</td>
+                                        <td>0.0596</td>
+                                        <td>0.0636</td>
+                                        <td>0.0675</td>
+                                        <td>0.0714</td>
+                                        <td>0.0753</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.2</strong> </td>
+                                        <td>0.0793</td>
+                                        <td>0.0832</td>
+                                        <td>0.0871</td>
+                                        <td>0.0910</td>
+                                        <td>0.0948</td>
+                                        <td>0.0987</td>
+                                        <td>0.1026</td>
+                                        <td>0.1064</td>
+                                        <td>0.1103</td>
+                                        <td>0.1141</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.3</strong> </td>
+                                        <td>0.1179</td>
+                                        <td>0.1217</td>
+                                        <td>0.1255</td>
+                                        <td>0.1293</td>
+                                        <td>0.1331</td>
+                                        <td>0.1368</td>
+                                        <td>0.1406</td>
+                                        <td>0.1443</td>
+                                        <td>0.1480</td>
+                                        <td>0.1517</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.4</strong> </td>
+                                        <td>0.1554</td>
+                                        <td>0.1591</td>
+                                        <td>0.1628</td>
+                                        <td>0.1664</td>
+                                        <td>0.1700</td>
+                                        <td>0.1736</td>
+                                        <td>0.1772</td>
+                                        <td>0.1808</td>
+                                        <td>0.1844</td>
+                                        <td>0.1879</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.5</strong> </td>
+                                        <td>0.1915</td>
+                                        <td>0.1950</td>
+                                        <td>0.1985</td>
+                                        <td>0.2019</td>
+                                        <td>0.2054</td>
+                                        <td>0.2088</td>
+                                        <td>0.2123</td>
+                                        <td>0.2157</td>
+                                        <td>0.2190</td>
+                                        <td>0.2224</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.6</strong> </td>
+                                        <td>0.2257</td>
+                                        <td>0.2291</td>
+                                        <td>0.2324</td>
+                                        <td>0.2357</td>
+                                        <td>0.2389</td>
+                                        <td>0.2422</td>
+                                        <td>0.2454</td>
+                                        <td>0.2486</td>
+                                        <td>0.2517</td>
+                                        <td>0.2549</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.7</strong> </td>
+                                        <td>0.2580</td>
+                                        <td>0.2611</td>
+                                        <td>0.2642</td>
+                                        <td>0.2673</td>
+                                        <td>0.2704</td>
+                                        <td>0.2734</td>
+                                        <td>0.2764</td>
+                                        <td>0.2794</td>
+                                        <td>0.2823</td>
+                                        <td>0.2852</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.8</strong> </td>
+                                        <td>0.2881</td>
+                                        <td>0.2910</td>
+                                        <td>0.2939</td>
+                                        <td>0.2967</td>
+                                        <td>0.2995</td>
+                                        <td>0.3023</td>
+                                        <td>0.3051</td>
+                                        <td>0 3078</td>
+                                        <td>0.3106</td>
+                                        <td>0.3133</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <p>
+                <strong>問５ 解答欄</strong>
+            </p>
+
+            <p class="left-space">
+                <input id="question5" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+            </p>
+            <div>
+                <button id="question5-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+                <span id="question5-answer"></span>
+            </div>
+
+            <br><br><br>
+
 
             <!-- 問６ -->
             <p>
                 <strong>問６（二項分布）</strong>
             </p>
+            <p>
+                サイコロを <strong>180</strong> 回投げるとき, 3の目が <strong>27</strong> 回～ <strong>33</strong> 回 出る確率はどうなるか.<br>
+                \( n = 180 \) は十分大きく, 確率変数 \( X \) は近似的に 正規分布 \( N( \mu , \sigma^2 ) \) に従うことを用いて求めよ.<br>
+                ただし, 半整数補正 を行うものとし, 必要があれば 
+                <a href="#" data-bs-target="#modal-normal-distribution" data-bs-toggle="modal">正規分布表</a> 
+                を使用して良い.
+            </p>
+
+            <br>
+
+            <p>
+                <strong>問６ 解答欄</strong>
+            </p>
+
+            <p class="left-space">
+                <input id="question6" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+            </p>
+            <div>
+                <button id="question6-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+                <span id="question6-answer"></span>
+            </div>
 
             <br><br><br>
 
@@ -470,6 +672,7 @@
             </div>
 
             <br>
+
             <p>
                 <strong>問７ 解答欄</strong>
             </p>

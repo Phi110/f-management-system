@@ -58,7 +58,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     createWrittenQuestion("3-2", "1/2");
 
-    createWrittenQuestion("7", ["0.1", "6", "50", "24", "2.015", "4.03", "45.97", "54.03"]);
-
     createRadioQuestion("4", "4.");
+
+    createWrittenQuestion("5", "39");
+
+    createWrittenQuestion("6", "0.516");
+
+    createWrittenQuestion("7", ["0.1", "6", "50", "24", "2.015", "4.03", "45.97", "54.03"]);
 });
