@@ -316,6 +316,10 @@ iframe {
     font-size: 17px;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
 /* タブレット */
 @media (min-width: 813px) and (max-width: 1024px) {
     h1 {
