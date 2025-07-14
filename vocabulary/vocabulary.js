@@ -3,20 +3,92 @@
 
 import { VocabularyList, MultipleChoice, FillInTheBlank } from "../module/vocabulary.js";
 
+function parseVocabularyCSV(data1, data2) {
+    const v = new VocabularyList();
+    v.paragraph = data1;
+    v.addMeaning = data2;
+    v.processing();
+    const vocabularyList = document.getElementById('vocabulary-list');
+    vocabularyList.innerHTML = v.paragraph;
+
+    const m = new MultipleChoice();
+    m.paragraph = data1;
+    m.processing();
+    const multipleChoice = document.getElementById('multiple-choice');
+    multipleChoice.innerHTML = m.paragraph;
+
+    const f = new FillInTheBlank();
+    f.paragraph = data1;
+    f.processing();
+    answerList = f.answerList;
+    const fillInTheBlank = document.getElementById('fill-in-the-blank');
+    fillInTheBlank.innerHTML = f.paragraph;
+}
+
+function parseVocabularyCSVAll(vocabularyData, meaningData) {
+    // 全部 → 30問
+
+    console.log(vocabularyData)
+
+    const data1 = vocabularyData.join('\n');
+    const data2 = meaningData.join('');
+
+    console.log(data1.length);
+
+    const v = new VocabularyList();
+    v.paragraph = data1;
+    v.addMeaning = data2;
+    v.processing();
+    const vocabularyList = document.getElementById('vocabulary-list');
+    vocabularyList.innerHTML = v.paragraph;
+
+    const m = new MultipleChoice();
+    m.paragraph = data1;
+    m.processing(10);
+    const multipleChoice = document.getElementById('multiple-choice');
+    multipleChoice.innerHTML = m.paragraph;
+
+    const f = new FillInTheBlank();
+    f.paragraph = data1;
+    f.processing(10);
+    answerList = f.answerList;
+    const fillInTheBlank = document.getElementById('fill-in-the-blank');
+    fillInTheBlank.innerHTML = f.paragraph;
+}
+
 
 let answerList;
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     const urlParams = new URLSearchParams(window.location.search);
     const index = urlParams.get('i');
 
-    Promise.all([
-        fetch(`./vocabulary.csv/vocabulary${index}.csv`).then(response => response.text()),
-        fetch(`./meaning.csv/meaning${index}.csv`).then(response => response.text())
-    ])
-    .then(([data1, data2]) => {
-        parseVocabularyCSV(data1, data2);
-    });
+    if (index >= 100) {
+        const fetchPromises = [];
+        for (let i = 0; i < 13; i++) {
+            const promise = Promise.all([
+                fetch(`./vocabulary.csv/vocabulary${i + 1}.csv`).then(response => response.text()),
+                fetch(`./meaning.csv/meaning${i + 1}.csv`).then(response => response.text())
+            ])
+            fetchPromises.push(promise);
+        }
+
+        const allResults = await Promise.all(fetchPromises);
+
+        const vocabularyData = allResults.map(result => result[0]);
+        const meaningData = allResults.map(result => result[1]);
+
+        parseVocabularyCSVAll(vocabularyData, meaningData);
+        
+    } else {
+        Promise.all([
+            fetch(`./vocabulary.csv/vocabulary${index}.csv`).then(response => response.text()),
+            fetch(`./meaning.csv/meaning${index}.csv`).then(response => response.text())
+        ])
+        .then(([data1, data2]) => {
+            parseVocabularyCSV(data1, data2);
+        });
+    }
 
     const toggleButton = document.getElementById("toggle-all-button");
     let isOpen = false;
@@ -90,26 +162,3 @@ document.addEventListener('DOMContentLoaded', function() {
                         + `</span>\n`;
     });
 });
-
-
-function parseVocabularyCSV(data1, data2) {
-    const v = new VocabularyList();
-    v.paragraph = data1;
-    v.addMeaning = data2;
-    v.processing();
-    const vocabularyList = document.getElementById('vocabulary-list');
-    vocabularyList.innerHTML = v.paragraph;
-
-    const m = new MultipleChoice();
-    m.paragraph = data1;
-    m.processing();
-    const multipleChoice = document.getElementById('multiple-choice');
-    multipleChoice.innerHTML = m.paragraph;
-
-    const f = new FillInTheBlank();
-    f.paragraph = data1;
-    f.processing();
-    answerList = f.answerList;
-    const fillInTheBlank = document.getElementById('fill-in-the-blank');
-    fillInTheBlank.innerHTML = f.paragraph;
-}

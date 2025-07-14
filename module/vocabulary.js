@@ -92,10 +92,10 @@ export class MultipleChoice extends Vocabulary {
         super(rawSentence);
     }
 
-    processing() {
+    processing(num = 5) {
         const vocabularyList = this.makeVocabList();
         const len = vocabularyList.length;
-        const numberOfQuestion = 5;
+        const numberOfQuestion = num;
         
         const randomIndices = getUniqueRandomInt(0, len - 1, numberOfQuestion);
 
@@ -137,10 +137,10 @@ export class FillInTheBlank extends Vocabulary {
         this.answerList = [];
     }
 
-    processing() {
+    processing(num = 5) {
         const vocabularyList = this.makeVocabList();
         const len = vocabularyList.length;
-        const numberOfQuestion = 5;
+        const numberOfQuestion = num;
         
         const randomIndices = getUniqueRandomInt(0, len - 1, numberOfQuestion);
 
