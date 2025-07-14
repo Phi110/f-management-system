@@ -505,13 +505,13 @@ iframe {
 /* スマホ */
 @media (max-width: 600px) {
     h1 {
-        font-size: 28px;
+        font-size: 32px;
     }
     h2 {
-        font-size: 18px;
+        font-size: 20px;
     }
     h3 {
-        font-size: 16px;
+        font-size: 17px;
     }
     h4 {
         font-size: 15px;
