@@ -721,10 +721,151 @@
                     </tbody>
                 </table>
             </div>
-            
-            <button id="question7-button" type="submit" class="btn btn-success btn-sm btn-xs">
-                Check
-            </button>
+
+            <div class="top-space bottom-space">
+                <button id="question7-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+            </div>
+
+            <br><br><br>
+
+
+            <!-- 問８ -->
+            <strong>問８（仮説検定）</strong>
+
+            <br><br>
+
+            <div class="col-sm-6 offset-sm-3">
+                <table class="table table-striped-columns hyou">
+                    <tbody>
+                        <tr>
+                            <th class="col-sm-1 border-col">直径(cm)</td>
+                            <td class="col-sm-1">2.95</td>
+                            <td class="col-sm-1">3.25</td>
+                            <td class="col-sm-1">2.95</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="top-space bottom-space">
+                あるマカロン屋では, "\( 3 \) cm マカロン" という名の商品を販売をしている. 当店売上 No.1 を誇る人気メニューである.<br>
+                しかし, ある朝, 一人のお客さんから \( 3 \) cm ではないというクレームが入ってしまったため, 潔白を証明するために検定を行うことになった.<br>
+                ランダムに選んだ三個入りパックを開けると, 直径は上表のようになっていた.<br>
+                この情報を元に, マカロンの直径は \( 3 \) cm であることを示しなさい.
+                ただし, 有意水準 \( \alpha \) は \( 0.1 \) とし, 必要があれば
+                <a href="#" data-bs-target="#modal-t-distribution" data-bs-toggle="modal">t分布表</a>
+                を使用して良い.
+            </div>
+
+            <br>
+
+            <strong>問８ 解答欄</strong>
+
+            <br><br>
+
+            <div class="col-sm-10">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th class="col-sm-1"> ① - 1 </th>
+                            <td class="col-sm-2"> 帰無仮説 \( H_0 \) </td>
+                            <td class="col-sm-2">
+                                <input id="question8-1" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question8-1-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ① - 2 </th>
+                            <td> 対立仮説 \( H_1 \) </td>
+                            <td>
+                                <input id="question8-2" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question8-2-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ① - 3 </th>
+                            <td> 有意水準 \( \alpha \) </td>
+                            <td>
+                                <input id="question8-3" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question8-3-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ② - 1 </th>
+                            <td> 標本数 ( \( n \) ) </td>
+                            <td>
+                                <input id="question8-4" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question8-4-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ② - 2 </th>
+                            <td> 標本平均 ( \( \bar{x} \) ) </td>
+                            <td>
+                                <input id="question8-5" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question8-5-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ② - 3 </th>
+                            <td> 標本分散 ( \( S^2 \) ) </td>
+                            <td>
+                                <input id="question8-6" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question8-6-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ③ - 1 </th>
+                            <td> 検定統計量 ( \( T \) ) </td>
+                            <td> 
+                                <input id="question8-7" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question8-7-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ③ - 2 </th>
+                            <td> \( t_{n-1} ( \frac{α}{2} ) \) </td>
+                            <td> 
+                                <input id="question8-8" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question8-8-answer"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="top-space bottom-space">
+                以上より, 
+                <select id="answer-select" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="">片側検定</option>
+                    <option value="1">両側検定</option>
+                </select>
+                <span id="result1"></span>
+                なので \( -t_{n-1} ( \frac{α}{2} ) < T < t_{n-1} ( \frac{α}{2} ) \) となり, 帰無仮説 \( H_0 \) は
+                <select id="answer-select" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="">棄却される</option>
+                    <option value="1">棄却されない</option>
+                </select>
+                <span id="result1"></span>
+                .<br> 従って, "直径 3cm である" ことは
+                <select id="answer-select" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="">否定できる</option>
+                    <option value="1">否定できない</option>
+                </select>
+                <span id="result1"></span>
+                .
+            </div>
+
+            <div class="top-space bottom-space">
+                <button id="question8-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+            </div>
             
             <br><br><br><br><br>
 
