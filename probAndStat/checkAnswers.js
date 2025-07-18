@@ -46,6 +46,24 @@ function createRadioQuestion(questionN, answer) {
     });
 }
 
+function createSelectQuestion(questionN, start, end) {
+    const questionButton = document.getElementById(`question${questionN}-button`);
+
+    questionButton.addEventListener("click", () => {
+        for (let i = start; i < end + 1; i++) {
+        const selected = document.getElementById(`question${questionN}-${i}`);
+        const questionAnswer = document.getElementById(`question${questionN}-${i}-answer`);
+
+        questionAnswer.innerHTML = selected.value === "1" 
+            ? `<i class="bi bi-circle text-success right-space"></i>`
+            : `<i class="bi bi-x-lg text-danger right-space"></i>`;
+
+        }
+        
+        initializeTooltips();
+    });
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
     createWrittenQuestion("1", ["6", "4", "2", "6", "9", "3"]);
@@ -65,4 +83,8 @@ document.addEventListener('DOMContentLoaded', function() {
     createWrittenQuestion("6", "0.516");
 
     createWrittenQuestion("7", ["0.1", "6", "50", "24", "2.015", "4.03", "45.97", "54.03"]);
+
+    createWrittenQuestion("8", ["3.00", "3.00", "0.1", "3", "3.05", "0.03", "0.5", "2.920"]);
+
+    createSelectQuestion("8", 9, 11);
 });
