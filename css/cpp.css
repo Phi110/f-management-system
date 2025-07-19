@@ -36,8 +36,12 @@
     padding-right: 5px;
 }
 .small-form {
-    width: 70px;
+    width: 100px;
 }
+.placeholder-form {
+    width: 150px;
+}
+
 
 /* スマホ */
 @media (max-width: 600px) {
