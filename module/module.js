@@ -365,13 +365,6 @@ export class Assignment extends Datetime {
     }
 }
 
-const a = new Assignment();
-a.paragraph = `期限,科目,ID,内容,URL (,画像,名)
-
-7/28 22:00,人工知能数学,57,期末課題,https://lms-tokyo.iput.ac.jp/mod/assign/view.php?id=85284,(補足),aimath1,aimath2,aimath3
-`;
-a.processing();
-console.log(a.paragraph);
 
 export class Event extends Datetime {
     processing() {
