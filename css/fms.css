@@ -91,9 +91,6 @@ iframe {
     margin-bottom: 10px;
     height: 38px;
 }
-#attendance {
-    display: inline;
-}
 #congratulations-message {
     opacity: 0;
     transition: opacity 1s ease;
@@ -177,7 +174,7 @@ iframe {
     position: relative;
     display: inline-block;
     margin-top: 15px;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     margin-left: 30px;
     margin-right: 0px;
 }
@@ -189,6 +186,19 @@ iframe {
     position: relative;
     z-index: 2;
 }
+
+.attendance-space {
+    padding-left: 30px;
+    position: relative;
+    z-index: 2;
+}
+.attendance-button {
+    --bs-btn-bg: #6f42c1;
+    --bs-btn-color: white;
+    --bs-btn-hover-bg: #9B95C9;
+    --bs-btn-hover-color: white;
+}
+
 .lms {
     padding-left: 30px;
     font-size: 25px;
