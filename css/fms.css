@@ -609,7 +609,7 @@ iframe {
         display: inline-block;
         margin-top: 20px;
         margin-right: 20px;
-        margin-left: 10px;
+        margin-left: 15px;
         margin-bottom: 40px;
     }
     .custom-container {
@@ -620,7 +620,7 @@ iframe {
         padding: 10px 15px;
     }
     .text {
-        padding-left: 25px;
+        padding-left: 20px;
         padding-right: 50px;
     }
     .title {
@@ -644,10 +644,15 @@ iframe {
         margin-left: auto;
         margin-right: 0;
     }
-    .lms {
-        font-size: 15px;
-        padding-left: 25px;
+
+    .attendance-space {
+        padding-left: 20px;
     }
+    .lms {
+        font-size: 20px;
+        padding-left: 20px;
+    }
+
     .accordion-button {
         font-size: 15px;
     }
