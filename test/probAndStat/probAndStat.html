@@ -1,0 +1,903 @@
+<!-- probAndStat.html -->
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>F Management System</title>
+
+    <!-- icon -->
+    <link rel="icon" href="../images/icon/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="../images/icon/apple-touch-icon.png">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <!-- fms.css(main) -->
+    <link rel="stylesheet" href="../../css/fms.css">
+
+    <!-- cpp.css -->
+    <link rel="stylesheet" href="../../css/cpp.css">
+
+    <!-- js -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+    
+<body>
+
+    <!-- ナビゲーションバー -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-xxl bar-container">
+            <a class="navbar-brand" href="#">FMS</a>
+        </div>
+    </nav>
+
+    <!-- アラート -->
+    <div id="alert" class="alert alert-primary alert-dismissible fade show text-center" role="alert">
+        全問完成しました.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <!-- メイン -->
+    <div class="container-xxl custom-container">
+
+        <div class="starter-template">
+
+            <div class="small-text bottom-space">
+                Ver. 2025.07.13. 伊東颯紀
+            </div>
+            <br>
+            <h2 class="bottom-space">確率統計論</h2>
+            <br>
+
+            <!-- パンくずリスト -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb left-space">
+                    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="../../index.html#test">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">模擬テスト</li>
+                </ol>
+            </nav>
+
+            <br><br>
+            
+            <!-- Test -->
+            <h3>模擬テスト</h3>
+            
+            <br><br>
+
+
+            <!-- 問１ -->
+            <strong>問１（離散型確率変数）</strong>
+
+            <br><br>
+
+            <table class="table table-striped-columns hyou">
+                <tbody>
+                    <tr>
+                        <td class="col-sm-1 border-col"> <strong>IT</strong></td>
+                        <td class="col-sm-1">4</td><td class="col-sm-1">7</td>
+                        <td class="col-sm-1">5</td><td class="col-sm-1">7</td>
+                        <td class="col-sm-1">7</td><td class="col-sm-1">3</td>
+                        <td class="col-sm-1">9</td><td class="col-sm-1">8</td>
+                        <td class="col-sm-1">7</td><td class="col-sm-1">3</td>
+                    </tr>
+                    <tr>
+                        <td class="border-col"> <strong>DE</strong> </td>
+                        <td>7</td><td>5</td><td>8</td><td>9</td><td>3</td>
+                        <td>10</td><td>9</td><td>1</td><td>2</td><td>6</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="bottom-space">
+                IT学科, DE学科のそれぞれ \( 10 \) 人が計算テストを行った. 結果は上表の通りである.<br>
+                IT学科の得点を \( x \) 点, DE学科の得点を \( y \) 点として,<br>
+                変量 \( x \) の平均 \( \bar{x} \) , 分散 \( S_x^2 \) , 標準偏差 \( S_x \) および
+                変量 \( y \) の平均 \( \bar{y} \) , 分散 \( S_y^2 \) , 標準偏差 \( S_y \) を求めよ.
+            </div>
+
+            <br>
+
+            <strong>問１ 解答欄</strong>
+
+            <br><br>
+
+            <span class="left-space right-space">\( \bar{x} \)</span>
+            <input id="question1-1" type="text" class="form-control form-control-sm d-inline-block small-form">
+            <span id="question1-1-answer"></span>
+
+            <span class="left-space right-space">\( S_x^2 \)</span>
+            <input id="question1-2" type="text" class="form-control form-control-sm d-inline-block small-form">
+            <span id="question1-2-answer"></span>
+
+            <span class="left-space right-space">\( S_x \)</span>
+            <input id="question1-3" type="text" class="form-control form-control-sm d-inline-block small-form">
+            <span id="question1-3-answer"></span>
+
+            <br>
+
+            <span class="left-space right-space">\( \bar{y} \)</span>
+            <input id="question1-4" type="text" class="form-control form-control-sm d-inline-block small-form">
+            <span id="question1-4-answer"></span>
+
+            <span class="left-space right-space">\( S_y^2 \)</span>
+            <input id="question1-5" type="text" class="form-control form-control-sm d-inline-block small-form">
+            <span id="question1-5-answer"></span>
+
+            <span class="left-space right-space">\( S_y \)</span>
+            <input id="question1-6" type="text" class="form-control form-control-sm d-inline-block small-form">
+            <span id="question1-6-answer"></span>
+
+            <br><br>
+
+            <div>
+                <button id="question1-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+                <span id="question1-answer"></span>
+            </div>
+
+            <br><br><br>
+            
+
+            <!-- 問２ -->
+            <strong>問２（確率密度関数）</strong>
+
+            <br><br>
+            
+            <div class="bottom-space">
+                コインを \( 3 \) 回投げる試行において, "オモテが出る" を \( +1 \), "ウラが出る" を \( -1 \) で表すとする.<br>
+                事象 \( ( i , j , k ) \) : 1 回目は \( i \) , 2 回目は \( j \) , 3 回目は \( k \) に対して, <br>
+                確率変数 \( X \) を, \( X  = ( (  i ,  j ,  k  ) ) =  i + j + k \) と定義するとき,
+            </div>
+
+            <div class="top-space bottom-space">
+                (1) \( X \) の 確率密度関数 \( f(x) \) のグラフを選べ.
+            </div>
+
+            <div class="bottom-space">
+                (2) \( P ( -1 \leq X \leq 1 ) \) を求めよ.
+            </div>
+
+            <br>
+
+            <strong>問２ 解答欄</strong>
+
+            <br><br>
+            
+            (1)
+            <div class="row bottom-space">
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question2-1" value="" id="radio1" checked>
+                    <label class="form-check-label" for="radio1">
+                        <span class="bottom-space"> <strong>1. </strong> </span>
+                    </label>
+                    <canvas id="pmfChart1" width="225" height="225"></canvas>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question2-1" value="1" id="radio2">
+                    <label class="form-check-label" for="radio2">
+                        <span class="bottom-space"> <strong>2. </strong> </span>
+                    </label>
+                    <canvas id="pmfChart2" width="225" height="225"></canvas>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question2-1" value="" id="radio3">
+                    <label class="form-check-label" for="radio3">
+                        <span class="bottom-space"> <strong>3. </strong> </span>
+                    </label>
+                    <canvas id="pmfChart3" width="225" height="225"></canvas>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question2-1" value="" id="radio4">
+                    <label class="form-check-label" for="radio4">
+                        <span class="bottom-space"> <strong>4. </strong> </span>
+                    </label>
+                    <canvas id="pmfChart4" width="225" height="225"></canvas>
+                </div>
+            </div>
+
+            <div class="top-space bottom-space">
+                <button id="question2-1-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+                <span id="question2-1-answer"></span>
+            </div>
+
+            <div class="top-space bottom-space">
+                <span class="right-space">(2)</span>
+                <input id="question2-2" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+            </div>
+
+            <div class="top-space">
+                <button id="question2-2-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+                <span id="question2-2-answer"></span>
+            </div>
+
+
+            <br><br><br>
+
+
+            <!-- 問３ -->
+            <strong>問３（連続型確率変数）</strong>
+            
+            <br><br>
+
+            <div class="bottom-space">
+                連続型確率変数 \( X \) のとる値の範囲が \( 0 \leq x \leq 1 \) で,
+                確率密度関数 \( f(x) \) が \( f(x) = kx (x - 2) \) ( \( k \) は定数)で表されている.
+            </div>
+
+            <div class="top-space bottom-space">
+                (1) \( k \) の値を求めよ.
+            </div>
+
+            <div class="bottom-space">
+                (2) \( P (0 \leq X \leq 1) \) を求めよ.
+            </div>
+
+            <br>
+
+            <strong>問３ 解答欄</strong>
+
+            <br><br>
+            
+            <div class="bottom-space">
+                <span class="right-space">(1)</span>
+                <input id="question3-1" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+            </div>
+
+            <div class="top-space bottom-space">
+                <button id="question3-1-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+                <span id="question3-1-answer"></span>
+            </div>
+
+            <div class="top-space bottom-space">
+                <span class="right-space">(2)</span>
+                <input id="question3-2" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+            </div>
+
+            <div class="top-space">
+                <button id="question3-2-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+                <span id="question3-2-answer"></span>
+            </div>
+
+            <br><br><br>
+
+
+            <!-- 問４ -->
+            <strong>問４（累積分布関数）</strong>
+            
+            <br>
+
+            <div class="top-space">
+                \[
+                f(x) =
+                \begin{cases}
+                \frac{1}{2} & \text{if } -1 \leq x \leq 1 \\
+                0           & \text{otherwise}
+                \end{cases}
+                \]
+                をもつ確率変数 \( X \) について, (累積)分布関数 \( F(x) \) のグラフを選べ.
+            </div>
+
+            <br>
+            
+            <strong>問４ 解答欄</strong>
+
+            <br><br>
+
+            <div class="row bottom-space">
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question4" value="" id="radio5" checked>
+                    <label class="form-check-label" for="radio5">
+                        <span class="bottom-space"> <strong>1. </strong> </span>
+                    </label>
+                    <canvas id="cdfChart1" width="210" height="200"></canvas>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question4" value="" id="radio6">
+                    <label class="form-check-label" for="radio6">
+                        <span class="bottom-space"> <strong>2. </strong> </span>
+                    </label>
+                    <canvas id="cdfChart2" width="210" height="200"></canvas>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question4" value="" id="radio7">
+                    <label class="form-check-label" for="radio7">
+                        <span class="bottom-space"> <strong>3. </strong> </span>
+                    </label>
+                    <canvas id="cdfChart3" width="210" height="200"></canvas>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-check-input me-1" type="radio" name="question4" value="1" id="radio8">
+                    <label class="form-check-label" for="radio8">
+                        <span class="bottom-space"> <strong>4. </strong> </span>
+                    </label>
+                    <canvas id="cdfChart4" width="210" height="200"></canvas>
+                </div>
+            </div>
+
+            <div class="top-space">
+                <button id="question4-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+                <span id="question4-answer"></span>
+            </div>
+
+            <br><br><br>
+
+
+            <!-- 問５ -->
+            <strong>問５（正規分布）</strong>
+            
+            <br><br>
+
+            <div>
+                IPUT 学生 \( 100 \) 人の GPA が 平均 \( 2.5 \) , 標準偏差が \( 1 \) の正規分布に従う.<br>
+                GPAが \( 1.99 \) から \( 3.01 \) までの人数はおよそ何人か.
+                ただし, 必要があれば
+                <a href="#" data-bs-target="#modal-normal-distribution" data-bs-toggle="modal">正規分布表</a>
+                を使用して良い.
+            </div>
+
+            <div class="modal fade" id="modal-normal-distribution" tabindex="-1" aria-labelledby="modal-normal" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="modal-normal">正規分布表</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                標準正規分布 \( N(0, 1) \) に従う確率変数 \( Z \) についての
+                                確率 \( P (0 < Z \leq z ) \)
+                            </p>
+                            
+                            <table class="table table-striped-columns hyou">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sm-1 text-center border-col">z</th>
+                                        <th class="col-sm-1 text-center">.00</th>
+                                        <th class="col-sm-1 text-center">.01</th>
+                                        <th class="col-sm-1 text-center">.02</th>
+                                        <th class="col-sm-1 text-center">.03</th>
+                                        <th class="col-sm-1 text-center">.04</th>
+                                        <th class="col-sm-1 text-center">.05</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="col-sm-1 text-center border-col"> <strong>0.0</strong> </td>
+                                        <td>0.0000</td>
+                                        <td>0.0040</td>
+                                        <td>0.0080</td>
+                                        <td>0.0120</td>
+                                        <td>0.0160</td>
+                                        <td>0.0199</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.1</strong> </td>
+                                        <td>0.0398</td>
+                                        <td>0.0438</td>
+                                        <td>0.0478</td>
+                                        <td>0.0517</td>
+                                        <td>0.0557</td>
+                                        <td>0.0596</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.2</strong> </td>
+                                        <td>0.0793</td>
+                                        <td>0.0832</td>
+                                        <td>0.0871</td>
+                                        <td>0.0910</td>
+                                        <td>0.0948</td>
+                                        <td>0.0987</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.3</strong> </td>
+                                        <td>0.1179</td>
+                                        <td>0.1217</td>
+                                        <td>0.1255</td>
+                                        <td>0.1293</td>
+                                        <td>0.1331</td>
+                                        <td>0.1368</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.4</strong> </td>
+                                        <td>0.1554</td>
+                                        <td>0.1591</td>
+                                        <td>0.1628</td>
+                                        <td>0.1664</td>
+                                        <td>0.1700</td>
+                                        <td>0.1736</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.5</strong> </td>
+                                        <td>0.1915</td>
+                                        <td>0.1950</td>
+                                        <td>0.1985</td>
+                                        <td>0.2019</td>
+                                        <td>0.2054</td>
+                                        <td>0.2088</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.6</strong> </td>
+                                        <td>0.2257</td>
+                                        <td>0.2291</td>
+                                        <td>0.2324</td>
+                                        <td>0.2357</td>
+                                        <td>0.2389</td>
+                                        <td>0.2422</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.7</strong> </td>
+                                        <td>0.2580</td>
+                                        <td>0.2611</td>
+                                        <td>0.2642</td>
+                                        <td>0.2673</td>
+                                        <td>0.2704</td>
+                                        <td>0.2734</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center border-col"> <strong>0.8</strong> </td>
+                                        <td>0.2881</td>
+                                        <td>0.2910</td>
+                                        <td>0.2939</td>
+                                        <td>0.2967</td>
+                                        <td>0.2995</td>
+                                        <td>0.3023</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <strong>問５ 解答欄</strong>
+
+            <br><br>
+
+            <div class="bottom-space">
+                <input id="question5" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+            </div>
+
+            <div class="top-space">
+                <button id="question5-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+                <span id="question5-answer"></span>
+            </div>
+
+            <br><br><br>
+
+
+            <!-- 問６ -->
+            <strong>問６（二項分布）</strong>
+
+            <br><br>
+
+            <div>
+                サイコロを \( 180 \) 回投げるとき, 3の目が \( 27 \) 回～ \( 33 \) 回 出る確率はどうなるか.<br>
+                \( n = 180 \) は十分大きく, 確率変数 \( X \) は近似的に 正規分布 \( N( \mu , \sigma^2 ) \) に従うことを用いて求めよ.<br>
+                ただし, 半整数補正 を行うものとし, 必要があれば 
+                <a href="#" data-bs-target="#modal-normal-distribution" data-bs-toggle="modal">正規分布表</a> 
+                を使用して良い.
+            </div>
+
+            <br>
+
+            <strong>問６ 解答欄</strong>
+
+            <br><br>
+
+            <div class="bottom-space">
+                <input id="question6" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+            </div>
+
+            <div class="top-space">
+                <button id="question6-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+                <span id="question6-answer"></span>
+            </div>
+
+            <br><br><br>
+
+            <!-- 問７ -->
+            <strong>問７（区間推定）</strong>
+
+            <br><br>
+
+            <div class="col-sm-8 offset-sm-2">
+                <table class="table table-striped-columns hyou">
+                    <tbody>
+                        <tr>
+                            <td class="col-sm-1 border-col"> <strong>重さ(g)</strong> </td>
+                            <td class="col-sm-1">51</td>
+                            <td class="col-sm-1">45</td>
+                            <td class="col-sm-1">57</td>
+                            <td class="col-sm-1">50</td>
+                            <td class="col-sm-1">44</td>
+                            <td class="col-sm-1">53</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="top-space">
+                大量に作った たこ焼き から任意に \( 6 \) 個取り出して重さを測定したところ, 以上の結果を得た.<br>
+                このデータより, たこ焼き 1 個の重さ (g) の \( 90 \) %の信頼区間を求めよ.<br>
+                ただし, 必要があれば
+                <a href="#" data-bs-target="#modal-t-distribution" data-bs-toggle="modal">t分布表</a>
+                を使用して良い.
+            </div>
+
+            <div class="modal fade" id="modal-t-distribution" tabindex="-1" aria-labelledby="modal-t" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="modal-t">t分布表</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <strong>v</strong>:自由度, <strong>α</strong>:片側確率
+                            <table class="table table-striped-columns hyou">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sm-1 border-col"></th>
+                                        <th class="col-sm-5 text-center" colspan="5">α</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="col-sm-1 border-col text-center"> <strong>v</strong> </td>
+                                        <td class="col-sm-1"> <strong>0.1</strong> </td>
+                                        <td class="col-sm-1"> <strong>0.05</strong> </td>
+                                        <td class="col-sm-1"> <strong>0.025</strong> </td>
+                                        <td class="col-sm-1"> <strong>0.01</strong> </td>
+                                        <td class="col-sm-1"> <strong>0.005</strong> </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center border-col"> 1 </th>
+                                        <td>3.078</td>
+                                        <td>6.314</td>
+                                        <td>12.706</td>
+                                        <td>31.821</td>
+                                        <td>63.657</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center border-col"> 2 </th>
+                                        <td>1.886</td>
+                                        <td>2.920</td>
+                                        <td>4.303</td>
+                                        <td>6.965</td>
+                                        <td>9.925</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center border-col"> 3 </th>
+                                        <td>1.638</td>
+                                        <td>2.353</td>
+                                        <td>3.182</td>
+                                        <td>4.541</td>
+                                        <td>5.841</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center border-col"> 4 </th>
+                                        <td>1.533</td>
+                                        <td>2.132</td>
+                                        <td>2.776</td>
+                                        <td>3.747</td>
+                                        <td>4.604</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center border-col"> 5 </th>
+                                        <td>1.476</td>
+                                        <td>2.015</td>
+                                        <td>2.571</td>
+                                        <td>3.365</td>
+                                        <td>4.032</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center border-col"> 6 </th>
+                                        <td>1.440</td>
+                                        <td>1.943</td>
+                                        <td>2.447</td>
+                                        <td>3.143</td>
+                                        <td>3.707</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center border-col"> 7 </th>
+                                        <td>1.415</td>
+                                        <td>1.895</td>
+                                        <td>2.365</td>
+                                        <td>2.998</td>
+                                        <td>3.499</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center border-col"> 8 </th>
+                                        <td>1.397</td>
+                                        <td>1.860</td>
+                                        <td>2.306</td>
+                                        <td>2.896</td>
+                                        <td>3.355</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <strong>問７ 解答欄</strong>
+
+            <br><br>
+
+            <div class="col-sm-10">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th class="col-sm-1"> ① </th>
+                            <td class="col-sm-2"> 有意水準 α </td>
+                            <td class="col-sm-3">
+                                <input id="question7-1" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question7-1-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ② - 1 </th>
+                            <td> 標本数 (n) </td>
+                            <td>
+                                <input id="question7-2" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question7-2-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ② - 2 </th>
+                            <td> 標本平均 ( \( \bar{x} \) ) </td>
+                            <td>
+                                <input id="question7-3" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question7-3-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ② - 3 </th>
+                            <td> 標本分散 ( \( S^2 \) ) </td>
+                            <td>
+                                <input id="question7-4" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question7-4-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ③ - 1 </th>
+                            <td> \( t_{n-1} ( \frac{α}{2} ) \) </td>
+                            <td> 
+                                <input id="question7-5" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question7-5-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ③ - 2 </th>
+                            <td> \( t_{n-1} ( \frac{α}{2} ) \sqrt{\frac{S^2}{n}} \) </td>
+                            <td> 
+                                <input id="question7-6" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question7-6-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ④ </th>
+                            <td> 信頼区間 </td>
+                            <td> 
+                                <input id="question7-7" type="text" class="form-control form-control-sm d-inline-block small-form">
+                                <span id="question7-7-answer"></span>
+                                \(  \leq \omega \leq  \)
+                                <input id="question7-8" type="text" class="form-control form-control-sm d-inline-block small-form">
+                                <span id="question7-8-answer"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="top-space bottom-space">
+                <button id="question7-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+            </div>
+
+            <br><br><br>
+
+
+            <!-- 問８ -->
+            <strong>問８（仮説検定）</strong>
+
+            <br><br>
+
+            <div class="col-sm-6 offset-sm-3">
+                <table class="table table-striped-columns hyou">
+                    <tbody>
+                        <tr>
+                            <th class="col-sm-1 border-col">直径(cm)</td>
+                            <td class="col-sm-1">2.95</td>
+                            <td class="col-sm-1">3.25</td>
+                            <td class="col-sm-1">2.95</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="top-space bottom-space">
+                あるマカロン屋では, "\( 3 \) cm マカロン" という名の商品を販売をしている. 当店売上 No.1 を誇る人気メニューである.<br>
+                しかし, ある朝, 一人のお客さんから \( 3 \) cm ではないというクレームが入ってしまったため, 潔白を証明するために検定を行うことになった.<br>
+                ランダムに選んだ三個入りパックを開けると, 直径は上表のようになっていた.<br>
+                この情報を元に, マカロンの直径は \( 3 \) cm であることを示しなさい.
+                ただし, 有意水準 \( \alpha \) は \( 0.1 \) とし, 必要があれば
+                <a href="#" data-bs-target="#modal-t-distribution" data-bs-toggle="modal">t分布表</a>
+                を使用して良い.
+            </div>
+
+            <br>
+
+            <strong>問８ 解答欄</strong>
+
+            <br><br>
+
+            <div class="col-sm-10">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th class="col-sm-1"> ① - 1 </th>
+                            <td class="col-sm-2"> 帰無仮説 \( H_0 \) </td>
+                            <td class="col-sm-3">
+                                \( \mu_0 = \)
+                                <input id="question8-1" type="text" class="form-control form-control-sm d-inline-block small-form">
+                                <span id="question8-1-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ① - 2 </th>
+                            <td> 対立仮説 \( H_1 \) </td>
+                            <td>
+                                \( \mu_0 \ne \)
+                                <input id="question8-2" type="text" class="form-control form-control-sm d-inline-block small-form">
+                                <span id="question8-2-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ① - 3 </th>
+                            <td> 有意水準 \( \alpha \) </td>
+                            <td>
+                                <input id="question8-3" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question8-3-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ② - 1 </th>
+                            <td> 標本数 ( \( n \) ) </td>
+                            <td>
+                                <input id="question8-4" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question8-4-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ② - 2 </th>
+                            <td> 標本平均 ( \( \bar{x} \) ) </td>
+                            <td>
+                                <input id="question8-5" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question8-5-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ② - 3 </th>
+                            <td> 標本分散 ( \( S^2 \) ) </td>
+                            <td>
+                                <input id="question8-6" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question8-6-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ③ - 1 </th>
+                            <td> 検定統計量 ( \( T \) ) </td>
+                            <td> 
+                                <input id="question8-7" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question8-7-answer"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> ③ - 2 </th>
+                            <td> \( t_{n-1} ( \frac{α}{2} ) \) </td>
+                            <td> 
+                                <input id="question8-8" type="text" class="form-control form-control-sm d-inline-block fill-in-the-blank">
+                                <span id="question8-8-answer"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="top-space bottom-space">
+                以上より, 
+                <select id="question8-9" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="">片側検定</option>
+                    <option value="1">両側検定</option>
+                </select>
+                <span id="question8-9-answer"></span>
+                なので \( -t_{n-1} ( \frac{α}{2} ) < T < t_{n-1} ( \frac{α}{2} ) \) となり, 帰無仮説 \( H_0 \) は
+                <select id="question8-10" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="">棄却される</option>
+                    <option value="1">棄却されない</option>
+                </select>
+                <span id="question8-10-answer"></span>
+                .<br> 従って, "直径 \( 3 \) cm である" ことは
+                <select id="question8-11" class="form-select d-inline w-auto">
+                    <option value=""></option>
+                    <option value="">否定できる</option>
+                    <option value="1">否定できない</option>
+                </select>
+                <span id="question8-11-answer"></span>
+                .
+            </div>
+
+            <div class="top-space bottom-space">
+                <button id="question8-button" type="submit" class="btn btn-success btn-sm btn-xs">
+                    Check
+                </button>
+            </div>
+            
+            <br><br><br><br><br>
+
+
+            <!-- パンくずリスト -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb left-space">
+                    <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="../../index.html#test">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">模擬テスト</li>
+                </ol>
+            </nav>
+
+            <br><br>
+
+        </div>
+
+    </div>
+
+
+    <!-- js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <script src="./probAndStat.js" type="module"></script>
+    <script src="./checkAnswers.js" type="module"></script>
+
+</body>
+    
+</html>
