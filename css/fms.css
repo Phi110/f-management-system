@@ -329,6 +329,13 @@ iframe {
     text-decoration: underline;
 }
 
+.raid {
+    width: 80%;
+    height: 80%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
 /* タブレット */
 @media (min-width: 813px) and (max-width: 1024px) {
     h1 {
@@ -674,5 +681,10 @@ iframe {
     .modal-sm {
         width: 60%;
         left: 18%;
+    }
+
+    .raid {
+        width: 100%;
+        height: 100%;
     }
 }

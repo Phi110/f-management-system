@@ -55,34 +55,54 @@
                 <ol class="breadcrumb left-space">
                     <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="../../../index.html#test">Home</a></li>
                     <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="../fe.html">用語解説</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">単純マルコフ過程</li>
+                    <li class="breadcrumb-item active" aria-current="page">RAID</li>
                 </ol>
             </nav>
 
             <br><br>
             
             
-            <h3>単純マルコフ過程</h3>
+            <h3>RAID</h3>
             <div class="left-space top-space bottom-space">
-                <span class="text-danger left-space">マルコフ過程</span> とは, 「未来に起こる事象の確率が,
-                これまでの過程とは無関係に, 現在の状態によってのみ決定される」という確率過程のことです.<br>
-                <span class="left-space">中でも</span>, 「現在のただ1つの状態から次が決まるものを
-                <span class="text-danger">単純マルコフ過程</span> と言います.<br>
-                <span class="left-space">単に</span> マルコフ過程 と言う場合にはこれを指します.
+                <span class="text-danger left-space">RAID</span> とは, Redundant Array of Inexpensive Disks の略で「レイド」と読みます.
+                直訳すると, "安価ディスクの冗長な列" となり, 名前の通り複数のハードディスクを組み合わせることで速度や信頼性を向上させる技術です.<br>
+                <span class="left-space">その組み合わせ方次第で</span> RAID0 ~ RAID6 の 7種類 に分かれており, 基本的に数字が大きくなるほど現代技術に近くなります.
+                以下に代表例を掲載します.
             </div>
+
+            <br>
+
+            <div class="left-space">
+                <h5>RAID0 (ストライピング)</h5>
+                <img src="../images/raid0.webp" class="raid">
+
+                <br>
+                <h5>RAID1 (ミラーリング)</h5>
+                <img src="../images/raid1.webp" class="raid">
+
+                <br>
+                <h5>RAID10 (RAID0+1 または RAID1+0)</h5>
+
+
+                <br>
+                <h5>RAID3, RAID4</h5>
+
+
+                <br>
+                <h5>RAID5</h5>
+            </div>
+            
 
             <br>
 
             <h4>例題</h4>
             <div class="left-space top-space bottom-space">
-                <span class="left-space">表は,</span> ある地方の天気の移り変わりを示したものである.
-                例えば, 晴れの翌日の天気は, 40%の確率で晴れである.
-                天気の移り変わりが単純マルコフ過程であると考えたとき, 晴れの2日後が雨である確率は何%か.
+                <span class="left-space"></span> 
             </div>
 
             <br>
 
-            <div class="col-sm-6 offset-sm-2">
+            <!-- <div class="col-sm-6 offset-sm-2">
                 <table class="table table-striped-columns text-center">
                     <thead>
                         <tr>
@@ -113,7 +133,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> -->
 
             <br>
 
@@ -122,8 +142,7 @@
                     <strong>方針）</strong>
                 </div>
                 <div class="col-sm-11">
-                    天気の移り変わりは <span class="underline">単純マルコフ過程</span> であるため, 現在より前のことは考慮しなくて良いです.<br>
-                    よって, <span class="text-danger">現在: 晴れ → 翌日: 何でも可 → 2日後: 雨</span> である確率を求めればよいです.
+                    
                 </div> 
             </div>
             <div class="row left-space">
@@ -131,14 +150,11 @@
                     <strong>解）</strong>
                 </div>
                 <div class="col-sm-11">
-                    現在: 晴れ → 翌日: 晴れ → 2日後: 雨 <span class="left-space right-space">⇒</span> 40% × 20% = 8%<br>
-                    現在: 晴れ → 翌日: 曇り → 2日後: 雨 <span class="left-space right-space">⇒</span> 40% × 30% = 12%<br>
-                    現在: 晴れ → 翌日: 雨 → 2日後: 雨 <span class="left-space right-space">⇒</span> 20% × 20% = 4%<br>
-                    これらの内, いずれかが起こる確率は, 8% + 12% + 4% = <span class="text-danger underline">24%</span>
+                    
                 </div>
             </div>
 
-            <br>
+            <br><br>
 
             <h4>演習</h4>
             
@@ -146,13 +162,16 @@
                 FE
                 <br>
                 ・
-                <a href="https://www.fe-siken.com/kakomon/15_haru/q6.html" target="_blank">
-                    平成15年春期 午前問6
+                <a href="https://www.fe-siken.com/kakomon/01_aki/q15.html" target="_blank">
+                    令和元年秋期 午前問15
                 </a>
                 <br>
+
+                AP
+                <br>
                 ・
-                <a href="https://www.fe-siken.com/kakomon/17_haru/q7.html" target="_blank">
-                    平成17年春期 午前問7
+                <a href="https://www.ap-siken.com/kakomon/26_haru/q11.html" target="_blank">
+                    平成26年春期 午前問11
                 </a>
             </div>
             
@@ -165,7 +184,7 @@
                 <ol class="breadcrumb left-space">
                     <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="../../../index.html#test">Home</a></li>
                     <li class="breadcrumb-item"><a class="link-offset-2 link-underline link-underline-opacity-0" href="../fe.html">用語解説</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">単純マルコフ過程</li>
+                    <li class="breadcrumb-item active" aria-current="page">RAID</li>
                 </ol>
             </nav>
 
