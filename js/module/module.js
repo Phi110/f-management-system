@@ -279,6 +279,7 @@ class Datetime extends CSV {
     }
 
     toModal(index, list) {
+        
         if (list.length > 5) {
             this.supplement = list[5];
             if (list[6] !== "" && list.length > 6) {
@@ -289,9 +290,11 @@ class Datetime extends CSV {
         }
         for (let i = 0; i < list.length - 6; i++) {
             const j = index * 10 + i;
+            // let regex = new RegExp(this.supplement);
+            // const result = regex.test(".webp");
             let nextButton = "", prevButton = "";
             if (i != 0) {
-                prevButton = `<button class="btn btn-secondary" data-bs-target="#modal${j - 1}" data-bs-toggle="modal">Prev</button>`
+                prevButton = `<button class="btn btn-secondary" data-bs-target="#modal${j - 1}" data-bs-toggle="modal">Prev</button>`;
             }
             if (list.length > 7 + i) {
                 nextButton = `<button class="btn btn-primary" data-bs-target="#modal${j + 1}" data-bs-toggle="modal">Next</button>`;
