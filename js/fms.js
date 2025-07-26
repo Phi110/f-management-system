@@ -4,7 +4,7 @@
 
 /*  */
 // 現在時  // リロード  // 今週の自習・談話室  // 実習モーダル
-import { toClock, reloadPage, toStudyroom, toPracticalModal } from '../module/module.js';
+import { toClock, reloadPage, toStudyroom, toPracticalModal } from './module/module.js';
 
 
 const whattime = document.getElementById('whattime');
@@ -35,7 +35,7 @@ modalAI.addEventListener('shown.bs.modal', function () {
 
 /* CSV */
 // 更新日  // 課題  // イベント  // テスト  // お知らせ  // アラート // 出席
-import { Version, Assignment, Event, Test, Notification, Alert, Attendance } from "../module/module.js";
+import { Version, Assignment, Event, Test, Notification, Alert, Attendance } from "./module/module.js";
 
 
 document.addEventListener('DOMContentLoaded', function() {
