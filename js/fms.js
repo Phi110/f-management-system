@@ -18,8 +18,10 @@ const studyroom = document.getElementById(`studyroom`);
 studyroom.src = toStudyroom();
 
 
+/*
 const modalPracticeDescribe = document.getElementById(`modalPracticeDescribe`);
 modalPracticeDescribe.innerHTML = toPracticalModal();
+*/
 
 
 // イメージマップ
