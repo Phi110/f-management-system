@@ -16,7 +16,7 @@
 /* css */
 /*
     iPhone12,13,14  : 390x844
-    iPhone15(pro),16 : 393×852
+    iPhone15,pro,16 : 393×852
 */
 
 
@@ -158,7 +158,7 @@ iframe {
 }
 .background {
     position: relative;
-    background-image: url('../images/title.webp');
+    background-image: url('../images/others/title.webp');
     background-size: cover;
     background-position: center;
 }
