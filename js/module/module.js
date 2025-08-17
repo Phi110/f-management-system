@@ -13,7 +13,6 @@ const currentMinute = now.getMinutes();
 let currentPeriod = calculatePeriod();
 
 
-
 function calculatePeriod(addSaturday = false) {
     switch(true) {
         case (currentWday === '土' && !addSaturday) || currentWday === '日':
@@ -46,11 +45,11 @@ function addZero(letter) {
 function getWeekNumber() {
     const firstDay = new Date(currentYear, currentMonth, 1);
     const gap = (8 - firstDay.getDay()) % 7;
-    const firstMonday = (new Date(currentYear, currentMonth, 1 + gap)).getDate();
+    const firstSonday = (new Date(currentYear, currentMonth, gap)).getDate();
 
-    if (currentMday < firstMonday) return 0;
+    if (currentMday < firstSonday) return 0;
 
-    const weekNumber = 1 + Math.floor((currentMday - firstMonday) / 7);
+    const weekNumber = 1 + Math.floor((currentMday - firstSonday) / 7);
     return weekNumber;
 }
 
@@ -72,7 +71,6 @@ function range(start, end, step = 1) {
     }
     return result;
 }
-
 
 
 /*  */
@@ -130,7 +128,6 @@ export function reloadPage() {
         setTimeout(() => location.reload(), timeUntilTomorrow);
     }
 }
-
 
 
 export class CSV {
@@ -319,7 +316,6 @@ class Datetime extends CSV {
         }
     }
 }
-
 
 
 /* CSV */
