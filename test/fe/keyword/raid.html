@@ -67,29 +67,40 @@
                 <span class="text-danger left-space">RAID</span> とは, Redundant Array of Inexpensive Disks の略で「レイド」と読みます.
                 直訳すると, "安価ディスクの冗長な列" となり, 名前の通り複数のハードディスクを組み合わせることで速度や信頼性を向上させる技術です.<br>
                 <span class="left-space">その組み合わせ方次第で</span> RAID0 ~ RAID6 の 7種類 に分かれており, 基本的に数字が大きくなるほど現代技術に近くなります.
-                以下に代表例を掲載します.
+                以下に代表例を掲載します (RAID2, RAID6の説明は割愛).
             </div>
 
             <br>
 
             <div class="left-space">
-                <h5>RAID0 (ストライピング)</h5>
+                <h5>・RAID0 (ストライピング)</h5>
+                <span class="left-space">RAID0</span>は, ストライピング(縦縞) とも呼ばれます. 2台のディスクに分散して書き込むのが特徴で,
+                高速化が図れる反面, 信頼性は低いです.
                 <img src="../images/raid0.webp" class="raid">
 
                 <br>
-                <h5>RAID1 (ミラーリング)</h5>
+                <h5>・RAID1 (ミラーリング)</h5>
+                <span class="left-space">RAID1</span>は, ミラーリング(鏡写し) とも呼ばれます. 2台のディスクに同じデータを書き込むのが特徴で,
+                使えるディスク領域は半分以下になりますが, 信頼性が高いです.
                 <img src="../images/raid1.webp" class="raid">
 
                 <br>
-                <h5>RAID10 (RAID0+1 または RAID1+0)</h5>
+                <h5>・RAID10 (RAID0+1 または RAID1+0)</h5>
+                <span class="left-space">RAID10</span>は, RAID0とRAID1を組み合わせたものです. 両者を組み合わせることにより,
+                互いのデメリットを打ち消し合うのが狙いです. 下図では, ストライピングをしたものをミラーリングしています (逆でも可).
                 <img src="../images/raid10.webp" class="raid">
 
                 <br>
-                <h5>RAID3, RAID4</h5>
-
+                <h5>・RAID3, RAID4</h5>
+                <span class="left-space">RAID3, RAID4</span>では, 3台以上のディスクを使って, データを分散させる(ストライピング)と同時に,
+                パリティという誤り訂正符号を専用のディスクに書き込むことで信頼性も担保します.<br>
+                <span class="left-space">RAID3</span>はビット単位, RAID4はブロック単位という違いがあります.
+                <img src="../images/raid34.webp" class="raid">
 
                 <br>
-                <h5>RAID5</h5>
+                <h5>・RAID5</h5>
+                <span class="left-space">RAID5</span>では, 3台以上のディスクを使って, データと同時にパリティも分散させて書き込みます.
+                <img src="../images/raid5.webp" class="raid">
             </div>
             
 
@@ -97,60 +108,113 @@
 
             <h4>例題</h4>
             <div class="left-space top-space bottom-space">
-                <span class="left-space"></span> 
+                <span class="left-space">RAID</span>の分類において, 4台以上のハードディスクを用いられており,
+                データの耐障害性が高く, 高速性を求めるデータベースなどのビジネスシーンでよく利用されるものは何か.
             </div>
 
             <br>
 
-            <!-- <div class="col-sm-6 offset-sm-2">
-                <table class="table table-striped-columns text-center">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>翌日晴れ</th>
-                            <th>翌日曇り</th>
-                            <th>翌日雨</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>晴れ</th>
-                            <td>40(%)</td>
-                            <td>40</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <th>曇り</th>
-                            <td>30</td>
-                            <td>40</td>
-                            <td>30</td>
-                        </tr>
-                        <tr>
-                            <th>雨</th>
-                            <td>30</td>
-                            <td>50</td>
-                            <td>20</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div> -->
+                
 
             <br>
 
-            <div class="row left-space bottom-space">
+            <div class="row left-space">
                 <div class="col-sm-1">
                     <strong>方針）</strong>
                 </div>
                 <div class="col-sm-11">
-                    
-                </div> 
+                    RAIDの分類は以下の表のようになっています. これをもとに, 当てはまるものを考えましょう.
+                </div>
             </div>
+            <br>
+            <table class="table table-striped-columns text-center">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>ストライピング</th>
+                        <th>ミラーリング</th>
+                        <th>ストライピング単位</th>
+                        <th>データ訂正符号</th>
+                        <th>冗長ディスク構成</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>RAID0</th>
+                        <td>○</td>
+                        <td>×</td>
+                        <td>ブロック</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th>RAID1</th>
+                        <td>×</td>
+                        <td>○</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th>RAID10</th>
+                        <td>○</td>
+                        <td>○</td>
+                        <td>ブロック</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <th>RAID2</th>
+                        <td>○</td>
+                        <td>×</td>
+                        <td>ビット</td>
+                        <td>ハミング</td>
+                        <td>固定</td>
+                    </tr>
+                    <tr>
+                        <th>RAID3</th>
+                        <td>○</td>
+                        <td>×</td>
+                        <td>ビット</td>
+                        <td>パリティ</td>
+                        <td>固定</td>
+                    </tr>
+                    <tr>
+                        <th>RAID4</th>
+                        <td>○</td>
+                        <td>×</td>
+                        <td>ブロック</td>
+                        <td>パリティ</td>
+                        <td>固定</td>
+                    </tr>
+                    <tr>
+                        <th>RAID5</th>
+                        <td>○</td>
+                        <td>×</td>
+                        <td>ブロック</td>
+                        <td>パリティ</td>
+                        <td>分散</td>
+                    </tr>
+                    <tr>
+                        <th>RAID6</th>
+                        <td>○</td>
+                        <td>×</td>
+                        <td>ブロック</td>
+                        <td>パリティ</td>
+                        <td>分散</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br>
+
             <div class="row left-space">
                 <div class="col-sm-1">
                     <strong>解）</strong>
                 </div>
                 <div class="col-sm-11">
-                    
+                    "データの耐障害性が高く" から, ミラーリングを使用している, もしくはデータ訂正を行っていることが分かります.
+                    また, "高速性を求める" ことから, ストライピングも併用されている <span class="text-danger">RAID10</span> が解答になります.
                 </div>
             </div>
 
