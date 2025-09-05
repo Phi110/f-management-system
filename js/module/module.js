@@ -1,7 +1,6 @@
 /* module.js (module) */
 
 
-
 const now = new Date();
 const currentYear = now.getFullYear();
 const currentMonth = now.getMonth();

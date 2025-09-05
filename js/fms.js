@@ -1,7 +1,6 @@
 /* fms.js */
 
 
-
 /*  */
 // 現在時  // リロード  // 今週の自習・談話室  // 実習モーダル
 import { toClock, reloadPage, toStudyroom, toPracticalModal } from './module/module.js';
