@@ -2,8 +2,8 @@
 
 
 /*  */
-// 現在時  // リロード  // 今週の自習・談話室  // 実習モーダル
-import { toClock, reloadPage, toStudyroom, toPracticalModal } from './module/module.js';
+// 現在時  // リロード  // 今週の自習・談話室
+import { toClock, reloadPage, toStudyroom } from './module/module.js';
 
 
 const whattime = document.getElementById('whattime');
@@ -16,11 +16,6 @@ reloadPage();
 const studyroom = document.getElementById(`studyroom`);
 studyroom.src = toStudyroom();
 
-
-/*
-const modalPracticeDescribe = document.getElementById(`modalPracticeDescribe`);
-modalPracticeDescribe.innerHTML = toPracticalModal();
-*/
 
 
 // イメージマップ
@@ -35,8 +30,8 @@ modalAI.addEventListener('shown.bs.modal', function () {
 
 
 /* CSV */
-// 更新日  // 課題  // イベント  // テスト  // お知らせ  // アラート // 出席
-import { Version, Assignment, Event, Test, Notification, Alert, Attendance } from "./module/module.js";
+// 更新日  // 課題  // イベント  // テスト  // お知らせ  // アラート // 出席 // 時間割
+import { Version, Assignment, Event, Test, Notification, Alert, Attendance, Curriculum } from "./module/module.js";
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -64,9 +59,18 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.text())
     .then(data => parseAlertCSV(data));
 
-    fetch('./csv/attendance.csv')
-    .then(response => response.text())
-    .then(data => parseAttendanceCSV(data));
+    Promise.all([
+        fetch(`./csv/curriculum/common.csv`).then(response => response.text()),
+        fetch(`./csv/curriculum/IT.csv`).then(response => response.text()),
+        fetch(`./csv/curriculum/IA2.csv`).then(response => response.text()),
+        fetch(`./csv/curriculum/IS2.csv`).then(response => response.text()),
+        fetch(`./csv/curriculum/DE.csv`).then(response => response.text()),
+        fetch(`./csv/curriculum/DG2.csv`).then(response => response.text()),
+        fetch(`./csv/curriculum/DC2.csv`).then(response => response.text()),
+    ])
+    .then(([data1, data2, data3, data4, data5, data6, data7]) => {
+        parseAttendanceCSV([data1, data2, data3, data4, data5, data6, data7]);
+    });
 });
 
 function parseVersionCSV(data) {
@@ -112,7 +116,10 @@ function parseAlertCSV(data) {
 }
 
 function parseAttendanceCSV(data) {
-    const a = new Attendance(data);
+    const a = new Attendance();
+    for (const csv of data) {
+        a.add(csv);
+    }
     a.processing();
     for (let i = 0; i < a.cardList.length; i++) {
         let card = document.getElementById(`card${i}`);

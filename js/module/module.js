@@ -7,6 +7,7 @@ const currentMonth = now.getMonth();
 const currentMday = now.getDate();
 const wdays = ["日", "月", "火", "水", "木", "金", "土"];
 const currentWday = wdays[now.getDay()];
+
 const currentHour = now.getHours();
 const currentMinute = now.getMinutes();
 let currentPeriod = calculatePeriod();
@@ -72,6 +73,22 @@ function range(start, end, step = 1) {
 }
 
 
+function toCourseName(shortened) {
+    switch(shortened) {
+        case "IA2":
+            return "AI";
+        case "IS2":
+            return "IoT"
+        case "DG2":
+            return "ゲーム" 
+        case "DC2":
+            return "CG"
+        default:
+            return shortened;
+    }
+}
+
+
 /*  */
 export function toClock(addSaturday = false) {
     const calendar = [currentMonth + 1, currentMday, currentHour, currentMinute].map(c => addZero(String(c)));
@@ -91,16 +108,6 @@ export function toClock(addSaturday = false) {
 
 export function toStudyroom() {
     return `images/studyroom/studyroom${currentMonth + 1}.${getWeekNumber()}.webp`;
-}
-
-
-export function toPracticalModal() {
-    if (currentWday === '水') {
-        return `<img src="images/practical/wednesday.webp" class="img-fluid">`;
-    } else if (currentWday === '木') {
-        return `<img src="images/practical/thursday.webp" class="img-fluid">`;
-    }
-    return "本日、地域共創実習はありません<br><br>";
 }
 
 
@@ -129,9 +136,11 @@ export function reloadPage() {
 }
 
 
+/* CSV */
 export class CSV {
     constructor(raw = "") {
         this.raw = raw;
+        this.header = "";
         this.tableData = [];
         this.html = "";
 
@@ -150,7 +159,8 @@ export class CSV {
 
 
     separate() {
-        const blocks = this.raw.trim().split('\n\n').slice(1);
+        const [header, ...blocks] = this.raw.trim().split('\n\n');
+        this.header = header;
         if (blocks.length === 1) {  // [['4/24', 'r', 'i'], ['12/15', 'r', 'u'], ['4/24 20:00', 'a', 'i']]
             this.tableData = blocks[0].split('\n').map(line => line.split(','));
         } else {
@@ -317,7 +327,6 @@ class Datetime extends CSV {
 }
 
 
-/* CSV */
 export class Assignment extends Datetime {
     processing() {
         this.refine();  // this.tableData = [['4/24 (木) 20:00','a','i'], ['4/24 (木)','r','i'], ['12/15 (月)','r','u']]
@@ -490,76 +499,132 @@ export class Alert extends CSV {
 }
 
 
-export class Attendance extends CSV {
-// this.tableData = 
-//  [[['月'], ['1'], ['共通', 'dj', '英語'], ['3'], ['AI', 'programming', '概論']], [['火'], ['1'], ['IoT', '統計論'], ['4', '5'], ['AI', '開発']]]
+/*
+曜日
+時限
+コース,絵,教科,教室,先生,(URL)
+*/
+
+export class Attendance {
+
     constructor(raw = "") {
-        super(raw);
+        this.raw = raw;
+        this.body = [];
         this.cardList = [];
     }
 
+    add(sentence) {
+        const [header, ...body] = sentence.trim().split('\n\n\n');
+        const classByDay = body.map(block => 
+            block.split('\n\n').map(lecture => {
+                if (lecture.length === 1) {
+                    return lecture;
+                } else {
+                    return lecture.split('\n').map((details, i) => {
+                        return i === 0 ? details.split(',').map(num => Number(num)): details.split(',');
+                    });
+                }
+            })
+        );
 
-    processing() {
-        for (const block of this.tableData) {
-            const wday = block[0][0];
+        for (const element of classByDay) {
+            const wday = element[0];
             if (wday !== currentWday) continue;
 
-            let i = 1;
-            while (i < block.length) {
-                const time = Number(block[i][0]);
-                let timeList = [];
-                if (!isNaN(time)) {
-                    const nextTime = Number(block[i][1]);
-                    timeList = !isNaN(nextTime) 
-                        ? range(time, nextTime + 1)
-                        : [time];
+            for (let i = 1; i < element.length; i++) {
+                if (!element[i][0].includes(currentPeriod)) continue;
+                
+                for (let j = 1; j < element[i].length; j++) {
+                    element[i][j].unshift(header);
                 }
-                if (timeList.includes(currentPeriod)) {
-                    i++;
-                    while (i < block.length && isNaN(Number(block[i][0]))) {
-                        this.cardList.push(this.toHtml(block[i]));
-                        i++;
-                    }
-                } else {
-                    i++;
-                }
+                this.body = this.body.concat(element[i].slice(1));
             }
         }
     }
 
-    toHtml(table) {
-        let imageLink = `<img src="images/attendance/${table[1]}.webp" class="card-img-top">`;
-        let stringLink = `${table[2]}`;
-        if (table[5] !== "") {
-            imageLink = `<a href=${table[5]} target="_blank">
-                    ${imageLink}
-                </a>
-            `;
-            stringLink = `<a href=${table[5]} target="_blank" class="link-offset-2 link-underline link-underline-opacity-0">
-                    ${stringLink}
-                </a>
-            `;
+    toHtml(list) {
+        let imageLink = `<img src="images/attendance/${list[2]}.webp" class="card-img-top">`;
+        let stringLink = `${list[1]}`;
+        if (list[5] !== "") {
+            imageLink = `<a href=${list[5]} target="_blank">\n`
+                      + `  ${imageLink}\n`
+                      + `</a>`;
+            
+            stringLink = `<a href=${list[5]} target="_blank" class="link-offset-2 link-underline link-underline-opacity-0">\n`
+                       + `  ${stringLink}\n`
+                       + `</a>`;
         }
-        let classLink = `${table[3]}`;
+        let classLink = `${list[3]}`;
         if (classLink === "教室一覧") {
             classLink = `<a href="#" data-bs-target="#modalPractice" data-bs-toggle="modal" class="text-dark link-offset-2 link-underline link-underline-opacity-0">
                     ${classLink}
                 </a>
             `;
         }
-        return `<h3>・${table[0]}</h3>
-            <div class="card">
-                ${imageLink}
-                <div class="card-body">
-                    <h4 class="card-title text-center middle-text stretch">${stringLink}</h4>
-                    <div class="card-text row justify-content-evenly">
-                        <div class="col-5 text-center">${classLink}</div>
-                        |
-                        <div class="col-5 text-center">${table[4]}</div>
-                    </div>
-                </div>
-            </div>
-            <br>
-        `;
+
+        this.cardList.push(
+            `<h3>・${toCourseName(list[0])}</h3>\n`
+            + `<div class="card">\n`
+            + `  ${imageLink}\n`
+            + `  <div class="card-body">\n`
+            + `    <h4 class="card-title text-center middle-text stretch">${stringLink}</h4>\n`
+            + `    <div class="card-text row justify-content-evenly">\n`
+            + `      <div class="col-5 text-center">${classLink}</div>\n`
+            + `      |\n`
+            + `      <div class="col-5 text-center">${list[4]}</div>\n`
+            + `    </div>\n`
+            + `  </div>\n`
+            + `</div>\n`
+            + `<br>\n`
+        );
+    }
+
+    processing() {
+        this.body.forEach(element => {
+            this.toHtml(element);
+        })
     }
 }
+
+
+export class Curriculum {
+    constructor() {
+
+    }
+
+    toMap(map) {
+        return;
+    }
+
+    toModal(course, map) {
+        const header = `<h3 class="modal-title fs-5" id="modal${course}Label">後期 ${course}</h3>\n`
+                     + `<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`;
+        const body = `<img src="images/curriculum/curriculum${course}.webp" usemap="#curriculum${course}-map" class="img-fluid">\n`
+                   + `<map name="curriculum${course}-map">\n${this.toMap(map)}\n</map>`;
+        const footer = "footer";
+
+        const frame = `<div class="modal fade" id="modal${course}" aria-hidden="true" aria-labelledby="modal${course}Label" tabindex="-1">\n`
+                    + `  <div class="modal-dialog modal-dialog-centered">\n`
+                    + `    <div class="modal-content">\n`
+                    + `      <div class="modal-header">\n${header}\n      </div>\n`
+                    + `      <div class="modal-body">\n${body}\n      </div>\n`
+                    + `      <div class="modal-footer">\n${footer}\n      </div>\n`
+                    + `    </div>\n`
+                    + `  </div>\n`
+                    + `</div>\n`;
+
+        console.log(frame);
+    }
+
+    processing() {
+
+    }
+}
+
+const c = new Curriculum();
+
+const mapAI = `月
+
+`
+
+c.toModal("IA2", mapAI);
