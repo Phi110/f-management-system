@@ -17,14 +17,14 @@ const studyroom = document.getElementById(`studyroom`);
 studyroom.src = toStudyroom();
 
 
-
 // イメージマップ
 window.addEventListener('load', function() {
     imageMapResize();
 });
-const modalAI = document.getElementById('modalAI');
-modalAI.addEventListener('shown.bs.modal', function () {
-    imageMapResize();
+document.addEventListener("shown.bs.modal", (event) => {
+    if (["modalIA2", "modalIS2", "modalDG2", "modalDC2"].includes(event.target.id)) {
+        imageMapResize();
+    }
 });
 
 
@@ -134,6 +134,7 @@ function parseCurriculumCSV(data) {
         c.add(csv);
     }
     c.toModal();
+    console.log(c.modal);
     let modalCurriculum = document.getElementById(`modal-curriculum`);
     modalCurriculum.innerHTML += c.modal;
 }

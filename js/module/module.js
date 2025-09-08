@@ -608,7 +608,6 @@ export class Curriculum {
         this.header = [];
         this.body = [];
         this.modal = "";
-        this.html = "";
     }
 
     add(sentence) {
@@ -628,19 +627,49 @@ export class Curriculum {
         this.body.push(classByDay);
     }
 
+    calculateCoords(wday, period) {
+        // 605×475
+        // (30+115*x) × (25+75*y)
+
+        const left = 30 + 115 * (wday - 1);
+        const right = 30 + 115 * wday;
+        const top = 25 + 75 * (period[0] - 1);
+        const bottom = 25 + 75 * period[period.length - 1];
+
+        return `${left},${top},${right},${bottom}`;
+    }
+
     toMap(index) {
-        // this.body = [
-        //     [1, [3, 4, 5, 6], "https://lms-tokyo.iput.ac.jp/mod/"],
-        //     [2, [1, 2], "https://lms-tokyo.iput.ac.jp/mod/"],
-        //     [5, [1], ""]
-        // ]
+        /* this.body = [
+            [
+                [1, [[3, 4, 5, 6], "https://lms-tokyo.iput.ac.jp/mod/"], [[1, 2], "https://"]],
+                [2, [[1, 2], "https://lms-tokyo.iput.ac.jp/mod/"]],
+                [5, [[1], ""]]
+            ]
+        ]; */
 
-        const coordinate = ``;
-        const url = this.body[index];
+        const curriculumCourse = this.body[index];
 
-        const area = `<area shape="rect" target="_blank" coords=${coordinate} href=${url}>`
+        let curriculumMap = "";
+        let wday;
+        curriculumCourse.forEach(byDay => {
+            byDay.forEach((element, i) => {
+                if (i === 0) {
+                    wday = element;
+                    return;
+                }
+                const period = element[0];
+                const url = element[1];
+                if (url) {
+                    const coordinate = this.calculateCoords(wday, period);
+                    const area = `<area shape="rect" target="_blank" coords="${coordinate}" href="${url}">\n`;
+                    curriculumMap += area;
+                }
+            })
+            
+        })
 
-        return area;
+        return curriculumMap;
     }
 
     makeFooter(index) {
@@ -673,7 +702,7 @@ export class Curriculum {
                              + `  <ul class="pagination">\n`
                              + `    ${pageItem}\n`
                              + `  </ul>\n`
-                             + `</nav>\n`;
+                             + `</nav>`;
 
         return pageNavigation;
     }
@@ -685,7 +714,7 @@ export class Curriculum {
             const header = `<h3 class="modal-title fs-5" id="modal${course}Label">後期 ${course}</h3>\n`
                          + `<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`;
             const body = `<img src="images/curriculum/curriculum${course}.webp" usemap="#curriculum${course}-map" class="img-fluid">\n`
-                       + `<map name="curriculum${course}-map">\n${this.toMap(i)}\n</map>`;
+                       + `<map name="curriculum${course}-map">\n${this.toMap(i)}</map>`;
             const footer = `${this.makeFooter(i)}`;
 
             this.modal += `<div class="modal fade" id="modal${course}" aria-hidden="true" aria-labelledby="modal${course}Label" tabindex="-1">\n`
@@ -697,36 +726,9 @@ export class Curriculum {
                   + `    </div>\n`
                   + `  </div>\n`
                   + `</div>\n`;
+            
+            console.log(this.modal);
         }
         
     }
 }
-
-const c = new Curriculum();
-c.header = ["IA2", "IS2", "DG2", "DC2"];
-c.toModal();
-
-c.add(`DG2
-
-
-月
-
-3,4,5,6
-ゲーム制作技術総合実習Ⅱ,tablet,277,浅・吉・高,https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=64719
-
-
-火
-
-1,2
-チームワークとリーダーシップ,leader,374,神田・東山,https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79268
-
-3,4
-ゲームデザイン実践演習,halloween,313,浅野・後藤,https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79662
-
-
-金
-
-3,4
-ゲームプログラミングⅠ,sleeping,277,二村・水上恵,https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=64730
-`);
-
