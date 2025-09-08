@@ -44,8 +44,7 @@ function addZero(letter) {
 
 function getWeekNumber() {
     const firstDay = new Date(currentYear, currentMonth, 1);
-    const gap = (8 - firstDay.getDay()) % 7;
-    const firstSonday = (new Date(currentYear, currentMonth, gap)).getDate();
+    const firstSonday = 8 - firstDay.getDay();
 
     if (currentMday < firstSonday) return 0;
 
