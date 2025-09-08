@@ -60,16 +60,17 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(data => parseAlertCSV(data));
 
     Promise.all([
-        fetch(`./csv/curriculum/common.csv`).then(response => response.text()),
-        fetch(`./csv/curriculum/IT.csv`).then(response => response.text()),
         fetch(`./csv/curriculum/IA2.csv`).then(response => response.text()),
         fetch(`./csv/curriculum/IS2.csv`).then(response => response.text()),
-        fetch(`./csv/curriculum/DE.csv`).then(response => response.text()),
         fetch(`./csv/curriculum/DG2.csv`).then(response => response.text()),
         fetch(`./csv/curriculum/DC2.csv`).then(response => response.text()),
+        fetch(`./csv/curriculum/common.csv`).then(response => response.text()),
+        fetch(`./csv/curriculum/IT.csv`).then(response => response.text()),
+        fetch(`./csv/curriculum/DE.csv`).then(response => response.text())
     ])
     .then(([data1, data2, data3, data4, data5, data6, data7]) => {
         parseAttendanceCSV([data1, data2, data3, data4, data5, data6, data7]);
+        parseCurriculumCSV([data1, data2, data3, data4]);
     });
 });
 
@@ -125,4 +126,14 @@ function parseAttendanceCSV(data) {
         let card = document.getElementById(`card${i}`);
         card.innerHTML = a.cardList[i];
     }
+}
+
+function parseCurriculumCSV(data) {
+    const c = new Curriculum();
+    for (const csv of data) {
+        c.add(csv);
+    }
+    c.toModal();
+    let modalCurriculum = document.getElementById(`modal-curriculum`);
+    modalCurriculum.innerHTML += c.modal;
 }

@@ -89,6 +89,24 @@ function toCourseName(shortened) {
 }
 
 
+function wdayToNumber(wday) {
+    switch (wday) {
+        case "月":
+            return 1;
+        case "火":
+            return 2;
+        case "水":
+            return 3;
+        case "木":
+            return 4;
+        case "金":
+            return 5;
+        default:
+            return wday;
+    }
+}
+
+
 /*  */
 export function toClock(addSaturday = false) {
     const calendar = [currentMonth + 1, currentMday, currentHour, currentMinute].map(c => addZero(String(c)));
@@ -507,8 +525,7 @@ export class Alert extends CSV {
 
 export class Attendance {
 
-    constructor(raw = "") {
-        this.raw = raw;
+    constructor() {
         this.body = [];
         this.cardList = [];
     }
@@ -589,42 +606,128 @@ export class Attendance {
 
 export class Curriculum {
     constructor() {
-
+        this.header = [];
+        this.body = [];
+        this.modal = "";
+        this.html = "";
     }
 
-    toMap(map) {
-        return;
+    add(sentence) {
+        const [header, ...body] = sentence.trim().split('\n\n\n');
+        const classByDay = body.map(block => 
+            block.split('\n\n').map(lecture => {
+                if (lecture.length === 1) {
+                    return wdayToNumber(lecture);
+                } else {
+                    return lecture.split('\n').map((details, i) => {
+                        return i === 0 ? details.split(',').map(num => Number(num)): details.split(',')[4];
+                    });
+                }
+            })
+        );
+        this.header.push(header);
+        this.body.push(classByDay);
     }
 
-    toModal(course, map) {
-        const header = `<h3 class="modal-title fs-5" id="modal${course}Label">後期 ${course}</h3>\n`
-                     + `<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`;
-        const body = `<img src="images/curriculum/curriculum${course}.webp" usemap="#curriculum${course}-map" class="img-fluid">\n`
-                   + `<map name="curriculum${course}-map">\n${this.toMap(map)}\n</map>`;
-        const footer = "footer";
+    toMap(index) {
+        // this.body = [
+        //     [1, [3, 4, 5, 6], "https://lms-tokyo.iput.ac.jp/mod/"],
+        //     [2, [1, 2], "https://lms-tokyo.iput.ac.jp/mod/"],
+        //     [5, [1], ""]
+        // ]
 
-        const frame = `<div class="modal fade" id="modal${course}" aria-hidden="true" aria-labelledby="modal${course}Label" tabindex="-1">\n`
-                    + `  <div class="modal-dialog modal-dialog-centered">\n`
-                    + `    <div class="modal-content">\n`
-                    + `      <div class="modal-header">\n${header}\n      </div>\n`
-                    + `      <div class="modal-body">\n${body}\n      </div>\n`
-                    + `      <div class="modal-footer">\n${footer}\n      </div>\n`
-                    + `    </div>\n`
-                    + `  </div>\n`
-                    + `</div>\n`;
+        const coordinate = ``;
+        const url = this.body[index];
 
-        console.log(frame);
+        const area = `<area shape="rect" target="_blank" coords=${coordinate} href=${url}>`
+
+        return area;
     }
 
-    processing() {
+    makeFooter(index) {
+        let pageItem = "";
+        if (index !== 0) {
+            pageItem += `<li class="page-item">\n`
+                        + `  <a class="page-link" href="#" data-bs-target="#modal${this.header[index - 1]}" data-bs-toggle="modal" aria-label="Previous">\n`
+                        + `    <span aria-hidden="true">&laquo;</span>\n`
+                        + `  </a>\n`
+                        + `</li>`;
+        }
 
+        this.header.forEach((course, i) => {
+            if (i === index) {
+                pageItem += `<li class="page-item disabled"><a class="page-link" href="#">${course}</a></li>\n`;
+            } else {
+                pageItem += `<li class="page-item"><a class="page-link" href="#" data-bs-target="#modal${course}" data-bs-toggle="modal">${course}</a></li>\n`;
+            }
+        })
+
+        if (index !== this.header.length - 1) {
+            pageItem += `<li class="page-item">\n`
+                        + `  <a class="page-link" href="#" data-bs-target="#modal${this.header[index + 1]}" data-bs-toggle="modal" aria-label="Next">\n`
+                        + `    <span aria-hidden="true">&raquo;</span>\n`
+                        + `  </a>\n`
+                        + `</li>`;
+        }
+
+        const pageNavigation = `<nav aria-label="Page navigation">\n`
+                             + `  <ul class="pagination">\n`
+                             + `    ${pageItem}\n`
+                             + `  </ul>\n`
+                             + `</nav>\n`;
+
+        return pageNavigation;
+    }
+
+    toModal() {
+        for (let i = 0; i < this.header.length; i++) {
+            const course = this.header[i];
+
+            const header = `<h3 class="modal-title fs-5" id="modal${course}Label">後期 ${course}</h3>\n`
+                         + `<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`;
+            const body = `<img src="images/curriculum/curriculum${course}.webp" usemap="#curriculum${course}-map" class="img-fluid">\n`
+                       + `<map name="curriculum${course}-map">\n${this.toMap(i)}\n</map>`;
+            const footer = `${this.makeFooter(i)}`;
+
+            this.modal += `<div class="modal fade" id="modal${course}" aria-hidden="true" aria-labelledby="modal${course}Label" tabindex="-1">\n`
+                  + `  <div class="modal-dialog modal-dialog-centered">\n`
+                  + `    <div class="modal-content">\n`
+                  + `      <div class="modal-header">\n${header}\n      </div>\n`
+                  + `      <div class="modal-body">\n${body}\n      </div>\n`
+                  + `      <div class="modal-footer">\n${footer}\n      </div>\n`
+                  + `    </div>\n`
+                  + `  </div>\n`
+                  + `</div>\n`;
+        }
+        
     }
 }
 
 const c = new Curriculum();
+c.header = ["IA2", "IS2", "DG2", "DC2"];
+c.toModal();
 
-const mapAI = `月
+c.add(`DG2
 
-`
 
-c.toModal("IA2", mapAI);
+月
+
+3,4,5,6
+ゲーム制作技術総合実習Ⅱ,tablet,277,浅・吉・高,https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=64719
+
+
+火
+
+1,2
+チームワークとリーダーシップ,leader,374,神田・東山,https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79268
+
+3,4
+ゲームデザイン実践演習,halloween,313,浅野・後藤,https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79662
+
+
+金
+
+3,4
+ゲームプログラミングⅠ,sleeping,277,二村・水上恵,https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=64730
+`);
+
