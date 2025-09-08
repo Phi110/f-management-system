@@ -134,7 +134,6 @@ function parseCurriculumCSV(data) {
         c.add(csv);
     }
     c.toModal();
-    console.log(c.modal);
     let modalCurriculum = document.getElementById(`modal-curriculum`);
     modalCurriculum.innerHTML += c.modal;
 }
