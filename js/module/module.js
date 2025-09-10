@@ -684,9 +684,9 @@ export class Curriculum {
 
         this.header.forEach((course, i) => {
             if (i === index) {
-                pageItem += `<li class="page-item disabled"><a class="page-link" href="#">${course}</a></li>\n`;
+                pageItem += `<li class="page-item disabled"><a class="page-link" href="#">${course.slice(0, 2)}</a></li>\n`;
             } else {
-                pageItem += `<li class="page-item"><a class="page-link" href="#" data-bs-target="#modal${course}" data-bs-toggle="modal">${course}</a></li>\n`;
+                pageItem += `<li class="page-item"><a class="page-link" href="#" data-bs-target="#modal${course}" data-bs-toggle="modal">${course.slice(0, 2)}</a></li>\n`;
             }
         })
 
@@ -721,7 +721,7 @@ export class Curriculum {
                   + `  <div class="modal-dialog modal-dialog-centered">\n`
                   + `    <div class="modal-content">\n`
                   + `      <div class="modal-header">\n${header}\n      </div>\n`
-                  + `      <div class="modal-body">\n${body}\n      </div>\n`
+                  + `      <div class="modal-body d-flex justify-content-center">\n${body}\n      </div>\n`
                   + `      <div class="modal-footer">\n${footer}\n      </div>\n`
                   + `    </div>\n`
                   + `  </div>\n`

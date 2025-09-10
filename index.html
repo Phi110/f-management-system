@@ -127,395 +127,319 @@
             <div class="attendance bottom-space">
 
                 <h2 id="attendance">出席</h2>
+
+                <!-- 出席カード -->
+                <div class="card-container">
+                    <div id="card0">
+                        <div class="card">
+                            <img src="images/attendance/moon.webp" class="card-img-top">
+                            <div class="card-body">
+                                <h4 class="card-title text-center middle-text stretch">
+                                    No Class
+                                </h4>
+                                <div class="card-text row justify-content-evenly">
+                                    <div class="col-5 text-center">-</div>
+                                    |
+                                    <div class="col-5 text-center">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="card1"></div>
+                    <div id="card2"></div>
+                    <div id="card3"></div>
+                    <div id="card4"></div>
+                </div>
+
+
+                <!-- 現在時 -->
+                <div class="date">
+                    <span id="whattime"></span>
+                </div>
+
+            
+                <!-- カルーセル -->
+                <div id="carouselDark" class="carousel carousel-dark top-space bottom-space">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <h4>今週の自習・談話室</h4>
+                            <img id="studyroom" src="images/studyroom/studyroom.webp" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item">
+                            <h4>お知らせ</h4>
+                            <div class="overflow-auto">
+                                <p id="notification"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselDark" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselDark" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
                 
-                <!-- 時間割モーダル -->
-                
-                <!-- IA2 -->
-                <div class="modal fade" id="modalAI" aria-hidden="true" aria-labelledby="modalAILabel" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="modal-title fs-5" id="modalAILabel">後期 2年 AIコース</h3>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <img src="images/curriculum/curriculumIA2.webp" usemap="#curriculumAI-map" class="img-fluid">
-                                <map name="curriculumAI-map">
-                                    <!-- 月 -->
-                                    <area shape="rect" coords="28,25,143,175" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3113" target="_blank">
-                                    <area shape="rect" coords="28,175,143,325" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3208" target="_blank">
-                                    <area shape="rect" coords="28,325,143,400" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3320" target="_blank">
-                                    <!-- 火 -->
-                                    <area shape="rect" coords="143,175,258,325" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3190" target="_blank">
-                                    <!-- 水 -->
-                                    <area shape="rect" coords="258,100,373,400" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3305" target="_blank">
-                                    <!-- 木 -->
-                                    <area shape="rect" coords="373,100,488,250" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3210" target="_blank">
-                                    <!-- 金 -->
-                                    <area shape="rect" coords="488,25,602,175" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3113" target="_blank">
-                                    <area shape="rect" coords="488,175,602,325" href="https://lms-tokyo.iput.ac.jp/course/view.php?id=3190" target="_blank">
-                                    <area shape="rect" coords="488,325,602,400" href="https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78899" target="_blank">
-                                </map>
-                            </div>
-                            <div class="modal-footer">
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination">
-                                        <li class="page-item disabled"><a class="page-link" href="#">IA2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#" data-bs-target="#modalEnglish" data-bs-toggle="modal">英語</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" data-bs-target="#modalEnglish" data-bs-toggle="modal" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
+                <br><br>
+            
+                <!-- タブ -->
+                <h2 id="schedule" class="bottom-space">日程</h2>
+
+                <nav>
+                    <div class="nav nav-pills small-text" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-assignment-tab" data-bs-toggle="tab" data-bs-target="#nav-assignment" type="button" role="tab" aria-controls="nav-assignment" aria-selected="true">
+                            課題
+                        </button>
+                        <button class="nav-link" id="nav-event-tab" data-bs-toggle="tab" data-bs-target="#nav-event" type="button" role="tab" aria-controls="nav-event" aria-selected="false">
+                            イベント
+                        </button>
+                        <!-- <button class="nav-link disabled" id="nav-calendar-tab" data-bs-toggle="tab" data-bs-target="#nav-calendar" type="button" role="tab" aria-controls="nav-calendar" aria-selected="false">
+                            カレンダ
+                        </button> -->
+                        <button class="nav-link disabled" id="nav-test-tab" data-bs-toggle="tab" data-bs-target="#nav-test" type="button" role="tab" aria-controls="nav-test" aria-selected="false">
+                            テスト
+                        </button>
+                    </div>
+                </nav>
+                <div class="tab-content small-text" id="information-tab">
+                    <div class="tab-pane fade show active top-space" id="nav-assignment" role="tabpanel" aria-labelledby="nav-assignment-tab" tabindex="0">
+                        
+                        <!-- 課題 -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="col-sm-2">期限</th>
+                                    <th class="col-sm-3">科目</th>
+                                    <th class="col-sm-5">内容</th>
+                                    <th class="col-sm-1"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="assignment-table"></tbody>
+                        </table>
+
+                        <div id="congratulations-message" class="hidden">
+                            🎉 すべての課題が完了しました！ 🎉
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane fade top-space" id="nav-event" role="tabpanel" aria-labelledby="nav-event-tab" tabindex="0">
+                        
+                        <!-- イベント -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="col-sm-2">日付</th>
+                                    <th class="col-sm-3">時間</th>
+                                    <th class="col-sm-5">内容</th>
+                                </tr>
+                            </thead>
+                            <tbody id="event-table"></tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="tab-pane fade top-space" id="nav-calendar" role="tabpanel" aria-labelledby="nav-calendar-tab" tabindex="0">
+
+                        <!-- カレンダー -->
+                        <div id="calendar"></div>
+                        <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FTokyo&showPrint=0&showTitle=0&showCalendars=0&showTz=0&src=ZnVraTE1MDIxMkBnbWFpbC5jb20&color=%23039BE5">
+                        </iframe>
+
+                    </div>
+
+                    <div class="tab-pane fade top-space" id="nav-test" role="tabpanel" aria-labelledby="nav-test-tab" tabindex="0">
+
+                        <!-- テスト -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="col-sm-2">日時</th>
+                                    <th class="col-sm-2"></th>
+                                    <th class="col-sm-3">教室</th>
+                                    <th class="col-sm-5">科目</th>
+                                </tr>
+                            </thead>
+                            <tbody id="test-table"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <br>
+
+
+                <!-- テスト -->
+                <h2 id="test" class="bottom-space">テスト</h2>
+
+                <div class="left-space middle-text">
+                    <i class="bi bi-cpu"></i> 基本情報技術者試験
+                    <div class="row">
+                        <div class="col-md-3">
+                            ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/fe/feChapter.html">
+                                用語解説
+                            </a>
+                            <span class="badge bg-secondary">New</span>
+                        </div>
+                        <div class="col-md-3">
+                            ・<a class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" href="https://www.fe-siken.com/fekakomon.php">
+                                過去問道場
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- 英語 -->
-                <div class="modal fade" id="modalEnglish" aria-hidden="true" aria-labelledby="modalEnglishLabel" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="modalEnglishLabel">英語コミュニケーションⅡb</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <img src="images/curriculum/curriculumEnglish2.webp" class="img-fluid">
-                            </div>
-                            <div class="modal-footer">
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" data-bs-target="#modalAI" data-bs-toggle="modal" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#" data-bs-target="#modalAI" data-bs-toggle="modal">IA2</a></li>
-                                        <li class="page-item disabled"><a class="page-link" href="#">英語</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
+                <div class="left-space top-space middle-text">
+                    <i class="bi bi-pencil-square"></i> 英語
+                    <div class="row">
+                        <div class="col-md-3">
+                            ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/vocabulary/vocabularyChapter.html">
+                                単語テスト
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- 出席カード -->
-            <div class="card-container">
-                <div id="card0">
-                    <div class="card">
-                        <img src="images/attendance/moon.webp" class="card-img-top">
-                        <div class="card-body">
-                            <h4 class="card-title text-center middle-text stretch">
-                                No Class
-                            </h4>
-                            <div class="card-text row justify-content-evenly">
-                                <div class="col-5 text-center">-</div>
-                                |
-                                <div class="col-5 text-center">-</div>
-                            </div>
+                <div class="left-space top-space middle-text">
+                    <i class="bi bi-graph-up"></i> 確率統計論
+                    <div class="row">
+                        <div class="col-md-3">
+                            ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/probAndStat/probAndStat.html">
+                                模擬テスト
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div id="card1"></div>
-                <div id="card2"></div>
-                <div id="card3"></div>
-                <div id="card4"></div>
-                <div id="card5"></div>
-                <div id="card6"></div>
-            </div>
-
-
-            <!-- 現在時 -->
-            <div class="date">
-                <span id="whattime"></span>
-            </div>
-
             
-            <!-- カルーセル -->
-            <div id="carouselDark" class="carousel carousel-dark top-space bottom-space">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <h4>今週の自習・談話室</h4>
-                        <img id="studyroom" src="images/studyroom/studyroom.webp" class="d-block w-100">
-                    </div>
-                    <div class="carousel-item">
-                        <h4>お知らせ</h4>
-                        <div class="overflow-auto">
-                            <p id="notification"></p>
+                <div class="left-space top-space middle-text">
+                    <i class="bi bi-compass"></i> プロジェクトマネジメント
+                    <div class="row">
+                        <div class="col-md-3">
+                            ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/proMana/test.p1.html">
+                                Test1
+                            </a>
+                            (三者択一)
+                        </div>
+                        <div class="col-md-3">
+                            ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/proMana/test.p2.html">
+                                Test2
+                            </a>
+                            (三者択一)
+                        </div>
+                        <div class="col-md-3">
+                            ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/proMana/test.p3.html">
+                                Test3
+                            </a>
+                            (記述)
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselDark" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselDark" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-            
-            <br><br>
-            
-            <!-- タブ -->
-            <h2 id="schedule" class="bottom-space">日程</h2>
-            <nav>
-                <div class="nav nav-pills small-text" id="nav-tab" role="tablist">
-                    <button class="nav-link active" id="nav-assignment-tab" data-bs-toggle="tab" data-bs-target="#nav-assignment" type="button" role="tab" aria-controls="nav-assignment" aria-selected="true">
-                        課題
-                    </button>
-                    <button class="nav-link" id="nav-event-tab" data-bs-toggle="tab" data-bs-target="#nav-event" type="button" role="tab" aria-controls="nav-event" aria-selected="false">
-                        イベント
-                    </button>
-                    <!-- <button class="nav-link disabled" id="nav-calendar-tab" data-bs-toggle="tab" data-bs-target="#nav-calendar" type="button" role="tab" aria-controls="nav-calendar" aria-selected="false">
-                        カレンダ
-                    </button> -->
-                    <button class="nav-link disabled" id="nav-test-tab" data-bs-toggle="tab" data-bs-target="#nav-test" type="button" role="tab" aria-controls="nav-test" aria-selected="false">
-                        テスト
-                    </button>
-                </div>
-            </nav>
-            <div class="tab-content small-text" id="information-tab">
-                <div class="tab-pane fade show active top-space" id="nav-assignment" role="tabpanel" aria-labelledby="nav-assignment-tab" tabindex="0">
-                    
-                    <!-- 課題 -->
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th class="col-sm-2">期限</th>
-                                <th class="col-sm-3">科目</th>
-                                <th class="col-sm-5">内容</th>
-                                <th class="col-sm-1"></th>
-                            </tr>
-                        </thead>
-                        <tbody id="assignment-table"></tbody>
-                    </table>
 
-                    <div id="congratulations-message" class="hidden">
-                        🎉 すべての課題が完了しました！ 🎉
+                <!-- <div class="left-space top-space middle-text">
+                    <i class="bi bi-bug"></i> 組込みC,C++
+                    <div class="row">
+                        <div class="col-md-3">
+                            ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/cpp/test.c1.html">
+                                Test
+                            </a>
+                            (読解)
+                        </div>
+                        <div class="col-md-3">
+                            ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/cpp/test.c2.html">
+                                Test
+                            </a>
+                            (記述)
+                        </div>
+                        <div class="col-md-3">
+                            ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/cpp/sequel.html">
+                                後日談
+                            </a>
+                        </div>
                     </div>
+                </div> -->
 
-                </div>
-
-                <div class="tab-pane fade top-space" id="nav-event" role="tabpanel" aria-labelledby="nav-event-tab" tabindex="0">
-                    
-                    <!-- イベント -->
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th class="col-sm-2">日付</th>
-                                <th class="col-sm-3">時間</th>
-                                <th class="col-sm-5">内容</th>
-                            </tr>
-                        </thead>
-                        <tbody id="event-table"></tbody>
-                    </table>
-
-                </div>
-
-                <div class="tab-pane fade top-space" id="nav-calendar" role="tabpanel" aria-labelledby="nav-calendar-tab" tabindex="0">
-
-                    <!-- カレンダー -->
-                    <div id="calendar"></div>
-                    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FTokyo&showPrint=0&showTitle=0&showCalendars=0&showTz=0&src=ZnVraTE1MDIxMkBnbWFpbC5jb20&color=%23039BE5">
-                    </iframe>
-
-                </div>
-
-                <div class="tab-pane fade top-space" id="nav-test" role="tabpanel" aria-labelledby="nav-test-tab" tabindex="0">
-
-                    <!-- テスト -->
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th class="col-sm-2">日時</th>
-                                <th class="col-sm-2"></th>
-                                <th class="col-sm-3">教室</th>
-                                <th class="col-sm-5">科目</th>
-                            </tr>
-                        </thead>
-                        <tbody id="test-table"></tbody>
-                    </table>
-                </div>
-            </div>
-
-            <br>
+                <br><br>
 
 
-            <!-- テスト -->
-            <h2 id="test" class="bottom-space">テスト</h2>
+                <!-- 資格・検定 -->
+                <h2 id="license" class="bottom-space">資格</h2>
 
-            <div class="left-space middle-text">
-                <i class="bi bi-cpu"></i> 基本情報技術者試験
-                <div class="row">
-                    <div class="col-md-3">
-                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/fe/feChapter.html">
-                            用語解説
-                        </a>
-                        <span class="badge bg-secondary">New</span>
-                    </div>
-                    <div class="col-md-3">
-                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" href="https://www.fe-siken.com/fekakomon.php">
-                            過去問道場
-                        </a>
+                <div class="left-space middle-text">
+                    <i class="bi bi-info-circle"></i> 基本情報技術者試験 (FE)
+                    <div class="row">
+                        <div class="col-md-3">
+                            ・<a class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" href="https://www.ipa.go.jp/shiken/kubun/fe.html">
+                                概要
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            ・<a class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" href="https://www.fe-siken.com/fekakomon.php">
+                                過去問道場
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="left-space top-space middle-text">
-                <i class="bi bi-pencil-square"></i> 英語
-                <div class="row">
-                    <div class="col-md-3">
-                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/vocabulary/vocabularyChapter.html">
-                            単語テスト
-                        </a>
+                <div class="top-space left-space middle-text">
+                    <i class="bi bi-info-circle"></i> 応用情報技術者試験 (AP)
+                    <div class="row">
+                        <div class="col-md-3">
+                            ・<a class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" href="https://www.ipa.go.jp/shiken/kubun/ap.html">
+                                概要
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            ・<a class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" href="https://www.ap-siken.com/apkakomon.php">
+                                過去問道場
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="left-space top-space middle-text">
-                <i class="bi bi-graph-up"></i> 確率統計論
-                <div class="row">
-                    <div class="col-md-3">
-                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/probAndStat/probAndStat.html">
-                            模擬テスト
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="left-space top-space middle-text">
-                <i class="bi bi-compass"></i> プロジェクトマネジメント
-                <div class="row">
-                    <div class="col-md-3">
-                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/proMana/test.p1.html">
-                            Test1
-                        </a>
-                        (三者択一)
-                    </div>
-                    <div class="col-md-3">
-                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/proMana/test.p2.html">
-                            Test2
-                        </a>
-                        (三者択一)
-                    </div>
-                    <div class="col-md-3">
-                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/proMana/test.p3.html">
-                            Test3
-                        </a>
-                        (記述)
-                    </div>
-                </div>
-            </div>
-
-            <!-- <div class="left-space top-space middle-text">
-                <i class="bi bi-bug"></i> 組込みC,C++
-                <div class="row">
-                    <div class="col-md-3">
-                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/cpp/test.c1.html">
-                            Test
-                        </a>
-                        (読解)
-                    </div>
-                    <div class="col-md-3">
-                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/cpp/test.c2.html">
-                            Test
-                        </a>
-                        (記述)
-                    </div>
-                    <div class="col-md-3">
-                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" href="test/cpp/sequel.html">
-                            後日談
-                        </a>
-                    </div>
-                </div>
-            </div> -->
-
-            <br><br>
-
-
-            <!-- 資格・検定 -->
-            <h2 id="license" class="bottom-space">資格</h2>
-
-            <div class="left-space middle-text">
-                <i class="bi bi-info-circle"></i> 基本情報技術者試験 (FE)
-                <div class="row">
-                    <div class="col-md-3">
-                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" href="https://www.ipa.go.jp/shiken/kubun/fe.html">
-                            概要
-                        </a>
-                    </div>
-                    <div class="col-md-3">
-                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" href="https://www.fe-siken.com/fekakomon.php">
-                            過去問道場
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="top-space left-space middle-text">
-                <i class="bi bi-info-circle"></i> 応用情報技術者試験 (AP)
-                <div class="row">
-                    <div class="col-md-3">
-                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" href="https://www.ipa.go.jp/shiken/kubun/ap.html">
-                            概要
-                        </a>
-                    </div>
-                    <div class="col-md-3">
-                        ・<a class="link-offset-2 link-underline link-underline-opacity-0" target="_blank" href="https://www.ap-siken.com/apkakomon.php">
-                            過去問道場
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <br><br>
+                <br><br>
 
             
-            <!-- 便利 -->
-            <h2 id="useful" class="bottom-space">便利</h2>
+                <!-- 便利 -->
+                <h2 id="useful" class="bottom-space">便利</h2>
 
-            <div class="left-space middle-text">
-                ・ 
-                <span class="right-space bottom-space">
-                    <a class="btn btn-primary" href="https://discord.gg/NKaMuBSY" target="_blank">
-                        <i class="bi bi-discord"></i> 勉強会
+                <div class="left-space middle-text">
+                    ・ 
+                    <span class="right-space bottom-space">
+                        <a class="btn btn-primary" href="https://discord.gg/NKaMuBSY" target="_blank">
+                            <i class="bi bi-discord"></i> 勉強会
+                        </a>
+                    </span> (出入り自由です) <br>
+                    ・
+                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="test/useful/useful.html">
+                        文字数チェッカー
+                    </a><br>
+                    ・
+                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="images/others/電子図書利用マニュアル_ver.1.4.pdf">
+                        電子図書利用マニュアル
+                    </a><br>
+                    ・
+                    <a class="link-offset-2 link-underline link-underline-opacity-0" href="images/others/名刺の作り方(Word).pdf">
+                        名刺の作り方(Word)
                     </a>
-                </span> (出入り自由です) <br>
-                ・
-                <a class="link-offset-2 link-underline link-underline-opacity-0" href="test/useful/useful.html">
-                    文字数チェッカー
-                </a><br>
-                ・
-                <a class="link-offset-2 link-underline link-underline-opacity-0" href="images/others/電子図書利用マニュアル_ver.1.4.pdf">
-                    電子図書利用マニュアル
-                </a><br>
-                ・
-                <a class="link-offset-2 link-underline link-underline-opacity-0" href="images/others/名刺の作り方(Word).pdf">
-                    名刺の作り方(Word)
-                </a>
-            </div>
+                </div>
             
-            <br><br>
+                <br><br>
 
-            
-            <!-- アンケート -->
-            <h2 id="enquete" class="bottom-space">アンケート</h2>
+                
+                <!-- アンケート -->
+                <h2 id="enquete" class="bottom-space">アンケート</h2>
 
-            <p>
-                ※回答はすべて匿名です
-            </p>
+                <p>
+                    ※回答はすべて匿名です
+                </p>
 
-            <!-- アコーディオン -->
-            <div class="accordion" id="accordion">
+                <!-- アコーディオン -->
+                <div class="accordion" id="accordion">
 
                 <!-- リクエストフォーム -->
                 <div class="accordion-item">

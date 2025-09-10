@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ])
     .then(([data1, data2, data3, data4, data5, data6, data7]) => {
         parseAttendanceCSV([data1, data2, data3, data4, data5, data6, data7]);
-        parseCurriculumCSV([data1, data2, data3, data4]);
+        parseCurriculumCSV([data1, data2, data3, data4, "English"]);
     });
 });
 
