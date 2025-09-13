@@ -77,11 +77,11 @@ function toCourseName(shortened) {
         case "IA2":
             return "AI";
         case "IS2":
-            return "IoT"
+            return "IoT";
         case "DG2":
-            return "ゲーム" 
+            return "ゲーム";
         case "DC2":
-            return "CG"
+            return "CG";
         default:
             return shortened;
     }
@@ -317,10 +317,10 @@ class Datetime extends CSV {
             // const result = regex.test(".webp");
             let nextButton = "", prevButton = "";
             if (i != 0) {
-                prevButton = `<button class="btn btn-secondary" data-bs-target="#modal${j - 1}" data-bs-toggle="modal">Prev</button>`;
+                prevButton = `<button class="btn btn-secondary" data-bs-target="#modal${j - 1}" data-bs-toggle="modal">Prev</button>\n`;
             }
             if (list.length > 7 + i) {
-                nextButton = `<button class="btn btn-primary" data-bs-target="#modal${j + 1}" data-bs-toggle="modal">Next</button>`;
+                nextButton = `<button class="btn btn-primary" data-bs-target="#modal${j + 1}" data-bs-toggle="modal">Next</button>\n`;
             }
             this.modal += `<div class="modal fade" id="modal${j}" tabindex="-1" aria-labelledby="modal${j}Label" aria-hidden="true">\n`
                         + `  <div class="modal-dialog modal-dialog-centered modal-lg">\n`
@@ -402,13 +402,11 @@ export class Event extends Datetime {
                 date = "";
             }
 
-            table += `
-                <tr>
-                    <td>${date}</td>
-                    <td>${time}</td>
-                    <td>${content}</td>
-                </tr>
-            `;
+            table += `<tr>\n`
+                  +  `<td>${date}</td>\n`
+                  +  `<td>${time}</td>\n`
+                  +  `<td>${content}</td>\n`
+                  +  `</tr>\n`;
             
             prevDate = date;
         }
@@ -484,7 +482,7 @@ export class Version extends CSV {
         const list = this.tableData[0];
         const month = addZero(list[0]);
         const mday = addZero(list[1]);
-        this.html += `Ver. ${currentYear}.${month}.${mday}. 伊東 颯紀`
+        this.html += `Ver. ${currentYear}.${month}.${mday}. 伊東 颯紀`;
     }
 }
 
@@ -604,6 +602,7 @@ export class Attendance {
 
 
 export class Curriculum {
+
     constructor() {
         this.header = [];
         this.body = [];
@@ -611,7 +610,7 @@ export class Curriculum {
     }
 
     add(sentence) {
-        const [header, ...body] = sentence.trim().split('\n\n\n');
+        let [header, ...body] = sentence.trim().split('\n\n\n');
         const classByDay = body.map(block => 
             block.split('\n\n').map(lecture => {
                 if (lecture.length === 1) {
@@ -623,33 +622,63 @@ export class Curriculum {
                 }
             })
         );
+        if (header === "共通") header = "English";
         this.header.push(header);
         this.body.push(classByDay);
     }
 
-    calculateCoords(wday, period) {
-        // 605×475
-        // (30+115*x) × (25+75*y)
+    toMap(index, course) {
 
-        const left = 30 + 115 * (wday - 1);
-        const right = 30 + 115 * wday;
-        const top = 25 + 75 * (period[0] - 1);
-        const bottom = 25 + 75 * period[period.length - 1];
+        function calculateCoords(wday, period, urls) {
 
-        return `${left},${top},${right},${bottom}`;
-    }
+            let areas = "";
+            let left, right, top, bottom;
+            if (course === "English") {
+                period = period[0];
 
-    toMap(index) {
-        /* this.body = [
-            [
-                [1, [[3, 4, 5, 6], "https://lms-tokyo.iput.ac.jp/mod/"], [[1, 2], "https://"]],
-                [2, [[1, 2], "https://lms-tokyo.iput.ac.jp/mod/"]],
-                [5, [[1], ""]]
-            ]
-        ]; */
+                const surplus = {
+                    1: 0,
+                    5: 3
+                };
+                let x, y;
+
+                for (let i = 0; i < urls.length; i++) {
+
+                    if (period === 1){
+                        x = surplus[wday] + i + 1;
+                        y = 1;
+                    } else if (period === 2 && i > 0) {
+                        x = surplus[wday] + i;
+                        y = 3;
+                    } else {
+                        x = surplus[wday] + i + 1;
+                        y = 2;
+                    }
+
+                    left = 34 + 95 * (x - 1);
+                    right = 34 + 95 * x;
+                    top = 34 + 66 * (y - 1);
+                    bottom = 34 + 66 * y;
+
+                    areas += `<area shape="rect" target="_blank" coords="${left},${top},${right},${bottom}" href="${urls[i]}">\n`;
+                }
+                
+            } else {
+
+                left = 30 + 115 * (wday - 1);
+                right = 30 + 115 * wday;
+                top = 25 + 75 * (period[0] - 1);
+                bottom = 25 + 75 * period[period.length - 1];
+
+                areas += `<area shape="rect" target="_blank" coords="${left},${top},${right},${bottom}" href="${urls}">\n`;
+            }
+
+            return areas;
+        }
+
 
         const curriculumCourse = this.body[index];
-
+ 
         let curriculumMap = "";
         let wday;
         curriculumCourse.forEach(byDay => {
@@ -658,16 +687,13 @@ export class Curriculum {
                     wday = element;
                     return;
                 }
-                const period = element[0];
-                const url = element[1];
-                if (url) {
-                    const coordinate = this.calculateCoords(wday, period);
-                    const area = `<area shape="rect" target="_blank" coords="${coordinate}" href="${url}">\n`;
+                const [period, ...url] = element;
+                if (url[0]) {
+                    const area = calculateCoords(wday, period, url);
                     curriculumMap += area;
                 }
             })
-            
-        })
+        });
 
         return curriculumMap;
     }
@@ -676,10 +702,10 @@ export class Curriculum {
         let pageItem = "";
         if (index !== 0) {
             pageItem += `<li class="page-item">\n`
-                        + `  <a class="page-link" href="#" data-bs-target="#modal${this.header[index - 1]}" data-bs-toggle="modal" aria-label="Previous">\n`
-                        + `    <span aria-hidden="true">&laquo;</span>\n`
-                        + `  </a>\n`
-                        + `</li>`;
+                      + `  <a class="page-link" href="#" data-bs-target="#modal${this.header[index - 1]}" data-bs-toggle="modal" aria-label="Previous">\n`
+                      + `    <span aria-hidden="true">&laquo;</span>\n`
+                      + `  </a>\n`
+                      + `</li>`;
         }
 
         this.header.forEach((course, i) => {
@@ -692,10 +718,10 @@ export class Curriculum {
 
         if (index !== this.header.length - 1) {
             pageItem += `<li class="page-item">\n`
-                        + `  <a class="page-link" href="#" data-bs-target="#modal${this.header[index + 1]}" data-bs-toggle="modal" aria-label="Next">\n`
-                        + `    <span aria-hidden="true">&raquo;</span>\n`
-                        + `  </a>\n`
-                        + `</li>`;
+                     + `  <a class="page-link" href="#" data-bs-target="#modal${this.header[index + 1]}" data-bs-toggle="modal" aria-label="Next">\n`
+                     + `    <span aria-hidden="true">&raquo;</span>\n`
+                     + `  </a>\n`
+                     + `</li>`;
         }
 
         const pageNavigation = `<nav aria-label="Page navigation">\n`
@@ -714,7 +740,7 @@ export class Curriculum {
             const header = `<h3 class="modal-title fs-5" id="modal${course}Label">後期 ${course}</h3>\n`
                          + `<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`;
             const body = `<img src="images/curriculum/curriculum${course}.webp" usemap="#curriculum${course}-map" class="img-fluid">\n`
-                       + `<map name="curriculum${course}-map">\n${this.toMap(i)}</map>`;
+                       + `<map name="curriculum${course}-map">\n${this.toMap(i, course)}</map>`;
             const footer = `${this.makeFooter(i)}`;
 
             this.modal += `<div class="modal fade" id="modal${course}" aria-hidden="true" aria-labelledby="modal${course}Label" tabindex="-1">\n`
@@ -726,9 +752,6 @@ export class Curriculum {
                   + `    </div>\n`
                   + `  </div>\n`
                   + `</div>\n`;
-            
-            console.log(this.modal);
         }
-        
     }
 }

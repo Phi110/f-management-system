@@ -44,7 +44,7 @@
                         <a class="nav-link active" aria-current="page" href="#">ホーム</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#attendance">出席</a>
+                        <a class="nav-link" href="#attendance-header">出席</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -57,10 +57,10 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#test">テスト</a>
+                        <a class="nav-link" href="#test-header">テスト</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#useful">便利</a>
+                        <a class="nav-link" href="#useful-header">便利</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -126,7 +126,7 @@
             <!-- 出席システム -->
             <div class="attendance bottom-space">
 
-                <h2 id="attendance">出席</h2>
+                <h2 id="attendance-header">出席</h2>
 
                 <!-- 出席カード -->
                 <div class="card-container">
@@ -199,9 +199,6 @@
                         <button class="nav-link" id="nav-event-tab" data-bs-toggle="tab" data-bs-target="#nav-event" type="button" role="tab" aria-controls="nav-event" aria-selected="false">
                             イベント
                         </button>
-                        <!-- <button class="nav-link disabled" id="nav-calendar-tab" data-bs-toggle="tab" data-bs-target="#nav-calendar" type="button" role="tab" aria-controls="nav-calendar" aria-selected="false">
-                            カレンダ
-                        </button> -->
                         <button class="nav-link disabled" id="nav-test-tab" data-bs-toggle="tab" data-bs-target="#nav-test" type="button" role="tab" aria-controls="nav-test" aria-selected="false">
                             テスト
                         </button>
@@ -220,7 +217,7 @@
                                     <th class="col-sm-1"></th>
                                 </tr>
                             </thead>
-                            <tbody id="assignment-table"></tbody>
+                            <tbody id="assignment"></tbody>
                         </table>
 
                         <div id="congratulations-message" class="hidden">
@@ -240,7 +237,7 @@
                                     <th class="col-sm-5">内容</th>
                                 </tr>
                             </thead>
-                            <tbody id="event-table"></tbody>
+                            <tbody id="event"></tbody>
                         </table>
 
                     </div>
@@ -266,7 +263,7 @@
                                     <th class="col-sm-5">科目</th>
                                 </tr>
                             </thead>
-                            <tbody id="test-table"></tbody>
+                            <tbody id="test"></tbody>
                         </table>
                     </div>
                 </div>
@@ -275,7 +272,7 @@
 
 
                 <!-- テスト -->
-                <h2 id="test" class="bottom-space">テスト</h2>
+                <h2 id="test-header" class="bottom-space">テスト</h2>
 
                 <div class="left-space middle-text">
                     <i class="bi bi-cpu"></i> 基本情報技術者試験
@@ -367,7 +364,7 @@
 
 
                 <!-- 資格・検定 -->
-                <h2 id="license" class="bottom-space">資格</h2>
+                <h2 id="license-header" class="bottom-space">資格</h2>
 
                 <div class="left-space middle-text">
                     <i class="bi bi-info-circle"></i> 基本情報技術者試験 (FE)
@@ -405,7 +402,7 @@
 
             
                 <!-- 便利 -->
-                <h2 id="useful" class="bottom-space">便利</h2>
+                <h2 id="useful-header" class="bottom-space">便利</h2>
 
                 <div class="left-space middle-text">
                     ・ 
@@ -432,7 +429,7 @@
 
                 
                 <!-- アンケート -->
-                <h2 id="enquete" class="bottom-space">アンケート</h2>
+                <h2 id="enquete-header" class="bottom-space">アンケート</h2>
 
                 <p>
                     ※回答はすべて匿名です

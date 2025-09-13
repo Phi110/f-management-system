@@ -22,7 +22,7 @@ window.addEventListener('load', function() {
     imageMapResize();
 });
 document.addEventListener("shown.bs.modal", (event) => {
-    if (["modalIA2", "modalIS2", "modalDG2", "modalDC2"].includes(event.target.id)) {
+    if (["modalIA2", "modalIS2", "modalDG2", "modalDC2", "modalEnglish"].includes(event.target.id)) {
         imageMapResize();
     }
 });
@@ -35,85 +35,39 @@ import { Version, Assignment, Event, Test, Notification, Alert, Attendance, Curr
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('./csv/version.csv')
-    .then(response => response.text())
-    .then(data => parseVersionCSV(data));
+    const fmsParsers = [
+        { file: "version", Class: Version },
+        { file: "assignment", Class: Assignment },
+        { file: "event", Class: Event },
+        { file: "test", Class: Test },
+        { file: "notification", Class: Notification },
+        { file: "alert", Class: Alert }
+    ];
 
-    fetch('./csv/assignment.csv')
-    .then(response => response.text())
-    .then(data => parseAssignmentCSV(data));
+    fmsParsers.forEach(({ file, Class }) => {
+        fetch(`./csv/${file}.csv`)
+            .then(response => response.text())
+            .then(data => parseCSV(data, Class, file));
+    });
 
-    fetch('./csv/event.csv')
-    .then(response => response.text())
-    .then(data => parseEventCSV(data));
+    const curriculums = ["IT", "IA2", "IS2", "DE", "DG2", "DC2", "English"];
 
-    fetch('./csv/test.csv')
-    .then(response => response.text())
-    .then(data => parseTestCSV(data));
-
-    fetch('./csv/notification.csv')
-    .then(response => response.text())
-    .then(data => parseNotificationCSV(data));
-
-    fetch('./csv/alert.csv')
-    .then(response => response.text())
-    .then(data => parseAlertCSV(data));
-
-    Promise.all([
-        fetch(`./csv/curriculum/IA2.csv`).then(response => response.text()),
-        fetch(`./csv/curriculum/IS2.csv`).then(response => response.text()),
-        fetch(`./csv/curriculum/DG2.csv`).then(response => response.text()),
-        fetch(`./csv/curriculum/DC2.csv`).then(response => response.text()),
-        fetch(`./csv/curriculum/common.csv`).then(response => response.text()),
-        fetch(`./csv/curriculum/IT.csv`).then(response => response.text()),
-        fetch(`./csv/curriculum/DE.csv`).then(response => response.text())
-    ])
+    Promise.all(
+        curriculums.map(csv =>
+            fetch(`./csv/curriculum/${csv}.csv`).then(response => response.text())
+        )
+    )
     .then(([data1, data2, data3, data4, data5, data6, data7]) => {
         parseAttendanceCSV([data1, data2, data3, data4, data5, data6, data7]);
-        parseCurriculumCSV([data1, data2, data3, data4, "English"]);
+        parseCurriculumCSV([data2, data3, data5, data6, data7]);
     });
 });
 
-function parseVersionCSV(data) {
-    const v = new Version(data);
-    v.processing();
-    const version = document.getElementById('version');
-    version.innerHTML = v.paragraph;
-}
-
-function parseAssignmentCSV(data) {
-    const a = new Assignment(data);
-    a.processing();
-    let assignmentTable = document.getElementById(`assignment-table`);
-    assignmentTable.innerHTML = a.paragraph;
-}
-
-function parseEventCSV(data) {
-    const e = new Event(data);
-    e.processing();
-    let eventTable = document.getElementById(`event-table`);
-    eventTable.innerHTML = e.paragraph;
-}
-
-function parseTestCSV(data) {
-    const t = new Test(data);
-    t.processing();
-    let testTable = document.getElementById(`test-table`);
-    testTable.innerHTML = t.paragraph;
-}
-
-function parseNotificationCSV(data) {
-    const n = new Notification(data);
-    n.processing();
-    let notification = document.getElementById(`notification`);
-    notification.innerHTML = n.paragraph;
-}
-
-function parseAlertCSV(data) {
-    const a = new Alert(data);
-    a.processing();
-    let alert = document.getElementById(`alert`);
-    alert.innerHTML += a.paragraph;
+function parseCSV(data, Class, file) {
+    const obj = new Class(data);
+    obj.processing();
+    const target = document.getElementById(file);
+    target.innerHTML = obj.paragraph;
 }
 
 function parseAttendanceCSV(data) {
