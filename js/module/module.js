@@ -128,7 +128,8 @@ export function toStudyroom(studyroom) {
 }
 
 export function addHighlight(highlight) {
-    
+    currentPeriod = 4;
+
     const position = {
         left: 29.75 + 11.7 * (currentPeriod - 1),
         top: 9.5,
@@ -138,7 +139,6 @@ export function addHighlight(highlight) {
 
     if (currentPeriod) {
         Object.entries(position).forEach(([key, value]) => {
-            console.log(value);
             highlight.style[key] = `${value}%`;
         });
     }
