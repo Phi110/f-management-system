@@ -557,6 +557,7 @@ export class Attendance {
     }
 
     toHtml(list) {
+        if (!list[0]) return;
         let imageLink = `<img src="images/attendance/${list[2]}.webp" class="card-img-top">`;
         let stringLink = `${list[1]}`;
         if (list[5] !== "") {
@@ -665,12 +666,19 @@ export class Curriculum {
                 
             } else {
 
+                const url = urls[0];
+
                 left = 30 + 115 * (wday - 1);
                 right = 30 + 115 * wday;
                 top = 25 + 75 * (period[0] - 1);
                 bottom = 25 + 75 * period[period.length - 1];
 
-                areas += `<area shape="rect" target="_blank" coords="${left},${top},${right},${bottom}" href="${urls}">\n`;
+                if (url.slice(0, 1) === "#") {
+                    areas += `<area shape="rect" target="_blank" coords="${left},${top},${right},${bottom}" href="#" data-bs-target="${url}" data-bs-toggle="modal">\n`;
+                } else {
+                    areas += `<area shape="rect" target="_blank" coords="${left},${top},${right},${bottom}" href="${url}">\n`;
+                }
+
             }
 
             return areas;
@@ -755,3 +763,39 @@ export class Curriculum {
         }
     }
 }
+
+const c = new Curriculum();
+c.add(`IA2
+
+
+月
+
+1,2
+,,,,#modalEnglish
+
+3,4
+メディア情報処理実習,programming,374・376,上條・町出,
+
+
+火
+
+3,4
+機械学習,read,361・363,神沼・森,https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79076
+
+
+木
+
+2,3
+チームワークとリーダーシップ,leader,371・373,石田・神田,
+
+
+金
+
+1,2
+,,,,#modalEnglish
+
+3,4
+機械学習,read,311,神沼・森,https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79076
+`);
+
+c.toModal();
