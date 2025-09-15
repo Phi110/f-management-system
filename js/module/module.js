@@ -128,7 +128,6 @@ export function toStudyroom(studyroom) {
 }
 
 export function addHighlight(highlight) {
-    currentPeriod = 4;
 
     const position = {
         left: 29.75 + 11.7 * (currentPeriod - 1),
