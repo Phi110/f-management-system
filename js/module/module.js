@@ -123,8 +123,26 @@ export function toClock(addSaturday = false) {
 }
 
 
-export function toStudyroom() {
-    return `images/studyroom/studyroom${currentMonth + 1}.${getWeekNumber()}.webp`;
+export function toStudyroom(studyroom) {
+    studyroom.src = `images/studyroom/studyroom${currentMonth + 1}.${getWeekNumber()}.webp`;
+}
+
+export function addHighlight(highlight) {
+    
+    const position = {
+        left: 29.75 + 11.7 * (currentPeriod - 1),
+        top: 9.5,
+        width: 11.7,
+        height: 17.75
+    };
+
+    if (currentPeriod) {
+        Object.entries(position).forEach(([key, value]) => {
+            console.log(value);
+            highlight.style[key] = `${value}%`;
+        });
+    }
+    
 }
 
 

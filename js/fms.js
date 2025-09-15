@@ -3,7 +3,7 @@
 
 /*  */
 // 現在時  // リロード  // 今週の自習・談話室
-import { toClock, reloadPage, toStudyroom } from './module/module.js';
+import { toClock, reloadPage, toStudyroom, addHighlight } from './module/module.js';
 
 
 const whattime = document.getElementById('whattime');
@@ -14,7 +14,9 @@ reloadPage();
 
 
 const studyroom = document.getElementById(`studyroom`);
-studyroom.src = toStudyroom();
+toStudyroom(studyroom);
+const highlight = document.getElementById(`highlight`);
+addHighlight(highlight);
 
 
 // イメージマップ
