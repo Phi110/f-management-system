@@ -747,12 +747,15 @@ export class Curriculum {
 
             const header = `<h3 class="modal-title fs-5" id="modal${course}Label">後期 ${course}</h3>\n`
                          + `<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`;
-            const body = `<img src="images/curriculum/curriculum${course}.webp" usemap="#curriculum${course}-map" class="img-fluid">\n`
+            const body = `<figure>\n`
+                       + `  <img src="images/curriculum/curriculum${course}.webp" usemap="#curriculum${course}-map" class="img-fluid">\n`
+                       + `  <figcaption class="small-text text-end mb-0">※クリックすると授業のURLに飛べます</figcaption>\n`
+                       + `</figure>\n`
                        + `<map name="curriculum${course}-map">\n${this.toMap(i, course)}</map>`;
             const footer = `${this.makeFooter(i)}`;
 
             this.modal += `<div class="modal fade" id="modal${course}" aria-hidden="true" aria-labelledby="modal${course}Label" tabindex="-1">\n`
-                  + `  <div class="modal-dialog modal-dialog-centered">\n`
+                  + `  <div class="modal-dialog custom-modal modal-dialog-centered">\n`
                   + `    <div class="modal-content">\n`
                   + `      <div class="modal-header">\n${header}\n      </div>\n`
                   + `      <div class="modal-body d-flex justify-content-center">\n${body}\n      </div>\n`
