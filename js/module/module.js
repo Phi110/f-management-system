@@ -5,7 +5,7 @@ const now = new Date();
 const currentYear = now.getFullYear();
 const currentMonth = now.getMonth();
 const currentMday = now.getDate();
-const currentNumWday = now.getDay();
+let currentNumWday = now.getDay();
 const wdays = ["日", "月", "火", "水", "木", "金", "土"];
 const currentWday = wdays[currentNumWday];
 const weekNumber = getWeekNumber();
@@ -815,7 +815,10 @@ export class Curriculum {
             const header = `<h3 class="modal-title fs-5" id="modal${course}Label">後期 ${course}</h3>\n`
                          + `<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`;
             const body = `<figure>\n`
-                       + `  <img src="images/curriculum/curriculum${course}.webp" usemap="#curriculum${course}-map" class="img-fluid">\n`
+                       + `  <div class="highlight-container">`
+                       + `    <img src="images/curriculum/curriculum${course}.webp" usemap="#curriculum${course}-map" class="img-fluid">\n`
+                       + `    <div id="curriculum-highlight-${course}" class="highlight"></div>`
+                       + `  </div>\n`
                        + `  <figcaption class="small-text text-end mb-0">※クリックすると授業のURLに飛べます</figcaption>\n`
                        + `</figure>\n`
                        + `<map name="curriculum${course}-map">\n${this.toMap(i, course)}</map>`;
@@ -830,42 +833,23 @@ export class Curriculum {
                   + `    </div>\n`
                   + `  </div>\n`
                   + `</div>\n`;
+
+            if (course === "English" || !currentPeriod || currentNumWday > 5) continue;
+
+            document.addEventListener("shown.bs.modal", () => {
+                const curriculumHighlight = document.getElementById(`curriculum-highlight-${course}`);
+
+                const highlightPosition = {
+                    left: (30 + 115 * (currentNumWday - 1)) / 605,
+                    top: (25 + 75 * (currentPeriod - 1)) / 475,
+                    width: 115 / 605,
+                    height: 75 / 475
+                };
+
+                Object.entries(highlightPosition).forEach(([key, value]) => {
+                    curriculumHighlight.style[key] = `${value * 100}%`;
+                });
+            });
         }
     }
 }
-
-const c = new Curriculum();
-c.add(`IA2
-
-
-月
-
-1,2
-,,,,#modalEnglish
-
-3,4
-メディア情報処理実習,programming,374・376,上條・町出,
-
-
-火
-
-3,4
-機械学習,read,361・363,神沼・森,https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79076
-
-
-木
-
-2,3
-チームワークとリーダーシップ,leader,371・373,石田・神田,
-
-
-金
-
-1,2
-,,,,#modalEnglish
-
-3,4
-機械学習,read,311,神沼・森,https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79076
-`);
-
-c.toModal();
