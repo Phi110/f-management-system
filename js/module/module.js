@@ -5,8 +5,10 @@ const now = new Date();
 const currentYear = now.getFullYear();
 const currentMonth = now.getMonth();
 const currentMday = now.getDate();
+const currentNumWday = now.getDay();
 const wdays = ["日", "月", "火", "水", "木", "金", "土"];
-const currentWday = wdays[now.getDay()];
+const currentWday = wdays[currentNumWday];
+const weekNumber = getWeekNumber();
 
 const currentHour = now.getHours();
 const currentMinute = now.getMinutes();
@@ -35,13 +37,6 @@ function calculatePeriod(addSaturday = false) {
 }
 
 
-function addZero(letter) {
-    const digitalletter = letter.length === 1 ? '0' + letter: letter;
-
-    return digitalletter;
-}
-
-
 function getWeekNumber() {
     const firstDay = new Date(currentYear, currentMonth, 1);
     const firstSonday = 8 - firstDay.getDay();
@@ -50,6 +45,13 @@ function getWeekNumber() {
 
     const weekNumber = 1 + Math.floor((currentMday - firstSonday) / 7);
     return weekNumber;
+}
+
+
+function addZero(letter) {
+    const digitalletter = letter.length === 1 ? '0' + letter: letter;
+
+    return digitalletter;
 }
 
 
@@ -124,24 +126,72 @@ export function toClock(addSaturday = false) {
 
 
 export function toStudyroom(studyroom) {
-    studyroom.src = `images/studyroom/studyroom${currentMonth + 1}.${getWeekNumber()}.webp`;
+    studyroom.src = `images/studyroom/studyroom${currentMonth + 1}.${weekNumber}.webp`;
+}
+
+
+function calculatePosition(naturalHeight, initialWday, ocr=false) {
+
+    let height = 113.75;
+    let i = 0;
+    while (i < 7) {
+        if (height + 107.5 * i > naturalHeight) break;
+        i++;
+    }
+
+    const maxHeight = 60 + 107.5 * i;
+
+    let valueX, valueY, valueW, valueH;
+
+    if (ocr) {
+        valueX = 0.1075;
+        valueY = 63 / maxHeight;
+        valueW = 0.0525;
+        valueH = 90 / maxHeight;
+    } else {
+        valueX = 0.2975 + 0.117 * (currentPeriod - 1);
+        valueY = (57 + 107.5 * (currentNumWday - initialWday)) / maxHeight;
+        valueW = 0.117;
+        valueH = 107.5 / maxHeight;
+    }
+
+    return {left: valueX, top: valueY, width: valueW, height: valueH};
+
 }
 
 export function addHighlight(highlight) {
 
-    const position = {
-        left: 29.75 + 11.7 * (currentPeriod - 1),
-        top: 9.5,
-        width: 11.7,
-        height: 17.75
-    };
+    const img = document.getElementById(`studyroom`);
 
-    if (currentPeriod) {
-        Object.entries(position).forEach(([key, value]) => {
-            highlight.style[key] = `${value}%`;
-        });
-    }
-    
+    img.onload = async () => {
+        const ocrPosition = calculatePosition(img.naturalHeight, undefined, true);
+
+        const x = img.naturalWidth * ocrPosition.left;
+        const y = img.naturalHeight * ocrPosition.top;
+        const w = img.naturalWidth * ocrPosition.width;
+        const h = img.naturalHeight * ocrPosition.height;
+
+        const cropped = document.createElement("canvas");
+        cropped.width = w;
+        cropped.height = h;
+        const ctx = cropped.getContext("2d");
+
+        ctx.drawImage(img, x, y, w, h, 0, 0, w, h);
+
+        const { data: { text } } = await Tesseract.recognize(
+            cropped,
+            'jpn',
+            { langPath: 'https://tessdata.projectnaptha.com/4.0.0' }
+        );
+
+        const highlightPosition = calculatePosition(img.naturalHeight, wdayToNumber(text.trim()));
+
+        if (currentPeriod) {
+            Object.entries(highlightPosition).forEach(([key, value]) => {
+                highlight.style[key] = `${value * 100}%`;
+            });
+        }
+    };   
 }
 
 
