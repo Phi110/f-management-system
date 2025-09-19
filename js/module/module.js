@@ -695,22 +695,19 @@ export class Curriculum {
     }
 
     toMap(index, course) {
-
         function calculateCoords(wday, period, urls) {
-
             let areas = "";
             let left, right, top, bottom;
             if (course === "English") {
                 period = period[0];
-
+                let x, y;
                 const surplus = {
                     1: 0,
                     5: 3
                 };
-                let x, y;
 
                 for (let i = 0; i < urls.length; i++) {
-
+                    if (!urls[i]) continue;
                     if (period === 1){
                         x = surplus[wday] + i + 1;
                         y = 1;
@@ -721,39 +718,31 @@ export class Curriculum {
                         x = surplus[wday] + i + 1;
                         y = 2;
                     }
-
                     left = 34 + 95 * (x - 1);
                     right = 34 + 95 * x;
                     top = 34 + 66 * (y - 1);
                     bottom = 34 + 66 * y;
-
                     areas += `<area shape="rect" target="_blank" coords="${left},${top},${right},${bottom}" href="${urls[i]}">\n`;
                 }
-                
             } else {
-
                 const url = urls[0];
-
                 left = 30 + 115 * (wday - 1);
                 right = 30 + 115 * wday;
                 top = 25 + 75 * (period[0] - 1);
                 bottom = 25 + 75 * period[period.length - 1];
-
-                if (url.slice(0, 1) === "#") {
-                    areas += `<area shape="rect" target="_blank" coords="${left},${top},${right},${bottom}" href="#" data-bs-target="${url}" data-bs-toggle="modal">\n`;
-                } else {
-                    areas += `<area shape="rect" target="_blank" coords="${left},${top},${right},${bottom}" href="${url}">\n`;
-                }
-
+                areas += `<area shape="rect" target="_blank" coords="${left},${top},${right},${bottom}" href="${url}">\n`;
             }
 
             return areas;
         }
 
-
         const curriculumCourse = this.body[index];
  
         let curriculumMap = "";
+        if (course !== "English") {
+            curriculumMap += `<area shape="rect" target="_blank" coords="30,25,145,175" href="#" data-bs-target="#modalEnglish" data-bs-toggle="modal">\n`
+                          +  `<area shape="rect" target="_blank" coords="490,25,605,175" href="#" data-bs-target="#modalEnglish" data-bs-toggle="modal">\n`;
+        }
         let wday;
         curriculumCourse.forEach(byDay => {
             byDay.forEach((element, i) => {
@@ -762,7 +751,7 @@ export class Curriculum {
                     return;
                 }
                 const [period, ...url] = element;
-                if (url[0]) {
+                if (url.some(item => item !== "")) {
                     const area = calculateCoords(wday, period, url);
                     curriculumMap += area;
                 }
@@ -852,3 +841,43 @@ export class Curriculum {
         }
     }
 }
+
+const c = new Curriculum();
+c.add(`共通
+
+
+月
+
+1
+英語コミュニケーションⅡbC,dj,353,門田 裕次,
+英語コミュニケーションⅡbE,dj,342,菅谷 孝義,
+英語コミュニケーションⅡbF,dj,376,吉野 瑞男,
+
+2
+英語コミュニケーションⅡbA,dj,341,津森 紀乃,https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=87789
+英語コミュニケーションⅡbB,dj,353,門田 裕次,
+英語コミュニケーションⅡbD,dj,342,菅谷 孝義,
+英語コミュニケーションⅡbG,dj,376,吉野 瑞男,
+
+
+水
+
+2,3,4,5
+地域共創デザイン実習,club,教室一覧,-,
+
+
+金
+
+1
+英語コミュニケーションⅡbB,dj,345,門田 裕次,
+英語コミュニケーションⅡbD,dj,342,菅谷 孝義,
+英語コミュニケーションⅡbG,dj,376,吉野 瑞男,
+
+2
+英語コミュニケーションⅡbA,dj,341,津森 紀乃,https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=87789
+英語コミュニケーションⅡbC,dj,345,門田 裕次,
+英語コミュニケーションⅡbE,dj,342,菅谷 孝義,
+英語コミュニケーションⅡbF,dj,376,吉野 瑞男,
+`);
+
+c.toModal();
