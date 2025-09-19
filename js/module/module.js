@@ -624,7 +624,6 @@ export class Attendance {
     }
 
     toHtml(list) {
-        if (!list[0]) return;
         let imageLink = `<img src="images/attendance/${list[2]}.webp" class="card-img-top">`;
         let stringLink = `${list[1]}`;
         if (list[5] !== "") {
