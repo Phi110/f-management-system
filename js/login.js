@@ -62,29 +62,27 @@ function checkAllTasksCompleted() {
 }
 
 
-function setAutoOpenTimer(takeEnglish, takePractical) {
+function setAutoOpenTimer(takeEnglish) {
     autoOpenTimeouts.forEach(timeoutId => clearTimeout(timeoutId));
     autoOpenTimeouts = [];
 
     const scheduleByDay = {
         1: [
-            { time: "13:15", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78892" },
-            { time: "14:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79268" },
-            { time: "16:35", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79314" }
+            { time: "13:15", url: "https://lms-tokyo.iput.ac.jp/course/view.php?id=3487" },
+            { time: "14:55", url: "https://lms-tokyo.iput.ac.jp/course/view.php?id=3487" },
         ],
         2: [
-            { time: "14:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79076" },
-            { time: "16:35", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79076" },
-        ],
-        3: [
-            { time: "09:10", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78899" }
+            { time: "13:15", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=87717" },
+            { time: "14:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=87717" },
         ],
         4: [
-            { time: "09:10", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79662" },
-            { time: "10:50", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78895" }
+            { time: "10:50", url: "https://lms-tokyo.iput.ac.jp/course/view.php?id=3377" },
+            { time: "13:15", url: "https://lms-tokyo.iput.ac.jp/course/view.php?id=3377" },
         ],
         5: [
-            { time: "13:15", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79755" }
+            { time: "13:15", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=87717" },
+            { time: "14:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=87717" },
+            { time: "16:35", url: "https://lms-tokyo.iput.ac.jp/course/view.php?id=3305" },
         ]
     };
     
@@ -95,8 +93,8 @@ function setAutoOpenTimer(takeEnglish, takePractical) {
     
     if (takeEnglish === "A") {
         const englishASchedule = {
-            1: [{ time: "10:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79016" }],
-            5: [{ time: "10:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79016" }]
+            1: [{ time: "10:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=87789" }],
+            5: [{ time: "10:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=87789" }]
         };
         if (englishASchedule[today]) {
             scheduleByDay[today].push(...englishASchedule[today]);
@@ -108,38 +106,6 @@ function setAutoOpenTimer(takeEnglish, takePractical) {
         };
         if (englishDSchedule[today]) {
             scheduleByDay[today].push(...englishDSchedule[today]);
-        }
-    }
-
-    if (takePractical === "キューブ") {
-        const practicalCubeSchedule = {
-            3: [{ time: "10:50", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79690" }],
-            4: [{ time: "13:15", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=79690" }]
-        };
-        if (practicalCubeSchedule[today]) {
-            scheduleByDay[today].push(...practicalCubeSchedule[today]);
-        }
-    } else if (takePractical === "テレ朝") {
-        const practicalTvSchedule = {
-            3: [{ time: "10:50", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78610" }],
-            4: [{ time: "13:15", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78610" }]
-        };
-        if (practicalTvSchedule[today]) {
-            scheduleByDay[today].push(...practicalTvSchedule[today]);
-        }
-    } else if (takePractical === "オンワード") {
-        const practicalOnwardSchedule = {
-            3: [{ time: "10:50", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78880" },
-                { time: "13:15", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78880" },
-                { time: "14:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78880" },
-                { time: "16:35", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78880" }
-            ],
-            4: [{ time: "13:15", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78880" },
-                { time: "14:55", url: "https://lms-tokyo.iput.ac.jp/mod/attendance/view.php?id=78880" }
-            ]
-        };
-        if (practicalOnwardSchedule[today]) {
-            scheduleByDay[today].push(...practicalOnwardSchedule[today]);
         }
     }
 
@@ -201,11 +167,11 @@ const unsubscribe = auth.onAuthStateChanged(user => {
                 </label><br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="auto-open" id="auto-open-yes" value="はい" ${autoOpen ? "checked" : ""}>
-                    <label class="form-check-label" for="auto-open-yes">オン</label>
+                    <label class="form-check-label" for="auto-open-yes">AI</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="auto-open" id="auto-open-no" value="いいえ" ${!autoOpen ? "checked" : ""}>
-                    <label class="form-check-label" for="auto-open-no">オフ</label>
+                    <label class="form-check-label" for="auto-open-no">Off</label>
                 </div>
 
                 <div id="english-practical-settings" style="display: ${autoOpen ? 'block' : 'none'};">
@@ -226,24 +192,6 @@ const unsubscribe = auth.onAuthStateChanged(user => {
 
                     <br>
 
-                    <label class="top-space bottom-space">-実習</label><br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="practical" id="practical-none" value="" ${!takePractical ? "checked" : ""}>
-                        <label class="form-check-label" for="practical-none">なし</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="practical" id="practical-cube" value="キューブ" ${takePractical === "キューブ" ? "checked" : ""}>
-                        <label class="form-check-label" for="practical-cube">キューブ</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="practical" id="practical-tv" value="テレ朝" ${takePractical === "テレ朝" ? "checked" : ""}>
-                        <label class="form-check-label" for="practical-tv">テレ朝</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="practical" id="practical-onward" value="オンワード" ${takePractical === "オンワード" ? "checked" : ""}>
-                        <label class="form-check-label" for="practical-onward">オンワード</label>
-                    </div>
-
                 </div>
             `;
 
@@ -263,8 +211,7 @@ const unsubscribe = auth.onAuthStateChanged(user => {
                 const isAutoOpen = userInfo.querySelector('input[name="auto-open"]:checked').value === 'はい';
                 if (isAutoOpen) {
                     const currentEnglish = userInfo.querySelector('input[name="english"]:checked').value;
-                    const currentPractical = userInfo.querySelector('input[name="practical"]:checked').value;
-                    setAutoOpenTimer(currentEnglish, currentPractical);
+                    setAutoOpenTimer(currentEnglish);
                 }
             }
 
