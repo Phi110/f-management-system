@@ -126,7 +126,7 @@ export function toClock(addSaturday = false) {
 
 
 export function toStudyroom(studyroom) {
-    studyroom.src = `images/studyroom/studyroom${currentMonth + 1}.${weekNumber}.webp`;
+    studyroom.src = `images/studyroom/${currentMonth + 1}.${weekNumber}.webp`;
 }
 
 
