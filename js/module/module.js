@@ -561,7 +561,7 @@ export class Alert extends CSV {
         for (let i = 0; i < list.length; i++) {
             switch (list[i]) {
                 case "link":
-                    table += `<a href="${list[i + 2]}" class="alert-link">${list[i + 1]}</a>`;
+                    table += `<a href="${list[i + 2]}" class="alert-link" target="_blank">${list[i + 1]}</a>`;
                     i += 2;
                     break;
                 case "modal":
